@@ -1124,6 +1124,7 @@ video.detail-hero-image {
     <li><a onclick="navigateTo('aigc')">AIGC 视频</a></li>
     <li><a onclick="navigateTo('print')">平面广告</a></li>
     <li><a onclick="navigateTo('video')">AIGC 音频</a></li>
+    <li><a onclick="navigateTo('campaign')">创意策划</a></li>
     <li><a onclick="navigateTo('ip')">IP 设计</a></li>
     <li><a onclick="navigateTo('contact')">联系</a></li>
   </ul>
@@ -1143,6 +1144,7 @@ video.detail-hero-image {
   <a onclick="navigateTo('aigc'); toggleMobileMenu()">AIGC 视频</a>
   <a onclick="navigateTo('print'); toggleMobileMenu()">平面广告</a>
   <a onclick="navigateTo('video'); toggleMobileMenu()">AIGC 音频</a>
+  <a onclick="navigateTo('campaign'); toggleMobileMenu()">创意策划</a>
   <a onclick="navigateTo('ip'); toggleMobileMenu()">IP 设计</a>
   <a onclick="navigateTo('contact'); toggleMobileMenu()">联系</a>
 </div>
@@ -1229,10 +1231,22 @@ video.detail-hero-image {
 
     <div class="section-divider"></div>
 
+    <!-- Creative Campaign -->
+    <section class="section" id="campaign">
+      <div class="section-header">
+        <div class="section-number">05 / WORKS</div>
+        <h2 class="section-title">创意策划</h2>
+        <p class="section-desc">从创意概念到完整执行的 AIGC 品牌 Campaign，涵盖策划、视觉、视频与传播策略的全链路创意生产。</p>
+      </div>
+      <div class="works-grid cols-2" id="campaignGrid"></div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- IP Design -->
     <section class="section" id="ip">
       <div class="section-header">
-        <div class="section-number">05 / WORKS</div>
+        <div class="section-number">06 / WORKS</div>
         <h2 class="section-title">IP 设计</h2>
         <p class="section-desc">创造有性格、有故事的角色形象。从概念设定到三视图、从 2D 插画到 3D 潮玩，让品牌拥有可被喜爱的灵魂。</p>
       </div>
@@ -1241,7 +1255,7 @@ video.detail-hero-image {
 
     <!-- Contact -->
     <section class="contact" id="contact">
-      <div class="section-number" style="margin-bottom: 24px;">06 / CONTACT</div>
+      <div class="section-number" style="margin-bottom: 24px;">07 / CONTACT</div>
       <h2 class="contact-title">有想法？<br><span class="accent">一起聊聊</span></h2>
       <p class="contact-desc">无论是品牌合作、项目委托还是单纯的创意交流，都欢迎扫码添加微信联系。</p>
       <div class="contact-qr-wrap">
@@ -1360,24 +1374,6 @@ const WORKS = {
         { url: 'https://aka.doubaocdn.com/s/o7Vp239GkT', caption: '产品发布 / 三色登场 2025 / 黑橙银' },
         { url: 'https://aka.doubaocdn.com/s/TfVxyE2eWE', caption: '户外篇 / 探索无界 / 海拔GPS定位' }
       ]
-    },
-    {
-      id: 'print-4',
-      title: '抖音生活服务 × 酸甜苦辣',
-      tag: 'Poster / AIGC Campaign',
-      meta: '城市美食主题系列海报 / 4 款 / 2026',
-      cover: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa',
-      client: '抖音生活服务',
-      role: 'AIGC 创意 / 海报设计',
-      year: '2026',
-      duration: '2 周',
-      concept: '以「一个味道代表一座城市」为核心创意，为抖音生活服务打造的「酸甜苦辣」城市美食主题系列海报。酸代表山西老陈醋、甜代表上海本帮菜、苦代表广州凉茶、辣代表重庆火锅。每张海报以3D梦幻微缩景观的视觉风格，将城市地标与特色美食融合在一个立体小场景中，配合「Let us 城市」大标题与四味角标，形成统一而富有辨识度的系列视觉语言。整体采用明亮高饱和的3D渲染质感，暖色柔和光影，营造梦幻治愈的氛围，同时保留抖音生活服务的品牌识别元素。',
-      gallery: [
-        { url: 'https://aka.doubaocdn.com/s/465HGEjDQj', caption: '山西 · 酸 / 老陈醋 / 一城醋香，酸韵悠长' },
-        { url: 'https://aka.doubaocdn.com/s/YSlhk7Gs1e', caption: '上海 · 甜 / 本帮菜 / 浓油赤酱，甜在舌尖' },
-        { url: 'https://aka.doubaocdn.com/s/vlsnpQrBWG', caption: '广州 · 苦 / 凉茶 / 凉茶入喉，苦尽甘来' },
-        { url: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa', caption: '重庆 · 辣 / 火锅 / 麻辣滚烫，热烈山城' }
-      ]
     }
   ],
   video: [
@@ -1456,25 +1452,33 @@ const WORKS = {
       technique: '在 Seedance 2.5 中通过精确描述光带的运动轨迹、几何图形的旋转速度和两者的互动关系来生成画面。品牌概念片对视觉一致性要求很高，因此进行了超过 30 轮的提示词迭代，确保橙色的色值、光带的粗细和几何图形的风格都符合品牌规范。后期在 Final Cut Pro 中进行微调，统一色彩和节奏，并添加品牌音效——一个简洁的电子合成器音色，与视觉的极简风格呼应。',
       insight: '品牌概念片的创作让我意识到，AI 影像不仅可以用于艺术表达，也完全可以服务于商业品牌的精准需求。关键在于将品牌的视觉规范（色彩、字体、图形语言）转化为 AI 能够理解的提示词描述。这个项目也成为工作室后续 AI 商业影像服务的标杆案例，证明了 AI 在品牌视觉领域的专业应用价值。',
       tools: 'Seedance 2.5 / Final Cut Pro'
-    },
+    }
+  ],
+  campaign: [
     {
-      id: 'video-5',
-      title: '酸甜苦辣 · 四城四味',
-      tag: 'AI Campaign Film / Food',
-      meta: 'AI 生成宣传短片 / 00:12 / 2026',
+      id: 'campaign-1',
+      title: '抖音生活服务 × 酸甜苦辣',
+      tag: 'AIGC Campaign / 创意策划',
+      meta: '城市美食主题完整 Campaign / 4海报+1视频 / 2026',
       cover: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa',
       video: 'https://aka.doubaocdn.com/s/JnYoCUpDj8',
-      client: '抖音生活服务',
-      role: 'AI 导演 / 创意 / 后期',
+      client: '抖音生活服务（概念项目）',
+      role: 'AIGC 创意总监 / 策划 / 视觉 / 视频',
       year: '2026',
-      duration: '1 周',
-      concept: '为「抖音生活服务 × 酸甜苦辣」城市美食主题打造的AI生成宣传短片。镜头以3D梦幻微缩景观的视觉风格，依次巡游四座城市的立体小场景：山西老醋坊的琥珀色醋缸（酸）→ 上海石库门本帮菜的糖色餐桌（甜）→ 广州凉茶铺的墨绿草药与铜葫芦壶（苦）→ 重庆九宫格火锅的炽红热气（辣）。镜头在微缩景观间平移推近，渐变光带衔接转场，漂浮的立体汉字「酸甜苦辣」依次浮现，结尾定格「酸甜苦辣，皆是生活」标题卡与抖音生活服务品牌栏。',
-      description: '该片用于抖音生活服务「酸甜苦辣」城市美食主题活动的社交媒体推广，以AI生成的3D微缩景观风格呈现四城四味的美食文化，视觉统一且富有记忆点。',
-      story: '创作灵感来源于中国饮食文化中「酸甜苦辣」四种基本味道与地域特色的对应关系。山西的醋、上海的甜、广州的凉茶、重庆的火锅，每一种味道都承载着一座城市的文化记忆。我希望用AI影像将这种味觉与地域的关联视觉化，让观众在12秒内感受到四城四味的独特魅力。',
-      shots: '全片采用连续推近与平移结合的镜头运动，从高空缓缓推近进入第一个微缩场景，随后通过流动的渐变光带完成四个场景之间的转场。每个场景停留约2.5秒，镜头在微缩景观间缓慢平移，展示城市地标与美食细节。漂浮的立体汉字「酸」「甜」「苦」「辣」在对应场景中依次浮现并缓慢旋转。结尾镜头拉远，四个微缩场景同框，定格到金色标题卡。',
-      technique: '使用 Seedance 2.0 Fast 进行核心画面生成，通过精确的提示词工程控制3D微缩景观风格、镜头运动、光影效果和场景转场。四个城市场景分别定制视觉色调：山西琥珀酱色、上海暖糖红色、广州墨绿草本色、重庆炽红色。生成后在剪映中进行剪辑拼接，添加轻快背景音乐与转场音效，统一色彩和节奏。',
-      insight: '这个项目让我探索了AI影像在商业品牌宣传中的应用潜力。通过统一的3D微缩景观视觉语言，可以在短时间内生成风格一致、场景丰富的系列宣传内容。AI在场景构建和氛围营造上效率极高，但在精确文字渲染和复杂转场控制上仍需多轮迭代和后期调整。',
-      tools: 'Seedance 2.0 Fast / 剪映 / Photoshop'
+      duration: '3 周',
+      concept: '以「一个味道代表一座城市」为核心创意，为抖音生活服务打造的「酸甜苦辣」城市美食主题完整 AIGC Campaign。酸代表山西老陈醋、甜代表上海本帮菜、苦代表广州凉茶、辣代表重庆火锅。项目以 3D 梦幻微缩景观为统一视觉语言，产出 4 张城市主题海报 + 1 条 12 秒宣传视频，从创意策划、视觉系统、海报设计到视频制作形成完整的 AIGC 创意生产闭环。',
+      description: '本项目探索了 AIGC 技术在商业品牌完整 Campaign 中的应用潜力，验证了「AI 辅助创意生产」从策划到执行的全流程可行性，涵盖创意概念、视觉规范、系列海报、宣传视频和传播策略的完整产出。',
+      gallery: [
+        { url: 'https://aka.doubaocdn.com/s/465HGEjDQj', caption: '山西 · 酸 / 老陈醋 / 一城醋香，酸韵悠长' },
+        { url: 'https://aka.doubaocdn.com/s/YSlhk7Gs1e', caption: '上海 · 甜 / 本帮菜 / 浓油赤酱，甜在舌尖' },
+        { url: 'https://aka.doubaocdn.com/s/vlsnpQrBWG', caption: '广州 · 苦 / 凉茶 / 凉茶入喉，苦尽甘来' },
+        { url: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa', caption: '重庆 · 辣 / 火锅 / 麻辣滚烫，热烈山城' }
+      ],
+      campaignStory: '创作灵感来源于中国饮食文化中「酸甜苦辣」四种基本味道与地域特色的深度关联。山西人远行时随身携带的一壶老陈醋、上海弄堂里飘出的红烧肉甜香、广州街头一碗苦口回甘的凉茶、重庆夏夜九宫格火锅的麻辣蒸腾——每一种味道都承载着一座城市的文化记忆。本项目希望用 AIGC 技术将这种味觉与地域的关联视觉化，让观众在短时间内感受到四城四味的独特魅力，同时探索 AI 辅助完整品牌 Campaign 生产的工作流。',
+      campaignVisual: '整体采用「3D 梦幻微缩景观」作为核心视觉语言，将城市地标、特色美食、文化符号浓缩在一个立体小场景中。统一的视觉规范包括：明亮高饱和的 3D 渲染质感、暖色柔和光影、「Let us 城市」大标题版式、左下品牌栏 + 右下搜索框布局。四张海报各自拥有独立的主题色：山西琥珀金（酸）、上海樱粉（甜）、广州草本绿（苦）、重庆烈红（辣），在保持系列一致性的同时赋予每座城市独特的视觉性格。',
+      campaignVideoPlan: '宣传视频采用 12 秒快节奏剪辑，以「味觉旅行」为叙事线索，用连续推近与平移结合的镜头运动依次巡游四座城市的微缩场景。每个场景停留约 2.5 秒，通过流动的渐变光带完成场景转场。漂浮的立体汉字「酸」「甜」「苦」「辣」在对应场景中依次浮现。结尾镜头拉远，四个微缩场景同框定格。声音设计采用轻快活泼的电子流行乐融合中国传统乐器，配合每个城市的特色环境声（醋缸舀醋声、小笼包蒸笼声、凉茶铜锅声、火锅沸腾声）强化味觉体验。',
+      campaignWorkflow: '项目采用 6 步 AIGC 创意工作流：①创意策划与风格锚定（人工创意 + AI 风格探索，确定 3D 微缩景观方向）；②核心视觉资产生成（文生图，为每城撰写高密度 Prompt，覆盖场景/地标/美食/光影/色彩/排版 9 维度）；③风格一致性迭代与精修（图生图，统一渲染质感、修正 AI 文字漂移、调整构图）；④画质增强与高清输出（AI 画质增强，分辨率提升至 2560×1440）；⑤宣传视频生成（文生视频，基于分镜脚本控制镜头运动与场景转场）；⑥作品集整合与部署（HTML/CSS/JS 整合，GitHub Pages 上线）。',
+      campaignDistribution: '传播策略构建「看见味道 → 搜索味道 → 品尝味道」的完整用户旅程：线上以抖音站内传播为主（开屏广告、信息流投放、美食达人探店统一视觉封面、#酸甜苦辣城市美食季 话题挑战、搜索框彩蛋），线下在四座核心城市打造快闪体验空间（山西醋文化体验馆、上海本帮菜美食市集、广州凉茶铺快闪、重庆火锅节联名），周边物料延展（四味主题杯套、城市美食贴纸包、帆布袋、冰箱贴盲盒），最终通过抖音团购券完成从视觉吸引到实际消费的转化闭环。'
     }
   ],
   ip: [
@@ -1540,13 +1544,13 @@ const WORKS = {
 
 // Flatten all works for lookup
 const ALL_WORKS = {};
-['aigc', 'print', 'video', 'ip'].forEach(function(cat) {
+['aigc', 'print', 'video', 'campaign', 'ip'].forEach(function(cat) {
   WORKS[cat].forEach(function(w) { ALL_WORKS[w.id] = w; });
 });
 
 // ===== Render Work Cards =====
 function renderWorkCards() {
-  ['aigc', 'print', 'video', 'ip'].forEach(function(cat) {
+  ['aigc', 'print', 'video', 'campaign', 'ip'].forEach(function(cat) {
     const grid = document.getElementById(cat + 'Grid');
     if (!grid) return;
     grid.innerHTML = WORKS[cat].map(function(w, i) {
@@ -1586,7 +1590,7 @@ function renderDetail(id) {
 
   document.body.classList.add('detail-mode');
   const container = document.getElementById('viewDetail');
-  const cat = id.startsWith('aigc') ? 'aigc' : (id.startsWith('print') ? 'print' : (id.startsWith('video') ? 'video' : 'ip'));
+  const cat = id.startsWith('aigc') ? 'aigc' : (id.startsWith('print') ? 'print' : (id.startsWith('video') ? 'video' : (id.startsWith('campaign') ? 'campaign' : 'ip')));
 
   // Hero
   let heroHtml;
@@ -1753,6 +1757,50 @@ function renderDetail(id) {
     '</div>';
   }
 
+  // Campaign type: video player + poster gallery + planning content
+  if (cat === 'campaign') {
+    bodyHtml += '<div class="detail-section">' +
+      '<h3 class="detail-section-title">宣传视频</h3>' +
+      '<div class="video-player" id="mainVideoPlayer">' +
+        '<video id="mainVideo" src="' + work.video + '" poster="' + work.cover + '" playsinline preload="metadata"></video>' +
+        '<div class="player-loading" id="playerLoading"></div>' +
+        '<div class="player-big-play" id="playerBigPlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' +
+        '<div class="video-player-controls">' +
+          '<div class="player-progress-wrap" id="playerProgressWrap">' +
+            '<div class="player-progress">' +
+              '<div class="player-progress-buffered" id="playerBuffered"></div>' +
+              '<div class="player-progress-filled" id="playerFilled"></div>' +
+              '<div class="player-progress-thumb" id="playerThumb"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="player-bottom">' +
+            '<button class="player-btn" id="playerPlayBtn" aria-label="play"><svg id="playerPlayIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>' +
+            '<div class="player-time" id="playerTime">00:00 / 00:00</div>' +
+            '<div class="player-spacer"></div>' +
+            '<div class="player-volume-wrap">' +
+              '<button class="player-btn" id="playerMuteBtn" aria-label="mute"><svg id="playerVolIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>' +
+              '<div class="player-volume-slider"><input type="range" id="playerVolume" min="0" max="1" step="0.01" value="1"></div>' +
+            '</div>' +
+            '<button class="player-btn" id="playerFsBtn" aria-label="fullscreen"><svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+    bodyHtml += '<div class="detail-section">' +
+      '<h3 class="detail-section-title">城市海报系列</h3>' +
+      '<div class="detail-text"><p>以「一个味道代表一座城市」为核心，四座城市各一张主题海报，统一 3D 梦幻微缩景观风格，各自拥有独立的主题色与文化符号。</p></div>' +
+      '<div class="detail-gallery cols-2">';
+    work.gallery.forEach(function(g) {
+      bodyHtml += '<div class="gallery-item"><img src="' + g.url + '" alt="' + g.caption + '"><div class="gallery-caption">' + g.caption + '</div></div>';
+    });
+    bodyHtml += '</div></div>';
+    bodyHtml += '<div class="detail-section"><h3 class="detail-section-title">创意背景</h3><div class="detail-text"><p>' + work.campaignStory + '</p></div></div>';
+    bodyHtml += '<div class="detail-section"><h3 class="detail-section-title">视觉系统</h3><div class="detail-text"><p>' + work.campaignVisual + '</p></div></div>';
+    bodyHtml += '<div class="detail-section"><h3 class="detail-section-title">视频策划</h3><div class="detail-text"><p>' + work.campaignVideoPlan + '</p></div></div>';
+    bodyHtml += '<div class="detail-section"><h3 class="detail-section-title">AIGC 工作流</h3><div class="detail-text"><p>' + work.campaignWorkflow + '</p></div></div>';
+    bodyHtml += '<div class="detail-section"><h3 class="detail-section-title">传播策略</h3><div class="detail-text"><p>' + work.campaignDistribution + '</p></div></div>';
+  }
+
   if (cat === 'print') {
     bodyHtml += '<div class="detail-section">' +
       '<h3 class="detail-section-title">作品展示</h3>' +
@@ -1785,7 +1833,7 @@ function renderDetail(id) {
   '</div>';
 
   window.scrollTo(0, 0);
-  if (cat === 'video') { initVideoPlayer(); }
+  if (cat === 'video' || cat === 'campaign') { initVideoPlayer(); }
 }
 
 function goHome() {
@@ -1996,7 +2044,7 @@ function toggleMobileMenu() {
 // ===== Active Nav on Scroll =====
 function updateActiveNav() {
   if (document.body.classList.contains('detail-mode')) return;
-  const sections = ['hero', 'about', 'aigc', 'print', 'video', 'ip', 'contact'];
+  const sections = ['hero', 'about', 'aigc', 'print', 'video', 'campaign', 'ip', 'contact'];
   const scrollPos = window.scrollY + window.innerHeight / 3;
   let current = 'hero';
   sections.forEach(function(id) {
@@ -2005,7 +2053,7 @@ function updateActiveNav() {
   });
   document.querySelectorAll('.nav-links a').forEach(function(link) {
     link.classList.remove('active');
-    if (link.textContent.trim() === ({hero:'首页',about:'关于',aigc:'AIGC 视频',print:'平面广告',video:'AIGC 音频',ip:'IP 设计',contact:'联系'}[current])) {
+    if (link.textContent.trim() === ({hero:'首页',about:'关于',aigc:'AIGC 视频',print:'平面广告',video:'AIGC 音频',campaign:'创意策划',ip:'IP 设计',contact:'联系'}[current])) {
       link.classList.add('active');
     }
   });
