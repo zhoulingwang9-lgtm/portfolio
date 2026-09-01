@@ -1174,6 +1174,104 @@ video.detail-hero-image {
   }
 }
 
+
+/* ===== Lightbox ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: zoom-out;
+  backdrop-filter: blur(8px);
+}
+.lightbox.active {
+  display: flex;
+  animation: lightboxFadeIn 0.25s ease;
+}
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.lightbox img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: lightboxZoomIn 0.3s ease;
+}
+@keyframes lightboxZoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.lightbox-caption {
+  margin-top: 20px;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  max-width: 80vw;
+  line-height: 1.6;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 28px;
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10000;
+}
+.lightbox-close:hover {
+  background: rgba(255,107,53,0.8);
+  border-color: #FF6B35;
+  transform: rotate(90deg);
+}
+.lightbox-counter {
+  position: absolute;
+  top: 32px; left: 28px;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* Campaign Poster Gallery: no crop, original size */
+.campaign-gallery .gallery-item {
+  overflow: visible;
+  background: transparent;
+  border: none;
+}
+.campaign-gallery .gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.campaign-gallery .gallery-item:hover img {
+  transform: none;
+  box-shadow: 0 12px 40px rgba(255,107,53,0.2);
+}
+.campaign-gallery .gallery-caption {
+  border-top: none;
+  padding: 12px 4px 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
 </style>
 </head>
 <body>
@@ -1846,7 +1944,7 @@ function renderDetail(id) {
     bodyHtml += '<div class="detail-section">' +
       '<h3 class="detail-section-title">城市海报系列</h3>' +
       '<div class="detail-text"><p>以「一个味道代表一座城市」为核心，四座城市各一张主题海报，统一 3D 梦幻微缩景观风格，各自拥有独立的主题色与文化符号。</p></div>' +
-      '<div class="detail-gallery cols-2">';
+      '<div class="detail-gallery cols-2 campaign-gallery">';
     work.gallery.forEach(function(g) {
       bodyHtml += '<div class="gallery-item"><img src="' + g.url + '" alt="' + g.caption + '"><div class="gallery-caption">' + g.caption + '</div></div>';
     });
@@ -1891,6 +1989,7 @@ function renderDetail(id) {
 
   window.scrollTo(0, 0);
   if (cat === 'video') { initVideoPlayer(); }
+  initLightbox();
 }
 
 function goHome() {
@@ -2141,11 +2240,84 @@ function initReveal() {
   reveal();
 }
 
+// ===== Lightbox =====
+window.lightboxImages = [];
+window.lightboxCurrentIndex = 0;
+
+function openLightbox(src, caption, index) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  const cap = document.getElementById('lightboxCaption');
+  const counter = document.getElementById('lightboxCounter');
+  img.src = src;
+  cap.textContent = caption || '';
+  window.lightboxCurrentIndex = index !== undefined ? index : 0;
+  if (window.lightboxImages.length > 1) {
+    counter.textContent = (window.lightboxCurrentIndex + 1) + ' / ' + window.lightboxImages.length;
+  } else {
+    counter.textContent = '';
+  }
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+  document.getElementById('lightboxImg').src = '';
+}
+
+function initLightbox() {
+  // Collect all zoomable images in detail page
+  const selectors = '.gallery-item img, .process-image img, .merch-item img';
+  const imgs = document.querySelectorAll('#viewDetail ' + selectors);
+  window.lightboxImages = [];
+  imgs.forEach(function(img, i) {
+    window.lightboxImages.push({
+      src: img.src,
+      caption: img.alt || (img.parentElement.querySelector('.gallery-caption') ? img.parentElement.querySelector('.gallery-caption').textContent : '') || (img.parentElement.querySelector('.process-image-caption') ? img.parentElement.querySelector('.process-image-caption').textContent : '')
+    });
+    img.style.cursor = 'zoom-in';
+    img.onclick = function(e) {
+      e.stopPropagation();
+      openLightbox(this.src, this.alt || window.lightboxImages[i].caption, i);
+    };
+  });
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (!lb || !lb.classList.contains('active')) return;
+  if (e.key === 'Escape') { closeLightbox(); }
+  if (e.key === 'ArrowLeft' && window.lightboxCurrentIndex > 0) {
+    window.lightboxCurrentIndex--;
+    const item = window.lightboxImages[window.lightboxCurrentIndex];
+    openLightbox(item.src, item.caption, window.lightboxCurrentIndex);
+  }
+  if (e.key === 'ArrowRight' && window.lightboxCurrentIndex < window.lightboxImages.length - 1) {
+    window.lightboxCurrentIndex++;
+    const item = window.lightboxImages[window.lightboxCurrentIndex];
+    openLightbox(item.src, item.caption, window.lightboxCurrentIndex);
+  }
+});
+
 // ===== Init =====
 renderWorkCards();
 initReveal();
 handleRoute();
+
 </script>
+
+
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 </body>
 </html>
