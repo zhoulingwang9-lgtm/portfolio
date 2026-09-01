@@ -1264,6 +1264,15 @@ video.detail-hero-image {
   transform: none;
   box-shadow: 0 12px 40px rgba(255,107,53,0.2);
 }
+
+/* Campaign cover: no crop, original aspect ratio */
+.work-image.campaign-cover {
+  object-fit: contain !important;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+}
+
 .campaign-gallery .gallery-caption {
   border-top: none;
   padding: 12px 4px 0;
@@ -1625,10 +1634,10 @@ const WORKS = {
       meta: '城市美食主题完整 Campaign / 4海报+1视频 / 2026',
       cover: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa',
       videos: [
-        { url: 'https://aka.doubaocdn.com/s/h6u9DsIUr4', title: '山西 · 酸', subtitle: '老陈醋 / 一城醋香，酸韵悠长', cover: 'https://aka.doubaocdn.com/s/465HGEjDQj' },
-        { url: 'https://aka.doubaocdn.com/s/O9Bwc9i7xa', title: '上海 · 甜', subtitle: '本帮菜 / 浓油赤酱，甜在舌尖', cover: 'https://aka.doubaocdn.com/s/YSlhk7Gs1e' },
-        { url: 'https://aka.doubaocdn.com/s/ClsOunomgo', title: '广州 · 苦', subtitle: '凉茶 / 凉茶入喉，苦尽甘来', cover: 'https://aka.doubaocdn.com/s/xDVnpWKacC' },
-        { url: 'https://aka.doubaocdn.com/s/ZIU0N7KvKb', title: '重庆 · 辣', subtitle: '火锅 / 麻辣滚烫，热烈山城', cover: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa' }
+        { url: 'videos/shanxi.mp4', title: '山西 · 酸', subtitle: '老陈醋 / 一城醋香，酸韵悠长', cover: 'https://aka.doubaocdn.com/s/465HGEjDQj' },
+        { url: 'videos/shanghai.mp4', title: '上海 · 甜', subtitle: '本帮菜 / 浓油赤酱，甜在舌尖', cover: 'https://aka.doubaocdn.com/s/YSlhk7Gs1e' },
+        { url: 'videos/guangzhou.mp4', title: '广州 · 苦', subtitle: '凉茶 / 凉茶入喉，苦尽甘来', cover: 'https://aka.doubaocdn.com/s/xDVnpWKacC' },
+        { url: 'videos/chongqing.mp4', title: '重庆 · 辣', subtitle: '火锅 / 麻辣滚烫，热烈山城', cover: 'https://aka.doubaocdn.com/s/Y0ofXHUOVa' }
       ],
       client: '抖音生活服务（概念项目）',
       role: 'AIGC 创意总监 / 策划 / 视觉 / 视频',
@@ -1725,9 +1734,10 @@ function renderWorkCards() {
       const wrapClass = (cat === 'video' || cat === 'aigc') ? 'video' : (cat === 'ip' ? 'ip' : '');
       const noCropClass = (cat === 'print' && i < 2) ? ' no-crop' : '';
       const playBtn = (cat === 'video' || cat === 'aigc') ? '<div class="play-indicator"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : '';
+      const campaignCoverClass = cat === 'campaign' ? ' campaign-cover' : '';
       const mediaTag = cat === 'aigc' ?
         '<div class="work-image work-image-placeholder" style="background:linear-gradient(135deg,#FF6B35 0%,#cc5529 50%,#141414 100%);display:flex;align-items:center;justify-content:center;"><span style="font-family:Space Grotesk,sans-serif;font-size:14px;font-weight:600;color:#fff;letter-spacing:2px;text-align:center;padding:20px;">' + w.title + '</span></div>' :
-        '<img class="work-image' + noCropClass + '" src="' + w.cover + '" alt="' + w.title + '">';
+        '<img class="work-image' + noCropClass + campaignCoverClass + '" src="' + w.cover + '" alt="' + w.title + '">';
       return '<div class="work-card" onclick="openDetail(\'' + w.id + '\')">' +
         '<div class="work-index">0' + (i + 1) + '</div>' +
         '<div class="work-image-wrap ' + wrapClass + '">' +
