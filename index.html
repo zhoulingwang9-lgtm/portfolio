@@ -1185,9 +1185,9 @@ video.detail-hero-image {
     <li><a onclick="navigateTo('hero')" class="active">首页</a></li>
     <li><a onclick="navigateTo('about')">关于</a></li>
     <li><a onclick="navigateTo('aigc')">AIGC 视频</a></li>
+    <li><a onclick="navigateTo('campaign')">创意策划</a></li>
     <li><a onclick="navigateTo('print')">平面广告</a></li>
     <li><a onclick="navigateTo('video')">AIGC 音频</a></li>
-    <li><a onclick="navigateTo('campaign')">创意策划</a></li>
     <li><a onclick="navigateTo('ip')">IP 设计</a></li>
     <li><a onclick="navigateTo('contact')">联系</a></li>
   </ul>
@@ -1205,9 +1205,9 @@ video.detail-hero-image {
   <a onclick="navigateTo('hero'); toggleMobileMenu()">首页</a>
   <a onclick="navigateTo('about'); toggleMobileMenu()">关于</a>
   <a onclick="navigateTo('aigc'); toggleMobileMenu()">AIGC 视频</a>
+  <a onclick="navigateTo('campaign'); toggleMobileMenu()">创意策划</a>
   <a onclick="navigateTo('print'); toggleMobileMenu()">平面广告</a>
   <a onclick="navigateTo('video'); toggleMobileMenu()">AIGC 音频</a>
-  <a onclick="navigateTo('campaign'); toggleMobileMenu()">创意策划</a>
   <a onclick="navigateTo('ip'); toggleMobileMenu()">IP 设计</a>
   <a onclick="navigateTo('contact'); toggleMobileMenu()">联系</a>
 </div>
@@ -1270,10 +1270,22 @@ video.detail-hero-image {
 
     <div class="section-divider"></div>
 
+    <!-- Creative Campaign -->
+    <section class="section" id="campaign">
+      <div class="section-header">
+        <div class="section-number">03 / WORKS</div>
+        <h2 class="section-title">创意策划</h2>
+        <p class="section-desc">从创意概念到完整执行的 AIGC 品牌 Campaign，涵盖策划、视觉、视频与传播策略的全链路创意生产。</p>
+      </div>
+      <div class="works-grid cols-2" id="campaignGrid"></div>
+    </section>
+
+<div class="section-divider"></div>
+
     <!-- Print Advertising -->
     <section class="section" id="print">
       <div class="section-header">
-        <div class="section-number">03 / WORKS</div>
+        <div class="section-number">04 / WORKS</div>
         <h2 class="section-title">平面广告</h2>
         <p class="section-desc">从品牌策略到视觉执行，为客户打造有记忆点的广告传播。涵盖海报、KV、杂志广告与户外媒体。</p>
       </div>
@@ -1285,24 +1297,14 @@ video.detail-hero-image {
     <!-- AI Video -->
     <section class="section" id="video">
       <div class="section-header">
-        <div class="section-number">04 / WORKS</div>
+        <div class="section-number">05 / WORKS</div>
         <h2 class="section-title">AIGC 音频</h2>
         <p class="section-desc">运用生成式 AI 技术探索影像叙事的新疆界，从概念短片到商业广告，打造超越传统拍摄的视觉体验。</p>
       </div>
       <div class="works-grid cols-2" id="videoGrid"></div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- Creative Campaign -->
-    <section class="section" id="campaign">
-      <div class="section-header">
-        <div class="section-number">05 / WORKS</div>
-        <h2 class="section-title">创意策划</h2>
-        <p class="section-desc">从创意概念到完整执行的 AIGC 品牌 Campaign，涵盖策划、视觉、视频与传播策略的全链路创意生产。</p>
-      </div>
-      <div class="works-grid cols-2" id="campaignGrid"></div>
-    </section>
+    
 
     <div class="section-divider"></div>
 
@@ -1612,13 +1614,13 @@ const WORKS = {
 
 // Flatten all works for lookup
 const ALL_WORKS = {};
-['aigc', 'print', 'video', 'campaign', 'ip'].forEach(function(cat) {
+['aigc', 'campaign', 'print', 'video', 'ip'].forEach(function(cat) {
   WORKS[cat].forEach(function(w) { ALL_WORKS[w.id] = w; });
 });
 
 // ===== Render Work Cards =====
 function renderWorkCards() {
-  ['aigc', 'print', 'video', 'campaign', 'ip'].forEach(function(cat) {
+  ['aigc', 'campaign', 'print', 'video', 'ip'].forEach(function(cat) {
     const grid = document.getElementById(cat + 'Grid');
     if (!grid) return;
     grid.innerHTML = WORKS[cat].map(function(w, i) {
@@ -2099,7 +2101,7 @@ function toggleMobileMenu() {
 // ===== Active Nav on Scroll =====
 function updateActiveNav() {
   if (document.body.classList.contains('detail-mode')) return;
-  const sections = ['hero', 'about', 'aigc', 'print', 'video', 'campaign', 'ip', 'contact'];
+  const sections = ['hero', 'about', 'aigc', 'campaign', 'print', 'video', 'ip', 'contact'];
   const scrollPos = window.scrollY + window.innerHeight / 3;
   let current = 'hero';
   sections.forEach(function(id) {
