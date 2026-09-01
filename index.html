@@ -363,6 +363,7 @@ body.detail-mode .view-detail { display: block; }
 
 .work-image-wrap.video { aspect-ratio: 16 / 9; }
 .work-image-wrap.ip { aspect-ratio: 1 / 1; }
+.work-image-wrap.campaign { aspect-ratio: 16 / 9; }
 
 .work-image {
   width: 100%; height: 100%; object-fit: cover;
@@ -1267,10 +1268,9 @@ video.detail-hero-image {
 
 /* Campaign cover: no crop, original aspect ratio */
 .work-image.campaign-cover {
-  object-fit: contain !important;
+  object-fit: cover !important;
   width: 100%;
   height: 100%;
-  background: #1a1a1a;
 }
 
 .campaign-gallery .gallery-caption {
@@ -1384,7 +1384,7 @@ video.detail-hero-image {
         <h2 class="section-title">创意策划</h2>
         <p class="section-desc">从创意概念到完整执行的 AIGC 品牌 Campaign，涵盖策划、视觉、视频与传播策略的全链路创意生产。</p>
       </div>
-      <div class="works-grid cols-2" id="campaignGrid"></div>
+      <div class="works-grid cols-1" id="campaignGrid"></div>
     </section>
 
 <div class="section-divider"></div>
@@ -1731,7 +1731,7 @@ function renderWorkCards() {
     const grid = document.getElementById(cat + 'Grid');
     if (!grid) return;
     grid.innerHTML = WORKS[cat].map(function(w, i) {
-      const wrapClass = (cat === 'video' || cat === 'aigc') ? 'video' : (cat === 'ip' ? 'ip' : '');
+      const wrapClass = (cat === 'video' || cat === 'aigc') ? 'video' : (cat === 'ip' ? 'ip' : (cat === 'campaign' ? 'campaign' : ''));
       const noCropClass = (cat === 'print' && i < 2) ? ' no-crop' : '';
       const playBtn = (cat === 'video' || cat === 'aigc') ? '<div class="play-indicator"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : '';
       const campaignCoverClass = cat === 'campaign' ? ' campaign-cover' : '';
