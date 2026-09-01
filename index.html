@@ -1574,6 +1574,304 @@ video.detail-hero-image {
   .featured-overlay .work-title { font-size: 20px; }
   .featured-info-bar { flex-direction: column; align-items: flex-start; }
 }
+
+/* ===== AIGC Audio / Sound Design ===== */
+.audio-section {
+  background: linear-gradient(180deg, #08080d 0%, #12121c 30%, #1a1a28 50%, #12121c 70%, #08080d 100%);
+  position: relative;
+  overflow: hidden;
+}
+.audio-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255,107,53,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(100,100,200,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.audio-section .section-header { position: relative; z-index: 1; }
+.audio-section .section-title { color: #fff; }
+.audio-section .section-desc { color: rgba(255,255,255,0.5); }
+.audio-section .section-number { color: rgba(255,107,53,0.6); }
+
+/* Audio Grid - 错落布局 */
+.audio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+.audio-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+.audio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,53,0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.audio-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,107,53,0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(255,107,53,0.05);
+}
+.audio-card:hover::before { opacity: 1; }
+.audio-card:nth-child(2) { margin-left: 60px; }
+.audio-card:nth-child(3) { margin-left: 30px; }
+
+/* Audio Cover */
+.audio-cover-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.audio-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.audio-play-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,107,53,0.95);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+}
+.audio-play-btn:hover { transform: scale(1.1); }
+.audio-play-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.audio-card.playing .audio-play-btn svg {
+  d: path('M6 19h4V5H6v14zm8-14v14h4V5h-4z');
+}
+
+/* Audio Info */
+.audio-info { flex: 1; min-width: 0; }
+.audio-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+.audio-subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Waveform */
+.audio-waveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 28px;
+  margin-bottom: 10px;
+}
+.wave-bar {
+  flex: 1;
+  max-width: 4px;
+  background: linear-gradient(180deg, #FF6B35 0%, #cc5529 100%);
+  border-radius: 2px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+.audio-card.playing .wave-bar {
+  opacity: 1;
+  animation: waveJump 0.6s ease-in-out infinite;
+}
+@keyframes waveJump {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+/* Audio Controls */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.audio-progress {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.audio-progress-filled {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B35, #ff8c5a);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.audio-time {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-variant-numeric: tabular-nums;
+  min-width: 75px;
+  text-align: right;
+  font-family: 'Space Grotesk', monospace;
+}
+
+/* Hidden video for audio */
+.audio-hidden-video { display: none; }
+
+/* Detail Audio Player */
+.audio-detail-section {
+  background: linear-gradient(135deg, rgba(255,107,53,0.03) 0%, rgba(100,100,200,0.02) 100%);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.detail-audio-player {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.detail-audio-cover {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+}
+.detail-audio-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.detail-audio-play-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,107,53,0.95);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(255,107,53,0.5);
+}
+.detail-audio-play-btn:hover { transform: scale(1.1); }
+.detail-audio-play-btn svg { width: 22px; height: 22px; fill: currentColor; }
+.detail-audio-info { flex: 1; min-width: 0; }
+.detail-audio-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.detail-audio-subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+.detail-audio-waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+.detail-wave-bar {
+  flex: 1;
+  max-width: 6px;
+  background: linear-gradient(180deg, #FF6B35 0%, #cc5529 100%);
+  border-radius: 3px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+.detail-audio-player.playing .detail-wave-bar {
+  opacity: 1;
+  animation: waveJump 0.5s ease-in-out infinite;
+}
+.detail-audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.detail-audio-progress {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.detail-audio-progress-filled {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B35, #ff8c5a);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.detail-audio-time {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-variant-numeric: tabular-nums;
+  min-width: 100px;
+  text-align: right;
+  font-family: 'Space Grotesk', monospace;
+}
+#detailAudioVideo { display: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .audio-card { flex-direction: column; text-align: center; padding: 20px; }
+  .audio-card:nth-child(2), .audio-card:nth-child(3) { margin-left: 0; }
+  .audio-cover-wrap { width: 140px; height: 140px; }
+  .audio-waveform { justify-content: center; }
+  .detail-audio-player { flex-direction: column; text-align: center; }
+  .detail-audio-cover { width: 160px; height: 160px; }
+}
+
 </style>
 </head>
 <body>
@@ -1587,7 +1885,7 @@ video.detail-hero-image {
     <li><a onclick="navigateTo('aigc')">AIGC 视频</a></li>
     <li><a onclick="navigateTo('campaign')">创意策划</a></li>
     <li><a onclick="navigateTo('aigc')">平面广告</a></li>
-    <li><a onclick="navigateTo('video')">AIGC 音频</a></li>
+    <li><a onclick="navigateTo('video')">声音设计</a></li>
     <li><a onclick="navigateTo('ip')">IP 设计</a></li>
     <li><a onclick="navigateTo('contact')">联系</a></li>
   </ul>
@@ -1694,14 +1992,14 @@ video.detail-hero-image {
 
     <div class="section-divider"></div>
 
-    <!-- AI Video -->
-    <section class="section" id="video">
+    <!-- AIGC Audio / Sound Design -->
+    <section class="section audio-section" id="video">
       <div class="section-header">
         <div class="section-number">05 / WORKS</div>
-        <h2 class="section-title">AIGC 音频</h2>
-        <p class="section-desc">运用生成式 AI 技术探索影像叙事的新疆界，从概念短片到商业广告，打造超越传统拍摄的视觉体验。</p>
+        <h2 class="section-title">AIGC 音频 / 声音设计</h2>
+        <p class="section-desc">运用生成式 AI 技术探索声音叙事的新疆界，从城市音景到冥想环境，打造超越传统录音的沉浸式听觉体验。</p>
       </div>
-      <div class="works-grid cols-2" id="videoGrid"></div>
+      <div class="audio-grid" id="videoGrid"></div>
     </section>
 
     
@@ -1844,60 +2142,60 @@ const WORKS = {
   video: [
     {
       id: 'video-1',
-      title: 'NEON CITY 霓虹之城',
-      tag: 'AI Short Film / Sci-Fi',
-      meta: 'AI 生成短片 / 00:15 / 2025',
+      title: '霓虹夜雨 / Neon Rain',
+      tag: 'Sound Design / 城市音景',
+      meta: 'AI 生成音景 / 00:15 / 2025',
       cover: 'https://aka.doubaocdn.com/s/zHNTAvLUrN',
       video: 'https://aka.doubaocdn.com/s/pX9PdhEEtH',
       client: '个人实验项目',
       role: 'AI 导演 / 后期',
       year: '2025',
       duration: '1 周',
-      concept: '一部完全由 AI 生成的赛博朋克风格实验短片。故事设定在近未来的东亚都市，永不停歇的雨水与霓虹灯交织出一个孤独而迷人的世界。镜头缓慢推进穿过空荡的街道，远处的车灯划过湿润的路面，营造出强烈的电影感氛围。',
-      description: '本片探索了 AI 影像在氛围构建与场景调度上的可能性，全片无需实拍即可达到电影级的视觉效果。',
-      story: '创作灵感来源于一次深夜漫步在雨后城市街道的经历。霓虹灯在湿润路面上的倒影、空荡街道中远处传来的微弱声响，构成了一种独特的孤独美学。我希望用 AI 影像重现这种氛围，探索赛博朋克美学中"孤独与繁华并存"的核心矛盾。',
-      shots: '全片采用一个连续推进的长镜头，从街道远景缓慢推近至中景。镜头运动速度控制在每秒移动约 3% 的画面比例，营造沉稳而压迫的节奏。画面左侧的霓虹招牌提供主要光源，右侧建筑处于半阴影中，形成强烈明暗对比。雨水从画面顶部持续落下，地面积水反射霓虹色彩，增加画面纵深感。',
-      technique: '使用 Seedance 2.5 进行核心画面生成，通过精确的提示词工程控制镜头运动、光照方向和天气效果。生成后在 DaVinci Resolve 中进行色彩分级，增强霓虹色彩饱和度同时压低中间调，强化赛博朋克视觉特征。添加细微胶片颗粒和暗角效果，增强电影质感。',
-      insight: '这个项目让我深刻体会到 AI 影像在氛围构建上的巨大潜力。传统拍摄需要复杂布光和场地调度，而 AI 可以在几秒内生成符合精确氛围描述的画面。但同时，AI 在镜头连续性和细节一致性上仍有挑战，需要多轮迭代和后期调整才能达到理想效果。',
-      tools: 'Seedance 2.5 / DaVinci Resolve'
+      concept: '赛博朋克城市夜晚的氛围音景设计。永不停歇的雨水、霓虹灯的电流嗡鸣、远处车流划过湿润路面的声响，交织出一个孤独而迷人的听觉世界。通过 AI 生成的分层声音设计，构建出沉浸式的城市夜晚声场。',
+      description: '本作品探索了 AI 声音设计在氛围构建与场景调度上的可能性，通过分层合成与空间音频技术，无需实拍即可达到沉浸式的听觉体验。',
+      story: '创作灵感来源于一次深夜漫步在雨后城市街道的经历。霓虹灯的电流嗡鸣、雨水滴落地面的细碎声响、空荡街道中远处传来的微弱车流声，构成了一种独特的孤独美学。我希望用 AI 声音设计重现这种氛围，探索赛博朋克美学中"孤独与繁华并存"的核心矛盾。',
+      shots: '全曲采用分层声音设计，从远景环境音缓慢推进至近景细节声。声音运动速度控制在每3秒引入一个新声层，营造沉稳而压迫的节奏。左侧声道的霓虹电流嗡鸣提供主要声场，右侧声道的建筑回声处于半阴影中，形成强烈立体声对比。雨水从顶部持续落下，地面积水反射霓虹色彩的声音质感，增加声场纵深感。',
+      technique: '使用 AI 音频生成工具进行核心声场生成，通过精确的提示词工程控制声音层次、空间方向和天气效果。生成后在 DaVinci Resolve 中进行音频分级，增强霓虹电流声的高频饱和度同时压低中频，强化赛博朋克听觉特征。添加细微磁带噪点和低频嗡鸣，增强沉浸式质感。',
+      insight: '这个项目让我深刻体会到 AI 声音设计在氛围构建上的巨大潜力。传统录音需要复杂布点和场地调度，而 AI 可以在几秒内生成符合精确氛围描述的声场。但同时，AI 在声音连续性和细节一致性上仍有挑战，需要多轮迭代和后期调整才能达到理想效果。',
+      tools: 'AI Audio Gen / DaVinci Resolve Fairlight'
     },
     {
       id: 'video-2',
-      title: 'FLUID 流体冥想',
-      tag: 'AI Art / Abstract',
-      meta: 'AI 艺术影像 / 00:10 / 2025',
+      title: '流体冥想 / Fluid Meditation',
+      tag: 'Sound Design / 环境音景',
+      meta: 'AI 生成音景 / 00:10 / 2025',
       cover: 'https://aka.doubaocdn.com/s/eP63j39Dkp',
       video: 'https://aka.doubaocdn.com/s/nHFCJREHar',
       client: '艺术展览委托',
       role: 'AI 艺术家 / 视觉设计',
       year: '2025',
       duration: '5 天',
-      concept: '为当代艺术展「物质与非物质」创作的 AI 流体艺术影像。紫色与金色的液体在宏观视角下缓慢交融，金色粒子随波纹闪烁，如同宇宙诞生之初的星云。作品探讨了物质流动与时间流逝的哲学关系，观众可在循环播放中进入冥想状态。',
-      description: '该作品在展览中以 4K 投影循环播放，单幅画面尺寸达 6 米宽，成为展览中最受观众停留的作品之一。',
-      story: '这件作品源于我对"慢"的思考。在快节奏的数字时代，人们很少有机会真正停下来观察物质的缓慢变化。我希望创造一件能让观众放慢呼吸、进入冥想状态的影像作品。流体的不可预测性与 AI 生成的精确控制形成了有趣的张力。',
-      shots: '采用固定机位的宏观视角，镜头完全静止，让流体的运动成为画面唯一的动态元素。紫色液体从画面左侧缓慢流入，金色粒子从底部升腾，两者在画面中央交汇融合。整个过程遵循自然的流体物理规律，没有人为的加速或减速。画面构图遵循黄金分割，交汇点位于视觉中心偏右上方。',
-      technique: '在 Seedance 2.5 中通过描述流体的物理特性（粘度、表面张力、粒子密度）来控制生成效果。经过约 20 轮提示词迭代，才达到理想的流体质感和色彩过渡。后期在 After Effects 中添加微妙的景深效果和光晕，增强宏观摄影的真实感。音效设计使用低频环境音和微弱液体流动声，进一步强化沉浸感。',
-      insight: '创作这件作品最大的挑战是让 AI 理解"慢"。AI 生成的动态往往偏向戏剧性和快速变化，而我需要的是几乎难以察觉的缓慢流动。通过在提示词中强调"缓慢"、"冥想"、"静止"等关键词，并降低运动强度参数，最终实现了理想效果。这件作品也让我思考 AI 艺术中"控制与偶然"的边界。',
-      tools: 'Seedance 2.5 / After Effects'
+      concept: '为当代艺术展「物质与非物质」创作的 AI 流体冥想音景。低频环境音与微弱液体流动声在宏观声场中缓慢交融，金色粒子般的高频泛音随波纹闪烁，如同宇宙诞生之初的星云。作品探讨了物质流动与时间流逝的哲学关系，观众可在循环播放中进入冥想状态。',
+      description: '该作品在展览中以 5.1 环绕声循环播放，配合 6 米宽的投影画面，成为展览中最受观众停留的作品之一。',
+      story: '这件作品源于我对"慢"的思考。在快节奏的数字时代，人们很少有机会真正停下来倾听物质的缓慢变化。我希望创造一件能让观众放慢呼吸、进入冥想状态的声音作品。流体的不可预测性与 AI 生成的精确控制形成了有趣的张力。',
+      shots: '采用固定声场的宏观视角，声场完全静止，让流体的声音运动成为唯一的动态元素。紫色低频嗡鸣从左侧声道缓慢流入，金色高频粒子从底部升腾，两者在声场中央交汇融合。整个过程遵循自然的流体物理规律，没有人为的加速或减速。声场构图遵循黄金分割，交汇点位于听觉中心偏右上方。',
+      technique: '在 AI 音频生成工具中通过描述流体的物理特性（粘度、表面张力、粒子密度）来控制生成效果。经过约 20 轮提示词迭代，才达到理想的流体质感和频率过渡。后期在 Ableton Live 中添加微妙的混响效果和空间感，增强宏观声场的真实感。音效设计使用低频环境音和微弱液体流动声，进一步强化沉浸感。',
+      insight: '创作这件作品最大的挑战是让 AI 理解"慢"。AI 生成的声音往往偏向戏剧性和快速变化，而我需要的是几乎难以察觉的缓慢流动。通过在提示词中强调"缓慢"、"冥想"、"静止"等关键词，并降低运动强度参数，最终实现了理想效果。这件作品也让我思考 AI 声音艺术中"控制与偶然"的边界。',
+      tools: 'AI Audio Gen / Ableton Live'
     },
     {
       id: 'video-3',
-      title: 'LAST SIGNAL 最后的信号',
-      tag: 'AI Short Film / Space',
-      meta: 'AI 科幻短片 / 00:10 / 2024',
+      title: '深空信号 / Deep Space Signal',
+      tag: 'Sound Design / 科幻音景',
+      meta: 'AI 生成音景 / 00:10 / 2024',
       cover: 'https://aka.doubaocdn.com/s/CFe5tIFBiO',
       video: 'https://aka.doubaocdn.com/s/DodjvHk61A',
       client: '科幻短片竞赛',
       role: 'AI 导演 / 编剧',
       year: '2024',
       duration: '2 周',
-      concept: '一部 AI 生成的科幻短片，讲述一名宇航员在废弃太空站中接收到神秘信号的故事。镜头缓慢推近站在走廊中的宇航员，尘埃在光束中漂浮，金属墙壁上的锈迹与破损诉说着这里曾经发生的一切。顶部照射下来的光线创造出强烈的戏剧张力。',
+      concept: '一部 AI 生成的科幻音景，讲述一名宇航员在废弃太空站中接收到神秘信号的故事。声场缓慢推近站在走廊中的宇航员，尘埃粒子的高频泛音在光束中漂浮，金属墙壁的低频回声诉说着这里曾经发生的一切。顶部照射下来的电子信号创造出强烈的戏剧张力。',
       description: '',
-      story: '这是一个关于孤独与希望的故事。一名宇航员独自驻守在一座被遗弃的太空站，某天突然接收到一段来自未知来源的信号。影片没有交代信号的来源和后续，而是定格在宇航员转身面对光源的瞬间，留给观众无限的想象空间。这个故事灵感来源于经典科幻作品中"最后一个人类"的母题。',
-      shots: '影片采用缓慢推近的单镜头，从太空站走廊的远景逐渐推至宇航员的中景。走廊采用单点透视构图，两侧的金属墙壁和顶部的管线向远方汇聚，创造出强烈的纵深感。顶部的天窗是唯一的光源，光束呈锥形照射下来，在尘埃中形成可见的光路。宇航员位于画面黄金分割点，背对光源，面部处于半阴影中，增加神秘感。',
-      technique: '使用 Seedance 2.5 生成核心画面，重点控制太空站的材质细节（金属锈蚀、管线破损、尘埃粒子）和光照效果。生成过程中最大的挑战是保持宇航员造型在镜头推进过程中的一致性，通过多轮生成和关键帧筛选解决。后期在 Premiere Pro 中进行色彩分级，压低暖色调、突出冷金属质感，同时增强光束的体积感。添加太空环境的低频音效和微弱电子信号声。',
-      insight: '这个项目验证了 AI 影像在叙事性短片上的可行性。虽然 10 秒的时长很短，但通过精确的构图、光照和节奏控制，完全可以传递完整的情绪和故事内核。AI 生成的最大优势在于可以快速探索多种视觉方案，而最大的局限在于角色一致性和复杂动作的控制。未来随着技术进步，AI 短片的叙事长度和复杂度将有巨大提升空间。',
-      tools: 'Seedance 2.5 / Premiere Pro'
+      story: '这是一个关于孤独与希望的故事。一名宇航员独自驻守在一座被遗弃的太空站，某天突然接收到一段来自未知来源的信号。音景没有交代信号的来源和后续，而是定格在宇航员转身面对信号源的瞬间，留给听众无限的想象空间。这个故事灵感来源于经典科幻作品中"最后一个人类"的母题。',
+      shots: '全曲采用缓慢推近的单声场，从太空站走廊的远景环境音逐渐推至宇航员的近景细节声。走廊采用单点透视声场，两侧的金属墙壁回声和顶部的管线嗡鸣向远方汇聚，创造出强烈的纵深感。顶部的电子信号是唯一的高频声源，信号呈锥形照射下来，在尘埃粒子中形成可见的声路。宇航员位于声场黄金分割点，背对信号源，呼吸声处于半阴影中，增加神秘感。',
+      technique: '使用 AI 音频生成工具生成核心声场，重点控制太空站的材质细节（金属锈蚀回声、管线破损嗡鸣、尘埃粒子泛音）和空间效果。生成过程中最大的挑战是保持宇航员呼吸声在声场推进过程中的一致性，通过多轮生成和关键帧筛选解决。后期在 Pro Tools 中进行音频分级，压低暖色调、突出冷金属质感，同时增强信号的体积感。添加太空环境的低频音效和微弱电子信号声。',
+      insight: '这个项目验证了 AI 声音设计在叙事性音景上的可行性。虽然 10 秒的时长很短，但通过精确的声场构图、空间效果和节奏控制，完全可以传递完整的情绪和故事内核。AI 生成的最大优势在于可以快速探索多种声音方案，而最大的局限在于角色声音一致性和复杂动态的控制。未来随着技术进步，AI 音景的叙事长度和复杂度将有巨大提升空间。',
+      tools: 'AI Audio Gen / Pro Tools'
     }
   ],
   campaign: [
@@ -2112,6 +2410,31 @@ function renderWorkCards() {
         '</div>';
       }
       
+      // Audio player cards for video category
+      if (cat === 'video') {
+        var duration = w.meta.match(/(\d+):(\d+)/);
+        var durText = duration ? duration[0] : '00:15';
+        var waveBars = '';
+        for (var b = 0; b < 24; b++) {
+          var h = 8 + Math.random() * 20;
+          waveBars += '<div class="wave-bar" style="height:' + h.toFixed(0) + 'px;animation-delay:' + (b * 0.05).toFixed(2) + 's"></div>';
+        }
+        return '<div class="audio-card" onclick="openDetail(\'' + w.id + '\')" data-video="' + w.video + '" data-cover="' + w.cover + '">' +
+          '<div class="audio-cover-wrap"><img class="audio-cover" src="' + w.cover + '" alt="' + w.title + '">' +
+          '<button class="audio-play-btn" onclick="event.stopPropagation();toggleAudioCard(this)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>' +
+          '<div class="audio-info">' +
+            '<div class="audio-title">' + w.title + '</div>' +
+            '<div class="audio-subtitle">' + w.tag + '</div>' +
+            '<div class="audio-waveform">' + waveBars + '</div>' +
+            '<div class="audio-controls">' +
+              '<div class="audio-progress" onclick="event.stopPropagation();seekAudio(this,event)"><div class="audio-progress-filled"></div></div>' +
+              '<div class="audio-time">00:00 / ' + durText + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<video class="audio-hidden-video" src="' + w.video + '" preload="metadata" ontimeupdate="updateAudioProgress(this)" onended="resetAudioCard(this)"></video>' +
+        '</div>';
+      }
+      
       return '<div class="work-card" onclick="openDetail(\'' + w.id + '\')">' +
         '<div class="work-index">0' + (i + 1) + '</div>' +
         '<div class="work-image-wrap ' + wrapClass + '">' +
@@ -2193,42 +2516,28 @@ function renderDetail(id) {
       '<iframe class="bilibili-player" src="//player.bilibili.com/player.html?bvid=' + work.bvid + '&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe>' +
       '</div></div>';
   }
-  // 自定义视频播放器 (video works)
+  // 音频播放器 (audio/sound design works)
   else if (cat === 'video') {
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">正片播放</h3>' +
-      '<div class="video-player" id="mainVideoPlayer">' +
-        '<video id="mainVideo" src="' + work.video + '" poster="' + work.cover + '" playsinline preload="metadata"></video>' +
-        '<div class="player-loading" id="playerLoading"></div>' +
-        '<div class="player-big-play" id="playerBigPlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' +
-        '<div class="video-player-controls">' +
-          '<div class="player-progress-wrap" id="playerProgressWrap">' +
-            '<div class="player-progress">' +
-              '<div class="player-progress-buffered" id="playerBuffered"></div>' +
-              '<div class="player-progress-filled" id="playerFilled"></div>' +
-              '<div class="player-progress-thumb" id="playerThumb"></div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="player-bottom">' +
-            '<button class="player-btn" id="playerPlayBtn" aria-label="播放/暂停"><svg id="playerPlayIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>' +
-            '<div class="player-time" id="playerTime">00:00 / 00:00</div>' +
-            '<div class="player-spacer"></div>' +
-            '<div class="player-volume-wrap">' +
-              '<button class="player-btn" id="playerMuteBtn" aria-label="静音"><svg id="playerVolIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>' +
-              '<div class="player-volume-slider"><input type="range" id="playerVolume" min="0" max="1" step="0.01" value="1"></div>' +
-            '</div>' +
-            '<div class="player-quality-wrap">' +
-              '<button class="player-quality-btn" id="playerQualityBtn">1080P</button>' +
-              '<div class="player-quality-menu" id="playerQualityMenu">' +
-                '<div class="player-quality-option" data-q="4K">4K<svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg></div>' +
-                '<div class="player-quality-option active" data-q="1080P">1080P<svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg></div>' +
-                '<div class="player-quality-option" data-q="720P">720P<svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg></div>' +
-                '<div class="player-quality-option" data-q="480P">480P<svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg></div>' +
-              '</div>' +
-            '</div>' +
-            '<button class="player-btn" id="playerFsBtn" aria-label="全屏"><svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>' +
+    var detailWaveBars = '';
+    for (var db = 0; db < 48; db++) {
+      var dh = 12 + Math.random() * 36;
+      detailWaveBars += '<div class="detail-wave-bar" style="height:' + dh.toFixed(0) + 'px;animation-delay:' + (db * 0.03).toFixed(2) + 's"></div>';
+    }
+    bodyHtml += '<div class="detail-section audio-detail-section">' +
+      '<h3 class="detail-section-title">音景播放</h3>' +
+      '<div class="detail-audio-player">' +
+        '<div class="detail-audio-cover"><img src="' + work.cover + '" alt="' + work.title + '">' +
+        '<button class="detail-audio-play-btn" id="detailAudioPlayBtn" onclick="toggleDetailAudio()"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>' +
+        '<div class="detail-audio-info">' +
+          '<div class="detail-audio-title">' + work.title + '</div>' +
+          '<div class="detail-audio-subtitle">' + work.tag + ' · ' + work.meta + '</div>' +
+          '<div class="detail-audio-waveform" id="detailAudioWaveform">' + detailWaveBars + '</div>' +
+          '<div class="detail-audio-controls">' +
+            '<div class="detail-audio-progress" id="detailAudioProgress" onclick="seekDetailAudio(event)"><div class="detail-audio-progress-filled" id="detailAudioProgressFilled"></div></div>' +
+            '<div class="detail-audio-time" id="detailAudioTime">00:00 / 00:00</div>' +
           '</div>' +
         '</div>' +
+        '<video id="detailAudioVideo" src="' + work.video + '" preload="metadata" ontimeupdate="updateDetailAudioTime()" onended="resetDetailAudio()" onloadedmetadata="setDetailAudioDuration()"></video>' +
       '</div>' +
     '</div>';
   }
@@ -2464,7 +2773,7 @@ function renderDetail(id) {
   '</div>';
 
   window.scrollTo(0, 0);
-  if (cat === 'video') { initVideoPlayer(); }
+  // video category now uses audio player, no need for initVideoPlayer
   initLightbox();
   initCampaignVideoMutex();
 }
@@ -2776,6 +3085,140 @@ function initCampaignVideoMutex() {
       });
     });
   });
+}
+
+
+// ===== Audio Player Functions =====
+function toggleAudioCard(btn) {
+  var card = btn.closest('.audio-card');
+  var video = card.querySelector('.audio-hidden-video');
+  var isPlaying = card.classList.contains('playing');
+  
+  // Pause all other audio cards first (mutex)
+  document.querySelectorAll('.audio-card.playing').forEach(function(otherCard) {
+    if (otherCard !== card) {
+      var otherVideo = otherCard.querySelector('.audio-hidden-video');
+      var otherBtn = otherCard.querySelector('.audio-play-btn');
+      otherCard.classList.remove('playing');
+      if (otherVideo) otherVideo.pause();
+      if (otherBtn) otherBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    }
+  });
+  
+  if (isPlaying) {
+    card.classList.remove('playing');
+    video.pause();
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  } else {
+    card.classList.add('playing');
+    video.play().catch(function(e) { console.log('Play error:', e); });
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+  }
+}
+
+function updateAudioProgress(video) {
+  var card = video.closest('.audio-card');
+  if (!card) return;
+  var progressFilled = card.querySelector('.audio-progress-filled');
+  var timeDisplay = card.querySelector('.audio-time');
+  if (progressFilled && video.duration) {
+    progressFilled.style.width = (video.currentTime / video.duration * 100) + '%';
+  }
+  if (timeDisplay && video.duration) {
+    var cur = formatAudioTime(video.currentTime);
+    var dur = formatAudioTime(video.duration);
+    timeDisplay.textContent = cur + ' / ' + dur;
+  }
+}
+
+function resetAudioCard(video) {
+  var card = video.closest('.audio-card');
+  if (!card) return;
+  card.classList.remove('playing');
+  var btn = card.querySelector('.audio-play-btn');
+  if (btn) btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  var progressFilled = card.querySelector('.audio-progress-filled');
+  if (progressFilled) progressFilled.style.width = '0%';
+}
+
+function seekAudio(progressEl, event) {
+  var card = progressEl.closest('.audio-card');
+  var video = card.querySelector('.audio-hidden-video');
+  if (!video || !video.duration) return;
+  var rect = progressEl.getBoundingClientRect();
+  var percent = (event.clientX - rect.left) / rect.width;
+  video.currentTime = percent * video.duration;
+}
+
+function formatAudioTime(seconds) {
+  if (isNaN(seconds)) return '00:00';
+  var m = Math.floor(seconds / 60);
+  var s = Math.floor(seconds % 60);
+  return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+// Detail page audio player
+function toggleDetailAudio() {
+  var video = document.getElementById('detailAudioVideo');
+  var player = document.querySelector('.detail-audio-player');
+  var btn = document.getElementById('detailAudioPlayBtn');
+  if (!video || !player) return;
+  
+  var isPlaying = player.classList.contains('playing');
+  
+  // Pause any list page audio cards
+  document.querySelectorAll('.audio-card.playing').forEach(function(card) {
+    var v = card.querySelector('.audio-hidden-video');
+    var b = card.querySelector('.audio-play-btn');
+    card.classList.remove('playing');
+    if (v) v.pause();
+    if (b) b.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  });
+  
+  if (isPlaying) {
+    player.classList.remove('playing');
+    video.pause();
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  } else {
+    player.classList.add('playing');
+    video.play().catch(function(e) { console.log('Detail play error:', e); });
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+  }
+}
+
+function updateDetailAudioTime() {
+  var video = document.getElementById('detailAudioVideo');
+  var progressFilled = document.getElementById('detailAudioProgressFilled');
+  var timeDisplay = document.getElementById('detailAudioTime');
+  if (!video || !video.duration) return;
+  if (progressFilled) progressFilled.style.width = (video.currentTime / video.duration * 100) + '%';
+  if (timeDisplay) timeDisplay.textContent = formatAudioTime(video.currentTime) + ' / ' + formatAudioTime(video.duration);
+}
+
+function setDetailAudioDuration() {
+  var video = document.getElementById('detailAudioVideo');
+  var timeDisplay = document.getElementById('detailAudioTime');
+  if (timeDisplay && video && video.duration) {
+    timeDisplay.textContent = '00:00 / ' + formatAudioTime(video.duration);
+  }
+}
+
+function resetDetailAudio() {
+  var player = document.querySelector('.detail-audio-player');
+  var btn = document.getElementById('detailAudioPlayBtn');
+  var progressFilled = document.getElementById('detailAudioProgressFilled');
+  if (player) player.classList.remove('playing');
+  if (btn) btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  if (progressFilled) progressFilled.style.width = '0%';
+}
+
+function seekDetailAudio(event) {
+  var video = document.getElementById('detailAudioVideo');
+  var progress = document.getElementById('detailAudioProgress');
+  if (!video || !video.duration || !progress) return;
+  var rect = progress.getBoundingClientRect();
+  var percent = (event.clientX - rect.left) / rect.width;
+  video.currentTime = percent * video.duration;
 }
 
 // Keyboard navigation for lightbox
