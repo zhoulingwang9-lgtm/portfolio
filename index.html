@@ -2466,6 +2466,7 @@ function renderDetail(id) {
   window.scrollTo(0, 0);
   if (cat === 'video') { initVideoPlayer(); }
   initLightbox();
+  initCampaignVideoMutex();
 }
 
 function goHome() {
@@ -2759,6 +2760,21 @@ function initLightbox() {
       e.stopPropagation();
       openLightbox(this.src, this.alt || window.lightboxImages[i].caption, i);
     };
+  });
+}
+
+// ===== Campaign Video Mutex (only one video plays at a time) =====
+function initCampaignVideoMutex() {
+  var videos = document.querySelectorAll('.campaign-video-el');
+  if (videos.length === 0) return;
+  videos.forEach(function(video) {
+    video.addEventListener('play', function() {
+      videos.forEach(function(other) {
+        if (other !== video && !other.paused) {
+          other.pause();
+        }
+      });
+    });
   });
 }
 
