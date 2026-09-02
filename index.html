@@ -2048,9 +2048,93 @@ video.detail-hero-image {
   .vi-color-grid { grid-template-columns: 1fr; }
   .vi-char-main img { min-height: 300px; }
 }
+
+/* ===== Cover Splash 封面入口 ===== */
+.cover-splash {
+  position: fixed; inset: 0; z-index: 9999;
+  overflow: hidden; cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+.cover-splash.hide { opacity: 0; pointer-events: none; }
+.cover-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transform: scale(1.05); transition: transform 5s ease;
+}
+.cover-splash:hover .cover-bg { transform: scale(1.1); }
+.cover-splash.hide .cover-bg { transform: scale(1.12); }
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 45%, rgba(10,10,10,0.15) 100%);
+}
+.cover-content {
+  position: absolute; left: 8%; top: 50%; transform: translateY(-50%);
+  z-index: 2; max-width: 640px;
+}
+.cover-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; letter-spacing: 5px;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 26px; display: flex; align-items: center; gap: 14px;
+}
+.cover-eyebrow::before { content: ''; width: 44px; height: 1px; background: var(--accent); }
+.cover-name {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: clamp(56px, 8vw, 120px); font-weight: 700;
+  line-height: 1; color: #fff; letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+.cover-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px; font-weight: 500; letter-spacing: 4px;
+  color: #f5d9a8; text-transform: uppercase; margin-bottom: 28px;
+}
+.cover-dir {
+  font-size: 15px; color: rgba(255,255,255,0.82);
+  letter-spacing: 1px; margin-bottom: 40px; line-height: 1.8;
+}
+.cover-enter {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 3px;
+  color: #141414; background: var(--accent);
+  padding: 16px 36px; border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.cover-splash:hover .cover-enter { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(255,107,53,0.35); }
+.cover-hint {
+  position: absolute; bottom: 42px; left: 8%; z-index: 2;
+  display: flex; align-items: center; gap: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; letter-spacing: 3px;
+  color: rgba(255,255,255,0.55); text-transform: uppercase;
+}
+.cover-hint-line { width: 40px; height: 1px; background: rgba(255,255,255,0.4); }
+.cover-hint-blink { animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+@media (max-width: 768px) {
+  .cover-content { left: 8%; right: 8%; }
+  .cover-name { font-size: 52px; }
+  .cover-role { font-size: 15px; letter-spacing: 2px; }
+}
+
 </style>
 </head>
 <body>
+
+<!-- ===== Cover Splash 封面入口 ===== -->
+<div class="cover-splash" id="coverSplash">
+  <div class="cover-bg" style="background-image:url('https://aka.doubaocdn.com/s/GQBcB5KcNe');"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Personal Portfolio / 2026</div>
+    <h1 class="cover-name">汪周灵</h1>
+    <div class="cover-role">Visual Designer &amp; AIGC Creator</div>
+    <div class="cover-dir">求职方向：AIGC 创意 · IP 设计 · 品牌视觉</div>
+    <div class="cover-enter">点击进入作品集</div>
+  </div>
+  <div class="cover-hint"><span class="cover-hint-line"></span><span class="cover-hint-blink">Click to enter</span></div>
+</div>
 
 <!-- ===== Side Navigation ===== -->
 <nav class="side-nav">
@@ -3493,6 +3577,23 @@ renderWorkCards();
 initReveal();
 handleRoute();
 
+
+// Cover Splash 点击进入
+(function(){
+  var splash = document.getElementById('coverSplash');
+  if (!splash) return;
+  var done = false;
+  function enter(){
+    if (done) return;
+    done = true;
+    splash.classList.add('hide');
+    document.body.style.overflow = '';
+    setTimeout(function(){ if (splash.parentNode) splash.parentNode.removeChild(splash); }, 850);
+  }
+  splash.addEventListener('click', enter);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') enter(); });
+  document.body.style.overflow = 'hidden';
+})();
 </script>
 
 
