@@ -2049,91 +2049,112 @@ video.detail-hero-image {
   .vi-char-main img { min-height: 300px; }
 }
 
-/* ===== Cover Splash 封面入口 ===== */
+
+/* ===== Cover Splash 封面入口（极简风格） ===== */
 .cover-splash {
   position: fixed; inset: 0; z-index: 9999;
   overflow: hidden; cursor: pointer;
   transition: opacity 0.8s ease;
+  background: #141414;
 }
 .cover-splash.hide { opacity: 0; pointer-events: none; }
 .cover-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  transform: scale(1.05); transition: transform 5s ease;
+  transition: transform 6s ease;
 }
-.cover-splash:hover .cover-bg { transform: scale(1.1); }
-.cover-splash.hide .cover-bg { transform: scale(1.12); }
-.cover-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(100deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 45%, rgba(10,10,10,0.15) 100%);
+.cover-splash:hover .cover-bg { transform: scale(1.04); }
+.cover-splash.hide .cover-bg { transform: scale(1.06); }
+.cover-corner-tr {
+  position: absolute; top: 46px; right: 60px; z-index: 3;
+  text-align: right;
 }
-.cover-content {
-  position: absolute; left: 8%; top: 50%; transform: translateY(-50%);
-  z-index: 2; max-width: 640px;
-}
-.cover-eyebrow {
+.cover-corner-label {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px; letter-spacing: 5px;
+  font-size: 12px; font-weight: 600; letter-spacing: 4px;
   color: var(--accent); text-transform: uppercase;
-  margin-bottom: 26px; display: flex; align-items: center; gap: 14px;
 }
-.cover-eyebrow::before { content: ''; width: 44px; height: 1px; background: var(--accent); }
-.cover-name {
-  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
-  font-size: clamp(56px, 8vw, 120px); font-weight: 700;
-  line-height: 1; color: #fff; letter-spacing: 2px;
-  margin-bottom: 18px;
-}
-.cover-role {
+.cover-corner-year {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px; font-weight: 500; letter-spacing: 4px;
-  color: #f5d9a8; text-transform: uppercase; margin-bottom: 28px;
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--text-muted); margin-top: 8px;
 }
-.cover-dir {
-  font-size: 15px; color: rgba(255,255,255,0.82);
-  letter-spacing: 1px; margin-bottom: 40px; line-height: 1.8;
+.cover-main {
+  position: absolute; left: 0; right: 0; top: 46%;
+  transform: translateY(-50%);
+  z-index: 3; text-align: center;
 }
-.cover-enter {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+.cover-word {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(64px, 12vw, 180px);
+  font-weight: 700; letter-spacing: 6px;
+  line-height: 1; color: #fff;
+  text-shadow: 0 2px 0 rgba(255,255,255,0.06), 0 8px 40px rgba(255,107,53,0.12);
+}
+.cover-word .accent { color: var(--accent); }
+.cover-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px; letter-spacing: 5px;
+  color: var(--text-dim); text-transform: uppercase;
+  margin-top: 34px;
+}
+.cover-corner-bl {
+  position: absolute; left: 60px; bottom: 46px; z-index: 3;
+}
+.cover-bl-name {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px; font-weight: 600; letter-spacing: 3px;
-  color: #141414; background: var(--accent);
-  padding: 16px 36px; border-radius: 3px;
-  transition: all 0.3s ease;
+  color: var(--text); text-transform: uppercase;
 }
-.cover-splash:hover .cover-enter { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(255,107,53,0.35); }
-.cover-hint {
-  position: absolute; bottom: 42px; left: 8%; z-index: 2;
-  display: flex; align-items: center; gap: 14px;
+.cover-bl-role {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 12px; letter-spacing: 1px;
+  color: var(--text-muted); margin-top: 8px;
+}
+.cover-arrow {
+  position: absolute; right: 60px; bottom: 46px; z-index: 3;
+  display: flex; align-items: center; gap: 12px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 11px; letter-spacing: 3px;
-  color: rgba(255,255,255,0.55); text-transform: uppercase;
+  color: var(--accent); text-transform: uppercase;
+  animation: cover-nudge 1.8s ease-in-out infinite;
 }
-.cover-hint-line { width: 40px; height: 1px; background: rgba(255,255,255,0.4); }
-.cover-hint-blink { animation: blink 1.6s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+@keyframes cover-nudge { 0%,100%{transform:translateX(0);} 50%{transform:translateX(6px);} }
+.cover-arrow svg { width: 30px; height: 14px; }
 @media (max-width: 768px) {
-  .cover-content { left: 8%; right: 8%; }
-  .cover-name { font-size: 52px; }
-  .cover-role { font-size: 15px; letter-spacing: 2px; }
+  .cover-corner-tr { top: 26px; right: 24px; }
+  .cover-corner-bl { left: 24px; bottom: 28px; }
+  .cover-arrow { right: 24px; bottom: 28px; }
+  .cover-tagline { letter-spacing: 3px; font-size: 12px; }
 }
 
 </style>
 </head>
 <body>
 
-<!-- ===== Cover Splash 封面入口 ===== -->
+<!-- ===== Cover Splash 封面入口（极简风格） ===== -->
 <div class="cover-splash" id="coverSplash">
-  <div class="cover-bg" style="background-image:url('https://aka.doubaocdn.com/s/GQBcB5KcNe');"></div>
-  <div class="cover-overlay"></div>
-  <div class="cover-content">
-    <div class="cover-eyebrow">Personal Portfolio / 2026</div>
-    <h1 class="cover-name">汪周灵</h1>
-    <div class="cover-role">Visual Designer &amp; AIGC Creator</div>
-    <div class="cover-dir">求职方向：AIGC 创意 · IP 设计 · 品牌视觉</div>
-    <div class="cover-enter">点击进入作品集</div>
+  <div class="cover-bg" style="background-image:url('https://aka.doubaocdn.com/s/U7TzYLLmK4');"></div>
+
+  <div class="cover-corner-tr">
+    <div class="cover-corner-label">Visual Design &amp; AIGC Creator</div>
+    <div class="cover-corner-year">PORTFOLIO · 2026</div>
   </div>
-  <div class="cover-hint"><span class="cover-hint-line"></span><span class="cover-hint-blink">Click to enter</span></div>
+
+  <div class="cover-main">
+    <div class="cover-word">PORT<span class="accent">FOLIO</span></div>
+    <div class="cover-tagline">With creativity, anything is possible</div>
+  </div>
+
+  <div class="cover-corner-bl">
+    <div class="cover-bl-name">Wang Zhouling</div>
+    <div class="cover-bl-role">汪周灵 · Visual Designer &amp; AIGC Creator</div>
+  </div>
+
+  <div class="cover-arrow">
+    <span>Click to enter</span>
+    <svg viewBox="0 0 30 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 7h28M23 1l6 6-6 6"/></svg>
+  </div>
 </div>
 
 <!-- ===== Side Navigation ===== -->
