@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STUDIO ORANGE — 创意作品集</title>
+<title>汪周灵 — Visual Designer &amp; AIGC Creator</title>
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
 <style>
 /* ===== Reset & Base ===== */
@@ -232,6 +232,31 @@ body.detail-mode .view-detail { display: block; }
 }
 
 .hero-title .accent { color: var(--accent); }
+
+.hero-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px; font-weight: 500;
+  letter-spacing: 3px; color: var(--accent);
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.hero-job {
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap; margin-bottom: 48px;
+}
+.hero-job-label {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  color: var(--text); padding: 8px 14px;
+  border: 1px solid var(--accent); border-radius: 3px;
+}
+.hero-job-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-job-tag {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 13px; letter-spacing: 1px; color: var(--text-dim);
+  padding: 8px 16px; border: 1px solid var(--border);
+  border-radius: 3px; transition: all 0.3s ease;
+}
+.hero-job-tag:hover { border-color: var(--accent); color: var(--accent); }
 
 .hero-subtitle {
   font-size: 17px; font-weight: 300;
@@ -1978,7 +2003,7 @@ video.detail-hero-image {
 
 <!-- ===== Side Navigation ===== -->
 <nav class="side-nav">
-  <div class="nav-logo" onclick="goHome()">S/O</div>
+  <div class="nav-logo" onclick="goHome()">WZL</div>
   <ul class="nav-links">
     <li><a onclick="navigateTo('hero')" class="active">首页</a></li>
     <li><a onclick="navigateTo('about')">关于</a></li>
@@ -1994,7 +2019,7 @@ video.detail-hero-image {
 
 <!-- ===== Mobile Nav ===== -->
 <nav class="mobile-nav">
-  <div class="mobile-nav-logo" onclick="goHome()">STUDIO ORANGE</div>
+  <div class="mobile-nav-logo" onclick="goHome()">汪周灵</div>
   <button class="mobile-menu-btn" aria-label="菜单" onclick="toggleMobileMenu()">
     <span></span><span></span><span></span>
   </button>
@@ -2020,9 +2045,18 @@ video.detail-hero-image {
     <section class="hero" id="hero">
       <div class="hero-bg"></div>
       <div class="hero-content">
-        <div class="hero-eyebrow">Creative Portfolio / 2026</div>
-        <h1 class="hero-title">设计是<span class="accent">看得见</span>的思考</h1>
-        <p class="hero-subtitle">汪周灵，视觉传达设计专业大四学生，专注于平面广告、AI 影像与 IP 角色设计。用视觉语言讲述品牌故事，在传统与前沿之间寻找表达的边界。</p>
+        <div class="hero-eyebrow">Personal Portfolio / 2026</div>
+        <h1 class="hero-title">汪周灵</h1>
+        <div class="hero-role">Visual Designer &amp; AIGC Creator</div>
+        <p class="hero-subtitle">视觉传达设计专业，专注 AIGC 创意、IP 设计与品牌视觉，用视觉语言讲述品牌故事，在传统与前沿之间寻找表达的边界。</p>
+        <div class="hero-job">
+          <span class="hero-job-label">求职方向</span>
+          <div class="hero-job-tags">
+            <span class="hero-job-tag">AIGC 创意</span>
+            <span class="hero-job-tag">IP 设计</span>
+            <span class="hero-job-tag">品牌视觉</span>
+          </div>
+        </div>
         <div class="hero-cta">
           <button class="btn btn-primary" onclick="navigateTo('aigc')">
             查看作品
@@ -2134,7 +2168,7 @@ video.detail-hero-image {
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-left">2026 STUDIO ORANGE. All rights reserved.</div>
+      <div class="footer-left">© 2026 汪周灵 · Visual Designer &amp; AIGC Creator</div>
       <div class="footer-right">Designed &amp; Built with passion</div>
     </footer>
 
