@@ -369,6 +369,57 @@ body.detail-mode .view-detail { display: block; }
 
 .stat-label { font-size: 13px; color: var(--text-dim); letter-spacing: 1px; }
 
+/* ===== About Skills ===== */
+.about-skills { margin-top: 48px; }
+.skills-head {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 24px; padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.skills-head-en {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; letter-spacing: 3px;
+  color: var(--accent); font-weight: 600;
+}
+.skills-head-zh {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--text);
+}
+.skills-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.skill-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px 26px;
+  transition: all 0.3s ease;
+}
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.skill-card-icon { font-size: 26px; color: var(--accent); margin-bottom: 14px; }
+.skill-card-title {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 17px; font-weight: 600; color: var(--text);
+  margin-bottom: 10px;
+}
+.skill-card-tools {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 12px; color: var(--accent);
+  letter-spacing: 0.5px; line-height: 1.8;
+  margin-bottom: 10px;
+}
+.skill-card-desc {
+  font-size: 13px; color: var(--text-dim);
+  line-height: 1.8;
+}
+@media (max-width: 768px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== Works Grid ===== */
 .works-grid { display: grid; gap: 24px; }
 .works-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
@@ -2084,6 +2135,39 @@ video.detail-hero-image {
           <p>2025 年，在北辰教育负责平面宣传工作，为品牌打造系列宣传物料与视觉推广方案，涵盖海报、宣传单页、社交媒体配图等，有效提升了品牌的市场曝光度与招生转化率。</p>
           <p>2026 年，与企业合作运用 Seedance 2.5 制作儿童科普视频，将 AIGC 技术应用于商业项目实践，以生动有趣的影像形式传递科学知识，获得合作方的高度认可。</p>
           <p>目前正在积极寻找实习与就业机会，每一个项目都是一次新的学习与成长。如果你有有趣的想法，欢迎一起聊聊。</p>
+        </div>
+
+        <div class="about-skills">
+          <div class="skills-head">
+            <span class="skills-head-en">CORE SKILLS</span>
+            <span class="skills-head-zh">核心技能</span>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <div class="skill-card-icon">✦</div>
+              <div class="skill-card-title">AIGC 创作</div>
+              <div class="skill-card-tools">即梦 / Midjourney / Stable Diffusion / Runway Gen-2 / Pika / 可灵</div>
+              <p class="skill-card-desc">熟悉提示词拆解、生成参数调整与多轮迭代，可根据创意目标优化图像与视频结果。</p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-card-icon">✧</div>
+              <div class="skill-card-title">图像设计</div>
+              <div class="skill-card-tools">Photoshop / Illustrator</div>
+              <p class="skill-card-desc">熟练完成人像精修、图像合成、调色校色、海报设计与批量素材处理。</p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-card-icon">✦</div>
+              <div class="skill-card-title">视频与动效</div>
+              <div class="skill-card-tools">Premiere Pro / After Effects / 剪映 / DaVinci Resolve</div>
+              <p class="skill-card-desc">能够完成剪辑、字幕包装、特效合成、MG 动效与调色。</p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-card-icon">✧</div>
+              <div class="skill-card-title">综合能力</div>
+              <div class="skill-card-tools">Figma / HTML / CSS</div>
+              <p class="skill-card-desc">具备摄影、构图、配色与光影基础；熟悉 Figma 及 HTML/CSS 基础，可完成简单网页视觉实现。</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
