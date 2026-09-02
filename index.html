@@ -3175,19 +3175,29 @@ function closeLightbox() {
 }
 
 function initLightbox() {
-  // Collect all zoomable images in detail page
-  const selectors = '.gallery-item img, .process-image img, .merch-item img';
+  // Collect all zoomable images in detail page (VI manual / gallery / process / merch / hero)
+  const selectors = '.vi-char-main img, .vi-char-sub img, .vi-board-wrap img, .vi-ext-image img, ' +
+      '.gallery-item img, .process-image img, .merch-item img, ' +
+      '.detail-hero-image, .detail-audio-cover img';
   const imgs = document.querySelectorAll('#viewDetail ' + selectors);
   window.lightboxImages = [];
+  const seen = {};
   imgs.forEach(function(img, i) {
+    // 只保留真实图片且 src 有效，避免空占位元素与列表页残留
+    if (!img || img.tagName !== 'IMG' || !img.src || img.src.indexOf('data:') === 0) return;
+    const key = img.src;
+    if (seen[key]) return; // 去重（hero 与 VI 主图可能同 src）
+    seen[key] = true;
     window.lightboxImages.push({
-      src: img.src,
-      caption: img.alt || (img.parentElement.querySelector('.gallery-caption') ? img.parentElement.querySelector('.gallery-caption').textContent : '') || (img.parentElement.querySelector('.process-image-caption') ? img.parentElement.querySelector('.process-image-caption').textContent : '')
+      src: key,
+      caption: img.alt || (img.parentElement && img.parentElement.querySelector('.gallery-caption') ? img.parentElement.querySelector('.gallery-caption').textContent : '') || (img.parentElement && img.parentElement.querySelector('.process-image-caption') ? img.parentElement.querySelector('.process-image-caption').textContent : '')
     });
     img.style.cursor = 'zoom-in';
+    img.setAttribute('data-lb-index', String(window.lightboxImages.length - 1));
     img.onclick = function(e) {
       e.stopPropagation();
-      openLightbox(this.src, this.alt || window.lightboxImages[i].caption, i);
+      var idx = parseInt(this.getAttribute('data-lb-index') || '0', 10);
+      openLightbox(this.src, this.alt || '', idx);
     };
   });
 }
