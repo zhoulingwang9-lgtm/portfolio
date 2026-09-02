@@ -348,6 +348,7 @@ body.detail-mode .view-detail { display: block; }
 .works-grid { display: grid; gap: 24px; }
 .works-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .works-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.works-grid.cols-1 { grid-template-columns: 1fr; }
 
 .work-card {
   position: relative; overflow: hidden;
@@ -362,7 +363,7 @@ body.detail-mode .view-detail { display: block; }
 }
 
 .work-image-wrap.video { aspect-ratio: 16 / 9; }
-.work-image-wrap.ip { aspect-ratio: 1 / 1; }
+.work-image-wrap.ip { aspect-ratio: 16 / 9; }
 .work-image-wrap.campaign { aspect-ratio: 16 / 9; }
 
 .work-image {
@@ -1870,6 +1871,107 @@ video.detail-hero-image {
   .detail-audio-cover { width: 160px; height: 160px; }
 }
 
+/* ===== VI 品牌手册式详情 (IP) ===== */
+.vi-character-grid {
+  display: grid; grid-template-columns: 1.15fr 1fr;
+  gap: 24px; margin-top: 8px;
+}
+.vi-char-main {
+  position: relative; overflow: hidden; border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.vi-char-main img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
+.vi-char-side { display: flex; flex-direction: column; gap: 24px; }
+.vi-char-sub {
+  position: relative; overflow: hidden; flex: 1;
+  border: 1px solid var(--border); background: var(--bg-card);
+}
+.vi-char-sub img { width: 100%; height: 100%; min-height: 200px; object-fit: cover; display: block; }
+.vi-img-label {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 24px 20px 14px;
+  background: linear-gradient(to top, rgba(20,20,20,0.9) 0%, transparent 100%);
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 12px; letter-spacing: 2px; color: #fff; text-transform: uppercase;
+}
+.vi-table {
+  width: 100%; border-collapse: collapse; margin-top: 8px;
+  border: 1px solid var(--border);
+}
+.vi-table td {
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+  font-size: 15px; color: var(--text-dim); line-height: 1.7;
+}
+.vi-table tr:last-child td { border-bottom: none; }
+.vi-td-dim {
+  width: 180px; font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 13px; letter-spacing: 1px; color: var(--accent); text-transform: uppercase;
+  background: rgba(255,107,53,0.04);
+}
+.vi-color-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-bottom: 32px;
+}
+.vi-color-card {
+  border: 1px solid var(--border); background: var(--bg-card); overflow: hidden;
+}
+.vi-color-swatch { height: 120px; }
+.vi-color-name {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 16px; font-weight: 600; color: var(--text); padding: 16px 20px 0;
+}
+.vi-color-hex {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  letter-spacing: 1px; color: var(--accent); padding: 4px 20px 0;
+}
+.vi-color-role {
+  font-size: 12px; letter-spacing: 2px; color: var(--text-muted);
+  text-transform: uppercase; padding: 10px 20px 0;
+}
+.vi-color-use { font-size: 14px; color: var(--text-dim); padding: 8px 20px 20px; line-height: 1.6; }
+.vi-board-wrap {
+  position: relative; overflow: hidden; border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.vi-board-wrap img { width: 100%; height: 100%; display: block; }
+.vi-extension-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 24px; margin-top: 8px;
+}
+.vi-ext-card {
+  border: 1px solid var(--border); background: var(--bg-card); overflow: hidden;
+}
+.vi-ext-image { overflow: hidden; }
+.vi-ext-image img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  transition: transform 0.6s ease;
+}
+.vi-ext-card:hover .vi-ext-image img { transform: scale(1.04); }
+.vi-ext-info { padding: 20px 24px 24px; }
+.vi-ext-name {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px;
+}
+.vi-ext-desc { font-size: 14px; color: var(--text-dim); line-height: 1.8; font-weight: 300; }
+.vi-restriction-list {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border: 1px solid var(--border);
+}
+.vi-restriction-list li {
+  padding: 18px 24px; font-size: 15px; color: var(--text-dim);
+  line-height: 1.8; border-bottom: 1px solid var(--border);
+  position: relative; padding-left: 56px;
+}
+.vi-restriction-list li:last-child { border-bottom: none; }
+.vi-restriction-list li::before {
+  content: '✕'; position: absolute; left: 24px; top: 18px;
+  color: var(--accent); font-size: 14px; font-weight: 600;
+}
+@media (max-width: 768px) {
+  .vi-character-grid, .vi-extension-grid { grid-template-columns: 1fr; }
+  .vi-color-grid { grid-template-columns: 1fr; }
+  .vi-char-main img { min-height: 300px; }
+}
 </style>
 </head>
 <body>
@@ -2011,7 +2113,7 @@ video.detail-hero-image {
         <h2 class="section-title">IP 设计</h2>
         <p class="section-desc">创造有性格、有故事的角色形象。从概念设定到三视图、从 2D 插画到 3D 潮玩，让品牌拥有可被喜爱的灵魂。</p>
       </div>
-      <div class="works-grid cols-3" id="ipGrid"></div>
+      <div class="works-grid cols-1" id="ipGrid"></div>
     </section>
 
     <!-- Contact -->
@@ -2294,41 +2396,47 @@ const WORKS = {
     {
       id: 'ip-1',
       title: 'MOCHI 摩奇',
-      tag: 'Mascot / 3D Character',
-      meta: '清吧主题品牌 IP / 角色系统 / 2026',
-      cover: 'https://aka.doubaocdn.com/s/bu7v28ELnV',
+      tag: 'MASCOT / 3D CHARACTER',
+      meta: '清吧主题品牌 IP · VI 品牌手册 / 2026',
+      cover: 'https://aka.doubaocdn.com/s/F8QEFUlVJI',
       client: 'MOCHI BAR（清吧概念品牌）',
-      role: 'IP 设计 / 角色设定 / 视觉系统',
+      role: 'IP 设计 / 角色设定 / 视觉系统 / VI 规范',
       year: '2026',
       duration: '8 周',
-      concept: '「MOCHI 摩奇」是专为清吧场景打造的治愈系品牌 IP。主角是一只圆润可爱的英短蓝猫，化身清吧吧台主理人与首席调酒师，圆脸大眼、短绒毛发，温和可爱、自带松弛的治愈感。标志性的午夜蓝马甲、香槟金领结与琥珀色鸡尾酒杯，让角色与清吧的微醺氛围天然契合，为品牌建立可被喜爱的人格。',
-      description: '世界观：「一杯一世界，一夜一温柔，把今夜调成温柔的味道」。品牌三色系统：午夜蓝 #1E2A44（主）、香槟金 #C9A063（辅）、奶白 #F5F0E6（点缀），并延展出深夜·微醺·余温·拂晓四档色系，贯穿主视觉、三视图、设定卡、表情包与周边应用，形成完整统一的清吧 IP 视觉体系。',
-      sketch: 'https://aka.doubaocdn.com/s/lm4JiL4SAy',
-      final: 'https://aka.doubaocdn.com/s/bu7v28ELnV',
-      threeView: 'https://aka.doubaocdn.com/s/Yu1rdj5CLx',
-      merchandise: [
-        { name: '亚克力立牌', desc: 'MOCHI 吧台主理人 / 桌面摆件', url: 'https://aka.doubaocdn.com/s/AqMdcHKYRM' },
-        { name: '马克杯与杯垫', desc: '微醺系列 / 陶瓷杯 + 杯垫', url: 'https://aka.doubaocdn.com/s/AqMdcHKYRM' }
-      ]
-    },
-    {
-      id: 'ip-2',
-      title: 'MOCHI 微醺之夜',
-      tag: 'Mascot / Scene & Social',
-      meta: '清吧主题场景 / 社媒传播 / 2026',
-      cover: 'https://aka.doubaocdn.com/s/78tmo32SIY',
-      client: 'MOCHI BAR（清吧概念品牌）',
-      role: 'IP 设计 / 场景延展 / 传播应用',
-      year: '2026',
-      duration: '8 周',
-      concept: '围绕 MOCHI 摩奇打造清吧场景化延展体系。从「微醺之夜」主题海报、JAZZ NIGHT / SIGNATURE COCKTAIL / LATE NIGHT 三档场景，到社媒传播卡、门店门头与橱窗应用，以及城市广场落地雕塑与大型装置，让角色从平面形象走进真实的清吧空间，强化品牌记忆与社交传播力。',
-      description: '延展应用覆盖主题套图、穿搭系列（经典调酒师/爵士夜/居家治愈/节日特调）、艺术联名（POP / WATERCOLOR / LINEWORK / CLAY 四风格）、表情包与周边，全部基于 MOCHI 统一角色锚点，保持午夜蓝、香槟金、奶白三色系统，让清吧 IP 在不同触点下保持一致的温柔治愈气质。',
-      sketch: 'https://aka.doubaocdn.com/s/pnjGUVZVZi',
-      final: 'https://aka.doubaocdn.com/s/78tmo32SIY',
-      threeView: 'https://aka.doubaocdn.com/s/wTEpEZ551g',
-      merchandise: [
-        { name: '表情包贴纸', desc: '干杯呀/微醺啦/晚安等 8 款', url: 'https://aka.doubaocdn.com/s/2yzO3BvtAh' },
-        { name: '门店应用', desc: '门头招牌 / 橱窗立牌 / 菜单牌', url: 'https://aka.doubaocdn.com/s/EeRKjKNlfe' }
+      concept: '摩奇 MOCHI 是以英短蓝猫为主体的清吧 IP 形象，身份设定为清吧吧台主理人与首席调酒师，性格温和、治愈、松弛，核心主张为「一杯一世界，一夜一温柔」，传达「把今夜调成温柔的味道」的品牌调性。本页为 MOCHI 摩奇品牌视觉识别规范（VI），规范角色形象、色彩系统、视觉语言与延展应用，确保品牌在不同渠道与物料中保持统一、可识别与专业呈现。',
+      description: '适用于以摩奇 MOCHI 名义开展的全部视觉表达：线上传播（社媒封面、海报、H5、公众号与短视频）、线下物料（门头招牌、菜单、杯套、杯垫、易拉宝）、周边衍生（公仔、贴纸、徽章、钥匙扣、帆布袋、亚克力立牌）及系统应用（表情包、UI 元素）。',
+      coreImage: 'https://aka.doubaocdn.com/s/bu7v28ELnV',
+      threeViewImage: 'https://aka.doubaocdn.com/s/Yu1rdj5CLx',
+      settingCardImage: 'https://aka.doubaocdn.com/s/lm4JiL4SAy',
+      anchors: [
+        { dim: '物种与体型', val: '英短蓝猫，Q 版两到三头身，圆脸圆润' },
+        { dim: '脸部与五官', val: '大而圆的金色眼睛，粉嫩鼻头，温和浅笑，短绒毛' },
+        { dim: '服装', val: '午夜蓝马甲、奶白衬衫、香槟金蝴蝶结领结' },
+        { dim: '标志道具', val: '琥珀色鸡尾酒高脚杯' },
+        { dim: '可变化项', val: '姿势、表情、镜头角度、背景场景、局部配饰与应用形式' }
+      ],
+      colors: [
+        { name: '午夜蓝', hex: '#1E2A44', role: '主色', use: '背景、服装、深夜晚氛围' },
+        { name: '香槟金', hex: '#C9A063', role: '辅色', use: '灯光、领结、酒杯、高光' },
+        { name: '奶白', hex: '#F5F0E6', role: '点缀色', use: '衬衫、肚皮、奶油泡沫、留白' }
+      ],
+      colorBoardImage: 'https://aka.doubaocdn.com/s/DVlriv07Du',
+      visualStyle: '统一采用 3D 潮玩公仔质感与精致商业渲染结合的风格，圆润 Q 版、软萌治愈。光影以清吧暖金低照度、香槟金光晕为主，营造微醺松弛感；材质呈现短绒毛与柔和哑光质感。画面信息层级遵循角色居中、品牌色统一、留白克制的原则。',
+      extensions: [
+        { name: '穿搭系列', desc: '#01 经典调酒师、#02 爵士夜、#03 居家治愈、#04 节日特调。换装仅允许改变服装款式、局部配饰与辅助配色，不改变角色脸型、头身比与核心识别点。', image: 'https://aka.doubaocdn.com/s/wTEpEZ551g' },
+        { name: '艺术联名', desc: 'POP 波普、WATERCOLOR 水彩、LINEWORK 线描、CLAY 黏土。联名变体须保留圆脸大眼、领结与马甲核心识别特征。', image: 'https://aka.doubaocdn.com/s/Uw05PjWURL' },
+        { name: '表情包', desc: '干杯呀、微醺啦、打哈欠、比心、晚安、有点上头、好喝、害羞。每个表情可改变情绪、动作与道具，但须保持同一角色锚点。', image: 'https://aka.doubaocdn.com/s/2yzO3BvtAh' },
+        { name: '周边套组', desc: '亚克力立牌、马克杯、杯垫、徽章、钥匙扣、帆布袋与贴纸。统一使用品牌三色与角色图案，标签与包装文字与品牌识别一致。', image: 'https://aka.doubaocdn.com/s/AqMdcHKYRM' },
+        { name: '门店应用', desc: '门头招牌、橱窗立牌与菜单牌须使用官方角色形象与品牌色，招牌文字使用「MOCHI 摩奇」，菜单牌可使用「今夜特调」等已确认文案。', image: 'https://aka.doubaocdn.com/s/EeRKjKNlfe' },
+        { name: '社媒传播卡', desc: '以手机卡片形式呈现，配文围绕清吧调性：「今夜特调，为你调一杯温柔」「爵士夜，微醺正好」「夜深了，也该歇歇了」。', image: 'https://aka.doubaocdn.com/s/9a5XcEGsGJ' },
+        { name: '大型装置', desc: '以充气雕塑为主，用于街区打卡与商业综合体地标展示。装置保留角色核心识别，可放大比例并加入发光与金属质感，不改变形象本体。', image: 'https://aka.doubaocdn.com/s/tnOdSnxlK1' }
+      ],
+      restrictions: [
+        '禁止改变角色物种、头身比、脸型、主服装与主色，禁止转换为其他物种或年龄段。',
+        '禁止替换品牌三色系统或引入与品牌无关的装饰性配色。',
+        '禁止在未授权渠道使用角色进行商业代言、联名或发布。',
+        '禁止添加未经确认的文字、乱码、伪字或第三方品牌标识。',
+        '禁止出现不适当的身体暴露、敏感政治、宗教、暴力或低俗内容。'
       ]
     }
   ]
@@ -2530,49 +2638,78 @@ function renderDetail(id) {
 
   // Category-specific sections
   if (cat === 'ip') {
-    // Design process
+    // ===== VI 品牌手册式详情排版 =====
+
+    // 01 角色形象规范
     bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">设计过程</h3>' +
-      '<div class="process-timeline">' +
-        '<div class="process-step">' +
-          '<div class="process-number">01</div>' +
-          '<div class="process-content">' +
-            '<h4>草图探索</h4>' +
-            '<p>从大量手绘草图开始，探索角色的头部比例、身体姿态与表情变化。这个阶段不追求完美，而是通过快速迭代找到角色的核心性格与视觉记忆点。</p>' +
-            '<div class="process-image"><img src="' + work.sketch + '" alt="草图探索"><div class="process-image-caption">SKETCH / 概念草图阶段</div></div>' +
-          '</div>' +
+      '<h3 class="detail-section-title">角色形象规范</h3>' +
+      '<div class="vi-character-grid">' +
+        '<div class="vi-char-main">' +
+          '<img src="' + work.coreImage + '" alt="核心形象">' +
+          '<div class="vi-img-label">核心形象 / 官方主视觉</div>' +
         '</div>' +
-        '<div class="process-step">' +
-          '<div class="process-number">02</div>' +
-          '<div class="process-content">' +
-            '<h4>形象确定</h4>' +
-            '<p>在草图基础上精化角色造型，确定最终的配色方案、服饰细节与面部特征。这个阶段需要反复调整比例与细节，确保角色既具有独特性又具备广泛的亲和力。</p>' +
-            '<div class="process-image"><img src="' + work.final + '" alt="形象确定"><div class="process-image-caption">FINAL / 最终形象定稿</div></div>' +
-          '</div>' +
-        '</div>' +
-        '<div class="process-step">' +
-          '<div class="process-number">03</div>' +
-          '<div class="process-content">' +
-            '<h4>三视图与规范</h4>' +
-            '<p>制作角色的正面、侧面、背面三视图，建立完整的角色设计规范文档。包含标准配色值、最小使用尺寸、禁用场景等，确保角色在各种应用场景中保持一致性。</p>' +
-            '<div class="process-image"><img src="' + work.threeView + '" alt="三视图"><div class="process-image-caption">TURNAROUND / 三视图与使用规范</div></div>' +
-          '</div>' +
+        '<div class="vi-char-side">' +
+          '<div class="vi-char-sub"><img src="' + work.threeViewImage + '" alt="三视图"><div class="vi-img-label">三视图规范</div></div>' +
+          '<div class="vi-char-sub"><img src="' + work.settingCardImage + '" alt="角色设定卡"><div class="vi-img-label">角色设定卡</div></div>' +
         '</div>' +
       '</div>' +
     '</div>';
 
-    // Merchandise
+    // 02 角色锚点
+    var anchorRows = '';
+    work.anchors.forEach(function(a) {
+      anchorRows += '<tr><td class="vi-td-dim">' + a.dim + '</td><td>' + a.val + '</td></tr>';
+    });
     bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">周边产品</h3>' +
-      '<div class="detail-text"><p>基于角色 IP 开发的系列周边产品，将虚拟形象延伸到真实生活场景中。每款产品都经过精心的材质选择与工艺把控，确保角色形象的完美呈现。</p></div>' +
-      '<div class="merch-grid">';
-    work.merchandise.forEach(function(m) {
-      bodyHtml += '<div class="merch-item">' +
-        '<img src="' + m.url + '" alt="' + m.name + '">' +
-        '<div class="merch-info"><div class="merch-name">' + m.name + '</div><div class="merch-desc">' + m.desc + '</div></div>' +
+      '<h3 class="detail-section-title">角色锚点</h3>' +
+      '<table class="vi-table"><tbody>' + anchorRows + '</tbody></table>' +
+    '</div>';
+
+    // 03 色彩系统规范
+    var colorCards = '';
+    work.colors.forEach(function(c) {
+      colorCards += '<div class="vi-color-card">' +
+        '<div class="vi-color-swatch" style="background:' + c.hex + '"></div>' +
+        '<div class="vi-color-name">' + c.name + '</div>' +
+        '<div class="vi-color-hex">' + c.hex + '</div>' +
+        '<div class="vi-color-role">' + c.role + '</div>' +
+        '<div class="vi-color-use">' + c.use + '</div>' +
       '</div>';
     });
-    bodyHtml += '</div></div>';
+    bodyHtml += '<div class="detail-section">' +
+      '<h3 class="detail-section-title">色彩系统规范</h3>' +
+      '<div class="vi-color-grid">' + colorCards + '</div>' +
+      '<div class="vi-board-wrap"><img src="' + work.colorBoardImage + '" alt="微醺时刻色彩系统与世界观"><div class="vi-img-label">微醺时刻色彩系统与世界观 · 深夜 / 微醺 / 余温 / 拂晓</div></div>' +
+    '</div>';
+
+    // 04 视觉语言与风格
+    bodyHtml += '<div class="detail-section">' +
+      '<h3 class="detail-section-title">视觉语言与风格</h3>' +
+      '<div class="detail-text"><p>' + work.visualStyle + '</p></div>' +
+    '</div>';
+
+    // 05 延展应用规范
+    var extHtml = '<div class="detail-section">' +
+      '<h3 class="detail-section-title">延展应用规范</h3>' +
+      '<div class="vi-extension-grid">';
+    work.extensions.forEach(function(e) {
+      extHtml += '<div class="vi-ext-card">' +
+        '<div class="vi-ext-image"><img src="' + e.image + '" alt="' + e.name + '"></div>' +
+        '<div class="vi-ext-info"><div class="vi-ext-name">' + e.name + '</div><div class="vi-ext-desc">' + e.desc + '</div></div>' +
+      '</div>';
+    });
+    extHtml += '</div></div>';
+    bodyHtml += extHtml;
+
+    // 06 使用禁区与合规要求
+    var restrHtml = '<div class="detail-section">' +
+      '<h3 class="detail-section-title">使用禁区与合规要求</h3>' +
+      '<ul class="vi-restriction-list">';
+    work.restrictions.forEach(function(r) {
+      restrHtml += '<li>' + r + '</li>';
+    });
+    restrHtml += '</ul></div>';
+    bodyHtml += restrHtml;
   }
 
   if (cat === 'video') {
@@ -2732,17 +2869,19 @@ function renderDetail(id) {
     bodyHtml += '</div></div>';
   }
 
-  // Next project
+  // Next project (hide when only one work in category)
   const allInCat = WORKS[cat];
-  const currentIdx = allInCat.findIndex(function(w) { return w.id === id; });
-  const nextWork = allInCat[(currentIdx + 1) % allInCat.length];
-  bodyHtml += '<div class="next-project">' +
-    '<div class="next-label">下一个项目</div>' +
-    '<div class="next-link" onclick="openDetail(\'' + nextWork.id + '\')">' +
-      nextWork.title +
-      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
-    '</div>' +
-  '</div>';
+  if (allInCat.length > 1) {
+    const currentIdx = allInCat.findIndex(function(w) { return w.id === id; });
+    const nextWork = allInCat[(currentIdx + 1) % allInCat.length];
+    bodyHtml += '<div class="next-project">' +
+      '<div class="next-label">下一个项目</div>' +
+      '<div class="next-link" onclick="openDetail(\'' + nextWork.id + '\')">' +
+        nextWork.title +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+      '</div>' +
+    '</div>';
+  }
 
   container.innerHTML = '<div class="detail-page">' +
     '<button class="detail-back" onclick="goHome()">' +
