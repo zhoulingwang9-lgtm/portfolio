@@ -10,15 +10,15 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #F5F0E6;
+  --bg: #E6EFE2;
   --bg-elevated: #FFFFFF;
-  --bg-card: #FBF8F2;
+  --bg-card: #EDF4EA;
   --text: #1C1A17;
   --text-dim: #6E665C;
   --text-muted: #A69E92;
   --accent: #A98545;
   --accent-dim: #8F7440;
-  --border: #E6DFD2;
+  --border: #D6E2CE;
   --grain-opacity: 0.03;
 }
 
@@ -2091,54 +2091,90 @@ video.detail-hero-image {
 }
 
 
-/* ===== Cover Splash 封面入口（极简风格） ===== */
+/* ===== Cover Splash 封面入口（作品集排版） ===== */
 .cover-splash {
   position: fixed; inset: 0; z-index: 9999;
   overflow: hidden; cursor: pointer;
   transition: opacity 0.8s ease;
-  background: #F5F0E6;
+  background: #E6EFE2;
 }
 .cover-splash.hide { opacity: 0; pointer-events: none; }
 .cover-bg {
   position: absolute; inset: 0;
-  background-size: cover; background-position: center;
+  background-image:
+    radial-gradient(circle at 84% 16%, rgba(169,133,69,0.14) 0, rgba(169,133,69,0.14) 3px, transparent 4px),
+    radial-gradient(circle at 76% 26%, rgba(169,133,69,0.10) 0, rgba(169,133,69,0.10) 2px, transparent 3px),
+    radial-gradient(circle at 92% 8%, rgba(169,133,69,0.12) 0, rgba(169,133,69,0.12) 4px, transparent 5px),
+    radial-gradient(circle at 16% 80%, rgba(169,133,69,0.10) 0, rgba(169,133,69,0.10) 3px, transparent 4px),
+    radial-gradient(circle at 60% 90%, rgba(169,133,69,0.10) 0, rgba(169,133,69,0.10) 2px, transparent 3px);
+  background-size: 260px 260px;
+  background-repeat: repeat;
   transition: transform 6s ease;
 }
 .cover-splash:hover .cover-bg { transform: scale(1.04); }
 .cover-splash.hide .cover-bg { transform: scale(1.06); }
-.cover-corner-tr {
+
+/* 几何方块装饰 */
+.cover-deco-square {
+  position: absolute; left: 26vw; top: 18%; z-index: 1;
+  width: 34px; height: 34px; border: 2px solid rgba(169,133,69,0.35);
+  transform: rotate(12deg);
+}
+.cover-deco-ring {
+  position: absolute; right: 14vw; bottom: 22%; z-index: 1;
+  width: 90px; height: 90px; border-radius: 50%;
+  border: 2px solid rgba(169,133,69,0.22);
+}
+
+/* 顶部理念小字（右上偏中） */
+.cover-top-lines {
   position: absolute; top: 46px; right: 60px; z-index: 3;
-  text-align: right;
+  text-align: right; line-height: 2;
 }
-.cover-corner-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: 4px;
-  color: var(--accent); text-transform: uppercase;
+.cover-top-lines span {
+  display: block;
+  font-family: 'Space Grotesk','Noto Sans SC',sans-serif;
+  font-size: 13px; letter-spacing: 2px; color: var(--text-dim);
 }
-.cover-corner-year {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px; letter-spacing: 2px;
-  color: var(--text-muted); margin-top: 8px;
+.cover-top-lines span:first-child { color: var(--accent); font-weight: 600; letter-spacing: 3px; }
+
+/* 竖排中文大字（左中） */
+.cover-vtext {
+  position: absolute; left: 10vw; top: 50%; transform: translateY(-54%);
+  z-index: 3; writing-mode: vertical-rl;
+  display: flex; flex-direction: row; gap: 8px;
 }
-.cover-main {
-  position: absolute; left: 0; right: 0; top: 46%;
-  transform: translateY(-50%);
-  z-index: 3; text-align: center;
+.cover-vtext span {
+  font-family: 'Noto Sans SC',sans-serif;
+  font-size: clamp(38px, 5.4vw, 82px); font-weight: 700;
+  line-height: 1.14; letter-spacing: 8px; color: var(--text);
 }
-.cover-word {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(64px, 12vw, 180px);
-  font-weight: 700; letter-spacing: 6px;
-  line-height: 1; color: #1C1A17;
-  text-shadow: 0 2px 0 rgba(255,255,255,0.6), 0 8px 40px rgba(201,160,99,0.15);
+.cover-vtext .v-accent { color: var(--accent); }
+
+/* 中部英文标签（中上，两列） */
+.cover-tags {
+  position: absolute; left: 32vw; top: 27%; z-index: 3;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px 44px;
+  max-width: 40vw;
 }
-.cover-word .accent { color: var(--accent); }
-.cover-tagline {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px; letter-spacing: 5px;
-  color: var(--text-dim); text-transform: uppercase;
-  margin-top: 34px;
+.cover-tags span {
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 13px; letter-spacing: 1px; color: var(--text-dim);
+  border-bottom: 1px solid var(--border); padding-bottom: 7px;
 }
+.cover-tags span:first-child { color: var(--text); font-weight: 600; }
+
+/* 超大英文（左下至中下） */
+.cover-big-en {
+  position: absolute; left: -8px; bottom: 8vh; z-index: 2;
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: clamp(92px, 15vw, 216px); font-weight: 700; letter-spacing: 2px;
+  line-height: 1; white-space: nowrap; user-select: none;
+  color: var(--text);
+}
+.cover-big-en i { font-style: normal; color: var(--accent); }
+
+/* 左下署名 */
 .cover-corner-bl {
   position: absolute; left: 60px; bottom: 46px; z-index: 3;
 }
@@ -2152,6 +2188,8 @@ video.detail-hero-image {
   font-size: 12px; letter-spacing: 1px;
   color: var(--text-muted); margin-top: 8px;
 }
+
+/* 进入箭头 */
 .cover-arrow {
   position: absolute; right: 60px; bottom: 46px; z-index: 3;
   display: flex; align-items: center; gap: 12px;
@@ -2163,12 +2201,15 @@ video.detail-hero-image {
 @keyframes cover-nudge { 0%,100%{transform:translateX(0);} 50%{transform:translateX(6px);} }
 .cover-arrow svg { width: 30px; height: 14px; }
 @media (max-width: 768px) {
-  .cover-corner-tr { top: 26px; right: 24px; }
+  .cover-top-lines { top: 26px; right: 24px; }
+  .cover-top-lines span { font-size: 11px; }
+  .cover-vtext { left: 7vw; }
+  .cover-tags { left: 30vw; top: 24%; grid-template-columns: 1fr; gap: 10px; max-width: 46vw; }
+  .cover-tags span { font-size: 11px; }
+  .cover-big-en { font-size: 22vw; bottom: 18vh; }
   .cover-corner-bl { left: 24px; bottom: 28px; }
   .cover-arrow { right: 24px; bottom: 28px; }
-  .cover-tagline { letter-spacing: 3px; font-size: 12px; }
 }
-
 
 /* ===== Intro 自我介绍 ===== */
 .intro {
@@ -2208,7 +2249,7 @@ video.detail-hero-image {
 /* ===== Contents 目录（例图风格） ===== */
 .contents-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FBF7EF 0%, #F5F0E6 100%);
+  background: linear-gradient(135deg, #EDF4EA 0%, #E6EFE2 100%);
   position: relative;
   display: flex; align-items: center;
   padding: 96px 64px 80px 96px;
@@ -2417,19 +2458,30 @@ video.detail-hero-image {
 </head>
 <body>
 
-<!-- ===== Cover Splash 封面入口（极简风格） ===== -->
+<!-- ===== Cover Splash 封面入口（作品集排版） ===== -->
 <div class="cover-splash" id="coverSplash">
-  <div class="cover-bg" style="background-image:url('https://aka.doubaocdn.com/s/XnJD5n5kN9');"></div>
+  <div class="cover-bg"></div>
+  <div class="cover-deco-square"></div>
+  <div class="cover-deco-ring"></div>
 
-  <div class="cover-corner-tr">
-    <div class="cover-corner-label">Visual Design &amp; AIGC Creator</div>
-    <div class="cover-corner-year">PORTFOLIO · 2026</div>
+  <div class="cover-top-lines">
+    <span>Design as storytelling · 用设计讲故事</span>
+    <span>Nature-inspired designer · 自然系设计师</span>
   </div>
 
-  <div class="cover-main">
-    <div class="cover-word">PORT<span class="accent">FOLIO</span></div>
-    <div class="cover-tagline">With creativity, anything is possible</div>
+  <div class="cover-vtext">
+    <span>作</span><span>品</span><span>集</span>
+    <span class="v-accent">汪</span><span class="v-accent">周</span><span class="v-accent">靈</span>
   </div>
+
+  <div class="cover-tags">
+    <span>Visual enthusiast</span>
+    <span>Geometry aesthetics lover</span>
+    <span>Romantic visual creator</span>
+    <span>Design inspiration catcher</span>
+  </div>
+
+  <div class="cover-big-en">Port<i>folio</i></div>
 
   <div class="cover-corner-bl">
     <div class="cover-bl-name">Wang Zhouling</div>
