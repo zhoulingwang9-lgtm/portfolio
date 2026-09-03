@@ -2279,6 +2279,141 @@ video.detail-hero-image {
 /* ===== 例图风格：米白底深色字微调 ===== */
 .hero-job-label { color: var(--accent); }
 
+
+/* ===== 站酷风格详情页排版 ===== */
+.sc-hero {
+  position: relative; width: 100%;
+  padding: 140px 80px 0;
+  min-height: 320px;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 1px solid var(--border);
+}
+.sc-hero-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 700; line-height: 1; color: var(--text);
+  letter-spacing: -4px; opacity: 0.95;
+}
+.sc-hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 600; line-height: 1.1; color: var(--text);
+  letter-spacing: -1px; margin-top: 8px;
+  text-transform: capitalize;
+}
+.sc-hero-title .sc-title-dot { color: var(--accent); }
+.sc-hero-zh {
+  position: absolute; right: 80px; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 15px; font-weight: 500; letter-spacing: 6px;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+}
+.sc-hero-portfolio {
+  position: absolute; left: 80px; bottom: 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 4px;
+  color: var(--text-muted);
+}
+.sc-hero-meta {
+  display: flex; gap: 32px; margin: 24px 0 32px;
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 13px; letter-spacing: 1px; color: var(--text-dim);
+}
+.sc-cover {
+  width: 100%; overflow: hidden;
+  background: var(--bg-elevated);
+}
+.sc-cover img, .sc-cover video { width: 100%; display: block; }
+.sc-cover .sc-cover-cap {
+  padding: 16px 80px; font-size: 13px; color: var(--text-muted);
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  letter-spacing: 1px; border-top: 1px solid var(--border);
+}
+.sc-section {
+  padding: 64px 80px;
+  border-bottom: 1px solid var(--border);
+}
+.sc-section-head {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 28px;
+}
+.sc-section-en {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 3px;
+  color: var(--accent); text-transform: uppercase;
+}
+.sc-section-zh {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 26px; font-weight: 600; color: var(--text);
+}
+.sc-text {
+  font-size: 16px; line-height: 1.9; color: var(--text-dim);
+  font-weight: 300; max-width: 760px;
+}
+.sc-text p { margin-bottom: 16px; }
+.sc-text-en {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px; letter-spacing: 1px; color: var(--text-muted);
+  margin-bottom: 20px; font-weight: 400;
+}
+.sc-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.sc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sc-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.sc-grid-item { overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); }
+.sc-grid-item img { width: 100%; display: block; }
+.sc-grid-item .sc-grid-cap {
+  padding: 12px 16px; font-size: 12px; color: var(--text-muted);
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  letter-spacing: 1px; border-top: 1px solid var(--border);
+}
+.sc-color-swatch { width: 100%; aspect-ratio: 16 / 9; display: block; }
+.sc-color-info { padding: 14px 16px; }
+.sc-color-name { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); }
+.sc-color-hex { font-family: 'Space Grotesk', monospace; font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+.sc-color-role { font-size: 12px; color: var(--accent); margin-top: 2px; }
+.sc-anchor-table { width: 100%; border-collapse: collapse; max-width: 760px; }
+.sc-anchor-table td { padding: 16px 4px; border-bottom: 1px solid var(--border); font-size: 15px; vertical-align: top; }
+.sc-anchor-table td:first-child { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 2px; color: var(--accent); width: 120px; font-weight: 600; white-space: nowrap; }
+.sc-ext-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; align-items: stretch; }
+.sc-ext-img { overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
+.sc-ext-img img { width: 100%; display: block; }
+.sc-ext-info { border: 1px solid var(--border); padding: 28px; background: var(--bg-card); display: flex; flex-direction: column; justify-content: center; }
+.sc-ext-name { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+.sc-ext-desc { font-size: 14px; line-height: 1.8; color: var(--text-dim); font-weight: 300; }
+.sc-restrict { max-width: 760px; }
+.sc-restrict li { list-style: none; padding: 14px 0 14px 28px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-dim); position: relative; }
+.sc-restrict li::before { content: '·'; position: absolute; left: 8px; color: var(--accent); font-weight: 700; }
+.sc-big-img { width: 100%; display: block; margin-bottom: 12px; }
+.sc-video-wrap { position: relative; padding-top: 56.25%; background: #000; }
+.sc-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.sc-audio-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 32px; align-items: center; background: var(--bg-card); border: 1px solid var(--border); padding: 28px; }
+.sc-audio-cover { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--border); }
+.sc-audio-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sc-audio-play { position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); }
+.sc-audio-info-title { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; font-size: 24px; font-weight: 600; color: var(--text); }
+.sc-audio-info-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; letter-spacing: 1px; }
+.sc-audio-waveform { display: flex; gap: 3px; align-items: center; height: 56px; margin-top: 20px; }
+.sc-audio-wavebar { flex: 1; background: var(--accent); opacity: 0.7; border-radius: 2px; }
+.sc-audio-controls { margin-top: 14px; }
+.sc-audio-progress { height: 4px; background: var(--border); border-radius: 2px; cursor: pointer; position: relative; }
+.sc-audio-progress-filled { height: 100%; width: 0%; background: var(--accent); border-radius: 2px; }
+.sc-audio-time { font-family: 'Space Grotesk', monospace; font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+@media (max-width: 768px) {
+  .sc-hero { padding: 100px 24px 0; min-height: 240px; }
+  .sc-hero-zh { right: 24px; }
+  .sc-hero-portfolio { left: 24px; }
+  .sc-cover .sc-cover-cap { padding: 12px 24px; }
+  .sc-section { padding: 40px 24px; }
+  .sc-grid-3, .sc-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .sc-ext-row { grid-template-columns: 1fr; }
+  .sc-audio-wrap { grid-template-columns: 1fr; }
+  .sc-hero-meta { flex-wrap: wrap; gap: 12px 24px; }
+}
+
 </style>
 </head>
 <body>
@@ -2471,66 +2606,6 @@ const WORKS = {
       duration: '项目制作',
       concept: '儿童科技馆介绍视频，通过生动有趣的画面展示科技馆的各个展区和互动体验项目。视频以孩子的视角出发，带领观众探索科学的奥秘，激发孩子们对科学的好奇心与探索欲。整体风格明快活泼，色彩鲜明，符合儿童审美，同时兼顾信息传达的准确性与趣味性。',
       description: '该视频用于儿童科技馆的官方宣传、展厅循环播放及社交媒体推广，帮助家长和孩子快速了解科技馆的特色展区、互动项目与教育理念，有效提升场馆的知名度与到访率。'
-    }
-  ],
-  print: [
-    {
-      id: 'print-1',
-      title: 'NOIR 时尚大片',
-      tag: 'Fashion / Print',
-      meta: '品牌视觉系列 / 7 款 / 2025',
-      cover: 'https://aka.doubaocdn.com/s/WRuay4QJiC',
-      client: 'NOIR Fashion',
-      role: '艺术指导 / 平面设计 / 摄影指导',
-      year: '2025',
-      duration: '6 周',
-      concept: '为高端时尚品牌 NOIR 打造的 2025 秋冬系列完整视觉体系。设计灵感来源于光影的极端对比——黑色剪影与炽橙色块的碰撞，象征都市女性在冷峻外表下燃烧的内心力量。整个系列涵盖品牌主视觉、秋冬系列大片、杂志跨页排版、男士支线、配饰系列及户外都市主题，形成从产品到品牌精神的完整叙事。采用瑞士设计风格的极简构图，让视觉焦点完全集中在模特姿态与色彩的对话上。黑色代表克制与优雅，橙色代表热情与力量，二者的张力贯穿整个系列。',
-      gallery: [
-        { url: 'https://aka.doubaocdn.com/s/WRuay4QJiC', caption: '品牌主视觉 / 黑橙碰撞' },
-        { url: 'https://aka.doubaocdn.com/s/ulL3dNlpg9', caption: 'AW25 秋冬系列 / 极简长裙大片' },
-        { url: 'https://aka.doubaocdn.com/s/8ZSkywzfsS', caption: '杂志跨页排版 / The New Silhouette' },
-        { url: 'https://aka.doubaocdn.com/s/kUsmo3KPqb', caption: '男士支线 / 定义新优雅' },
-        { url: 'https://aka.doubaocdn.com/s/qJM220MVlO', caption: '配饰系列 / 皮革手套与几何手包' },
-        { url: 'https://aka.doubaocdn.com/s/QAL298kYK4', caption: '都市传奇 / 天台夕阳户外大片' }
-      ]
-    },
-    {
-      id: 'print-2',
-      title: '2025 音乐节海报系列',
-      tag: 'Poster / Music Festival',
-      meta: '系列海报设计 / 4 款 / 2025',
-      cover: 'https://aka.doubaocdn.com/s/niAb3xQKJU',
-      client: '多个音乐节品牌',
-      role: '海报设计 / 视觉系统',
-      year: '2025',
-      duration: '6 周',
-      concept: '为四场不同风格的音乐节设计的系列海报，涵盖电子、摇滚、民谣和嘻哈四大音乐类型。每款海报根据音乐风格量身定制视觉语言：电子音乐节用霓虹紫蓝渐变与声波图形传递未来感；摇滚音乐节用火焰红橙与粗犷笔触表达爆发力；民谣音乐节用翠绿森林与温暖阳光营造自然治愈氛围；嘻哈音乐节用大胆撞色与街头涂鸦展现潮流态度。系列整体保持高饱和度、强对比的鲜明视觉特征，同时每款又有独立的风格辨识度。',
-      gallery: [
-        { url: 'https://aka.doubaocdn.com/s/niAb3xQKJU', caption: 'ELECTRIC WAVE 电音节 / 上海世博公园 / 10.01-03' },
-        { url: 'https://aka.doubaocdn.com/s/3WeRSGVDVQ', caption: 'ROCK FIRE 摇滚火焰 / 北京工人体育场 / 11.15' },
-        { url: 'https://aka.doubaocdn.com/s/KqRQmKIk6F', caption: 'FOREST SONG 森林之歌 / 杭州西湖音乐节 / 09.20' },
-        { url: 'https://aka.doubaocdn.com/s/Gz0f9F4Fz9', caption: 'BEAT DROP 节拍坠落 / 广州体育馆 / 12.01' }
-      ]
-    },
-    {
-      id: 'print-3',
-      title: 'PULSE 智能腕表',
-      tag: 'Product / Commercial',
-      meta: '产品广告系列 / 7 款 / 2024',
-      cover: 'https://aka.doubaocdn.com/s/XCS7MHI1BS',
-      client: 'PULSE Tech',
-      role: '创意指导 / 平面设计 / 产品摄影',
-      year: '2024',
-      duration: '5 周',
-      concept: '为 PULSE 新一代智能腕表打造的全场景广告系列，涵盖产品主视觉、运动燃动、商务从容、健康监测、多配色发布及户外探险六大主题。整体采用极简商业摄影风格，以戏剧性光影突出产品的金属质感与曲面设计。每款海报针对不同使用场景定制视觉语言：运动篇用汗水飞溅与橙黑撞色传递爆发力；商务篇用极简白背景与西装袖口展现精英气质；健康篇用深蓝发光数据界面强调科技感；户外篇用雪山壮丽风景凸显产品的耐用与探索精神。系列统一以「PULSE」品牌标识为核心，配合不同场景的中文标语，形成完整且有层次的传播体系。',
-      gallery: [
-        { url: 'https://aka.doubaocdn.com/s/XCS7MHI1BS', caption: '产品主视觉 / 悬浮光影' },
-        { url: 'https://aka.doubaocdn.com/s/VqLNtS02vq', caption: '运动篇 / 燃动每一刻 / 心率监测' },
-        { url: 'https://aka.doubaocdn.com/s/Ni9fGoXNcJ', caption: '商务篇 / 从容掌控 / 消息通知' },
-        { url: 'https://aka.doubaocdn.com/s/0q0bMx80Ag', caption: '健康篇 / 健康由你掌握 / 血氧心率睡眠' },
-        { url: 'https://aka.doubaocdn.com/s/o7Vp239GkT', caption: '产品发布 / 三色登场 2025 / 黑橙银' },
-        { url: 'https://aka.doubaocdn.com/s/TfVxyE2eWE', caption: '户外篇 / 探索无界 / 海拔GPS定位' }
-      ]
     }
   ],
   video: [
@@ -2738,7 +2813,7 @@ const WORKS = {
 
 // Flatten all works for lookup
 const ALL_WORKS = {};
-['aigc', 'campaign', 'print', 'video', 'ip'].forEach(function(cat) {
+['aigc', 'campaign', 'video', 'ip'].forEach(function(cat) {
   WORKS[cat].forEach(function(w) { ALL_WORKS[w.id] = w; });
 });
 
@@ -2752,8 +2827,7 @@ function renderContents() {
     {cat: 'aigc',     num: '01', zh: 'AIGC 视频', en: 'AIGC Video'},
     {cat: 'campaign', num: '02', zh: '创意策划',   en: 'Creative Campaign'},
     {cat: 'video',    num: '03', zh: 'AIGC 音频',  en: 'AIGC Audio'},
-    {cat: 'ip',       num: '04', zh: 'IP 设计',    en: 'IP Design'},
-    {cat: 'print',    num: '05', zh: '平面广告',   en: 'Print Advertising'}
+    {cat: 'ip',       num: '04', zh: 'IP 设计',    en: 'IP Design'}
   ];
   var items = [];
   cats.forEach(function(item) {
@@ -2773,12 +2847,12 @@ function renderContents() {
 
 // ===== Render Work Cards =====
 function renderWorkCards() {
-  ['aigc', 'campaign', 'print', 'video', 'ip'].forEach(function(cat) {
+  ['aigc', 'campaign', 'video', 'ip'].forEach(function(cat) {
     const grid = document.getElementById(cat + 'Grid');
     if (!grid) return;
     grid.innerHTML = WORKS[cat].map(function(w, i) {
       const wrapClass = (cat === 'video' || cat === 'aigc') ? 'video' : (cat === 'ip' ? 'ip' : (cat === 'campaign' ? 'campaign' : ''));
-      const noCropClass = (cat === 'print' && i < 2) ? ' no-crop' : '';
+      const noCropClass = '';
       const playBtn = (cat === 'video' || cat === 'aigc') ? '<div class="play-indicator"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : '';
       const campaignCoverClass = cat === 'campaign' ? ' campaign-cover' : '';
       const mediaTag = cat === 'aigc' ?
@@ -2877,326 +2951,217 @@ function renderDetail(id) {
 
   document.body.classList.add('detail-mode');
   const container = document.getElementById('viewDetail');
-  const cat = id.startsWith('aigc') ? 'aigc' : (id.startsWith('print') ? 'print' : (id.startsWith('video') ? 'video' : (id.startsWith('campaign') ? 'campaign' : 'ip')));
+  const cat = id.startsWith('aigc') ? 'aigc' : (id.startsWith('video') ? 'video' : (id.startsWith('campaign') ? 'campaign' : 'ip'));
 
-  // Hero
-  let heroHtml;
-  if (cat === 'aigc') {
-    heroHtml = '<div class="detail-hero" style="background:linear-gradient(135deg,#C9A063 0%,#A98545 40%,#F5F0E6 100%);min-height:50vh;display:flex;align-items:flex-end;">' +
-      '<div class="detail-hero-overlay" style="position:relative;width:100%;">' +
-        '<div class="detail-category">' + work.tag + '</div>' +
-        '<h1 class="detail-title">' + work.title + '</h1>' +
-        '<div class="detail-subtitle">' + work.meta + '</div>' +
-      '</div>' +
-    '</div>';
-  } else if (cat === 'video') {
-    heroHtml = '<div class="detail-hero">' +
-      '<img class="detail-hero-image" src="' + work.cover + '" alt="' + work.title + '">' +
-      '<div class="detail-hero-overlay">' +
-        '<div class="detail-category">' + work.tag + '</div>' +
-        '<h1 class="detail-title">' + work.title + '</h1>' +
-        '<div class="detail-subtitle">' + work.meta + '</div>' +
-      '</div>' +
-    '</div>';
-  } else {
-    heroHtml = '<div class="detail-hero">' +
-      '<img class="detail-hero-image" src="' + work.cover + '" alt="' + work.title + '">' +
-      '<div class="detail-hero-overlay">' +
-        '<div class="detail-category">' + work.tag + '</div>' +
-        '<h1 class="detail-title">' + work.title + '</h1>' +
-        '<div class="detail-subtitle">' + work.meta + '</div>' +
-      '</div>' +
-    '</div>';
-  }
+  // ===== 站酷风格 Hero 元数据 =====
+  const scMeta = {
+    aigc:     {num: '01', en: 'AIGC Video',         zh: 'AIGC 视频'},
+    campaign: {num: '02', en: 'Creative Campaign',  zh: '创意策划'},
+    video:    {num: '03', en: 'AIGC Audio',         zh: 'AIGC 音频'},
+    ip:       {num: '04', en: 'IP Design',          zh: 'IP 设计'}
+  };
+  const m = scMeta[cat];
 
-  // Info bar
-  const infoBar = '<div class="detail-info-bar">' +
-    '<div class="info-item"><div class="info-label">客户</div><div class="info-value">' + work.client + '</div></div>' +
-    '<div class="info-item"><div class="info-label">角色</div><div class="info-value">' + work.role + '</div></div>' +
-    '<div class="info-item"><div class="info-label">年份</div><div class="info-value">' + work.year + '</div></div>' +
-    '<div class="info-item"><div class="info-label">周期</div><div class="info-value">' + work.duration + '</div></div>' +
+  // ===== Hero =====
+  let heroHtml = '<div class="sc-hero">' +
+    '<div class="sc-hero-num">' + m.num + '.</div>' +
+    '<div class="sc-hero-title">' + m.en + '<span class="sc-title-dot">.</span></div>' +
+    '<div class="sc-hero-zh">' + m.zh + '</div>' +
+    '<div class="sc-hero-portfolio">PORTFOLIO</div>' +
+    '<div class="sc-hero-meta">' +
+      '<span>客户 / ' + work.client + '</span>' +
+      '<span>年份 / ' + work.year + '</span>' +
+      '<span>角色 / ' + work.role + '</span>' +
+      '<span>周期 / ' + work.duration + '</span>' +
+    '</div>' +
   '</div>';
 
-  // Concept section
+  // ===== 主视觉 Cover =====
+  let coverHtml = '';
+  if (cat === 'aigc') {
+    coverHtml = '<div class="sc-cover">' +
+      '<div class="sc-video-wrap"><iframe class="bilibili-player" src="//player.bilibili.com/player.html?bvid=' + work.bvid + '&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div>' +
+      '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
+    '</div>';
+  } else if (cat === 'video') {
+    coverHtml = '<div class="sc-cover">' +
+      '<img src="' + work.cover + '" alt="' + work.title + '">' +
+      '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
+    '</div>';
+  } else {
+    coverHtml = '<div class="sc-cover">' +
+      '<img src="' + work.cover + '" alt="' + work.title + '">' +
+      '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
+    '</div>';
+  }
+
+  // ===== 内容 Body =====
   let bodyHtml = '';
 
-  // B站嵌入播放器 (aigc works)
+  // --- AIGC 视频 ---
   if (cat === 'aigc') {
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">正片播放</h3>' +
-      '<div class="bilibili-player-wrap">' +
-      '<iframe class="bilibili-player" src="//player.bilibili.com/player.html?bvid=' + work.bvid + '&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe>' +
-      '</div></div>';
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Design Concept</span><span class="sc-section-zh">设计理念</span></div>' +
+      '<div class="sc-text"><p>' + work.concept + '</p></div></div>';
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Project Note</span><span class="sc-section-zh">项目说明</span></div>' +
+      '<div class="sc-text"><p>' + (work.description || '') + '</p></div></div>';
   }
-  // 音频播放器 (audio/sound design works)
+
+  // --- AIGC 音频（音景播放 + 解析） ---
   else if (cat === 'video') {
     var detailWaveBars = '';
     for (var db = 0; db < 48; db++) {
       var dh = 12 + Math.random() * 36;
-      detailWaveBars += '<div class="detail-wave-bar" style="height:' + dh.toFixed(0) + 'px;animation-delay:' + (db * 0.03).toFixed(2) + 's"></div>';
+      detailWaveBars += '<div class="sc-audio-wavebar" style="height:' + dh.toFixed(0) + 'px"></div>';
     }
-    bodyHtml += '<div class="detail-section audio-detail-section">' +
-      '<h3 class="detail-section-title">音景播放</h3>' +
-      '<div class="detail-audio-player">' +
-        '<div class="detail-audio-cover"><img src="' + work.cover + '" alt="' + work.title + '">' +
-        '<button class="detail-audio-play-btn" id="detailAudioPlayBtn" onclick="toggleDetailAudio()"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>' +
-        '<div class="detail-audio-info">' +
-          '<div class="detail-audio-title">' + work.title + '</div>' +
-          '<div class="detail-audio-subtitle">' + work.tag + ' · ' + work.meta + '</div>' +
-          '<div class="detail-audio-waveform" id="detailAudioWaveform">' + detailWaveBars + '</div>' +
-          '<div class="detail-audio-controls">' +
-            '<div class="detail-audio-progress" id="detailAudioProgress" onclick="seekDetailAudio(event)"><div class="detail-audio-progress-filled" id="detailAudioProgressFilled"></div></div>' +
-            '<div class="detail-audio-time" id="detailAudioTime">00:00 / 00:00</div>' +
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Soundscape Player</span><span class="sc-section-zh">音景播放</span></div>' +
+      '<div class="sc-audio-wrap">' +
+        '<div class="sc-audio-cover"><img src="' + work.cover + '" alt="' + work.title + '">' +
+          '<button class="sc-audio-play" id="detailAudioPlayBtn" onclick="toggleDetailAudio()"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z"/></svg></button></div>' +
+        '<div>' +
+          '<div class="sc-audio-info-title">' + work.title + '</div>' +
+          '<div class="sc-audio-info-sub">' + work.tag + ' · ' + work.meta + '</div>' +
+          '<div class="sc-audio-waveform" id="detailAudioWaveform">' + detailWaveBars + '</div>' +
+          '<div class="sc-audio-controls">' +
+            '<div class="sc-audio-progress" id="detailAudioProgress" onclick="seekDetailAudio(event)"><div class="sc-audio-progress-filled" id="detailAudioProgressFilled"></div></div>' +
+            '<div class="sc-audio-time" id="detailAudioTime">00:00 / 00:00</div>' +
           '</div>' +
         '</div>' +
         '<video id="detailAudioVideo" src="' + work.video + '" preload="metadata" ontimeupdate="updateDetailAudioTime()" onended="resetDetailAudio()" onloadedmetadata="setDetailAudioDuration()"></video>' +
-      '</div>' +
-    '</div>';
+      '</div></div>';
+
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Concept</span><span class="sc-section-zh">创作理念</span></div>' +
+      '<div class="sc-text"><p>' + work.concept + '</p></div></div>';
+
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Story</span><span class="sc-section-zh">创作背景</span></div>' +
+      '<div class="sc-text"><p>' + work.story + '</p></div></div>';
+
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Sound Design</span><span class="sc-section-zh">声音解析</span></div>' +
+      '<div class="sc-text"><p>' + work.shots + '</p></div></div>';
+
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Technique</span><span class="sc-section-zh">技术实现</span></div>' +
+      '<div class="sc-text"><p><strong style="color:var(--text)">使用工具：</strong>' + work.tools + '</p>' +
+      '<p>' + work.technique + '</p></div></div>';
+
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Insight</span><span class="sc-section-zh">创作心得</span></div>' +
+      '<div class="sc-text"><p>' + work.insight + '</p></div></div>';
   }
 
-  var detailConcept = work.concept || '';
-  var detailDesc = work.description || '';
-  bodyHtml += '<div class="detail-section">' +
-    '<h3 class="detail-section-title">设计理念</h3>' +
-    '<div class="detail-text"><p>' + detailConcept + '</p>' + (detailDesc ? '<p>' + detailDesc + '</p>' : '') + '</div>' +
-  '</div>';
-
-  // Category-specific sections
-  if (cat === 'ip') {
-    // ===== VI 品牌手册式详情排版 =====
-
-    // 01 角色形象规范
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">角色形象规范</h3>' +
-      '<div class="vi-character-grid">' +
-        '<div class="vi-char-main">' +
-          '<img src="' + work.coreImage + '" alt="核心形象">' +
-          '<div class="vi-img-label">核心形象 / 官方主视觉</div>' +
-        '</div>' +
-        '<div class="vi-char-side">' +
-          '<div class="vi-char-sub"><img src="' + work.threeViewImage + '" alt="三视图"><div class="vi-img-label">三视图规范</div></div>' +
-          '<div class="vi-char-sub"><img src="' + work.settingCardImage + '" alt="角色设定卡"><div class="vi-img-label">角色设定卡</div></div>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
-
-    // 02 角色锚点
-    var anchorRows = '';
-    work.anchors.forEach(function(a) {
-      anchorRows += '<tr><td class="vi-td-dim">' + a.dim + '</td><td>' + a.val + '</td></tr>';
-    });
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">角色锚点</h3>' +
-      '<table class="vi-table"><tbody>' + anchorRows + '</tbody></table>' +
-    '</div>';
-
-    // 03 色彩系统规范
-    var colorCards = '';
-    work.colors.forEach(function(c) {
-      colorCards += '<div class="vi-color-card">' +
-        '<div class="vi-color-swatch" style="background:' + c.hex + '"></div>' +
-        '<div class="vi-color-name">' + c.name + '</div>' +
-        '<div class="vi-color-hex">' + c.hex + '</div>' +
-        '<div class="vi-color-role">' + c.role + '</div>' +
-        '<div class="vi-color-use">' + c.use + '</div>' +
-      '</div>';
-    });
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">色彩系统规范</h3>' +
-      '<div class="vi-color-grid">' + colorCards + '</div>' +
-      '<div class="vi-board-wrap"><img src="' + work.colorBoardImage + '" alt="微醺时刻色彩系统与世界观"><div class="vi-img-label">微醺时刻色彩系统与世界观 · 深夜 / 微醺 / 余温 / 拂晓</div></div>' +
-    '</div>';
-
-    // 04 视觉语言与风格
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">视觉语言与风格</h3>' +
-      '<div class="detail-text"><p>' + work.visualStyle + '</p></div>' +
-    '</div>';
-
-    // 05 延展应用规范
-    var extHtml = '<div class="detail-section">' +
-      '<h3 class="detail-section-title">延展应用规范</h3>' +
-      '<div class="vi-extension-grid">';
-    work.extensions.forEach(function(e) {
-      extHtml += '<div class="vi-ext-card">' +
-        '<div class="vi-ext-image"><img src="' + e.image + '" alt="' + e.name + '"></div>' +
-        '<div class="vi-ext-info"><div class="vi-ext-name">' + e.name + '</div><div class="vi-ext-desc">' + e.desc + '</div></div>' +
-      '</div>';
-    });
-    extHtml += '</div></div>';
-    bodyHtml += extHtml;
-
-    // 06 使用禁区与合规要求
-    var restrHtml = '<div class="detail-section">' +
-      '<h3 class="detail-section-title">使用禁区与合规要求</h3>' +
-      '<ul class="vi-restriction-list">';
-    work.restrictions.forEach(function(r) {
-      restrHtml += '<li>' + r + '</li>';
-    });
-    restrHtml += '</ul></div>';
-    bodyHtml += restrHtml;
-  }
-
-  if (cat === 'video') {
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">创作背景</h3>' +
-      '<div class="detail-text"><p>' + work.story + '</p></div>' +
-    '</div>';
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">镜头解析</h3>' +
-      '<div class="detail-text"><p>' + work.shots + '</p></div>' +
-    '</div>';
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">技术实现</h3>' +
-      '<div class="detail-text"><p>' + work.technique + '</p></div>' +
-    '</div>';
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">创作心得</h3>' +
-      '<div class="detail-text"><p>' + work.insight + '</p></div>' +
-    '</div>';
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">制作信息</h3>' +
-      '<div class="detail-text"><p><strong style="color:var(--text)">使用工具：</strong>' + work.tools + '</p>' +
-      '<p>本片全程采用 AI 生成技术制作，从概念构思到最终输出无需传统拍摄流程。通过精准的提示词工程与多轮迭代，实现了电影级的画面质量与氛围控制。</p></div>' +
-    '</div>';
-  }
-
-  // Campaign type: Featured rich detail page
-  if (cat === 'campaign') {
-    // 侧边导航
-    bodyHtml += '<div class="campaign-sidenav" id="campaignSidenav">';
-    bodyHtml += '<div class="sidenav-title">目录</div>';
-    var navItems = [
-      {id: 'camp-concept', label: '设计理念'},
-      {id: 'camp-story', label: '创意背景'},
-      {id: 'camp-visual', label: '视觉系统'},
-      {id: 'camp-video', label: '视频策划'},
-      {id: 'camp-posters', label: '城市海报'},
-      {id: 'camp-workflow', label: 'AIGC工作流'},
-      {id: 'camp-distribution', label: '传播策略'}
-    ];
-    navItems.forEach(function(item) {
-      bodyHtml += '<a href="#' + item.id + '" class="sidenav-link" onclick="event.preventDefault();document.getElementById(\'' + item.id + '\').scrollIntoView({behavior:\'smooth\'})">' + item.label + '</a>';
-    });
-    bodyHtml += '</div>';
-
-    // 设计理念 - 左图右文
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-concept">';
-    bodyHtml += '<div class="campaign-concept-layout">';
-    bodyHtml += '<div class="campaign-concept-image"><img src="' + work.cover + '" alt="主视觉"><div class="campaign-concept-img-label">主视觉 / 重庆·辣</div></div>';
-    bodyHtml += '<div class="campaign-concept-text">';
-    bodyHtml += '<h3 class="detail-section-title">设计理念</h3>';
-    bodyHtml += '<p class="campaign-core-sentence">' + work.conceptCore + '</p>';
-    bodyHtml += '<ul class="campaign-points">';
-    work.conceptPoints.forEach(function(p) {
-      bodyHtml += '<li>' + p + '</li>';
-    });
-    bodyHtml += '</ul></div></div></div>';
-
-    // 创意背景 - 核心句 + 要点
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-story">';
-    bodyHtml += '<h3 class="detail-section-title">创意背景</h3>';
-    bodyHtml += '<p class="campaign-core-sentence">' + work.storyCore + '</p>';
-    bodyHtml += '<ul class="campaign-points campaign-points-inline">';
-    work.storyPoints.forEach(function(p) {
-      bodyHtml += '<li>' + p + '</li>';
-    });
+  // --- 创意策划 ---
+  else if (cat === 'campaign') {
+    // 设计理念
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Design Concept</span><span class="sc-section-zh">设计理念</span></div>' +
+      '<div class="sc-text"><p>' + work.conceptCore + '</p></div>' +
+      '<ul class="sc-restrict" style="margin-top:16px">';
+    work.conceptPoints.forEach(function(p) { bodyHtml += '<li>' + p + '</li>'; });
     bodyHtml += '</ul></div>';
 
-    // 视觉系统 - 四城主题色色块 + 色值
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-visual">';
-    bodyHtml += '<h3 class="detail-section-title">视觉系统</h3>';
-    bodyHtml += '<p class="campaign-core-sentence">' + work.visualCore + '</p>';
-    bodyHtml += '<div class="campaign-color-grid">';
-    work.visualColors.forEach(function(c, i) {
-      bodyHtml += '<div class="campaign-color-card">';
-      bodyHtml += '<div class="campaign-color-swatch" style="background:' + c.color + '"></div>';
-      bodyHtml += '<div class="campaign-color-info">';
-      bodyHtml += '<div class="campaign-color-name">' + c.name + '</div>';
-      bodyHtml += '<div class="campaign-color-desc">' + c.desc + ' / ' + c.color + '</div>';
-      bodyHtml += '</div></div>';
-    });
-    bodyHtml += '</div>';
-    bodyHtml += '<p class="campaign-visual-note">统一 3D 梦幻微缩景观质感 + 暖色柔和光影 + 「Let us 城市」大标题版式 + 左下品牌栏 + 右下搜索框布局</p>';
-    bodyHtml += '</div>';
+    // 创意背景
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Story</span><span class="sc-section-zh">创意背景</span></div>' +
+      '<div class="sc-text"><p>' + work.storyCore + '</p><p>' + work.campaignStory + '</p></div></div>';
 
-    // 视频策划 - 视频内联预览 + 核心句 + 要点
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-video">';
-    bodyHtml += '<h3 class="detail-section-title">视频策划</h3>';
-    bodyHtml += '<p class="campaign-core-sentence">' + work.videoCore + '</p>';
-    bodyHtml += '<ul class="campaign-points">';
-    work.videoPoints.forEach(function(p) {
-      bodyHtml += '<li>' + p + '</li>';
+    // 城市海报系列
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">City Posters</span><span class="sc-section-zh">城市海报系列</span></div>' +
+      '<div class="sc-grid-2">';
+    work.gallery.forEach(function(g) {
+      bodyHtml += '<div class="sc-grid-item"><img src="' + g.url + '" alt="' + g.caption + '"><div class="sc-grid-cap">' + g.caption + '</div></div>';
     });
-    bodyHtml += '</ul>';
-    bodyHtml += '<div class="campaign-video-grid">';
+    bodyHtml += '</div></div>';
+
+    // 视频策划
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Campaign Video</span><span class="sc-section-zh">视频策划</span></div>' +
+      '<div class="sc-text"><p>' + work.videoCore + '</p><p>' + work.campaignVideoPlan + '</p></div>' +
+      '<div class="sc-grid-2" style="margin-top:24px">';
     work.videos.forEach(function(v, i) {
-      bodyHtml += '<div class="campaign-video-item">' +
-        '<div class="campaign-video-label"><span class="campaign-video-num">0' + (i+1) + '</span><span class="campaign-video-title">' + v.title + '</span></div>' +
-        '<div class="campaign-video-player">' +
-          '<video src="' + v.url + '" poster="' + v.cover + '" controls playsinline preload="metadata" class="campaign-video-el"></video>' +
-        '</div>' +
-        '<div class="campaign-video-subtitle">' + v.subtitle + '</div>' +
+      bodyHtml += '<div class="sc-grid-item">' +
+        '<div style="position:relative"><video src="' + v.url + '" poster="' + v.cover + '" controls playsinline preload="metadata" style="width:100%;display:block"></video></div>' +
+        '<div class="sc-grid-cap">0' + (i+1) + ' / ' + v.title + ' — ' + v.subtitle + '</div></div>';
+    });
+    bodyHtml += '</div></div>';
+
+    // 视觉系统
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Visual System</span><span class="sc-section-zh">视觉系统</span></div>' +
+      '<div class="sc-text"><p>' + work.visualCore + '</p><p>' + work.campaignVisual + '</p></div>' +
+      '<div class="sc-grid-4" style="margin-top:24px">';
+    work.visualColors.forEach(function(c) {
+      bodyHtml += '<div class="sc-grid-item">' +
+        '<div class="sc-color-swatch" style="background:' + c.color + '"></div>' +
+        '<div class="sc-color-info"><div class="sc-color-name">' + c.name + '</div><div class="sc-color-hex">' + c.color + '</div><div class="sc-color-role">' + c.desc + '</div></div>' +
       '</div>';
     });
     bodyHtml += '</div></div>';
 
-    // 城市海报系列
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-posters">';
-    bodyHtml += '<h3 class="detail-section-title">城市海报系列</h3>';
-    bodyHtml += '<div class="detail-gallery cols-2 campaign-gallery">';
-    work.gallery.forEach(function(g) {
-      bodyHtml += '<div class="gallery-item"><img src="' + g.url + '" alt="' + g.caption + '"><div class="gallery-caption">' + g.caption + '</div></div>';
-    });
-    bodyHtml += '</div></div>';
+    // AIGC 工作流
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">AIGC Workflow</span><span class="sc-section-zh">AIGC 工作流</span></div>' +
+      '<div class="sc-text"><p>' + work.campaignWorkflow + '</p></div></div>';
 
-    // AIGC工作流 - 6步横向时间轴
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-workflow">';
-    bodyHtml += '<h3 class="detail-section-title">AIGC 工作流</h3>';
-    bodyHtml += '<div class="campaign-workflow-timeline">';
-    work.workflowSteps.forEach(function(step, i) {
-      bodyHtml += '<div class="workflow-step">';
-      bodyHtml += '<div class="workflow-step-num">' + step.num + '</div>';
-      bodyHtml += '<div class="workflow-step-title">' + step.title + '</div>';
-      bodyHtml += '<div class="workflow-step-desc">' + step.desc + '</div>';
-      if (i < work.workflowSteps.length - 1) {
-        bodyHtml += '<div class="workflow-step-arrow">→</div>';
-      }
+    // 传播策略
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Distribution</span><span class="sc-section-zh">传播策略</span></div>' +
+      '<div class="sc-text"><p>' + work.distributionCore + '</p><p>' + work.campaignDistribution + '</p></div>' +
+      '<div class="sc-grid-3" style="margin-top:24px">';
+    work.distributionCols.forEach(function(col) {
+      bodyHtml += '<div class="sc-grid-item" style="padding:24px">' +
+        '<div style="font-size:28px;margin-bottom:12px">' + col.icon + '</div>' +
+        '<div class="sc-color-name" style="margin-bottom:12px">' + col.title + '</div>';
+      col.points.forEach(function(p) { bodyHtml += '<div style="font-size:13px;color:var(--text-dim);padding:5px 0;border-top:1px solid var(--border)">' + p + '</div>'; });
       bodyHtml += '</div>';
     });
     bodyHtml += '</div></div>';
-
-    // 传播策略 - 线上/线下/周边 三栏卡片
-    bodyHtml += '<div class="detail-section campaign-section" id="camp-distribution">';
-    bodyHtml += '<h3 class="detail-section-title">传播策略</h3>';
-    bodyHtml += '<p class="campaign-core-sentence">' + work.distributionCore + '</p>';
-    bodyHtml += '<div class="campaign-distribution-grid">';
-    work.distributionCols.forEach(function(col) {
-      bodyHtml += '<div class="distribution-card">';
-      bodyHtml += '<div class="distribution-card-icon">' + col.icon + '</div>';
-      bodyHtml += '<div class="distribution-card-title">' + col.title + '</div>';
-      bodyHtml += '<ul class="distribution-card-points">';
-      col.points.forEach(function(p) {
-        bodyHtml += '<li>' + p + '</li>';
-      });
-      bodyHtml += '</ul></div>';
-    });
-    bodyHtml += '</div></div>';
   }
 
-  if (cat === 'print') {
-    bodyHtml += '<div class="detail-section">' +
-      '<h3 class="detail-section-title">作品展示</h3>' +
-      '<div class="detail-gallery cols-2">';
-    work.gallery.forEach(function(g) {
-      bodyHtml += '<div class="gallery-item"><img src="' + g.url + '" alt="' + g.caption + '"><div class="gallery-caption">' + g.caption + '</div></div>';
+  // --- IP 设计（VI 手册式） ---
+  else if (cat === 'ip') {
+    // 角色形象
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Character Design</span><span class="sc-section-zh">角色形象</span></div>' +
+      '<img class="sc-big-img" src="' + work.coreImage + '" alt="核心形象">' +
+      '<div class="sc-cover-cap">' + work.title + ' · 核心形象 / 官方主视觉</div>' +
+      '<div class="sc-grid-2" style="margin-top:20px">' +
+        '<div class="sc-grid-item"><img src="' + work.threeViewImage + '" alt="三视图"><div class="sc-grid-cap">三视图规范</div></div>' +
+        '<div class="sc-grid-item"><img src="' + work.settingCardImage + '" alt="角色设定卡"><div class="sc-grid-cap">角色设定卡</div></div>' +
+      '</div></div>';
+
+    // 角色锚点
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Anchors</span><span class="sc-section-zh">角色锚点</span></div>' +
+      '<table class="sc-anchor-table"><tbody>';
+    work.anchors.forEach(function(a) {
+      bodyHtml += '<tr><td>' + a.dim + '</td><td>' + a.val + '</td></tr>';
+    });
+    bodyHtml += '</tbody></table></div>';
+
+    // 色彩系统
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Color System</span><span class="sc-section-zh">色彩系统</span></div>' +
+      '<div class="sc-grid-3">';
+    work.colors.forEach(function(c) {
+      bodyHtml += '<div class="sc-grid-item">' +
+        '<div class="sc-color-swatch" style="background:' + c.hex + '"></div>' +
+        '<div class="sc-color-info"><div class="sc-color-name">' + c.name + '</div><div class="sc-color-hex">' + c.hex + '</div><div class="sc-color-role">' + c.role + ' · ' + c.use + '</div></div>' +
+      '</div>';
     });
     bodyHtml += '</div></div>';
+
+    // 视觉语言
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Visual Language</span><span class="sc-section-zh">视觉语言与风格</span></div>' +
+      '<div class="sc-text"><p>' + work.visualStyle + '</p></div></div>';
+
+    // 延展应用
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Applications</span><span class="sc-section-zh">延展应用</span></div>';
+    work.extensions.forEach(function(e) {
+      bodyHtml += '<div class="sc-ext-row">' +
+        '<div class="sc-ext-img"><img src="' + e.image + '" alt="' + e.name + '"></div>' +
+        '<div class="sc-ext-info"><div class="sc-ext-name">' + e.name + '</div><div class="sc-ext-desc">' + e.desc + '</div></div>' +
+      '</div>';
+    });
+    bodyHtml += '</div>';
+
+    // 使用禁区
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Restrictions</span><span class="sc-section-zh">使用禁区与合规要求</span></div>' +
+      '<ul class="sc-restrict">';
+    work.restrictions.forEach(function(r) { bodyHtml += '<li>' + r + '</li>'; });
+    bodyHtml += '</ul></div>';
   }
 
-  // Next project (hide when only one work in category)
+  // ===== 下一个项目 =====
   const allInCat = WORKS[cat];
-  if (allInCat.length > 1) {
+  if (allInCat && allInCat.length > 1) {
     const currentIdx = allInCat.findIndex(function(w) { return w.id === id; });
     const nextWork = allInCat[(currentIdx + 1) % allInCat.length];
     bodyHtml += '<div class="next-project">' +
@@ -3214,11 +3179,11 @@ function renderDetail(id) {
       '返回作品列表' +
     '</button>' +
     heroHtml +
-    '<div class="detail-body">' + infoBar + bodyHtml + '</div>' +
+    coverHtml +
+    '<div class="detail-body" style="padding:0">' + bodyHtml + '</div>' +
   '</div>';
 
   window.scrollTo(0, 0);
-  // video category now uses audio player, no need for initVideoPlayer
   initLightbox();
   initCampaignVideoMutex();
 }
