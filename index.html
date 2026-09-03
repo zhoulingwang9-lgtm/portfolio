@@ -3208,10 +3208,10 @@ function renderDetail(id) {
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Character Design</span><span class="sc-section-zh">角色形象</span></div>' +
       '<img class="sc-big-img" src="' + work.coreImage + '" alt="核心形象">' +
       '<div class="sc-cover-cap">' + work.title + ' · 核心形象 / 官方主视觉</div>' +
-      '<div class="sc-grid-2" style="margin-top:20px">' +
-        '<div class="sc-grid-item"><img src="' + work.threeViewImage + '" alt="三视图"><div class="sc-grid-cap">三视图规范</div></div>' +
-        '<div class="sc-grid-item"><img src="' + work.settingCardImage + '" alt="角色设定卡"><div class="sc-grid-cap">角色设定卡</div></div>' +
-      '</div></div>';
+      '<img class="sc-big-img" src="' + work.threeViewImage + '" alt="三视图" style="margin-top:20px">' +
+      '<div class="sc-cover-cap">三视图规范</div>' +
+      '<img class="sc-big-img" src="' + work.settingCardImage + '" alt="角色设定卡" style="margin-top:20px">' +
+      '<div class="sc-cover-cap">角色设定卡</div></div>';
 
     // 角色锚点
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Anchors</span><span class="sc-section-zh">角色锚点</span></div>' +
