@@ -2824,7 +2824,7 @@ const WORKS = {
         { name: '香槟金', hex: '#C9A063', role: '辅色', use: '灯光、领结、酒杯、高光' },
         { name: '奶白', hex: '#F5F0E6', role: '点缀色', use: '衬衫、肚皮、奶油泡沫、留白' }
       ],
-      colorBoardImage: 'https://aka.doubaocdn.com/s/DVlriv07Du',
+      colorBoardImage: 'https://aka.doubaocdn.com/s/8OX35C56A1',
       visualStyle: '统一采用 3D 潮玩公仔质感与精致商业渲染结合的风格，圆润 Q 版、软萌治愈。光影以清吧暖金低照度、香槟金光晕为主，营造微醺松弛感；材质呈现短绒毛与柔和哑光质感。画面信息层级遵循角色居中、品牌色统一、留白克制的原则。',
       extensions: [
         { name: '穿搭系列', desc: '#01 经典调酒师、#02 爵士夜、#03 居家治愈、#04 节日特调。换装仅允许改变服装款式、局部配饰与辅助配色，不改变角色脸型、头身比与核心识别点。', image: 'https://aka.doubaocdn.com/s/wTEpEZ551g' },
@@ -3252,8 +3252,11 @@ function renderDetail(id) {
     bodyHtml += '</tbody></table></div>';
 
     // 色彩系统
-    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Color System</span><span class="sc-section-zh">色彩系统</span></div>' +
-      '<div class="sc-grid-3">';
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Color System</span><span class="sc-section-zh">色彩系统</span></div>';
+    if (work.colorBoardImage) {
+      bodyHtml += '<div class="sc-big-img" style="margin-bottom:32px;"><img src="' + work.colorBoardImage + '" alt="MOCHI 品牌宣传海报" style="width:100%;border-radius:12px;display:block;"></div>';
+    }
+    bodyHtml += '<div class="sc-grid-3">';
     work.colors.forEach(function(c) {
       bodyHtml += '<div class="sc-grid-item">' +
         '<div class="sc-color-swatch" style="background:' + c.hex + '"></div>' +
