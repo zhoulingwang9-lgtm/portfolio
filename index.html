@@ -2807,12 +2807,53 @@ const WORKS = {
         '禁止出现不适当的身体暴露、敏感政治、宗教、暴力或低俗内容。'
       ]
     }
+  ],
+  brand: [
+    {
+      id: 'brand-1',
+      title: '瓦煲记 WABAOJI',
+      tag: 'BRAND IDENTITY / VI SYSTEM',
+      meta: '煲仔饭品牌视觉识别系统（VI） / 2026',
+      cover: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-08.png',
+      client: '瓦煲记（煲仔饭品牌概念项目）',
+      role: '品牌设计 / Logo 规范 / VI 系统 / 延展应用',
+      year: '2026',
+      duration: '6 周',
+      concept: '瓦煲记 WABAOJI 是以广式煲仔饭为核心品类的餐饮品牌 VI 设计项目。以「一煲烟火 慢火生香」为品牌主张，将瓦煲、柴火、饭焦、腊味等市井烟火元素转化为完整的品牌视觉识别系统。品牌三色为深褐瓦煲色 #6B4226、锅巴金 #D9A441、饭香米白 #F7EFE2，整体呈现「传统烟火气 × 现代品牌规范」的气质，覆盖从 Logo 规范到城市户外场景的完整落地。',
+      description: '本套 VI 共 12 张规范页：品牌字标、Logo 标准制图、品牌故事、色彩系统、插画卖点、应用物料、包装礼盒、主视觉海报、餐具门店、周边衍生，以及地铁站通道、公交车站两处城市户外宣传场景，可作为品牌全线落地的视觉标准。',
+      slogan: '一煲煙火 慢火生香',
+      pages: [
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-01.png', cap: '品牌字标 / Logo' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-02.png', cap: 'Logo 标准制图规范' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-03.png', cap: '品牌故事' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-04.png', cap: '色彩系统实景' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-05.png', cap: '插画卖点系统' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-06.png', cap: '应用物料' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-07.png', cap: '包装礼盒' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-08.png', cap: '品牌主视觉海报' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-09.png', cap: '餐具门店应用' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-10.png', cap: '周边衍生应用' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-11.png', cap: '地铁站通道宣传' },
+        { img: 'https://zhoulingwang9-lgtm.github.io/portfolio/wabaOji-12.png', cap: '公交车站宣传' }
+      ],
+      colors: [
+        { name: '深褐瓦煲色', hex: '#6B4226', role: '主色', use: '品牌底色、瓦煲、文字' },
+        { name: '锅巴金', hex: '#D9A441', role: '辅色', use: 'Logo、高光、标金' },
+        { name: '饭香米白', hex: '#F7EFE2', role: '点缀色', use: '背景、留白、米香' }
+      ],
+      restrictions: [
+        '禁止改变 Logo 图形结构、字体拼写与品牌三色系统，禁止引入无关装饰配色。',
+        '禁止在未授权渠道使用品牌 Logo 进行商业代言、联名或发布。',
+        '禁止添加未经确认的文字、乱码、伪字或第三方品牌标识。',
+        '应用物料须保持品牌识别一致，不脱离核心视觉系统重画。'
+      ]
+    }
   ]
 };
 
 // Flatten all works for lookup
 const ALL_WORKS = {};
-['aigc', 'campaign', 'ip', 'video'].forEach(function(cat) {
+['aigc', 'campaign', 'ip', 'brand', 'video'].forEach(function(cat) {
   WORKS[cat].forEach(function(w) { ALL_WORKS[w.id] = w; });
 });
 
@@ -2826,7 +2867,8 @@ function renderContents() {
     {cat: 'aigc',     num: '01', zh: 'AIGC 视频', en: 'AIGC Video'},
     {cat: 'campaign', num: '02', zh: '创意策划',   en: 'Creative Campaign'},
     {cat: 'ip',       num: '03', zh: 'IP 设计',    en: 'IP Design'},
-    {cat: 'video',    num: '04', zh: 'AIGC 音频',  en: 'AIGC Audio'}
+    {cat: 'brand',    num: '04', zh: '品牌设计',   en: 'Brand & VI'},
+    {cat: 'video',    num: '05', zh: 'AIGC 音频',  en: 'AIGC Audio'}
   ];
   var items = [];
   cats.forEach(function(item) {
@@ -2846,7 +2888,7 @@ function renderContents() {
 
 // ===== Render Work Cards =====
 function renderWorkCards() {
-  ['aigc', 'campaign', 'ip', 'video'].forEach(function(cat) {
+  ['aigc', 'campaign', 'ip', 'brand', 'video'].forEach(function(cat) {
     const grid = document.getElementById(cat + 'Grid');
     if (!grid) return;
     grid.innerHTML = WORKS[cat].map(function(w, i) {
@@ -2950,14 +2992,15 @@ function renderDetail(id) {
 
   document.body.classList.add('detail-mode');
   const container = document.getElementById('viewDetail');
-  const cat = id.startsWith('aigc') ? 'aigc' : (id.startsWith('video') ? 'video' : (id.startsWith('campaign') ? 'campaign' : 'ip'));
+  const cat = id.startsWith('aigc') ? 'aigc' : (id.startsWith('video') ? 'video' : (id.startsWith('campaign') ? 'campaign' : (id.startsWith('brand') ? 'brand' : 'ip')));
 
   // ===== 站酷风格 Hero 元数据 =====
   const scMeta = {
     aigc:     {num: '01', en: 'AIGC Video',         zh: 'AIGC 视频'},
     campaign: {num: '02', en: 'Creative Campaign',  zh: '创意策划'},
     ip:       {num: '03', en: 'IP Design',          zh: 'IP 设计'},
-    video:    {num: '04', en: 'AIGC Audio',         zh: 'AIGC 音频'}
+    brand:    {num: '04', en: 'Brand & VI',         zh: '品牌设计'},
+    video:    {num: '05', en: 'AIGC Audio',         zh: 'AIGC 音频'}
   };
   const m = scMeta[cat];
 
@@ -3149,6 +3192,46 @@ function renderDetail(id) {
         '<div class="sc-ext-info"><div class="sc-ext-name">' + e.name + '</div><div class="sc-ext-desc">' + e.desc + '</div></div>' +
       '</div>';
     });
+    bodyHtml += '</div>';
+
+    // 使用禁区
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Restrictions</span><span class="sc-section-zh">使用禁区与合规要求</span></div>' +
+      '<ul class="sc-restrict">';
+    work.restrictions.forEach(function(r) { bodyHtml += '<li>' + r + '</li>'; });
+    bodyHtml += '</ul></div>';
+  }
+
+  // --- 品牌设计（VI 全案式） ---
+  else if (cat === 'brand') {
+    // 品牌故事
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Brand Story</span><span class="sc-section-zh">品牌故事</span></div>' +
+      '<div class="sc-text"><p>' + work.concept + '</p><p>' + work.description + '</p></div>' +
+      '<div class="sc-slogan" style="text-align:center;font-size:28px;font-weight:600;color:#6B4226;letter-spacing:4px;margin-top:24px;padding:28px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card)">' + work.slogan + '</div></div>';
+
+    // Logo 系统
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Logo System</span><span class="sc-section-zh">Logo 系统</span></div>' +
+      '<img class="sc-big-img" src="' + work.pages[0].img + '" alt="品牌字标">' +
+      '<div class="sc-cover-cap">瓦煲記 WABAOJI · 品牌字标 / Logo</div>' +
+      '<img class="sc-big-img" src="' + work.pages[1].img + '" alt="Logo制图规范" style="margin-top:20px">' +
+      '<div class="sc-cover-cap">Logo 标准制图规范</div></div>';
+
+    // 色彩系统
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Color System</span><span class="sc-section-zh">色彩系统</span></div>' +
+      '<div class="sc-grid-3">';
+    work.colors.forEach(function(c) {
+      bodyHtml += '<div class="sc-grid-item">' +
+        '<div class="sc-color-swatch" style="background:' + c.hex + '"></div>' +
+        '<div class="sc-color-info"><div class="sc-color-name">' + c.name + '</div><div class="sc-color-hex">' + c.hex + '</div><div class="sc-color-role">' + c.role + ' · ' + c.use + '</div></div>' +
+      '</div>';
+    });
+    bodyHtml += '</div></div>';
+
+    // VI 完整规范页
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">VI System</span><span class="sc-section-zh">VI 完整规范页</span></div>';
+    for (var vi = 2; vi < work.pages.length; vi++) {
+      bodyHtml += '<img class="sc-big-img" src="' + work.pages[vi].img + '" alt="' + work.pages[vi].cap + '">' +
+        '<div class="sc-cover-cap">' + work.pages[vi].cap + '</div>';
+    }
     bodyHtml += '</div>';
 
     // 使用禁区
