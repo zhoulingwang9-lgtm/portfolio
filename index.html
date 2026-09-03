@@ -2232,31 +2232,32 @@ video.detail-hero-image {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px 64px;
+  gap: 16px 72px;
   align-content: center;
   max-width: 860px;
 }
 .contents-item {
   display: flex; flex-direction: column;
-  gap: 4px; padding: 18px 0;
+  gap: 6px; padding: 26px 0;
   border-bottom: 1px solid var(--border);
   cursor: pointer; text-decoration: none;
   transition: padding-left 0.3s ease, border-color 0.3s ease;
 }
 .contents-item:hover { padding-left: 14px; border-color: var(--accent); }
+.contents-item:last-child { grid-column: 1 / -1; max-width: 50%; }
 .ci-num {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(22px, 3vw, 34px); font-weight: 700;
+  font-size: clamp(30px, 4vw, 46px); font-weight: 700;
   color: var(--accent); line-height: 1;
 }
 .ci-zh {
   font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
-  font-size: clamp(18px, 2.2vw, 24px); font-weight: 600;
+  font-size: clamp(24px, 3vw, 34px); font-weight: 600;
   color: var(--text); letter-spacing: 1px;
 }
 .ci-en {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px; font-weight: 500; letter-spacing: 2px;
+  font-size: 13px; font-weight: 500; letter-spacing: 2px;
   color: var(--text-muted); text-transform: uppercase;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
@@ -2746,22 +2747,26 @@ const ALL_WORKS = {};
 function renderContents() {
   var list = document.getElementById('contentsList');
   if (!list) return;
-  var order = ['aigc', 'campaign', 'video', 'ip', 'print'];
-  var enName = {aigc:'AIGC Video', campaign:'Creative Campaign', video:'AIGC Audio', ip:'IP Design', print:'Print Advertising'};
-  var zhName = {aigc:'AIGC 视频', campaign:'创意策划', video:'AIGC 音频', ip:'IP 设计', print:'平面广告'};
+  // 五个分类目录：点击分类进入该分类第一个作品详情页（详情页内可切换同分类其它作品）
+  var cats = [
+    {cat: 'aigc',     num: '01', zh: 'AIGC 视频', en: 'AIGC Video'},
+    {cat: 'campaign', num: '02', zh: '创意策划',   en: 'Creative Campaign'},
+    {cat: 'video',    num: '03', zh: 'AIGC 音频',  en: 'AIGC Audio'},
+    {cat: 'ip',       num: '04', zh: 'IP 设计',    en: 'IP Design'},
+    {cat: 'print',    num: '05', zh: '平面广告',   en: 'Print Advertising'}
+  ];
   var items = [];
-  var num = 1;
-  order.forEach(function(cat) {
-    (WORKS[cat] || []).forEach(function(w) {
-      items.push(
-        '<a class="contents-item" onclick="sessionStorage.setItem(\'portfolioReturn\',\'contents\');openDetail(\'' + w.id + '\')">' +
-          '<span class="ci-num">' + (num < 10 ? '0' : '') + num + '.</span>' +
-          '<span class="ci-zh">' + w.title + '</span>' +
-          '<span class="ci-en">' + enName[cat] + ' / ' + (zhName[cat]) + '</span>' +
-        '</a>'
-      );
-      num++;
-    });
+  cats.forEach(function(item) {
+    var works = WORKS[item.cat] || [];
+    var first = works.length > 0 ? works[0] : null;
+    if (!first) return;
+    items.push(
+      '<a class="contents-item" onclick="sessionStorage.setItem(\'portfolioReturn\',\'contents\');openDetail(\'' + first.id + '\')">' +
+        '<span class="ci-num">' + item.num + '.</span>' +
+        '<span class="ci-zh">' + item.zh + '</span>' +
+        '<span class="ci-en">' + item.en + ' / ' + item.zh + '</span>' +
+      '</a>'
+    );
   });
   list.innerHTML = items.join('');
 }
