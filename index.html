@@ -3253,9 +3253,6 @@ function renderDetail(id) {
 
     // 色彩系统
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Color System</span><span class="sc-section-zh">色彩系统</span></div>';
-    if (work.colorBoardImage) {
-      bodyHtml += '<div class="sc-big-img" style="margin-bottom:32px;"><img src="' + work.colorBoardImage + '" alt="MOCHI 品牌宣传海报" style="width:100%;border-radius:12px;display:block;"></div>';
-    }
     bodyHtml += '<div class="sc-grid-3">';
     work.colors.forEach(function(c) {
       bodyHtml += '<div class="sc-grid-item">' +
@@ -3263,7 +3260,11 @@ function renderDetail(id) {
         '<div class="sc-color-info"><div class="sc-color-name">' + c.name + '</div><div class="sc-color-hex">' + c.hex + '</div><div class="sc-color-role">' + c.role + ' · ' + c.use + '</div></div>' +
       '</div>';
     });
-    bodyHtml += '</div></div>';
+    bodyHtml += '</div>';
+    if (work.colorBoardImage) {
+      bodyHtml += '<div class="sc-big-img" style="margin-top:32px;"><img src="' + work.colorBoardImage + '" alt="MOCHI 品牌宣传海报" style="width:100%;border-radius:12px;display:block;"></div>';
+    }
+    bodyHtml += '</div>';
 
     // 视觉语言
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Visual Language</span><span class="sc-section-zh">视觉语言与风格</span></div>' +
