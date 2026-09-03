@@ -10,15 +10,15 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #141414;
-  --bg-elevated: #1c1c1f;
-  --bg-card: #1a1a1d;
+  --bg: #0E0E10;
+  --bg-elevated: #161619;
+  --bg-card: #131316;
   --text: #F5F0E8;
   --text-dim: #8a8a8a;
   --text-muted: #5a5a5a;
-  --accent: #FF6B35;
-  --accent-dim: #cc5529;
-  --border: #2a2a2e;
+  --accent: #C9A063;
+  --accent-dim: #A98545;
+  --border: #232327;
   --grain-opacity: 0.04;
 }
 
@@ -212,6 +212,13 @@ body.detail-mode .view-detail { display: block; }
   max-width: 900px;
 }
 
+.hero-no {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(72px, 14vw, 180px);
+  font-weight: 700; line-height: 0.8;
+  color: transparent; -webkit-text-stroke: 1px rgba(201,160,99,0.35);
+  margin-bottom: 24px; user-select: none;
+}
 .hero-eyebrow {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 13px; font-weight: 500;
@@ -232,6 +239,13 @@ body.detail-mode .view-detail { display: block; }
 }
 
 .hero-title .accent { color: var(--accent); }
+.hero-title-en {
+  display: block; margin-top: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(16px, 2.4vw, 28px);
+  font-weight: 500; letter-spacing: 6px;
+  color: var(--text-muted); text-transform: uppercase;
+}
 
 .hero-role {
   font-family: 'Space Grotesk', sans-serif;
@@ -281,7 +295,7 @@ body.detail-mode .view-detail { display: block; }
 
 .btn-primary:hover {
   background: var(--text); transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 30px rgba(201, 160, 99, 0.3);
 }
 
 .btn-ghost {
@@ -321,18 +335,32 @@ body.detail-mode .view-detail { display: block; }
 
 .section-number {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px; font-weight: 500;
-  color: var(--accent); letter-spacing: 3px;
-  margin-bottom: 16px;
+  font-size: 15px; font-weight: 600;
+  color: var(--accent); letter-spacing: 4px;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-number::after {
+  content: ''; width: 60px; height: 1px; background: var(--accent); opacity: 0.5;
 }
 
 .section-title {
   font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 700; letter-spacing: -1px;
-  line-height: 1.1; margin-bottom: 20px;
+  line-height: 1.1; margin-bottom: 14px;
 }
 
+.section-title-en {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 5px; color: var(--text-muted);
+  text-transform: uppercase; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-title-en::after {
+  content: ''; width: 48px; height: 1px; background: var(--border);
+}
 .section-desc {
   font-size: 16px; color: var(--text-dim);
   max-width: 560px; font-weight: 300; line-height: 1.8;
@@ -492,19 +520,20 @@ video.detail-hero-image {
 .work-meta { font-size: 13px; color: var(--text-dim); }
 
 .work-index {
-  position: absolute; top: 20px; left: 20px;
+  position: absolute; top: 16px; left: 16px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px; font-weight: 600; color: var(--text);
-  background: rgba(20, 20, 20, 0.6);
+  font-size: 15px; font-weight: 700; letter-spacing: 1px;
+  color: var(--accent);
+  background: rgba(14, 14, 16, 0.72);
   backdrop-filter: blur(8px);
-  padding: 6px 12px; border: 1px solid var(--border); z-index: 2;
+  padding: 5px 12px; border: 1px solid rgba(201,160,99,0.4); z-index: 2;
 }
 
 .play-indicator {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 64px; height: 64px; border-radius: 50%;
-  background: rgba(255, 107, 53, 0.9);
+  background: rgba(201, 160, 99, 0.9);
   display: flex; align-items: center; justify-content: center;
   z-index: 2; transition: all 0.3s ease;
 }
@@ -975,7 +1004,7 @@ video.detail-hero-image {
   background: var(--accent);
   border-radius: 50%;
   transition: transform 0.2s ease;
-  box-shadow: 0 0 8px rgba(255,107,53,0.6);
+  box-shadow: 0 0 8px rgba(201,160,99,0.6);
 }
 
 .player-progress-wrap:hover .player-progress-thumb { transform: translate(-50%, -50%) scale(1); }
@@ -1073,7 +1102,7 @@ video.detail-hero-image {
 }
 
 .player-quality-btn:hover {
-  background: rgba(255,107,53,0.2);
+  background: rgba(201,160,99,0.2);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -1107,7 +1136,7 @@ video.detail-hero-image {
   transition: background 0.2s ease;
 }
 
-.player-quality-option:hover { background: rgba(255,107,53,0.15); }
+.player-quality-option:hover { background: rgba(201,160,99,0.15); }
 .player-quality-option.active { color: var(--accent); font-weight: 600; }
 
 .player-quality-option .check {
@@ -1123,14 +1152,14 @@ video.detail-hero-image {
   transform: translate(-50%, -50%);
   width: 80px; height: 80px;
   border-radius: 50%;
-  background: rgba(255,107,53,0.9);
+  background: rgba(201,160,99,0.9);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 5;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 30px rgba(255,107,53,0.4);
+  box-shadow: 0 4px 30px rgba(201,160,99,0.4);
 }
 
 .player-big-play:hover {
@@ -1205,7 +1234,7 @@ video.detail-hero-image {
   transition: border-color 0.3s ease;
 }
 .campaign-video-item:hover {
-  border-color: rgba(255,107,53,0.4);
+  border-color: rgba(201,160,99,0.4);
 }
 .campaign-video-label {
   display: flex;
@@ -1216,7 +1245,7 @@ video.detail-hero-image {
 .campaign-video-num {
   font-size: 13px;
   font-weight: 700;
-  color: #FF6B35;
+  color: #C9A063;
   letter-spacing: 0.05em;
   font-family: 'Space Grotesk', sans-serif;
 }
@@ -1312,8 +1341,8 @@ video.detail-hero-image {
   z-index: 10000;
 }
 .lightbox-close:hover {
-  background: rgba(255,107,53,0.8);
-  border-color: #FF6B35;
+  background: rgba(201,160,99,0.8);
+  border-color: #C9A063;
   transform: rotate(90deg);
 }
 .lightbox-counter {
@@ -1340,7 +1369,7 @@ video.detail-hero-image {
 }
 .campaign-gallery .gallery-item:hover img {
   transform: none;
-  box-shadow: 0 12px 40px rgba(255,107,53,0.2);
+  box-shadow: 0 12px 40px rgba(201,160,99,0.2);
 }
 
 /* Campaign cover: no crop, original aspect ratio */
@@ -1665,14 +1694,14 @@ video.detail-hero-image {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(ellipse at 30% 20%, rgba(255,107,53,0.06) 0%, transparent 50%),
+  background: radial-gradient(ellipse at 30% 20%, rgba(201,160,99,0.06) 0%, transparent 50%),
               radial-gradient(ellipse at 70% 80%, rgba(100,100,200,0.05) 0%, transparent 50%);
   pointer-events: none;
 }
 .audio-section .section-header { position: relative; z-index: 1; }
 .audio-section .section-title { color: #fff; }
 .audio-section .section-desc { color: rgba(255,255,255,0.5); }
-.audio-section .section-number { color: rgba(255,107,53,0.6); }
+.audio-section .section-number { color: rgba(201,160,99,0.6); }
 
 /* Audio Grid - 错落布局 */
 .audio-grid {
@@ -1703,15 +1732,15 @@ video.detail-hero-image {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,107,53,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201,160,99,0.3), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 .audio-card:hover {
   background: rgba(255,255,255,0.06);
-  border-color: rgba(255,107,53,0.2);
+  border-color: rgba(201,160,99,0.2);
   transform: translateY(-2px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(255,107,53,0.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,160,99,0.05);
 }
 .audio-card:hover::before { opacity: 1; }
 
@@ -1737,7 +1766,7 @@ video.detail-hero-image {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255,107,53,0.95);
+  background: rgba(201,160,99,0.95);
   border: none;
   cursor: pointer;
   display: flex;
@@ -1745,7 +1774,7 @@ video.detail-hero-image {
   justify-content: center;
   color: #fff;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+  box-shadow: 0 4px 12px rgba(201,160,99,0.4);
 }
 .audio-play-btn:hover { transform: scale(1.1); }
 .audio-play-btn svg { width: 16px; height: 16px; fill: currentColor; }
@@ -1781,7 +1810,7 @@ video.detail-hero-image {
 .wave-bar {
   flex: 1;
   max-width: 4px;
-  background: linear-gradient(180deg, #FF6B35 0%, #cc5529 100%);
+  background: linear-gradient(180deg, #C9A063 0%, #A98545 100%);
   border-radius: 2px;
   opacity: 0.4;
   transition: opacity 0.3s ease;
@@ -1812,7 +1841,7 @@ video.detail-hero-image {
 }
 .audio-progress-filled {
   height: 100%;
-  background: linear-gradient(90deg, #FF6B35, #ff8c5a);
+  background: linear-gradient(90deg, #C9A063, #d9b87a);
   border-radius: 2px;
   width: 0%;
   transition: width 0.1s linear;
@@ -1843,7 +1872,7 @@ video.detail-hero-image {
 
 /* Detail Audio Player */
 .audio-detail-section {
-  background: linear-gradient(135deg, rgba(255,107,53,0.03) 0%, rgba(100,100,200,0.02) 100%);
+  background: linear-gradient(135deg, rgba(201,160,99,0.03) 0%, rgba(100,100,200,0.02) 100%);
   border-radius: 20px;
   padding: 32px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -1874,7 +1903,7 @@ video.detail-hero-image {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(255,107,53,0.95);
+  background: rgba(201,160,99,0.95);
   border: none;
   cursor: pointer;
   display: flex;
@@ -1882,7 +1911,7 @@ video.detail-hero-image {
   justify-content: center;
   color: #fff;
   transition: all 0.2s ease;
-  box-shadow: 0 6px 20px rgba(255,107,53,0.5);
+  box-shadow: 0 6px 20px rgba(201,160,99,0.5);
 }
 .detail-audio-play-btn:hover { transform: scale(1.1); }
 .detail-audio-play-btn svg { width: 22px; height: 22px; fill: currentColor; }
@@ -1909,7 +1938,7 @@ video.detail-hero-image {
 .detail-wave-bar {
   flex: 1;
   max-width: 6px;
-  background: linear-gradient(180deg, #FF6B35 0%, #cc5529 100%);
+  background: linear-gradient(180deg, #C9A063 0%, #A98545 100%);
   border-radius: 3px;
   opacity: 0.3;
   transition: opacity 0.3s ease;
@@ -1934,7 +1963,7 @@ video.detail-hero-image {
 }
 .detail-audio-progress-filled {
   height: 100%;
-  background: linear-gradient(90deg, #FF6B35, #ff8c5a);
+  background: linear-gradient(90deg, #C9A063, #d9b87a);
   border-radius: 3px;
   width: 0%;
   transition: width 0.1s linear;
@@ -1994,7 +2023,7 @@ video.detail-hero-image {
 .vi-td-dim {
   width: 180px; font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
   font-size: 13px; letter-spacing: 1px; color: var(--accent); text-transform: uppercase;
-  background: rgba(255,107,53,0.04);
+  background: rgba(201,160,99,0.04);
 }
 .vi-color-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
@@ -2101,7 +2130,7 @@ video.detail-hero-image {
   font-size: clamp(64px, 12vw, 180px);
   font-weight: 700; letter-spacing: 6px;
   line-height: 1; color: #fff;
-  text-shadow: 0 2px 0 rgba(255,255,255,0.06), 0 8px 40px rgba(255,107,53,0.12);
+  text-shadow: 0 2px 0 rgba(255,255,255,0.06), 0 8px 40px rgba(201,160,99,0.12);
 }
 .cover-word .accent { color: var(--accent); }
 .cover-tagline {
@@ -2213,8 +2242,9 @@ video.detail-hero-image {
     <section class="hero" id="hero">
       <div class="hero-bg"></div>
       <div class="hero-content">
-        <div class="hero-eyebrow">Personal Portfolio / 2026</div>
-        <h1 class="hero-title">汪周灵</h1>
+        <div class="hero-no">01</div>
+        <div class="hero-eyebrow">Portfolio · Visual Design &amp; AIGC</div>
+        <h1 class="hero-title">汪周灵<span class="hero-title-en">WANG&nbsp;ZHOULING</span></h1>
         <div class="hero-role">Visual Designer &amp; AIGC Creator</div>
         <p class="hero-subtitle">视觉传达设计专业，专注 AIGC 创意、IP 设计与品牌视觉，用视觉语言讲述品牌故事，在传统与前沿之间寻找表达的边界。</p>
         <div class="hero-job">
@@ -2245,6 +2275,7 @@ video.detail-hero-image {
         <div class="section-header">
           <div class="section-number">01 / ABOUT</div>
           <h2 class="section-title">关于我</h2>
+          <div class="section-title-en">About Me</div>
         </div>
         <div class="about-text">
           <p>你好，我是汪周灵，一名视觉传达设计专业的大四在校学生，热爱跨媒介创意设计。在校期间积累了丰富的项目实践经验，作品横跨传统平面与数字前沿，相信好的设计不只是美观，更是解决问题的有效方式。</p>
@@ -2296,6 +2327,7 @@ video.detail-hero-image {
       <div class="section-header">
         <div class="section-number">02 / WORKS</div>
         <h2 class="section-title">AIGC 视频</h2>
+        <div class="section-title-en">AIGC Video</div>
         <p class="section-desc">运用 AIGC 技术打造的创意视频作品，涵盖儿童科技馆介绍等商业项目，用生成式影像讲述生动故事。</p>
       </div>
       <div class="works-grid cols-2" id="aigcGrid"></div>
@@ -2308,6 +2340,7 @@ video.detail-hero-image {
       <div class="section-header">
         <div class="section-number">03 / WORKS</div>
         <h2 class="section-title">创意策划</h2>
+        <div class="section-title-en">Creative Campaign</div>
         <p class="section-desc">从创意概念到完整执行的 AIGC 品牌 Campaign，涵盖策划、视觉、视频与传播策略的全链路创意生产。</p>
       </div>
       <div class="works-grid cols-1" id="campaignGrid"></div>
@@ -2320,6 +2353,7 @@ video.detail-hero-image {
       <div class="section-header">
         <div class="section-number">04 / WORKS</div>
         <h2 class="section-title">AIGC 音频 / 声音设计</h2>
+        <div class="section-title-en">AIGC Audio / Sound Design</div>
         <p class="section-desc">运用生成式 AI 技术探索声音叙事的新疆界，从城市音景到冥想环境，打造超越传统录音的沉浸式听觉体验。</p>
       </div>
       <div class="audio-grid" id="videoGrid"></div>
@@ -2336,6 +2370,7 @@ video.detail-hero-image {
       <div class="section-header">
         <div class="section-number">05 / WORKS</div>
         <h2 class="section-title">IP 设计</h2>
+        <div class="section-title-en">IP Design</div>
         <p class="section-desc">创造有性格、有故事的角色形象。从概念设定到三视图、从 2D 插画到 3D 潮玩，让品牌拥有可被喜爱的灵魂。</p>
       </div>
       <div class="works-grid cols-1" id="ipGrid"></div>
@@ -2346,6 +2381,7 @@ video.detail-hero-image {
       <div class="section-header">
         <div class="section-number">06 / WORKS</div>
         <h2 class="section-title">平面广告</h2>
+        <div class="section-title-en">Print Advertising</div>
         <p class="section-desc">从品牌策略到视觉执行，为客户打造有记忆点的广告传播。涵盖海报、KV、杂志广告与户外媒体。</p>
       </div>
       <div class="works-grid cols-3" id="printGrid"></div>
@@ -2696,7 +2732,7 @@ function renderWorkCards() {
       const playBtn = (cat === 'video' || cat === 'aigc') ? '<div class="play-indicator"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' : '';
       const campaignCoverClass = cat === 'campaign' ? ' campaign-cover' : '';
       const mediaTag = cat === 'aigc' ?
-        '<div class="work-image work-image-placeholder" style="background:linear-gradient(135deg,#FF6B35 0%,#cc5529 50%,#141414 100%);display:flex;align-items:center;justify-content:center;"><span style="font-family:Space Grotesk,sans-serif;font-size:14px;font-weight:600;color:#fff;letter-spacing:2px;text-align:center;padding:20px;">' + w.title + '</span></div>' :
+        '<div class="work-image work-image-placeholder" style="background:linear-gradient(135deg,#C9A063 0%,#A98545 50%,#0E0E10 100%);display:flex;align-items:center;justify-content:center;"><span style="font-family:Space Grotesk,sans-serif;font-size:14px;font-weight:600;color:#fff;letter-spacing:2px;text-align:center;padding:20px;">' + w.title + '</span></div>' :
         '<img class="work-image' + noCropClass + campaignCoverClass + '" src="' + w.cover + '" alt="' + w.title + '">';
       
       // Campaign Featured 大卡
@@ -2796,7 +2832,7 @@ function renderDetail(id) {
   // Hero
   let heroHtml;
   if (cat === 'aigc') {
-    heroHtml = '<div class="detail-hero" style="background:linear-gradient(135deg,#FF6B35 0%,#cc5529 40%,#141414 100%);min-height:50vh;display:flex;align-items:flex-end;">' +
+    heroHtml = '<div class="detail-hero" style="background:linear-gradient(135deg,#C9A063 0%,#A98545 40%,#0E0E10 100%);min-height:50vh;display:flex;align-items:flex-end;">' +
       '<div class="detail-hero-overlay" style="position:relative;width:100%;">' +
         '<div class="detail-category">' + work.tag + '</div>' +
         '<h1 class="detail-title">' + work.title + '</h1>' +
