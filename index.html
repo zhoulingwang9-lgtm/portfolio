@@ -3236,11 +3236,11 @@ function renderDetail(id) {
   else if (cat === 'ip') {
     // 角色形象
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Character Design</span><span class="sc-section-zh">角色形象</span></div>' +
-      '<img class="sc-big-img" src="' + work.coreImage + '" alt="核心形象">' +
+      '<img class="sc-big-img" src="' + work.coreImage + '" alt="核心形象" loading="lazy">' +
       '<div class="sc-cover-cap">' + work.title + ' · 核心形象 / 官方主视觉</div>' +
-      '<img class="sc-big-img" src="' + work.threeViewImage + '" alt="三视图" style="margin-top:20px">' +
+      '<img class="sc-big-img" src="' + work.threeViewImage + '" alt="三视图" loading="lazy" style="margin-top:20px">' +
       '<div class="sc-cover-cap">三视图规范</div>' +
-      '<img class="sc-big-img" src="' + work.settingCardImage + '" alt="角色设定卡" style="margin-top:20px">' +
+      '<img class="sc-big-img" src="' + work.settingCardImage + '" alt="角色设定卡" loading="lazy" style="margin-top:20px">' +
       '<div class="sc-cover-cap">角色设定卡</div></div>';
 
     // 角色锚点
@@ -3262,7 +3262,7 @@ function renderDetail(id) {
     });
     bodyHtml += '</div>';
     if (work.colorBoardImage) {
-      bodyHtml += '<div class="sc-big-img" style="margin-top:32px;"><img src="' + work.colorBoardImage + '" alt="MOCHI 品牌宣传海报" style="width:100%;border-radius:12px;display:block;"></div>';
+      bodyHtml += '<div class="sc-big-img" style="margin-top:32px;"><img src="' + work.colorBoardImage + '" alt="MOCHI 品牌宣传海报" loading="lazy" style="width:100%;border-radius:12px;display:block;background:#1E2A44;"></div>';
     }
     bodyHtml += '</div>';
 
@@ -3296,9 +3296,9 @@ function renderDetail(id) {
 
     // Logo 系统
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Logo System</span><span class="sc-section-zh">Logo 系统</span></div>' +
-      '<img class="sc-big-img" src="' + work.pages[0].img + '" alt="品牌字标">' +
+      '<img class="sc-big-img" src="' + work.pages[0].img + '" alt="品牌字标" loading="lazy" style="background:#F7EFE2;">' +
       '<div class="sc-cover-cap">瓦煲記 WABAOJI · 品牌字标 / Logo</div>' +
-      '<img class="sc-big-img" src="' + work.pages[1].img + '" alt="Logo制图规范" style="margin-top:20px">' +
+      '<img class="sc-big-img" src="' + work.pages[1].img + '" alt="Logo制图规范" loading="lazy" style="margin-top:20px;background:#F7EFE2;">' +
       '<div class="sc-cover-cap">Logo 标准制图规范</div></div>';
 
     // 色彩系统
@@ -3315,7 +3315,7 @@ function renderDetail(id) {
     // VI 完整规范页
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">VI System</span><span class="sc-section-zh">VI 完整规范页</span></div>';
     for (var vi = 2; vi < work.pages.length; vi++) {
-      bodyHtml += '<img class="sc-big-img" src="' + work.pages[vi].img + '" alt="' + work.pages[vi].cap + '">' +
+      bodyHtml += '<img class="sc-big-img" src="' + work.pages[vi].img + '" alt="' + work.pages[vi].cap + '" loading="lazy" style="background:#F7EFE2;">' +
         '<div class="sc-cover-cap">' + work.pages[vi].cap + '</div>';
     }
     bodyHtml += '</div>';
