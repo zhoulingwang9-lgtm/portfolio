@@ -2598,7 +2598,7 @@ video.detail-hero-image {
 
     <!-- Contact -->
     <section class="contact" id="contact">
-      <div class="section-number" style="margin-bottom: 24px;">07 / CONTACT</div>
+      <div class="section-number" style="margin-bottom: 24px;">06 / CONTACT</div>
       <h2 class="contact-title">寻找实习机会<br><span class="accent">期待与您合作</span></h2>
       <p class="contact-desc">正在积极寻找 AIGC 创意 / IP 设计 / 品牌视觉方向的实习机会，也欢迎项目合作与创意交流，扫码添加微信即可联系我。</p>
       <div class="contact-qr-wrap">
@@ -2920,10 +2920,21 @@ function renderContents() {
     {cat: 'campaign', num: '02', zh: '创意策划',   en: 'Creative Campaign'},
     {cat: 'ip',       num: '03', zh: 'IP 设计',    en: 'IP Design'},
     {cat: 'brand',    num: '04', zh: '品牌设计',   en: 'Brand & VI'},
-    {cat: 'video',    num: '05', zh: 'AIGC 音频',  en: 'AIGC Audio'}
+    {cat: 'video',    num: '05', zh: 'AIGC 音频',  en: 'AIGC Audio'},
+    {cat: 'contact',  num: '06', zh: '联系我',     en: 'Contact'}
   ];
   var items = [];
   cats.forEach(function(item) {
+    if (item.cat === 'contact') {
+      items.push(
+        '<a class="contents-item" onclick="navigateTo(\'contact\')">' +
+          '<span class="ci-num">' + item.num + '.</span>' +
+          '<span class="ci-zh">' + item.zh + '</span>' +
+          '<span class="ci-en">' + item.en + ' / ' + item.zh + '</span>' +
+        '</a>'
+      );
+      return;
+    }
     var works = WORKS[item.cat] || [];
     var first = works.length > 0 ? works[0] : null;
     if (!first) return;
