@@ -3754,7 +3754,7 @@ function formatAudioTime(seconds) {
 // Detail page audio player
 function toggleDetailAudio() {
   var video = document.getElementById('detailAudioVideo');
-  var player = document.querySelector('.detail-audio-player');
+  var player = document.querySelector('.sc-audio-wrap');
   var btn = document.getElementById('detailAudioPlayBtn');
   if (!video || !player) return;
   
@@ -3798,7 +3798,7 @@ function setDetailAudioDuration() {
 }
 
 function resetDetailAudio() {
-  var player = document.querySelector('.detail-audio-player');
+  var player = document.querySelector('.sc-audio-wrap');
   var btn = document.getElementById('detailAudioPlayBtn');
   var progressFilled = document.getElementById('detailAudioProgressFilled');
   if (player) player.classList.remove('playing');
