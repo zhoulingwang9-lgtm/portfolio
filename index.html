@@ -2813,7 +2813,7 @@ const WORKS = {
 
 // Flatten all works for lookup
 const ALL_WORKS = {};
-['aigc', 'campaign', 'video', 'ip'].forEach(function(cat) {
+['aigc', 'campaign', 'ip', 'video'].forEach(function(cat) {
   WORKS[cat].forEach(function(w) { ALL_WORKS[w.id] = w; });
 });
 
@@ -2826,8 +2826,8 @@ function renderContents() {
   var cats = [
     {cat: 'aigc',     num: '01', zh: 'AIGC 视频', en: 'AIGC Video'},
     {cat: 'campaign', num: '02', zh: '创意策划',   en: 'Creative Campaign'},
-    {cat: 'video',    num: '03', zh: 'AIGC 音频',  en: 'AIGC Audio'},
-    {cat: 'ip',       num: '04', zh: 'IP 设计',    en: 'IP Design'}
+    {cat: 'ip',       num: '03', zh: 'IP 设计',    en: 'IP Design'},
+    {cat: 'video',    num: '04', zh: 'AIGC 音频',  en: 'AIGC Audio'}
   ];
   var items = [];
   cats.forEach(function(item) {
@@ -2847,7 +2847,7 @@ function renderContents() {
 
 // ===== Render Work Cards =====
 function renderWorkCards() {
-  ['aigc', 'campaign', 'video', 'ip'].forEach(function(cat) {
+  ['aigc', 'campaign', 'ip', 'video'].forEach(function(cat) {
     const grid = document.getElementById(cat + 'Grid');
     if (!grid) return;
     grid.innerHTML = WORKS[cat].map(function(w, i) {
@@ -2957,8 +2957,8 @@ function renderDetail(id) {
   const scMeta = {
     aigc:     {num: '01', en: 'AIGC Video',         zh: 'AIGC 视频'},
     campaign: {num: '02', en: 'Creative Campaign',  zh: '创意策划'},
-    video:    {num: '03', en: 'AIGC Audio',         zh: 'AIGC 音频'},
-    ip:       {num: '04', en: 'IP Design',          zh: 'IP 设计'}
+    ip:       {num: '03', en: 'IP Design',          zh: 'IP 设计'},
+    video:    {num: '04', en: 'AIGC Audio',         zh: 'AIGC 音频'}
   };
   const m = scMeta[cat];
 
