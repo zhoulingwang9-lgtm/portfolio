@@ -3404,13 +3404,13 @@ function renderDetail(id) {
   else if (cat === 'campaign') {
     // 侧边锚点导航
     bodyHtml += '<div class="campaign-side-nav">' +
-      '<a href="#camp-concept" class="csn-link">设计理念</a>' +
-      '<a href="#camp-story" class="csn-link">创意背景</a>' +
-      '<a href="#camp-posters" class="csn-link">城市海报</a>' +
-      '<a href="#camp-visual" class="csn-link">视觉系统</a>' +
-      '<a href="#camp-video" class="csn-link">视频策划</a>' +
-      '<a href="#camp-workflow" class="csn-link">AIGC工作流</a>' +
-      '<a href="#camp-dist" class="csn-link">传播策略</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-concept\')">设计理念</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-story\')">创意背景</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-posters\')">城市海报</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-visual\')">视觉系统</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-video\')">视频策划</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-workflow\')">AIGC工作流</a>' +
+      '<a class="csn-link" onclick="scrollToSection(\'camp-dist\')">传播策略</a>' +
     '</div>';
 
     // 设计理念：左图右文
@@ -3815,6 +3815,14 @@ function navigateTo(sectionId) {
   } else {
     const el = document.getElementById(sectionId);
     if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
+  }
+}
+
+// ===== 详情页内板块平滑滚动 =====
+function scrollToSection(sectionId) {
+  const el = document.getElementById(sectionId);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
