@@ -3416,7 +3416,7 @@ function renderDetail(id) {
 
   window.scrollTo(0, 0);
   initLightbox();
-  initCampaignVideoMutex();
+  initDetailVideoMutex();
 }
 
 function goHome() {
@@ -3729,16 +3729,32 @@ function initLightbox() {
   });
 }
 
-// ===== Campaign Video Mutex (only one video plays at a time) =====
-function initCampaignVideoMutex() {
-  var videos = document.querySelectorAll('.campaign-video-el');
+// ===== Detail Page Video Mutex (only one video plays at a time) =====
+function initDetailVideoMutex() {
+  var videos = document.querySelectorAll('#viewDetail video');
   if (videos.length === 0) return;
   videos.forEach(function(video) {
     video.addEventListener('play', function() {
+      // 暂停详情页中其他所有视频/音频
       videos.forEach(function(other) {
         if (other !== video && !other.paused) {
           other.pause();
         }
+      });
+      // 同步暂停详情页音频播放器状态
+      var audioPlayer = document.querySelector('.sc-audio-wrap.playing');
+      if (audioPlayer && video.id !== 'detailAudioVideo') {
+        audioPlayer.classList.remove('playing');
+        var audioBtn = document.getElementById('detailAudioPlayBtn');
+        if (audioBtn) audioBtn.innerHTML = '<svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z"/></svg>';
+      }
+      // 暂停列表页中的音频卡片
+      document.querySelectorAll('.audio-card.playing').forEach(function(card) {
+        var v = card.querySelector('.audio-hidden-video');
+        var b = card.querySelector('.audio-play-btn');
+        card.classList.remove('playing');
+        if (v) v.pause();
+        if (b) b.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
       });
     });
   });
