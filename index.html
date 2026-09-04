@@ -3927,19 +3927,30 @@ function initLightbox() {
     // 排除尺寸过小的图标图片
     if (img.naturalWidth > 0 && img.naturalWidth < 60) return;
     if (img.naturalHeight > 0 && img.naturalHeight < 60) return;
-    const key = img.src;
-    if (seen[key]) return; // 去重
-    seen[key] = true;
-    window.lightboxImages.push({
-      src: key,
-      caption: img.alt || ''
-    });
+
+    // 给每张图片都绑定点击事件（即使src重复）
     img.style.cursor = 'zoom-in';
-    img.setAttribute('data-lb-index', String(window.lightboxImages.length - 1));
+
+    const key = img.src;
+    let idx;
+    if (seen[key] !== undefined) {
+      // 重复图片，使用已有的index
+      idx = seen[key];
+    } else {
+      // 新图片，添加到lightboxImages数组
+      idx = window.lightboxImages.length;
+      seen[key] = idx;
+      window.lightboxImages.push({
+        src: key,
+        caption: img.alt || ''
+      });
+    }
+
+    img.setAttribute('data-lb-index', String(idx));
     img.onclick = function(e) {
       e.stopPropagation();
-      var idx = parseInt(this.getAttribute('data-lb-index') || '0', 10);
-      openLightbox(this.src, this.alt || '', idx);
+      var lbIdx = parseInt(this.getAttribute('data-lb-index') || '0', 10);
+      openLightbox(this.src, this.alt || '', lbIdx);
     };
   });
 }
