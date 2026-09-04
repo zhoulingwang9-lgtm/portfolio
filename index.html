@@ -2645,6 +2645,29 @@ const WORKS = {
       duration: '项目制作',
       concept: '儿童科技馆介绍视频，通过生动有趣的画面展示科技馆的各个展区和互动体验项目。视频以孩子的视角出发，带领观众探索科学的奥秘，激发孩子们对科学的好奇心与探索欲。整体风格明快活泼，色彩鲜明，符合儿童审美，同时兼顾信息传达的准确性与趣味性。',
       description: '该视频用于儿童科技馆的官方宣传、展厅循环播放及社交媒体推广，帮助家长和孩子快速了解科技馆的特色展区、互动项目与教育理念，有效提升场馆的知名度与到访率。'
+    },
+    {
+      id: 'aigc-3',
+      title: '四城市像素风系列 / Pixel Cities',
+      tag: 'AIGC Video / Pixel Art Series',
+      meta: '北京·广州·杭州·西安 / 4×15s / 2026',
+      cover: '',
+      client: '个人创作项目',
+      role: 'AIGC 导演 / 提示词工程 / 后期',
+      year: '2026',
+      duration: '2 周',
+      concept: '以「一座城市，一种像素记忆」为核心创意，用星露谷 Stardew Valley 风格的 16-bit 像素艺术，重新诠释中国四座极具代表性的城市——北京、广州、杭州、西安。每座城市拥有独特的色彩调性、地域符号和市井生活场景，通过缓慢平移的运镜和电影级光影，营造出温暖治愈的怀旧氛围，让观众在像素世界中重新发现城市的烟火气与文化记忆。',
+      story: '创作灵感来源于经典游戏《星露谷物语》中那种温暖、治愈、充满生活气息的像素美术风格。在快节奏的数字时代，人们很少有机会停下来感受身边城市的细微之美——北京胡同里午后的阳光、广州骑楼下叹早茶的老人、杭州西湖边飘落的桂花、西安城墙根下的肉夹馍香气。我希望用 AI 视频生成技术，将这些容易被忽略的城市日常瞬间，转化为像素艺术中的永恒画面，探索 AIGC 技术在城市文化表达和情感叙事上的可能性。',
+      process: '整个创作过程分为四个阶段：第一阶段「风格研究」——深入分析星露谷美术风格的视觉特征，包括 16-bit 像素颗粒、柔和侧光、温暖配色、缓慢运镜等，建立统一的视觉语言规范；第二阶段「城市调研」——为每座城市提炼 3-5 个核心地域符号和色彩调性，北京用暖灰+朱红表现胡同四合院，广州用暖绿+米黄表现骑楼满洲窗，杭州用青绿+素白表现西湖烟雨，西安用土黄+赭石表现城墙烟火；第三阶段「提示词工程」——为每座城市撰写 200+ 字的详细主提示词，涵盖场景、人物、道具、光影、运镜、氛围等维度，并经过 3-5 轮迭代优化；第四阶段「生成与筛选」——使用即梦 Seedance 2.0 Fast VIP 模型生成，每座城市生成 2-3 版后筛选最佳版本，确保像素风格统一、城市元素准确、氛围到位。',
+      script: '全系列采用统一的分镜结构：0-3秒 远景建立场景，缓慢平移运镜引入城市标志性建筑；3-8秒 中景展示市井生活，人物活动和地域美食成为视觉焦点；8-12秒 近景细节刻画，光影变化和飘落元素（花瓣/辣椒/桂花）增强氛围感；12-15秒 远景收束，夕阳或黄昏光线为画面增添温暖色调。每座城市的人物设定各具特色：北京是胡同里下棋的老人和卖糖葫芦的摊贩，广州是骑楼下叹早茶的老人和凉茶铺掌柜，杭州是西湖边撑油纸伞的年轻情侣和采茶女，西安是城墙根下分享肉夹馍的年轻情侣和小吃摊主。运镜速度统一控制在缓慢平移，避免快速切换，保持像素艺术的静态美感和治愈节奏。',
+      videos: [
+        { url: 'beijing.mp4', title: '北京 · 胡同午后', subtitle: '暖灰+朱红 / 胡同四合院·糖葫芦·铜狮子门环', cover: 'https://aka.doubaocdn.com/s/8OX35C56A1' },
+        { url: 'guangzhou.mp4', title: '广州 · 骑楼市井', subtitle: '暖绿+米黄 / 骑楼满洲窗·早茶蒸笼·木棉花', cover: 'https://aka.doubaocdn.com/s/8OX35C56A1' },
+        { url: 'hangzhou.mp4', title: '杭州 · 西湖烟雨', subtitle: '青绿+素白 / 西湖垂柳·油纸伞·桂花·年轻情侣', cover: 'https://aka.doubaocdn.com/s/8OX35C56A1' },
+        { url: 'xian.mp4', title: '西安 · 城墙烟火', subtitle: '土黄+赭石 / 明城墙·肉夹馍·羊肉泡馍·钟楼', cover: 'https://aka.doubaocdn.com/s/8OX35C56A1' }
+      ],
+      tools: '即梦 Seedance 2.0 Fast VIP / 提示词工程 / DaVinci Resolve',
+      insight: '这个项目让我深刻体会到 AIGC 视频生成在风格化叙事上的巨大潜力。传统实拍需要复杂的场地调度、演员安排和后期调色，而 AI 可以在几分钟内生成符合精确风格描述的城市画面。但同时，AI 在人物一致性、复杂动态和细节准确性上仍有挑战，需要多轮提示词迭代和版本筛选才能达到理想效果。像素艺术风格恰好规避了 AI 在写实细节上的短板，将 AI 的创意生成能力与像素艺术的概括性美学完美结合，为城市文化表达提供了新的视觉语言。'
     }
   ],
   video: [
@@ -3107,10 +3130,18 @@ function renderDetail(id) {
   // ===== 主视觉 Cover =====
   let coverHtml = '';
   if (cat === 'aigc') {
-    coverHtml = '<div class="sc-cover">' +
-      '<div class="sc-video-wrap"><iframe class="bilibili-player" src="//player.bilibili.com/player.html?bvid=' + work.bvid + '&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div>' +
-      '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
-    '</div>';
+    if (work.videos && work.videos.length > 0) {
+      // 多视频项目：展示第一个视频作为主视觉
+      coverHtml = '<div class="sc-cover">' +
+        '<div class="sc-video-wrap"><video src="' + work.videos[0].url + '" poster="' + (work.videos[0].cover || '') + '" controls playsinline preload="metadata" style="width:100%;display:block"></video></div>' +
+        '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
+      '</div>';
+    } else {
+      coverHtml = '<div class="sc-cover">' +
+        '<div class="sc-video-wrap"><iframe class="bilibili-player" src="//player.bilibili.com/player.html?bvid=' + work.bvid + '&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div>' +
+        '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
+      '</div>';
+    }
   } else if (cat === 'video') {
     coverHtml = '<div class="sc-cover">' +
       '<img src="' + work.cover + '" alt="' + work.title + '">' +
@@ -3128,10 +3159,38 @@ function renderDetail(id) {
 
   // --- AIGC 视频 ---
   if (cat === 'aigc') {
-    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Design Concept</span><span class="sc-section-zh">设计理念</span></div>' +
-      '<div class="sc-text"><p>' + work.concept + '</p></div></div>';
-    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Project Note</span><span class="sc-section-zh">项目说明</span></div>' +
-      '<div class="sc-text"><p>' + (work.description || '') + '</p></div></div>';
+    if (work.videos && work.videos.length > 0) {
+      // 多视频系列项目：完整内容板块
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Design Concept</span><span class="sc-section-zh">创作理念</span></div>' +
+        '<div class="sc-text"><p>' + work.concept + '</p></div></div>';
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Story</span><span class="sc-section-zh">创作背景</span></div>' +
+        '<div class="sc-text"><p>' + work.story + '</p></div></div>';
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Creative Process</span><span class="sc-section-zh">创作过程</span></div>' +
+        '<div class="sc-text"><p>' + work.process + '</p></div></div>';
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Storyboard</span><span class="sc-section-zh">分镜脚本</span></div>' +
+        '<div class="sc-text"><p>' + work.script + '</p></div></div>';
+      // 城市视频系列 2x2 网格
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">City Video Series</span><span class="sc-section-zh">城市视频系列</span></div>' +
+        '<div class="sc-grid-2" style="margin-top:24px">';
+      work.videos.forEach(function(v, i) {
+        bodyHtml += '<div class="sc-grid-item">' +
+          '<div style="position:relative"><video src="' + v.url + '" poster="' + (v.cover || '') + '" controls playsinline preload="metadata" style="width:100%;display:block"></video></div>' +
+          '<div class="sc-grid-cap">0' + (i+1) + ' / ' + v.title + ' — ' + v.subtitle + '</div></div>';
+      });
+      bodyHtml += '</div></div>';
+      // 技术实现
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Technique</span><span class="sc-section-zh">技术实现</span></div>' +
+        '<div class="sc-text"><p><strong style="color:var(--text)">使用工具：</strong>' + work.tools + '</p></div></div>';
+      // 创作心得
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Insight</span><span class="sc-section-zh">创作心得</span></div>' +
+        '<div class="sc-text"><p>' + work.insight + '</p></div></div>';
+    } else {
+      // 单视频项目（B站）：原有简洁结构
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Design Concept</span><span class="sc-section-zh">设计理念</span></div>' +
+        '<div class="sc-text"><p>' + work.concept + '</p></div></div>';
+      bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Project Note</span><span class="sc-section-zh">项目说明</span></div>' +
+        '<div class="sc-text"><p>' + (work.description || '') + '</p></div></div>';
+    }
   }
 
   // --- AIGC 音频（音景播放 + 解析） ---
