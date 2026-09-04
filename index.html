@@ -3131,9 +3131,9 @@ function renderDetail(id) {
   let coverHtml = '';
   if (cat === 'aigc') {
     if (work.videos && work.videos.length > 0) {
-      // 多视频项目：展示第一个视频作为主视觉
+      // 多视频项目：展示第一个视频封面图作为主视觉（避免video黑色背景）
       coverHtml = '<div class="sc-cover">' +
-        '<div class="sc-video-wrap"><video src="' + work.videos[0].url + '" poster="' + (work.videos[0].cover || '') + '" controls playsinline preload="metadata" style="width:100%;display:block"></video></div>' +
+        '<img src="' + (work.videos[0].cover || '') + '" alt="' + work.title + '" style="width:100%;display:block;border-radius:12px;">' +
         '<div class="sc-cover-cap">' + work.title + ' · ' + work.meta + '</div>' +
       '</div>';
     } else {
