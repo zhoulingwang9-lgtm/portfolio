@@ -2850,6 +2850,7 @@ const WORKS = {
       description: '在视觉构成上，以 "48H森林度假计划" 作为核心识别元素，将手写字体、不规则色块与插画场景结合，形成统一的视觉语言。同时将插画延展至海报、社交媒体、明信片、贴纸、旅行手册、帆布袋等运营物料，使插画从单一画面转化为完整的视觉应用体系。',
       story: '整体希望传递一种 "放慢脚步，呼吸森林，享受48小时自然时光" 的生活态度，让短暂的周末旅行成为暂时逃离城市、重新感受自然与自我的轻松旅程。人物与场景保持简洁、轻松的造型，并加入咖啡、背包、帐篷、松果、蘑菇、小狗等生活化细节，使画面更具故事性与亲切感。',
       gallery: [
+        { url: 'https://aka.doubaocdn.com/s/nD1KS66pwA', caption: '颜色规范 / Color Specification' },
         { url: 'https://aka.doubaocdn.com/s/HV7qv4Pa3Z', caption: '主视觉 / 森林度假计划全景' },
         { url: 'https://aka.doubaocdn.com/s/dGFP7R8cwr', caption: '完整画面 / 保留全部原有元素' },
         { url: 'https://aka.doubaocdn.com/s/VV4utPmeZG', caption: '横版插画 / 治愈淡彩手绘扁平风格' },
@@ -3648,15 +3649,38 @@ function renderDetail(id) {
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Visual Style</span><span class="sc-section-zh">视觉风格</span></div>' +
       '<div class="sc-text"><p>' + work.visualStyle + '</p></div></div>';
 
-    // 插画作品展示（网格）
-    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Illustration Gallery</span><span class="sc-section-zh">插画作品展示</span></div>' +
-      '<div class="sc-grid-2" style="margin-top:24px">';
+    // 插画作品展示（左右分栏展板风格，参考例图1）
+    bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Illustration Gallery</span><span class="sc-section-zh">插画作品展示</span></div>';
     work.gallery.forEach(function(g, i) {
-      bodyHtml += '<div class="sc-grid-item">' +
-        '<img src="' + g.url + '" alt="' + g.caption + '" style="width:100%;display:block;border-radius:8px;cursor:pointer;" onclick="openLightbox(\'' + g.url + '\')">' +
-        '<div class="sc-grid-cap">0' + (i+1) + ' / ' + g.caption + '</div></div>';
+      var isEven = (i % 2 === 1);
+      var num = (i < 9 ? '0' : '') + (i + 1);
+      if (isEven) {
+        // 偶数行：左文右图
+        bodyHtml += '<div class="illust-row" style="display:flex;align-items:center;gap:32px;margin-bottom:32px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card)">' +
+          '<div style="flex:1;min-width:0">' +
+            '<div style="font-size:13px;color:var(--text-light);letter-spacing:2px;margin-bottom:8px">' + num + ' / WORK</div>' +
+            '<div style="font-size:20px;font-weight:600;color:var(--text);margin-bottom:12px;line-height:1.4">' + g.caption.split(' / ')[0] + '</div>' +
+            '<div style="font-size:13px;color:var(--text-light);line-height:1.8">' + (g.caption.split(' / ')[1] || '') + '</div>' +
+          '</div>' +
+          '<div style="flex:1.2;min-width:0">' +
+            '<img src="' + g.url + '" alt="' + g.caption + '" style="width:100%;display:block;border-radius:8px;cursor:pointer;" onclick="openLightbox(\'' + g.url + '\')">' +
+          '</div>' +
+        '</div>';
+      } else {
+        // 奇数行：左图右文
+        bodyHtml += '<div class="illust-row" style="display:flex;align-items:center;gap:32px;margin-bottom:32px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card)">' +
+          '<div style="flex:1.2;min-width:0">' +
+            '<img src="' + g.url + '" alt="' + g.caption + '" style="width:100%;display:block;border-radius:8px;cursor:pointer;" onclick="openLightbox(\'' + g.url + '\')">' +
+          '</div>' +
+          '<div style="flex:1;min-width:0">' +
+            '<div style="font-size:13px;color:var(--text-light);letter-spacing:2px;margin-bottom:8px">' + num + ' / WORK</div>' +
+            '<div style="font-size:20px;font-weight:600;color:var(--text);margin-bottom:12px;line-height:1.4">' + g.caption.split(' / ')[0] + '</div>' +
+            '<div style="font-size:13px;color:var(--text-light);line-height:1.8">' + (g.caption.split(' / ')[1] || '') + '</div>' +
+          '</div>' +
+        '</div>';
+      }
     });
-    bodyHtml += '</div></div>';
+    bodyHtml += '</div>';
 
     // 运营物料延展
     bodyHtml += '<div class="sc-section"><div class="sc-section-head"><span class="sc-section-en">Extensions</span><span class="sc-section-zh">运营物料延展</span></div>' +
