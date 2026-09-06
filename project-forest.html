@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>48H森林度假计划 · 汪周灵作品集</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600&family=Ma+Shan+Zheng&display=swap">
+<style>
+:root{
+  --bg:#F7F5EE;
+  --bg-paper:#F2EFE6;
+  --ink:#344238;
+  --ink-soft:#5A6B58;
+  --muted:#8B9A86;
+  --forest:#6B8560;
+  --forest-deep:#4A6345;
+  --sage:#9EAF91;
+  --mist:#B8D2D8;
+  --cream:#F4F0DC;
+  --butter:#E8D47A;
+  --terra:#D99A78;
+  --line:rgba(52,66,56,.12);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow-sm:0 2px 12px rgba(52,66,56,.05);
+  --shadow-md:0 8px 28px rgba(52,66,56,.08);
+  --shadow-lg:0 16px 44px rgba(52,66,56,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans SC","Space Grotesk",sans-serif;
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(184,210,216,.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(217,154,120,.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(52,66,56,.012) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 4px 4px;
+  color:var(--ink);
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.en{font-family:"Space Grotesk","Noto Sans SC",sans-serif;}
+.hand{font-family:"Ma Shan Zheng","Noto Sans SC",cursive;font-weight:400;}
+
+/* ============ Nav ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:72px;display:flex;align-items:center;
+  padding:0 clamp(24px,6vw,80px);
+  background:rgba(247,245,238,.72);
+  -webkit-backdrop-filter:blur(0px);backdrop-filter:blur(0px);
+  border-bottom:1px solid transparent;
+  transition:all .4s var(--ease);
+}
+.nav.scrolled{
+  background:rgba(247,245,238,.9);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-left{font-size:16px;font-weight:500;letter-spacing:.02em;display:flex;align-items:center;gap:28px;}
+.nav-back{
+  font-size:12px;font-weight:500;color:var(--muted);
+  display:flex;align-items:center;gap:5px;
+  transition:color .3s var(--ease);
+  font-family:"Space Grotesk",sans-serif;
+}
+.nav-back:hover{color:var(--forest-deep);}
+.nav-back svg{width:13px;height:13px;}
+.nav-right{margin-left:auto;display:flex;gap:32px;}
+.nav-right a{
+  font-size:13px;font-weight:500;color:var(--ink-soft);
+  position:relative;transition:color .3s var(--ease);
+}
+.nav-right a::after{
+  content:"";position:absolute;left:0;bottom:-4px;
+  width:0;height:1px;background:var(--forest-deep);
+  transition:width .3s var(--ease);
+}
+.nav-right a:hover{color:var(--forest-deep);}
+.nav-right a:hover::after{width:100%;}
+
+/* ============ Layout ============ */
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(24px,6vw,80px);position:relative;}
+.section{padding:clamp(60px,8vw,110px) 0;position:relative;}
+.sec-head{margin-bottom:clamp(32px,4vw,52px);display:flex;align-items:baseline;gap:16px;}
+.sec-num{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(28px,3vw,40px);font-weight:600;
+  color:var(--sage);letter-spacing:-.01em;line-height:1;
+}
+.sec-title-wrap{display:flex;flex-direction:column;gap:2px;}
+.sec-title{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(24px,2.8vw,34px);font-weight:400;
+  letter-spacing:.02em;line-height:1.2;color:var(--ink);
+}
+.sec-en{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;font-weight:500;color:var(--muted);
+  letter-spacing:.2em;text-transform:uppercase;
+}
+
+/* ============ Hero ============ */
+.hero{
+  padding-top:calc(72px + clamp(36px,5vw,64px));
+  padding-bottom:clamp(48px,6vw,80px);
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,56px);
+  align-items:center;position:relative;z-index:2;
+}
+.hero-left{padding-right:clamp(0,2vw,24px);}
+.hero-tag{
+  display:inline-block;font-family:"Space Grotesk",sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:.18em;
+  color:var(--forest);margin-bottom:20px;
+  padding-bottom:6px;border-bottom:1px solid var(--sage);
+}
+.hero-title{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(48px,6vw,78px);font-weight:400;
+  line-height:1.15;letter-spacing:.01em;margin-bottom:6px;
+  color:var(--ink);
+}
+.hero-title-en{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(12px,1.2vw,15px);font-weight:500;
+  color:var(--muted);letter-spacing:.1em;margin-bottom:28px;
+  line-height:1.6;
+}
+.hero-desc{
+  font-size:clamp(14px,1.2vw,16px);line-height:2;
+  color:var(--ink-soft);margin-bottom:32px;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:12px;color:var(--muted);letter-spacing:.06em;
+  border-top:1px solid var(--line);padding-top:16px;
+}
+.hero-meta span{padding:0 14px;border-right:1px solid var(--line);}
+.hero-meta span:first-child{padding-left:0;}
+.hero-meta span:last-child{border-right:none;}
+.hero-right{position:relative;}
+.hero-img{
+  width:100%;border-radius:24px;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  border:6px solid #fff;
+  transform:rotate(1deg);
+  position:relative;z-index:2;
+}
+.hero-img img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
+
+/* hero decorations */
+.hero-deco{position:absolute;inset:0;pointer-events:none;z-index:3;}
+.hd{position:absolute;}
+.hd-pine{top:-18px;left:28%;font-size:clamp(30px,3.2vw,42px);transform:rotate(-20deg);opacity:.5;}
+.hd-sign{top:-10px;right:-8px;font-size:clamp(24px,2.6vw,34px);transform:rotate(8deg);opacity:.55;}
+.hd-cup{top:32%;right:-16px;font-size:clamp(26px,2.8vw,36px);transform:rotate(-6deg);opacity:.5;}
+.hd-leaf{bottom:22%;right:-10px;font-size:clamp(28px,3vw,38px);transform:rotate(15deg);opacity:.45;}
+.hd-sprout{bottom:12%;left:-12px;font-size:clamp(26px,2.8vw,36px);transform:rotate(-12deg);opacity:.45;}
+.hd-compass{bottom:-16px;right:16%;font-size:clamp(30px,3.2vw,42px);transform:rotate(10deg);opacity:.5;}
+.hd-camera{bottom:10%;left:36%;font-size:clamp(24px,2.6vw,32px);transform:rotate(-8deg);opacity:.4;}
+
+/* ============ 01 Overview ============ */
+.overview-grid{display:grid;grid-template-columns:4fr 8fr;gap:clamp(24px,4vw,56px);align-items:start;}
+.overview-left{position:relative;}
+.overview-statement{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(28px,3.4vw,44px);font-weight:400;
+  line-height:1.5;color:var(--ink);letter-spacing:.01em;
+}
+.overview-pine{
+  position:absolute;bottom:-16px;right:6px;
+  font-size:36px;opacity:.35;transform:rotate(-5deg);
+}
+.overview-body{font-size:15px;line-height:2.1;color:var(--ink-soft);margin-bottom:36px;}
+.overview-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:24px;border-top:1px solid var(--line);}
+.ov-meta-item .label{font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.ov-meta-item .value{font-size:13px;font-weight:500;color:var(--ink);line-height:1.7;}
+
+/* ============ 02 Color ============ */
+.color-section{text-align:center;position:relative;}
+.color-img-wrap{
+  position:relative;max-width:1240px;margin:0 auto;
+}
+.color-img{
+  width:100%;border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow-md);
+  border:6px solid #fff;
+  transform:rotate(-.5deg);
+}
+.color-img img{width:100%;height:auto;}
+.color-caption{
+  margin-top:28px;font-size:14px;color:var(--ink-soft);
+  line-height:1.9;max-width:560px;margin-left:auto;margin-right:auto;
+}
+.cd{position:absolute;font-size:clamp(26px,2.8vw,36px);opacity:.35;z-index:2;}
+.cd-1{top:-16px;left:-4px;transform:rotate(-18deg);}
+.cd-2{top:12%;right:-8px;transform:rotate(12deg);}
+.cd-3{bottom:-12px;left:10%;transform:rotate(8deg);}
+.cd-4{bottom:6%;right:3%;transform:rotate(-10deg);font-size:24px;}
+.cd-5{top:38%;left:-10px;transform:rotate(15deg);font-size:22px;}
+.cd-6{top:58%;right:-6px;transform:rotate(-12deg);font-size:26px;}
+
+/* ============ 03 Key Visual ============ */
+.kv-section{padding-left:0;padding-right:0;position:relative;}
+.kv-frame{
+  position:relative;max-width:1280px;margin:0 auto;
+  border-radius:8px;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  border:8px solid #fff;
+  transform:rotate(-.5deg);
+}
+.kv-frame img{width:100%;height:auto;display:block;}
+.kv-caption{
+  text-align:center;margin-top:28px;
+  font-family:"Space Grotesk",sans-serif;
+}
+.kv-caption .kv-en{font-size:13px;font-weight:600;letter-spacing:.15em;color:var(--forest);margin-bottom:6px;}
+.kv-caption .kv-sub{font-size:12px;color:var(--muted);letter-spacing:.08em;font-style:italic;}
+.kvd{position:absolute;font-size:clamp(28px,3vw,40px);opacity:.32;z-index:2;}
+.kvd-1{top:-18px;left:3%;transform:rotate(-15deg);}
+.kvd-2{top:6%;right:1%;transform:rotate(20deg);font-size:26px;}
+.kvd-3{bottom:80px;left:0%;transform:rotate(10deg);font-size:28px;}
+.kvd-4{bottom:100px;right:5%;transform:rotate(-8deg);}
+.kvd-5{top:42%;left:-2px;transform:rotate(-12deg);font-size:24px;}
+.kvd-6{bottom:130px;left:6%;transform:rotate(15deg);font-size:22px;}
+
+/* ============ 04 Visual Story ============ */
+.story-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,32px);
+}
+.story-card{position:relative;}
+.story-img{
+  border-radius:8px;overflow:hidden;
+  box-shadow:var(--shadow-md);
+  border:5px solid #fff;
+  aspect-ratio:4/5;
+  position:relative;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.story-card:nth-child(1) .story-img{transform:rotate(-1.5deg);}
+.story-card:nth-child(2) .story-img{transform:rotate(.8deg);margin-top:32px;}
+.story-card:nth-child(3) .story-img{transform:rotate(-.8deg);margin-top:12px;}
+.story-card:hover .story-img{transform:rotate(0deg) scale(1.02);box-shadow:var(--shadow-lg);}
+.story-img img{width:100%;height:100%;object-fit:cover;}
+.story-tag{
+  position:absolute;top:12px;
+  background:rgba(255,255,255,.88);
+  padding:4px 10px;border-radius:3px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:.08em;
+  color:var(--forest-deep);z-index:2;
+}
+.story-card:nth-child(1) .story-tag{left:12px;}
+.story-card:nth-child(2) .story-tag{right:12px;}
+.story-card:nth-child(3) .story-tag{right:12px;}
+.story-deco{position:absolute;font-size:28px;opacity:.4;z-index:2;}
+.story-card:nth-child(1) .story-deco{bottom:-10px;left:-8px;transform:rotate(-15deg);}
+.story-card:nth-child(2) .story-deco{bottom:-8px;right:-6px;transform:rotate(12deg);}
+.story-card:nth-child(3) .story-deco{top:-10px;left:-6px;transform:rotate(10deg);}
+.story-quote{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(18px,1.8vw,22px);font-weight:400;
+  text-align:center;margin-top:18px;color:var(--ink);
+  line-height:1.4;
+}
+.story-quote-en{
+  font-family:"Space Grotesk","Noto Sans SC",sans-serif;
+  font-size:clamp(10px,1vw,12px);font-weight:500;
+  text-align:center;margin-top:4px;color:var(--muted);
+  letter-spacing:.08em;line-height:1.4;
+}
+
+/* ============ Two-column sections ============ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start;}
+.two-col .sub-section{position:relative;}
+.two-col .sec-head{margin-bottom:clamp(20px,3vw,32px);}
+
+/* 05 elements */
+.elements-board{
+  position:relative;min-height:360px;
+  background:var(--bg-paper);
+  border-radius:10px;padding:24px;
+  border:1px solid var(--line);
+}
+.el{position:absolute;font-size:clamp(26px,2.6vw,36px);opacity:.7;cursor:default;transition:transform .3s var(--ease);}
+.el:hover{transform:scale(1.2) rotate(5deg);}
+.el-1{top:10%;left:6%;transform:rotate(-10deg);}
+.el-2{top:6%;left:30%;transform:rotate(15deg);}
+.el-3{top:12%;left:56%;transform:rotate(-5deg);}
+.el-4{top:8%;right:6%;transform:rotate(20deg);}
+.el-5{top:40%;left:4%;transform:rotate(8deg);}
+.el-6{top:36%;left:26%;transform:rotate(-15deg);}
+.el-7{top:42%;left:50%;transform:rotate(12deg);}
+.el-8{top:38%;right:10%;transform:rotate(-8deg);}
+.el-9{bottom:20%;left:12%;transform:rotate(-12deg);}
+.el-10{bottom:14%;left:40%;transform:rotate(18deg);}
+.el-11{bottom:18%;right:16%;transform:rotate(-5deg);}
+.el-12{bottom:12%;right:4%;transform:rotate(10deg);font-size:24px;}
+.elements-sign{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:18px;color:var(--forest);opacity:.45;
+}
+
+/* 06 operational */
+.ops-board{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ops-item{
+  border-radius:6px;overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  border:3px solid #fff;
+  aspect-ratio:4/3;
+  position:relative;
+  transition:transform .4s var(--ease);
+}
+.ops-item:hover{transform:translateY(-4px);}
+.ops-item:nth-child(1){grid-column:span 2;aspect-ratio:16/9;}
+.ops-item img{width:100%;height:100%;object-fit:cover;}
+.ops-item-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:8px 12px;background:linear-gradient(transparent,rgba(52,66,56,.65));
+  color:#fff;font-size:11px;font-weight:500;
+}
+.ops-item-label .ops-en{font-family:"Space Grotesk",sans-serif;font-size:10px;opacity:.8;display:block;letter-spacing:.05em;}
+
+/* 07 process */
+.process-board{
+  background:var(--bg-paper);border-radius:10px;
+  padding:28px 20px;border:1px solid var(--line);
+}
+.process-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.process-step{text-align:center;flex:1;min-width:60px;}
+.process-step .p-icon{
+  width:44px;height:44px;margin:0 auto 8px;
+  background:#fff;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:var(--shadow-sm);
+}
+.process-step .p-name{font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:600;color:var(--ink-soft);letter-spacing:.05em;}
+.process-arrow{color:var(--sage);font-size:14px;flex:0 0 auto;}
+
+/* 10 final gallery */
+.gallery-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.gal-item{
+  border-radius:6px;overflow:hidden;aspect-ratio:4/3;
+  box-shadow:var(--shadow-sm);border:2px solid #fff;
+  transition:transform .4s var(--ease);
+}
+.gal-item:hover{transform:scale(1.04);z-index:2;}
+.gal-item img{width:100%;height:100%;object-fit:cover;}
+
+/* ============ Summary ============ */
+.summary{padding:clamp(60px,8vw,100px) 0;position:relative;}
+.summary-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,56px);align-items:center;}
+.summary-label{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:16px;}
+.summary-title{font-family:"Ma Shan Zheng","Noto Sans SC",cursive;font-size:clamp(22px,2.6vw,34px);font-weight:400;margin-bottom:8px;}
+.summary-quote{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(26px,3.2vw,40px);font-weight:400;
+  line-height:1.6;color:var(--ink);letter-spacing:.01em;
+}
+.summary-text{font-size:14px;line-height:2;color:var(--ink-soft);}
+
+/* ============ Next Project ============ */
+.next-bar{
+  background:var(--forest-deep);
+  padding:clamp(28px,4vw,48px) 0;
+  position:relative;overflow:hidden;
+}
+.next-inner{
+  max-width:1280px;margin:0 auto;
+  padding:0 clamp(24px,6vw,80px);
+  display:flex;align-items:center;gap:clamp(20px,3vw,40px);
+}
+.next-text{flex:1;}
+.next-label{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:600;letter-spacing:.25em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:8px;}
+.next-title{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(24px,3vw,38px);font-weight:400;
+  color:#fff;display:flex;align-items:center;gap:14px;
+}
+.next-title .arrow{transition:transform .4s var(--ease);}
+.next-bar:hover .next-title .arrow{transform:translateX(10px);}
+.next-preview{
+  width:clamp(120px,14vw,180px);aspect-ratio:4/3;
+  border-radius:6px;overflow:hidden;flex-shrink:0;
+  border:3px solid rgba(255,255,255,.2);
+  transition:transform .5s var(--ease);
+}
+.next-bar:hover .next-preview{transform:scale(1.05) rotate(-1deg);}
+.next-preview img{width:100%;height:100%;object-fit:cover;}
+.next-deco{position:absolute;font-size:40px;opacity:.08;}
+.nd-1{top:10px;left:5%;transform:rotate(-15deg);}
+.nd-2{bottom:10px;right:8%;transform:rotate(20deg);}
+
+/* ============ Footer ============ */
+.footer{padding:36px 0;background:var(--bg-paper);border-top:1px solid var(--line);}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-name{font-size:14px;font-weight:500;}
+.footer-copy{font-size:11px;color:var(--muted);font-family:"Space Grotesk",sans-serif;letter-spacing:.05em;}
+
+/* ============ Reveal ============ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-img{opacity:0;transform:scale(.97);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal-img.in{opacity:1;transform:scale(1);}
+
+/* ============ Responsive ============ */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-left{order:2;}
+  .hero-right{order:1;}
+  .overview-grid{grid-template-columns:1fr;gap:28px;}
+  .story-grid{grid-template-columns:1fr 1fr;}
+  .story-card:nth-child(3){grid-column:span 2;max-width:60%;margin:0 auto;}
+  .two-col{grid-template-columns:1fr;gap:48px;}
+  .summary-grid{grid-template-columns:1fr;gap:24px;}
+}
+@media (max-width:768px){
+  .nav-right{display:none;}
+  .overview-meta{grid-template-columns:1fr;gap:14px;}
+  .story-grid{grid-template-columns:1fr;}
+  .story-card:nth-child(3){grid-column:span 1;max-width:100%;}
+  .story-card:nth-child(2) .story-img{margin-top:0;}
+  .story-card:nth-child(3) .story-img{margin-top:0;}
+  .ops-board{grid-template-columns:1fr 1fr;}
+  .ops-item:nth-child(1){grid-column:span 2;}
+  .gallery-board{grid-template-columns:1fr 1fr;}
+  .process-row{flex-direction:column;gap:10px;}
+  .process-arrow{transform:rotate(90deg);}
+  .elements-board{min-height:300px;}
+  .next-inner{flex-direction:column;align-items:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;}
+  .reveal,.reveal-img{opacity:1;transform:none;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ Nav ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <span>汪周灵</span>
+    <a href="index.html#works" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+      返回作品
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="index.html#works">作品</a>
+    <a href="index.html#about">关于我</a>
+    <a href="index.html#experience">实习经历</a>
+    <a href="index.html#contact">联系我</a>
+  </div>
+</nav>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left reveal">
+        <span class="hero-tag">插画视觉 / VISUAL DESIGN</span>
+        <h1 class="hero-title">48H<br>森林度假计划</h1>
+        <div class="hero-title-en">48-HOUR<br>FOREST GETAWAY PLAN</div>
+        <p class="hero-desc">以48小时森林度假为主题，通过手绘插画、自然色彩与生活方式视觉，构建一套具有治愈感和旅行氛围的运营视觉系统。</p>
+        <div class="hero-meta">
+          <span>2026</span>
+          <span>插画设计</span>
+          <span>视觉识别</span>
+          <span>运营物料</span>
+        </div>
+      </div>
+      <div class="hero-right reveal-img">
+        <div class="hero-img">
+          <img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="48H森林度假计划主视觉">
+        </div>
+        <div class="hero-deco">
+          <span class="hd hd-pine">🌲</span>
+          <span class="hd hd-sign">🏷️</span>
+          <span class="hd hd-cup">☕</span>
+          <span class="hd hd-leaf">🍃</span>
+          <span class="hd hd-sprout">🌿</span>
+          <span class="hd hd-compass">🧭</span>
+          <span class="hd hd-camera">📷</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 Project Overview ============ -->
+<section class="section" id="overview">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">项目概览</div>
+        <div class="sec-en">PROJECT OVERVIEW</div>
+      </div>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-left reveal">
+        <p class="overview-statement">48小时，<br>暂时离开城市。</p>
+        <span class="overview-pine">🌲</span>
+      </div>
+      <div class="reveal">
+        <p class="overview-body">本项目围绕48小时森林度假计划展开运营插画及配套视觉物料设计。采用轻松治愈的手绘扁平插画风格，将森林、露营、徒步、溪流、木屋等自然元素融入生活化场景。通过低饱和森林色彩、细腻手绘线稿与轻松的生活方式叙事，营造远离城市、回归自然的周末度假氛围。</p>
+        <div class="overview-meta">
+          <div class="ov-meta-item"><div class="label">DESIGN</div><div class="value">插画 / 视觉识别 / 版式</div></div>
+          <div class="ov-meta-item"><div class="label">TOOLS</div><div class="value">Illustrator / Photoshop / Figma</div></div>
+          <div class="ov-meta-item"><div class="label">YEAR</div><div class="value">2026</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 Color Specification ============ -->
+<section class="section color-section" id="color">
+  <div class="wrap">
+    <div class="sec-head reveal" style="justify-content:center;">
+      <div class="sec-num">02</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">色彩规范</div>
+        <div class="sec-en">COLOR SPECIFICATION</div>
+      </div>
+    </div>
+    <div class="color-img-wrap reveal">
+      <span class="cd cd-1">🍄</span>
+      <span class="cd cd-2">🌿</span>
+      <span class="cd cd-3">🍂</span>
+      <span class="cd cd-4">🥾</span>
+      <span class="cd cd-5">🌸</span>
+      <span class="cd cd-6">🧭</span>
+      <div class="color-img">
+        <img src="https://aka.doubaocdn.com/s/8ZV6lr7qBf" alt="森林度假计划色彩规范">
+      </div>
+    </div>
+    <p class="color-caption reveal">以森林绿、鼠尾草绿、雾蓝、暖米白、柔黄与陶土色构成整体视觉色彩。</p>
+  </div>
+</section>
+
+<!-- ============ 03 Key Visual ============ -->
+<section class="section kv-section" id="keyvisual">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">核心视觉</div>
+        <div class="sec-en">KEY VISUAL</div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;">
+    <span class="kvd kvd-1">🌲</span>
+    <span class="kvd kvd-2">🦋</span>
+    <span class="kvd kvd-3">🍄</span>
+    <span class="kvd kvd-4">🍂</span>
+    <span class="kvd kvd-5">🌿</span>
+    <span class="kvd kvd-6">📷</span>
+    <div class="kv-frame reveal-img">
+      <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="48H森林度假计划核心视觉海报">
+    </div>
+  </div>
+  <div class="kv-caption reveal" style="margin-top:32px;">
+    <div class="kv-en">48-HOUR FOREST GETAWAY PLAN</div>
+    <div class="kv-sub">Slow down. Breathe deeply. Stay with nature.</div>
+  </div>
+</section>
+
+<!-- ============ 04 Visual Story ============ -->
+<section class="section" id="story">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">视觉叙事</div>
+        <div class="sec-en">VISUAL STORY</div>
+      </div>
+    </div>
+    <div class="story-grid">
+      <div class="story-card reveal">
+        <span class="story-tag">DAY 01 · 18:00</span>
+        <span class="story-deco">🌿</span>
+        <div class="story-img"><img src="https://aka.doubaocdn.com/s/6U8yAv1TBv" alt="不赶路只赶日落"></div>
+        <p class="story-quote">不赶路，只赶日落。</p>
+        <p class="story-quote-en">DON'T RUSH, JUST CHASE THE SUNSET.</p>
+      </div>
+      <div class="story-card reveal">
+        <span class="story-tag">NIGHT · 22:30</span>
+        <span class="story-deco">🍃</span>
+        <div class="story-img"><img src="https://aka.doubaocdn.com/s/uq5em8OGo9" alt="今晚住进森林"></div>
+        <p class="story-quote">今晚，住进森林。</p>
+        <p class="story-quote-en">TONIGHT, STAY WITH THE FOREST.</p>
+      </div>
+      <div class="story-card reveal">
+        <span class="story-tag">DAY 02 · 11:00</span>
+        <span class="story-deco">🍂</span>
+        <div class="story-img"><img src="https://aka.doubaocdn.com/s/nilwPpQ4cN" alt="48小时逃离城市"></div>
+        <p class="story-quote">48小时，逃离城市。</p>
+        <p class="story-quote-en">48 HOURS AWAY FROM THE CITY.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 + 06 Two Column ============ -->
+<section class="section" style="padding-bottom:0;">
+  <div class="wrap two-col">
+    <!-- 05 Visual Elements -->
+    <div class="sub-section" id="elements">
+      <div class="sec-head reveal">
+        <div class="sec-num">05</div>
+        <div class="sec-title-wrap">
+          <div class="sec-title">视觉元素</div>
+          <div class="sec-en">VISUAL ELEMENTS</div>
+        </div>
+      </div>
+      <div class="elements-board reveal">
+        <span class="el el-1">🌲</span>
+        <span class="el el-2">🍄</span>
+        <span class="el el-3">☕</span>
+        <span class="el el-4">🌸</span>
+        <span class="el el-5">🧭</span>
+        <span class="el el-6">🥾</span>
+        <span class="el el-7">🌿</span>
+        <span class="el el-8">🏕️</span>
+        <span class="el el-9">📷</span>
+        <span class="el el-10">🦋</span>
+        <span class="el el-11">🍂</span>
+        <span class="el el-12">🐦</span>
+        <span class="elements-sign">48H 森林度假计划</span>
+      </div>
+    </div>
+
+    <!-- 06 Operational Visuals -->
+    <div class="sub-section" id="operational">
+      <div class="sec-head reveal">
+        <div class="sec-num">06</div>
+        <div class="sec-title-wrap">
+          <div class="sec-title">运营物料</div>
+          <div class="sec-en">OPERATIONAL VISUALS</div>
+        </div>
+      </div>
+      <div class="ops-board reveal">
+        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/6ay2reVZgt" alt="森林路线地图"><span class="ops-item-label">森林路线地图<span class="ops-en">Forest Trail Map</span></span></div>
+        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/HcibiRbJFj" alt="主题贴纸"><span class="ops-item-label">主题贴纸<span class="ops-en">Sticker Set</span></span></div>
+        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/DlXWASOunT" alt="活动吊牌"><span class="ops-item-label">活动吊牌<span class="ops-en">Event Tag</span></span></div>
+        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/6ay2reVZgt" alt="明信片"><span class="ops-item-label">明信片<span class="ops-en">Postcard</span></span></div>
+        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/HcibiRbJFj" alt="宣传海报"><span class="ops-item-label">宣传海报<span class="ops-en">Campaign Poster</span></span></div>
+        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/DlXWASOunT" alt="手提袋"><span class="ops-item-label">手提袋<span class="ops-en">Tote Bag</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 + 10 Two Column ============ -->
+<section class="section">
+  <div class="wrap two-col">
+    <!-- 07 Process -->
+    <div class="sub-section" id="process">
+      <div class="sec-head reveal">
+        <div class="sec-num">07</div>
+        <div class="sec-title-wrap">
+          <div class="sec-title">设计过程</div>
+          <div class="sec-en">PROCESS</div>
+        </div>
+      </div>
+      <div class="process-board reveal">
+        <div class="process-row">
+          <div class="process-step"><div class="p-icon">🔍</div><div class="p-name">Research</div></div>
+          <div class="process-arrow">→</div>
+          <div class="process-step"><div class="p-icon">📋</div><div class="p-name">Moodboard</div></div>
+          <div class="process-arrow">→</div>
+          <div class="process-step"><div class="p-icon">🎨</div><div class="p-name">Color</div></div>
+          <div class="process-arrow">→</div>
+          <div class="process-step"><div class="p-icon">✏️</div><div class="p-name">Illustration</div></div>
+          <div class="process-arrow">→</div>
+          <div class="process-step"><div class="p-icon">📐</div><div class="p-name">Layout</div></div>
+          <div class="process-arrow">→</div>
+          <div class="process-step"><div class="p-icon">📦</div><div class="p-name">Application</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Final Outcome -->
+    <div class="sub-section" id="final">
+      <div class="sec-head reveal">
+        <div class="sec-num">10</div>
+        <div class="sec-title-wrap">
+          <div class="sec-title">最终成果</div>
+          <div class="sec-en">FINAL OUTCOME</div>
+        </div>
+      </div>
+      <div class="gallery-board reveal">
+        <div class="gal-item"><img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="主视觉"></div>
+        <div class="gal-item"><img src="https://aka.doubaocdn.com/s/S6KSgCnIGw" alt="日落"></div>
+        <div class="gal-item"><img src="https://aka.doubaocdn.com/s/iXXuofMU36" alt="夜晚"></div>
+        <div class="gal-item"><img src="https://aka.doubaocdn.com/s/kAVsVSAXbv" alt="白天"></div>
+        <div class="gal-item"><img src="https://aka.doubaocdn.com/s/6ay2reVZgt" alt="地图"></div>
+        <div class="gal-item"><img src="https://aka.doubaocdn.com/s/HcibiRbJFj" alt="贴纸"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Summary ============ -->
+<section class="summary" id="summary">
+  <div class="wrap summary-grid">
+    <div class="reveal">
+      <div class="summary-label">PROJECT REFLECTION</div>
+      <div class="summary-title">项目总结</div>
+    </div>
+    <div class="reveal">
+      <p class="summary-quote">48小时，<br>不是一次远行，<br>而是给生活按下暂停键。</p>
+      <p class="summary-text" style="margin-top:20px;">通过手绘插画、自然色彩与生活方式叙事，将森林中的慢节奏生活转化为具有情绪感染力的视觉体验。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Next Project ============ -->
+<section class="next-bar" id="next">
+  <span class="next-deco nd-1">🌲</span>
+  <span class="next-deco nd-2">🍄</span>
+  <a href="index.html#works" class="next-inner">
+    <div class="next-text">
+      <div class="next-label">NEXT PROJECT</div>
+      <div class="next-title">
+        下一个项目
+        <svg class="arrow" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+    <div class="next-preview">
+      <img src="https://aka.doubaocdn.com/s/m37FCJYsig" alt="下一个项目预览">
+    </div>
+  </a>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-name">汪周灵 · Wang Zhouling</div>
+    <div class="footer-copy">© 2026 PORTFOLIO · ALL RIGHTS RESERVED</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav scroll */
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if(window.scrollY > 20){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* reveal */
+  if(!reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold: 0.08, rootMargin: '0px 0px -6% 0px'});
+    document.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ io.observe(el); });
+  }else{
+    document.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
