@@ -791,6 +791,39 @@ a{color:inherit;text-decoration:none;}
   .reveal,.reveal-img{opacity:1;transform:none;}
   html{scroll-behavior:auto;}
 }
+
+/* ============ Lightbox ============ */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(30,35,30,.92);
+  align-items:center;justify-content:center;
+  cursor:zoom-out;
+  animation:lbFade .25s ease;
+}
+.lightbox.active{display:flex;}
+@keyframes lbFade{from{opacity:0;}to{opacity:1;}}
+.lightbox-content{
+  max-width:92vw;max-height:82vh;
+  object-fit:contain;border-radius:10px;
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+  animation:lbZoom .3s ease;
+  cursor:default;
+}
+@keyframes lbZoom{from{transform:scale(.92);opacity:0;}to{transform:scale(1);opacity:1;}}
+.lightbox-close{
+  position:absolute;top:18px;right:26px;
+  color:#fff;font-size:38px;font-weight:300;
+  line-height:1;cursor:pointer;opacity:.7;
+  transition:opacity .2s;
+  user-select:none;
+}
+.lightbox-close:hover{opacity:1;}
+.lightbox-caption{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  color:#fff;font-size:13px;opacity:.7;
+  font-family:"Space Grotesk","Noto Sans SC",sans-serif;
+  letter-spacing:.04em;max-width:80vw;text-align:center;
+}
 </style>
 </head>
 <body>
@@ -1266,7 +1299,50 @@ a{color:inherit;text-decoration:none;}
   }else{
     document.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ el.classList.add('in'); });
   }
+
+  /* lightbox */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var lbCaption = document.getElementById('lightbox-caption');
+  var lbClose = lightbox.querySelector('.lightbox-close');
+
+  function openLightbox(src, alt){
+    lbImg.src = src;
+    lbCaption.textContent = alt || '';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('img:not(#lightbox-img)').forEach(function(img){
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(e){
+      e.stopPropagation();
+      openLightbox(this.src, this.alt);
+    });
+  });
+
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox || e.target === lbClose){
+      closeLightbox();
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lightbox.classList.contains('active')){
+      closeLightbox();
+    }
+  });
 })();
 </script>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="">
+  <span class="lightbox-caption" id="lightbox-caption"></span>
+</div>
 </body>
 </html>
