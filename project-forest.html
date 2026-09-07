@@ -537,6 +537,15 @@ a{color:inherit;text-decoration:none;}
   font-size:11px;font-weight:600;letter-spacing:.14em;
   color:var(--muted);text-transform:uppercase;
 }
+.phy-img-item{position:relative;overflow:hidden;}
+.phy-img-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease);}
+.phy-img-item:hover img{transform:scale(1.05);}
+.phy-item-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:8px 12px;background:linear-gradient(transparent,rgba(52,66,56,.6));
+  color:#fff;font-family:"Space Grotesk",sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+}
 
 /* final */
 .op-final{
@@ -1063,12 +1072,21 @@ a{color:inherit;text-decoration:none;}
         <div class="op-block-title">PHYSICAL MATERIALS<br><span class="op-block-cn">实体物料</span></div>
       </div>
       <div class="physical-grid">
+        <div class="phy-item phy-img-item">
+          <img src="https://aka.doubaocdn.com/s/MXyGSDVeAi" alt="森林度假房卡">
+          <span class="phy-item-label">CABIN CARD</span>
+        </div>
+        <div class="phy-item phy-img-item">
+          <img src="https://aka.doubaocdn.com/s/cUq0RWIkKb" alt="森林度假保温瓶">
+          <span class="phy-item-label">INSULATED BOTTLE</span>
+        </div>
+        <div class="phy-item phy-img-item">
+          <img src="https://aka.doubaocdn.com/s/qVXJkbcDfs" alt="森林度假行李牌">
+          <span class="phy-item-label">LUGGAGE TAG</span>
+        </div>
         <div class="phy-item"><div class="phy-placeholder"><span>TOTE BAG</span></div></div>
-        <div class="phy-item"><div class="phy-placeholder"><span>CAMPING MUG</span></div></div>
-        <div class="phy-item"><div class="phy-placeholder"><span>THERMOS</span></div></div>
         <div class="phy-item"><div class="phy-placeholder"><span>NOTEBOOK</span></div></div>
-        <div class="phy-item"><div class="phy-placeholder"><span>HIKING MAP</span></div></div>
-        <div class="phy-item"><div class="phy-placeholder"><span>LUGGAGE TAG</span></div></div>
+        <div class="phy-item"><div class="phy-placeholder"><span>CAMPING MUG</span></div></div>
       </div>
     </div>
 
