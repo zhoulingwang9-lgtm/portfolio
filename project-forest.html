@@ -292,6 +292,287 @@ a{color:inherit;text-decoration:none;}
   overflow:hidden;
 }
 .elements-img{width:100%;height:auto;display:block;}
+
+/* ============ 06 Operational Materials ============ */
+.op-section{padding-top:clamp(48px,6vw,80px);}
+.op-head{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:clamp(32px,4vw,56px) 0 clamp(24px,3vw,40px);
+  border-bottom:1px solid var(--line);
+}
+.op-head-left{flex:1;}
+.op-tag{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:.18em;
+  color:var(--forest);text-transform:uppercase;
+  display:block;margin-bottom:20px;
+}
+.op-title{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(40px,5vw,64px);font-weight:400;
+  line-height:1.15;color:var(--ink);letter-spacing:.01em;
+}
+.op-title-en{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(11px,1vw,13px);font-weight:500;
+  color:var(--muted);letter-spacing:.12em;margin-top:12px;
+}
+.op-slogan{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(12px,1.1vw,14px);font-weight:400;
+  color:var(--ink-soft);letter-spacing:.06em;margin-top:8px;
+  font-style:italic;
+}
+.op-head-right{
+  text-align:right;font-family:"Space Grotesk",sans-serif;
+  display:flex;flex-direction:column;gap:6px;padding-top:8px;
+}
+.op-year{font-size:28px;font-weight:600;color:var(--sage);letter-spacing:-.01em;}
+.op-begin{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;}
+
+.op-overview{padding:clamp(28px,3.5vw,44px) 0;max-width:680px;}
+.op-overview-cn{font-size:clamp(14px,1.2vw,16px);line-height:2;color:var(--ink-soft);margin-bottom:10px;}
+.op-overview-en{font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--muted);letter-spacing:.04em;line-height:1.8;}
+
+.op-nav{
+  display:flex;flex-wrap:wrap;gap:clamp(16px,2.5vw,36px);
+  padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin-bottom:clamp(48px,6vw,80px);
+}
+.op-nav span{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase;cursor:default;
+  transition:color .3s var(--ease);
+}
+.op-nav span:hover{color:var(--forest-deep);}
+
+.op-block{margin-bottom:clamp(64px,8vw,110px);position:relative;}
+.op-block-head{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(28px,3.5vw,44px);}
+.op-block-num{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(24px,2.6vw,36px);font-weight:600;
+  color:var(--sage);letter-spacing:-.01em;line-height:1;
+}
+.op-block-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(14px,1.4vw,18px);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);line-height:1.4;text-transform:uppercase;
+}
+.op-block-cn{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(18px,2vw,24px);font-weight:400;
+  color:var(--ink);letter-spacing:.02em;text-transform:none;
+}
+.op-block-left{flex:0 0 38%;padding-right:clamp(20px,3vw,40px);}
+.op-block-left .op-block-num{margin-bottom:14px;}
+.op-block-left .op-block-title{margin-bottom:18px;}
+.op-block-desc{font-size:13px;line-height:2;color:var(--ink-soft);max-width:340px;}
+
+/* social media */
+.op-social{display:flex;align-items:flex-start;gap:clamp(24px,4vw,56px);}
+.op-social-cards{
+  flex:1;display:flex;gap:clamp(12px,1.5vw,20px);
+  align-items:flex-start;justify-content:center;
+}
+.social-card{
+  flex:1;max-width:220px;background:#fff;border-radius:14px;
+  overflow:hidden;box-shadow:var(--shadow-md);
+  border:4px solid #fff;transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.social-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:var(--shadow-lg);}
+.sc-1{transform:rotate(-2deg);margin-top:20px;}
+.sc-2{transform:rotate(1deg);}
+.sc-3{transform:rotate(-1deg);margin-top:32px;}
+.social-card-img{aspect-ratio:9/16;overflow:hidden;background:var(--bg-paper);}
+.social-card-img img{width:100%;height:100%;object-fit:cover;}
+.social-card-text{padding:14px 12px 16px;}
+.sc-title{font-family:"Ma Shan Zheng","Noto Sans SC",cursive;font-size:15px;color:var(--ink);line-height:1.4;}
+.sc-en{font-family:"Space Grotesk",sans-serif;font-size:9px;color:var(--muted);letter-spacing:.06em;margin-top:4px;line-height:1.4;}
+
+/* poster */
+.op-poster{position:relative;border-radius:16px;overflow:hidden;}
+.op-poster-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(184,207,168,.25) 0%, rgba(158,175,145,.15) 100%);
+}
+.op-poster-inner{
+  position:relative;z-index:2;
+  display:flex;gap:clamp(20px,3vw,40px);
+  padding:clamp(28px,4vw,56px);align-items:stretch;
+}
+.op-poster-left{flex:0 0 42%;}
+.poster-main{
+  border-radius:10px;overflow:hidden;box-shadow:var(--shadow-lg);
+  border:6px solid #fff;transform:rotate(-1deg);
+  transition:transform .5s var(--ease);
+}
+.poster-main:hover{transform:rotate(0deg) scale(1.02);}
+.poster-main img{width:100%;height:auto;display:block;}
+.op-poster-right{flex:1;display:flex;flex-direction:column;gap:16px;justify-content:center;}
+.poster-sub{
+  position:relative;border-radius:8px;overflow:hidden;
+  box-shadow:var(--shadow-md);border:4px solid #fff;
+  transition:transform .4s var(--ease);
+}
+.poster-sub:hover{transform:scale(1.03);}
+.ps-1{transform:rotate(1.5deg);}
+.ps-2{transform:rotate(-1deg);}
+.ps-3{transform:rotate(.8deg);}
+.poster-sub img{width:100%;height:auto;display:block;}
+.poster-placeholder{
+  aspect-ratio:16/9;background:linear-gradient(135deg,var(--cream),var(--butter));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+}
+.pp-num{font-family:"Ma Shan Zheng","Noto Sans SC",cursive;font-size:32px;color:var(--forest-deep);}
+.pp-text{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--forest);}
+.poster-tag{
+  position:absolute;top:10px;right:10px;
+  background:rgba(255,255,255,.85);padding:3px 8px;border-radius:3px;
+  font-family:"Space Grotesk",sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:.1em;color:var(--forest-deep);text-transform:uppercase;
+}
+
+/* postcard */
+.op-postcard{text-align:center;}
+.postcard-display{
+  display:flex;justify-content:center;align-items:center;
+  padding:clamp(20px,3vw,40px) 0;
+}
+.postcard-item{
+  max-width:800px;width:100%;
+  border-radius:10px;overflow:hidden;
+  box-shadow:var(--shadow-lg);border:6px solid #fff;
+  transform:rotate(-.5deg);
+  transition:transform .5s var(--ease);
+}
+.postcard-item:hover{transform:rotate(0deg) scale(1.02);}
+.postcard-item img{width:100%;height:auto;display:block;}
+.postcard-quotes{
+  display:flex;justify-content:center;gap:clamp(20px,3vw,48px);flex-wrap:wrap;
+  margin-top:clamp(16px,2vw,28px);
+}
+.postcard-quotes span{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(14px,1.4vw,18px);color:var(--ink-soft);
+  font-style:italic;
+}
+
+/* travel guide */
+.op-guide{}
+.guide-board{
+  background:var(--bg-paper);border-radius:12px;
+  padding:clamp(28px,3.5vw,48px);border:1px solid var(--line);
+}
+.guide-days{
+  display:flex;align-items:stretch;justify-content:space-between;
+  gap:clamp(8px,1.5vw,20px);margin-bottom:clamp(28px,3vw,40px);
+}
+.guide-day{
+  flex:1;text-align:center;padding:16px 12px;
+  background:#fff;border-radius:8px;box-shadow:var(--shadow-sm);
+}
+.gd-day{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--forest);margin-bottom:4px;}
+.gd-title{font-family:"Space Grotesk",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;margin-bottom:8px;}
+.gd-desc{font-size:12px;line-height:1.8;color:var(--ink-soft);}
+.guide-arrow{
+  display:flex;align-items:center;color:var(--sage);
+  font-size:18px;flex:0 0 auto;
+}
+.guide-route{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;padding-top:20px;border-top:1px dashed var(--line);
+}
+.gr-node{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:.08em;
+  color:var(--ink-soft);background:#fff;
+  padding:5px 12px;border-radius:20px;border:1px solid var(--line);
+  white-space:nowrap;
+}
+.gr-line{
+  width:clamp(20px,3vw,40px);height:1px;
+  background:var(--sage);flex:0 0 auto;
+}
+
+/* sticker */
+.op-sticker{text-align:center;}
+.sticker-display{
+  max-width:900px;margin:0 auto;
+  border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);
+}
+.sticker-display img{width:100%;height:auto;display:block;}
+
+/* physical */
+.op-physical{}
+.physical-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(12px,1.5vw,20px);
+}
+.phy-item{aspect-ratio:4/3;border-radius:8px;overflow:hidden;}
+.phy-placeholder{
+  width:100%;height:100%;
+  background:var(--bg-paper);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s var(--ease);
+}
+.phy-placeholder:hover{background:var(--cream);}
+.phy-placeholder span{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase;
+}
+
+/* final */
+.op-final{
+  text-align:center;padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px);
+}
+.op-final-title{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;
+  font-size:clamp(36px,4.5vw,58px);font-weight:400;
+  line-height:1.2;color:var(--ink);letter-spacing:.01em;
+}
+.op-final-slogan{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(12px,1.2vw,14px);font-weight:400;
+  color:var(--ink-soft);letter-spacing:.08em;margin-top:16px;
+  font-style:italic;
+}
+.op-final-meta{
+  display:flex;justify-content:center;gap:clamp(16px,2vw,28px);
+  margin-top:clamp(20px,2.5vw,32px);flex-wrap:wrap;
+}
+.op-final-meta span{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:10px;font-weight:500;letter-spacing:.16em;
+  color:var(--muted);text-transform:uppercase;
+}
+.op-final-line{
+  width:60px;height:1px;background:var(--sage);
+  margin:clamp(28px,3.5vw,44px) auto 0;
+}
+
+/* responsive for op-section */
+@media (max-width:1024px){
+  .op-social{flex-direction:column;}
+  .op-block-left{flex:1;padding-right:0;margin-bottom:28px;}
+  .op-poster-inner{flex-direction:column;}
+  .op-poster-left{flex:1;}
+  .physical-grid{grid-template-columns:repeat(2,1fr);}
+  .guide-days{flex-direction:column;}
+  .guide-arrow{transform:rotate(90deg);justify-content:center;padding:4px 0;}
+}
+@media (max-width:768px){
+  .op-head{flex-direction:column;gap:20px;}
+  .op-head-right{text-align:left;flex-direction:row;gap:16px;align-items:baseline;}
+  .op-nav{gap:12px 20px;}
+  .op-social-cards{flex-direction:column;align-items:center;}
+  .social-card{max-width:260px;}
+  .sc-1,.sc-2,.sc-3{margin-top:0;}
+  .physical-grid{grid-template-columns:1fr 1fr;}
+  .postcard-quotes{flex-direction:column;gap:8px;}
+}
 .el{position:absolute;font-size:clamp(26px,2.6vw,36px);opacity:.7;cursor:default;transition:transform .3s var(--ease);}
 .el:hover{transform:scale(1.2) rotate(5deg);}
 .el-1{top:10%;left:6%;transform:rotate(-10deg);}
@@ -616,11 +897,10 @@ a{color:inherit;text-decoration:none;}
   </div>
 </section>
 
-<!-- ============ 05 + 06 Two Column ============ -->
+<!-- ============ 05 Visual Elements ============ -->
 <section class="section" style="padding-bottom:0;">
-  <div class="wrap two-col">
-    <!-- 05 Visual Elements -->
-    <div class="sub-section" id="elements" style="grid-column:1/-1;">
+  <div class="wrap">
+    <div class="sub-section" id="elements">
       <div class="sec-head reveal">
         <div class="sec-num">05</div>
         <div class="sec-title-wrap">
@@ -632,24 +912,197 @@ a{color:inherit;text-decoration:none;}
         <img src="https://aka.doubaocdn.com/s/PKAH9lv0Sm" alt="48H森林度假计划视觉元素素材库" class="elements-img">
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- 06 Operational Visuals -->
-    <div class="sub-section" id="operational" style="grid-column:1/-1;">
-      <div class="sec-head reveal">
-        <div class="sec-num">06</div>
-        <div class="sec-title-wrap">
-          <div class="sec-title">运营物料</div>
-          <div class="sec-en">OPERATIONAL VISUALS</div>
+<!-- ============ 06 Operational Materials ============ -->
+<section class="section op-section" id="operational">
+  <div class="wrap">
+
+    <!-- head + overview -->
+    <div class="op-head reveal">
+      <div class="op-head-left">
+        <span class="op-tag">运营物料 / Operational Materials</span>
+        <h2 class="op-title">48H<br>森林度假计划</h2>
+        <p class="op-title-en">48-HOUR FOREST GETAWAY PLAN</p>
+        <p class="op-slogan">Slow down. Breathe deeply. Stay with nature.</p>
+      </div>
+      <div class="op-head-right">
+        <span class="op-year">2026</span>
+        <span class="op-begin">New beginning</span>
+      </div>
+    </div>
+
+    <div class="op-overview reveal">
+      <p class="op-overview-cn">将48小时森林度假计划的核心视觉语言延展至线上传播与线下生活方式物料。</p>
+      <p class="op-overview-en">Extending the visual identity into a cohesive collection of digital and physical campaign materials.</p>
+    </div>
+
+    <!-- category nav -->
+    <div class="op-nav reveal">
+      <span>01 SOCIAL MEDIA</span>
+      <span>02 POSTER</span>
+      <span>03 POSTCARD</span>
+      <span>04 TRAVEL GUIDE</span>
+      <span>05 STICKER</span>
+      <span>06 TOTE BAG</span>
+    </div>
+
+    <!-- 01 Social Media -->
+    <div class="op-block op-social reveal">
+      <div class="op-block-left">
+        <div class="op-block-num">01</div>
+        <div class="op-block-title">SOCIAL MEDIA<br><span class="op-block-cn">社交媒体传播</span></div>
+        <p class="op-block-desc">以森林度假生活方式为内容核心，将主视觉转化为适合社交平台传播的系列内容。</p>
+      </div>
+      <div class="op-block-right op-social-cards">
+        <div class="social-card sc-1">
+          <div class="social-card-img"><img src="https://aka.doubaocdn.com/s/6U8yAv1TBv" alt="48H森林度假计划"></div>
+          <div class="social-card-text">
+            <div class="sc-title">48H 森林度假计划</div>
+            <div class="sc-en">48 HOURS AWAY FROM THE CITY</div>
+          </div>
+        </div>
+        <div class="social-card sc-2">
+          <div class="social-card-img"><img src="https://aka.doubaocdn.com/s/uq5em8OGo9" alt="今晚住进森林"></div>
+          <div class="social-card-text">
+            <div class="sc-title">今晚，住进森林。</div>
+            <div class="sc-en">TONIGHT, STAY WITH THE FOREST.</div>
+          </div>
+        </div>
+        <div class="social-card sc-3">
+          <div class="social-card-img"><img src="https://aka.doubaocdn.com/s/nilwPpQ4cN" alt="48小时逃离城市"></div>
+          <div class="social-card-text">
+            <div class="sc-title">48小时，逃离城市。</div>
+            <div class="sc-en">48 HOURS AWAY FROM THE CITY.</div>
+          </div>
         </div>
       </div>
-      <div class="ops-board reveal">
-        <div class="ops-item"><span class="ops-item-label">森林路线地图<span class="ops-en">Forest Trail Map</span></span></div>
-        <div class="ops-item"><span class="ops-item-label">主题贴纸<span class="ops-en">Sticker Set</span></span></div>
-        <div class="ops-item"><span class="ops-item-label">活动吊牌<span class="ops-en">Event Tag</span></span></div>
-        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/V3QWzXmny5" alt="明信片"><span class="ops-item-label">明信片<span class="ops-en">Postcard</span></span></div>
-        <div class="ops-item"><img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="宣传海报"><span class="ops-item-label">宣传海报<span class="ops-en">Campaign Poster</span></span></div>
-        <div class="ops-item"><span class="ops-item-label">手提袋<span class="ops-en">Tote Bag</span></span></div>
+    </div>
+
+    <!-- 02 Poster -->
+    <div class="op-block op-poster reveal">
+      <div class="op-poster-bg"></div>
+      <div class="op-poster-inner">
+        <div class="op-poster-left">
+          <div class="poster-main">
+            <img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="48H森林度假计划宣传海报">
+          </div>
+        </div>
+        <div class="op-poster-right">
+          <div class="poster-sub ps-1">
+            <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="森林系列海报">
+            <span class="poster-tag">CAMPAIGN POSTER</span>
+          </div>
+          <div class="poster-sub ps-2">
+            <img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="森林度假主视觉">
+            <span class="poster-tag">FOREST RETREAT</span>
+          </div>
+          <div class="poster-sub ps-3">
+            <div class="poster-placeholder">
+              <span class="pp-num">48H</span>
+              <span class="pp-text">GETAWAY</span>
+            </div>
+            <span class="poster-tag">48H GETAWAY</span>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- 03 Postcard -->
+    <div class="op-block op-postcard reveal">
+      <div class="op-block-head">
+        <div class="op-block-num">03</div>
+        <div class="op-block-title">POSTCARD<br><span class="op-block-cn">明信片</span></div>
+      </div>
+      <div class="postcard-display">
+        <div class="postcard-item pc-1">
+          <img src="https://aka.doubaocdn.com/s/V3QWzXmny5" alt="森林度假明信片套装">
+        </div>
+      </div>
+      <div class="postcard-quotes">
+        <span>"Wish you were here."</span>
+        <span>"Greetings from the forest."</span>
+        <span>"48 hours of quiet."</span>
+      </div>
+    </div>
+
+    <!-- 04 Travel Guide -->
+    <div class="op-block op-guide reveal">
+      <div class="op-block-head">
+        <div class="op-block-num">04</div>
+        <div class="op-block-title">TRAVEL GUIDE<br><span class="op-block-cn">48H旅行手册</span></div>
+      </div>
+      <div class="guide-board">
+        <div class="guide-days">
+          <div class="guide-day">
+            <div class="gd-day">DAY 01</div>
+            <div class="gd-title">ARRIVE</div>
+            <div class="gd-desc">抵达森林小屋，放下行李，生起篝火。</div>
+          </div>
+          <div class="guide-arrow">→</div>
+          <div class="guide-day">
+            <div class="gd-day">DAY 02</div>
+            <div class="gd-title">EXPLORE</div>
+            <div class="gd-desc">徒步森林小径，沿溪流前行，发现隐秘营地。</div>
+          </div>
+          <div class="guide-arrow">→</div>
+          <div class="guide-day">
+            <div class="gd-day">DAY 03</div>
+            <div class="gd-title">SLOW DOWN</div>
+            <div class="gd-desc">在自然中放慢节奏，读书、喝咖啡、发呆。</div>
+          </div>
+        </div>
+        <div class="guide-route">
+          <span class="gr-node">cabin</span>
+          <span class="gr-line"></span>
+          <span class="gr-node">forest trail</span>
+          <span class="gr-line"></span>
+          <span class="gr-node">river</span>
+          <span class="gr-line"></span>
+          <span class="gr-node">campsite</span>
+          <span class="gr-line"></span>
+          <span class="gr-node">campfire</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Sticker -->
+    <div class="op-block op-sticker reveal">
+      <div class="op-block-head">
+        <div class="op-block-num">05</div>
+        <div class="op-block-title">VISUAL ASSETS<br><span class="op-block-cn">森林视觉元素</span></div>
+      </div>
+      <div class="sticker-display">
+        <img src="https://aka.doubaocdn.com/s/PKAH9lv0Sm" alt="森林视觉元素贴纸集合">
+      </div>
+    </div>
+
+    <!-- 06 Physical Materials -->
+    <div class="op-block op-physical reveal">
+      <div class="op-block-head">
+        <div class="op-block-num">06</div>
+        <div class="op-block-title">PHYSICAL MATERIALS<br><span class="op-block-cn">实体物料</span></div>
+      </div>
+      <div class="physical-grid">
+        <div class="phy-item"><div class="phy-placeholder"><span>TOTE BAG</span></div></div>
+        <div class="phy-item"><div class="phy-placeholder"><span>CAMPING MUG</span></div></div>
+        <div class="phy-item"><div class="phy-placeholder"><span>THERMOS</span></div></div>
+        <div class="phy-item"><div class="phy-placeholder"><span>NOTEBOOK</span></div></div>
+        <div class="phy-item"><div class="phy-placeholder"><span>HIKING MAP</span></div></div>
+        <div class="phy-item"><div class="phy-placeholder"><span>LUGGAGE TAG</span></div></div>
+      </div>
+    </div>
+
+    <!-- Final Statement -->
+    <div class="op-final reveal">
+      <div class="op-final-title">48H<br>FOREST GETAWAY</div>
+      <p class="op-final-slogan">Slow down. Breathe deeply. Stay with nature.</p>
+      <div class="op-final-meta">
+        <span>Operational Illustration Design</span>
+        <span>2026 / New beginning</span>
+      </div>
+      <div class="op-final-line"></div>
     </div>
 
   </div>
