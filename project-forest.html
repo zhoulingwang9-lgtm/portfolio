@@ -285,11 +285,13 @@ a{color:inherit;text-decoration:none;}
 
 /* 05 elements */
 .elements-board{
-  position:relative;min-height:360px;
+  position:relative;
   background:var(--bg-paper);
-  border-radius:10px;padding:24px;
+  border-radius:10px;
   border:1px solid var(--line);
+  overflow:hidden;
 }
+.elements-img{width:100%;height:auto;display:block;}
 .el{position:absolute;font-size:clamp(26px,2.6vw,36px);opacity:.7;cursor:default;transition:transform .3s var(--ease);}
 .el:hover{transform:scale(1.2) rotate(5deg);}
 .el-1{top:10%;left:6%;transform:rotate(-10deg);}
@@ -627,19 +629,7 @@ a{color:inherit;text-decoration:none;}
         </div>
       </div>
       <div class="elements-board reveal">
-        <span class="el el-1">🌲</span>
-        <span class="el el-2">🍄</span>
-        <span class="el el-3">☕</span>
-        <span class="el el-4">🌸</span>
-        <span class="el el-5">🧭</span>
-        <span class="el el-6">🥾</span>
-        <span class="el el-7">🌿</span>
-        <span class="el el-8">🏕️</span>
-        <span class="el el-9">📷</span>
-        <span class="el el-10">🦋</span>
-        <span class="el el-11">🍂</span>
-        <span class="el el-12">🐦</span>
-        <span class="elements-sign">48H 森林度假计划</span>
+        <img src="https://aka.doubaocdn.com/s/PKAH9lv0Sm" alt="48H森林度假计划视觉元素素材库" class="elements-img">
       </div>
     </div>
 
