@@ -1299,8 +1299,18 @@ a{color:inherit;text-decoration:none;}
   }else{
     document.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ el.classList.add('in'); });
   }
+})();
+</script>
 
-  /* lightbox */
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="">
+  <span class="lightbox-caption" id="lightbox-caption"></span>
+</div>
+
+<script>
+(function(){
   var lightbox = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightbox-img');
   var lbCaption = document.getElementById('lightbox-caption');
@@ -1337,12 +1347,5 @@ a{color:inherit;text-decoration:none;}
   });
 })();
 </script>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img class="lightbox-content" id="lightbox-img" alt="">
-  <span class="lightbox-caption" id="lightbox-caption"></span>
-</div>
 </body>
 </html>
