@@ -401,6 +401,19 @@ a{color:inherit;text-decoration:none;}
   display:flex;gap:clamp(20px,3vw,40px);
   padding:clamp(28px,4vw,56px);align-items:stretch;
 }
+.op-poster-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(16px,2vw,28px);
+  padding:clamp(28px,4vw,56px);
+}
+.poster-item{
+  position:relative;border-radius:10px;overflow:hidden;
+  box-shadow:var(--shadow-md);border:5px solid #fff;
+  transition:transform .4s var(--ease);
+}
+.poster-item:hover{transform:scale(1.03);}
+.poster-item img{width:100%;height:auto;display:block;}
 .op-poster-left{flex:0 0 42%;}
 .poster-main{
   border-radius:10px;overflow:hidden;box-shadow:var(--shadow-lg);
@@ -559,6 +572,7 @@ a{color:inherit;text-decoration:none;}
   .op-social{flex-direction:column;}
   .op-block-left{flex:1;padding-right:0;margin-bottom:28px;}
   .op-poster-inner{flex-direction:column;}
+  .op-poster-grid{grid-template-columns:1fr;}
   .op-poster-left{flex:1;}
   .physical-grid{grid-template-columns:repeat(2,1fr);}
   .guide-days{flex-direction:column;}
@@ -979,28 +993,25 @@ a{color:inherit;text-decoration:none;}
     <!-- 02 Poster -->
     <div class="op-block op-poster reveal">
       <div class="op-poster-bg"></div>
-      <div class="op-poster-inner">
-        <div class="op-poster-left">
-          <div class="poster-main">
-            <img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="48H森林度假计划宣传海报">
-          </div>
+      <div class="op-poster-grid">
+        <div class="poster-item">
+          <img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="48H森林度假计划宣传海报">
+          <span class="poster-tag">CAMPAIGN POSTER</span>
         </div>
-        <div class="op-poster-right">
-          <div class="poster-sub ps-1">
-            <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="森林系列海报">
-            <span class="poster-tag">CAMPAIGN POSTER</span>
+        <div class="poster-item">
+          <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="森林系列海报">
+          <span class="poster-tag">FOREST RETREAT</span>
+        </div>
+        <div class="poster-item">
+          <img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="森林度假主视觉">
+          <span class="poster-tag">48H GETAWAY</span>
+        </div>
+        <div class="poster-item">
+          <div class="poster-placeholder">
+            <span class="pp-num">48H</span>
+            <span class="pp-text">GETAWAY</span>
           </div>
-          <div class="poster-sub ps-2">
-            <img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="森林度假主视觉">
-            <span class="poster-tag">FOREST RETREAT</span>
-          </div>
-          <div class="poster-sub ps-3">
-            <div class="poster-placeholder">
-              <span class="pp-num">48H</span>
-              <span class="pp-text">GETAWAY</span>
-            </div>
-            <span class="poster-tag">48H GETAWAY</span>
-          </div>
+          <span class="poster-tag">48H GETAWAY</span>
         </div>
       </div>
     </div>
