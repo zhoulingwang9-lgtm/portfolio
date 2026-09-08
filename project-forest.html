@@ -835,6 +835,370 @@ a{color:inherit;text-decoration:none;}
   font-family:"Space Grotesk","Noto Sans SC",sans-serif;
   letter-spacing:.04em;max-width:80vw;text-align:center;
 }
+
+/* ============ Design Process 板块 ============ */
+.dp-block{padding:clamp(48px,6vw,80px) 0;}
+.dp-hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);
+  align-items:center;margin-bottom:clamp(40px,5vw,64px);
+}
+.dp-hero-tag{
+  font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:.25em;color:var(--sage);text-transform:uppercase;margin-bottom:16px;
+}
+.dp-hero-title{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(36px,5vw,64px);
+  font-weight:600;line-height:.95;letter-spacing:-.02em;color:var(--ink);margin-bottom:6px;
+}
+.dp-hero-cn{
+  font-family:"Ma Shan Zheng","Noto Sans SC",cursive;font-size:clamp(20px,2.5vw,30px);
+  color:var(--forest-deep);margin-bottom:16px;
+}
+.dp-hero-sub{font-size:13px;color:var(--ink-soft);line-height:1.9;max-width:380px;}
+.dp-hero-sub-en{
+  font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--muted);
+  font-style:italic;margin-top:8px;
+}
+.dp-hero-img{
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow-lg);
+  border:1px solid var(--line);transform:rotate(1deg);
+}
+.dp-hero-img img{width:100%;height:auto;}
+
+.dp-sub{margin-bottom:clamp(40px,5vw,60px);}
+.dp-sub-head{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:clamp(20px,3vw,32px);
+}
+.dp-sub-num{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,2.5vw,32px);
+  font-weight:600;color:var(--sage);line-height:1;
+}
+.dp-sub-title{font-family:"Ma Shan Zheng",cursive;font-size:clamp(18px,2vw,24px);}
+.dp-sub-en{
+  font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:.2em;color:var(--muted);text-transform:uppercase;
+}
+
+/* Research */
+.dp-research-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,56px);align-items:start;
+}
+.dp-research-text h4{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(18px,2vw,24px);margin-bottom:12px;
+}
+.dp-research-text p{font-size:13px;color:var(--ink-soft);line-height:2;margin-bottom:10px;}
+.dp-research-q{
+  font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--sage);
+  font-style:italic;display:block;margin-bottom:6px;
+}
+.dp-rboard{
+  position:relative;background:var(--bg-paper);border-radius:12px;
+  padding:clamp(16px,2.5vw,28px);border:1px solid var(--line);min-height:320px;
+}
+.dp-rb-item{
+  position:absolute;border-radius:5px;overflow:hidden;
+  box-shadow:var(--shadow-md);border:2px solid #fff;
+}
+.dp-rb-item img{width:100%;height:100%;object-fit:cover;}
+.dp-rb-label{
+  position:absolute;bottom:6px;left:6px;background:rgba(255,255,255,.92);
+  padding:2px 6px;border-radius:3px;font-size:8px;font-weight:600;
+  font-family:"Space Grotesk",sans-serif;letter-spacing:.1em;
+  color:var(--forest-deep);text-transform:uppercase;
+}
+.dp-rb-1{top:6%;left:5%;width:38%;height:40%;transform:rotate(-2deg);}
+.dp-rb-2{top:10%;right:6%;width:40%;height:34%;transform:rotate(1.5deg);}
+.dp-rb-3{bottom:16%;left:8%;width:34%;height:30%;transform:rotate(1deg);}
+.dp-rb-4{bottom:8%;right:10%;width:36%;height:36%;transform:rotate(-1.5deg);}
+.dp-rb-note{
+  position:absolute;font-family:"Ma Shan Zheng",cursive;font-size:13px;
+  color:var(--terra);z-index:5;
+}
+
+/* Keywords */
+.dp-kw{text-align:center;}
+.dp-kw-massive{
+  font-family:"Space Grotesk",sans-serif;font-weight:600;line-height:1.1;
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:28px;
+}
+.dp-kw-line{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.5vw,32px);flex-wrap:wrap;}
+.dp-kw-slow{font-size:clamp(40px,6vw,84px);color:var(--sage);}
+.dp-kw-breathe{font-size:clamp(32px,4.5vw,64px);color:var(--mist);font-style:italic;}
+.dp-kw-explore{font-size:clamp(36px,5.5vw,76px);color:var(--forest);}
+.dp-kw-escape{font-size:clamp(28px,4vw,56px);color:var(--terra);font-family:"Ma Shan Zheng",cursive;font-weight:400;}
+.dp-kw-nature{font-size:clamp(38px,5.5vw,80px);color:var(--forest-deep);}
+.dp-kw-cn{font-family:"Ma Shan Zheng",cursive;font-size:clamp(14px,1.8vw,20px);color:var(--muted);}
+.dp-kw-flow{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-top:32px;flex-wrap:wrap;
+}
+.dp-kw-flow-item{
+  font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.12em;color:var(--ink-soft);padding:6px 14px;
+  border:1px solid var(--line);border-radius:18px;background:#fff;
+}
+.dp-kw-arrow{color:var(--sage);font-size:14px;}
+
+/* Moodboard */
+.dp-moodboard{
+  position:relative;min-height:440px;background:var(--bg-paper);
+  border-radius:14px;padding:clamp(20px,3vw,36px);border:1px solid var(--line);
+}
+.dp-mb-item{position:absolute;border-radius:7px;overflow:hidden;box-shadow:var(--shadow-md);}
+.dp-mb-item img{width:100%;height:100%;object-fit:cover;}
+.dp-mb-1{top:6%;left:5%;width:28%;height:36%;transform:rotate(-1.5deg);}
+.dp-mb-2{top:4%;left:36%;width:26%;height:30%;transform:rotate(1deg);}
+.dp-mb-3{top:7%;right:5%;width:26%;height:38%;transform:rotate(-1deg);}
+.dp-mb-4{bottom:10%;left:7%;width:30%;height:34%;transform:rotate(1.5deg);}
+.dp-mb-5{bottom:6%;left:42%;width:22%;height:28%;transform:rotate(-2deg);}
+.dp-mb-6{bottom:11%;right:6%;width:26%;height:36%;transform:rotate(.8deg);}
+.dp-mb-tag{
+  position:absolute;background:rgba(255,255,255,.92);padding:4px 9px;
+  border-radius:4px;font-size:8px;font-weight:600;
+  font-family:"Space Grotesk",sans-serif;letter-spacing:.1em;
+  color:var(--forest-deep);text-transform:uppercase;z-index:5;
+}
+
+/* Visual Exploration */
+.dp-ve-flow{
+  display:flex;align-items:stretch;gap:0;margin-top:20px;
+  overflow-x:auto;padding-bottom:12px;
+}
+.dp-ve-step{
+  flex:1;min-width:150px;padding:16px 12px;border-right:1px dashed var(--line);position:relative;
+}
+.dp-ve-step:last-child{border-right:none;}
+.dp-ve-step-num{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:.18em;color:var(--sage);margin-bottom:6px;
+}
+.dp-ve-step-title{
+  font-family:"Ma Shan Zheng",cursive;font-size:16px;color:var(--ink);margin-bottom:10px;
+}
+.dp-ve-step-img{
+  border-radius:7px;overflow:hidden;border:2px solid #fff;
+  box-shadow:var(--shadow-sm);margin-bottom:8px;
+}
+.dp-ve-step-img img{width:100%;height:100px;object-fit:cover;}
+.dp-ve-step-desc{font-size:10px;color:var(--muted);line-height:1.6;}
+.dp-ve-arrow{
+  position:absolute;right:-9px;top:50%;transform:translateY(-50%);
+  color:var(--sage);font-size:16px;z-index:2;background:var(--bg);padding:0 3px;
+}
+
+/* Visual Elements */
+.dp-elements-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;
+}
+.dp-element{
+  background:#fff;border-radius:9px;padding:14px;border:1px solid var(--line);
+  text-align:center;transition:transform .3s var(--ease);
+}
+.dp-element:hover{transform:translateY(-3px);}
+.dp-element-icon{font-size:26px;margin-bottom:6px;}
+.dp-element-name{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:.1em;color:var(--forest-deep);text-transform:uppercase;margin-bottom:3px;
+}
+.dp-element-cn{font-size:11px;color:var(--muted);}
+.dp-elements-full{
+  margin-top:24px;border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);
+}
+.dp-elements-full img{width:100%;height:auto;}
+
+/* Character */
+.dp-char-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.5vw,44px);align-items:center;
+}
+.dp-char-text h4{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(17px,2vw,22px);margin-bottom:12px;
+}
+.dp-char-text p{font-size:13px;color:var(--ink-soft);line-height:2;margin-bottom:10px;}
+.dp-char-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+.dp-char-tag{
+  font-size:10px;padding:4px 10px;border-radius:12px;background:var(--cream);
+  color:var(--forest-deep);font-family:"Space Grotesk",sans-serif;letter-spacing:.04em;
+}
+.dp-char-img{border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line);}
+.dp-char-img img{width:100%;height:auto;}
+
+/* Color */
+.dp-color-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;
+}
+.dp-color-phase{
+  background:#fff;border-radius:10px;padding:18px;border:1px solid var(--line);
+}
+.dp-color-phase-num{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:.18em;color:var(--sage);margin-bottom:6px;
+}
+.dp-color-phase-title{
+  font-family:"Ma Shan Zheng",cursive;font-size:15px;margin-bottom:12px;
+}
+.dp-color-swatches{display:flex;flex-wrap:wrap;gap:7px;}
+.dp-swatch{
+  width:40px;height:40px;border-radius:50% 45% 52% 48% / 48% 52% 45% 50%;
+  border:2px solid #fff;box-shadow:var(--shadow-sm);position:relative;
+}
+.dp-swatch span{
+  position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);
+  font-size:7px;font-family:"Space Grotesk",sans-serif;color:var(--muted);white-space:nowrap;
+}
+.dp-color-final{
+  margin-top:28px;border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);
+}
+.dp-color-final img{width:100%;height:auto;}
+
+/* Typography */
+.dp-type-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.5vw,48px);margin-top:20px;
+}
+.dp-type-block{
+  background:#fff;border-radius:10px;padding:22px;border:1px solid var(--line);
+}
+.dp-type-label{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:.18em;color:var(--sage);text-transform:uppercase;margin-bottom:12px;
+}
+.dp-type-cn-lg{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(20px,2.5vw,30px);
+  line-height:1.3;color:var(--ink);margin-bottom:10px;
+}
+.dp-type-en-lg{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(15px,1.8vw,22px);
+  font-weight:600;letter-spacing:-.01em;color:var(--ink-soft);line-height:1.4;margin-bottom:12px;
+}
+.dp-type-body{font-size:12px;color:var(--muted);line-height:1.8;}
+.dp-type-slogan{
+  font-family:"Ma Shan Zheng",cursive;font-size:17px;color:var(--forest-deep);
+  margin-top:12px;font-style:italic;
+}
+.dp-type-system{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px;
+}
+.dp-ts-item{padding:10px 14px;background:var(--bg-paper);border-radius:7px;}
+.dp-ts-label{
+  font-size:8px;font-family:"Space Grotesk",sans-serif;font-weight:600;
+  letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:3px;
+}
+.dp-ts-sample{font-size:13px;color:var(--ink);}
+
+/* Layout */
+.dp-layout-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px;
+}
+.dp-layout-card{
+  background:#fff;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+  position:relative;transition:transform .3s var(--ease);
+}
+.dp-layout-card:hover{transform:translateY(-3px);}
+.dp-layout-card img{width:100%;height:130px;object-fit:cover;}
+.dp-layout-info{padding:10px 12px;}
+.dp-layout-ver{
+  font-family:"Space Grotesk",sans-serif;font-size:8px;font-weight:600;
+  letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:3px;
+}
+.dp-layout-name{font-size:11px;color:var(--ink);}
+.dp-layout-note{
+  position:absolute;top:7px;right:7px;background:rgba(217,154,120,.9);
+  color:#fff;padding:2px 7px;border-radius:4px;font-size:8px;
+  font-family:"Space Grotesk",sans-serif;letter-spacing:.04em;
+}
+
+/* Final System */
+.dp-final-sys{text-align:center;margin-top:20px;}
+.dp-final-sys-title{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(18px,2.2vw,28px);margin-bottom:6px;
+}
+.dp-final-sys-sub{
+  font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--muted);
+  font-style:italic;margin-bottom:24px;
+}
+.dp-final-sys-img{
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow-lg);
+  border:1px solid var(--line);max-width:800px;margin:0 auto;
+}
+.dp-final-sys-img img{width:100%;height:auto;}
+.dp-final-sys-tags{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px;
+}
+.dp-fst{
+  font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--line);
+  background:#fff;font-family:"Space Grotesk",sans-serif;letter-spacing:.06em;color:var(--ink-soft);
+}
+
+/* Application */
+.dp-app-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;
+}
+.dp-app-item{
+  border-radius:10px;overflow:hidden;box-shadow:var(--shadow-md);
+  border:1px solid var(--line);transition:transform .3s var(--ease);
+}
+.dp-app-item:hover{transform:scale(1.02);}
+.dp-app-item img{width:100%;height:160px;object-fit:cover;}
+.dp-app-label{
+  padding:10px 14px;background:#fff;font-size:10px;
+  font-family:"Space Grotesk",sans-serif;font-weight:600;letter-spacing:.08em;
+  color:var(--forest-deep);text-transform:uppercase;
+}
+.dp-app-flow{
+  text-align:center;margin-top:24px;
+  font-family:"Space Grotesk",sans-serif;font-size:11px;
+  color:var(--muted);letter-spacing:.08em;
+}
+
+/* Ending */
+.dp-ending{
+  text-align:center;padding:clamp(48px,7vw,96px) 0 clamp(32px,4vw,48px);
+  position:relative;
+}
+.dp-ending-48h{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(32px,5vw,64px);
+  font-weight:600;color:var(--sage);letter-spacing:-.02em;
+}
+.dp-ending-title{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(18px,2.2vw,28px);
+  color:var(--ink);margin-bottom:10px;
+}
+.dp-ending-en{
+  font-family:"Space Grotesk",sans-serif;font-size:11px;color:var(--muted);
+  letter-spacing:.12em;margin-bottom:24px;
+}
+.dp-ending-slogan{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(16px,2vw,24px);
+  color:var(--forest-deep);margin-bottom:6px;
+}
+.dp-ending-slogan-en{
+  font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--muted);
+  font-style:italic;margin-bottom:16px;
+}
+.dp-ending-desc{font-size:12px;color:var(--ink-soft);line-height:2;}
+.dp-ending-footer{
+  position:absolute;bottom:20px;right:0;font-size:9px;
+  font-family:"Space Grotesk",sans-serif;color:var(--muted);
+  letter-spacing:.12em;display:flex;align-items:center;gap:6px;
+}
+
+@media (max-width:1024px){
+  .dp-hero{grid-template-columns:1fr;}
+  .dp-research-grid{grid-template-columns:1fr;}
+  .dp-char-grid{grid-template-columns:1fr;}
+  .dp-type-grid{grid-template-columns:1fr;}
+  .dp-color-grid{grid-template-columns:1fr;}
+  .dp-elements-grid{grid-template-columns:repeat(2,1fr);}
+  .dp-layout-grid{grid-template-columns:repeat(2,1fr);}
+  .dp-app-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:768px){
+  .dp-ve-flow{flex-direction:column;}
+  .dp-ve-step{border-right:none;border-bottom:1px dashed var(--line);}
+  .dp-ve-arrow{display:none;}
+  .dp-app-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -1177,35 +1541,419 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 </section>
-<section class="section">
-  <div class="wrap two-col">
-    <!-- 07 Process -->
-    <div class="sub-section" id="process">
-      <div class="sec-head reveal">
-        <div class="sec-num">07</div>
-        <div class="sec-title-wrap">
-          <div class="sec-title">设计过程</div>
-          <div class="sec-en">PROCESS</div>
-        </div>
+<!-- ============ 07 Design Process ============ -->
+<section class="section dp-block" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">07</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">设计过程</div>
+        <div class="sec-en">DESIGN PROCESS</div>
       </div>
-      <div class="process-board reveal">
-        <div class="process-row">
-          <div class="process-step"><div class="p-icon">🔍</div><div class="p-name">Research</div></div>
-          <div class="process-arrow">→</div>
-          <div class="process-step"><div class="p-icon">📋</div><div class="p-name">Moodboard</div></div>
-          <div class="process-arrow">→</div>
-          <div class="process-step"><div class="p-icon">🎨</div><div class="p-name">Color</div></div>
-          <div class="process-arrow">→</div>
-          <div class="process-step"><div class="p-icon">✏️</div><div class="p-name">Illustration</div></div>
-          <div class="process-arrow">→</div>
-          <div class="process-step"><div class="p-icon">📐</div><div class="p-name">Layout</div></div>
-          <div class="process-arrow">→</div>
-          <div class="process-step"><div class="p-icon">📦</div><div class="p-name">Application</div></div>
+    </div>
+
+    <!-- Hero -->
+    <div class="dp-hero reveal">
+      <div class="dp-hero-left">
+        <div class="dp-hero-tag">48H FOREST GETAWAY PLAN</div>
+        <h2 class="dp-hero-title">DESIGN<br>PROCESS</h2>
+        <div class="dp-hero-cn">设计过程</div>
+        <p class="dp-hero-sub">从一个想法，到完整的森林度假视觉体验。记录从调研、概念、视觉探索到最终系统形成的全过程。</p>
+        <p class="dp-hero-sub-en">From an idea to a complete visual experience.</p>
+      </div>
+      <div class="dp-hero-right">
+        <div class="dp-hero-img">
+          <img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="48H森林度假计划主视觉">
         </div>
       </div>
     </div>
 
-    <!-- 10 Final Outcome -->
+    <!-- 01 Research -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">01</div>
+        <div>
+          <div class="dp-sub-title">前期调研</div>
+          <div class="dp-sub-en">RESEARCH</div>
+        </div>
+      </div>
+      <div class="dp-research-grid">
+        <div class="dp-research-text">
+          <span class="dp-research-q">Why 48 hours?</span>
+          <h4>为什么是48小时？</h4>
+          <p>城市生活节奏不断加快，人们开始重新寻找短暂逃离城市的方式。</p>
+          <p>48小时，是一个刚好可以离开城市、进入自然、重新调整生活节奏的时间尺度。</p>
+        </div>
+        <div class="dp-rboard">
+          <div class="dp-rb-item dp-rb-1">
+            <img src="https://aka.doubaocdn.com/s/6U8yAv1TBv" alt="森林">
+            <span class="dp-rb-label">FOREST</span>
+          </div>
+          <div class="dp-rb-item dp-rb-2">
+            <img src="https://aka.doubaocdn.com/s/uq5em8OGo9" alt="露营">
+            <span class="dp-rb-label">CAMPING</span>
+          </div>
+          <div class="dp-rb-item dp-rb-3">
+            <img src="https://aka.doubaocdn.com/s/nilwPpQ4cN" alt="慢生活">
+            <span class="dp-rb-label">SLOW LIFE</span>
+          </div>
+          <div class="dp-rb-item dp-rb-4">
+            <img src="https://aka.doubaocdn.com/s/nZTdEZZUmz" alt="木屋">
+            <span class="dp-rb-label">CABIN</span>
+          </div>
+          <span class="dp-rb-note" style="top:3%;right:12%;transform:rotate(-5deg);">→ 自然治愈</span>
+          <span class="dp-rb-note" style="bottom:3%;left:12%;transform:rotate(3deg);">慢生活 ←</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Keywords -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">02</div>
+        <div>
+          <div class="dp-sub-title">设计关键词</div>
+          <div class="dp-sub-en">KEYWORDS</div>
+        </div>
+      </div>
+      <div class="dp-kw">
+        <div class="dp-kw-massive">
+          <div class="dp-kw-line"><span class="dp-kw-slow">SLOW</span><span class="dp-kw-cn">放慢</span></div>
+          <div class="dp-kw-line"><span class="dp-kw-breathe">BREATHE</span><span class="dp-kw-cn">呼吸</span></div>
+          <div class="dp-kw-line"><span class="dp-kw-explore">EXPLORE</span><span class="dp-kw-cn">探索</span></div>
+          <div class="dp-kw-line"><span class="dp-kw-escape">ESCAPE</span><span class="dp-kw-cn">逃离</span></div>
+          <div class="dp-kw-line"><span class="dp-kw-nature">NATURE</span><span class="dp-kw-cn">自然</span></div>
+        </div>
+        <div class="dp-kw-flow">
+          <span class="dp-kw-flow-item">CITY</span><span class="dp-kw-arrow">→</span>
+          <span class="dp-kw-flow-item">ESCAPE</span><span class="dp-kw-arrow">→</span>
+          <span class="dp-kw-flow-item">FOREST</span><span class="dp-kw-arrow">→</span>
+          <span class="dp-kw-flow-item">SLOW DOWN</span><span class="dp-kw-arrow">→</span>
+          <span class="dp-kw-flow-item">48H EXPERIENCE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Moodboard -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">03</div>
+        <div>
+          <div class="dp-sub-title">视觉情绪板</div>
+          <div class="dp-sub-en">MOODBOARD</div>
+        </div>
+      </div>
+      <div class="dp-moodboard">
+        <div class="dp-mb-item dp-mb-1"><img src="https://aka.doubaocdn.com/s/GTYcPporuV" alt="森林木屋"></div>
+        <div class="dp-mb-item dp-mb-2"><img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="森林度假"></div>
+        <div class="dp-mb-item dp-mb-3"><img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="露营"></div>
+        <div class="dp-mb-item dp-mb-4"><img src="https://aka.doubaocdn.com/s/oZ9CiSP7Nx" alt="篝火"></div>
+        <div class="dp-mb-item dp-mb-5"><img src="https://aka.doubaocdn.com/s/V3QWzXmny5" alt="明信片"></div>
+        <div class="dp-mb-item dp-mb-6"><img src="https://aka.doubaocdn.com/s/N019H6xO00" alt="离开"></div>
+        <span class="dp-mb-tag" style="top:3%;left:3%;">QUIET · WARM · NATURAL</span>
+        <span class="dp-mb-tag" style="top:3%;right:3%;">SLOW · HANDMADE</span>
+        <span class="dp-mb-tag" style="bottom:3%;left:3%;">FOREST AESTHETIC</span>
+      </div>
+    </div>
+
+    <!-- 04 Visual Exploration -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">04</div>
+        <div>
+          <div class="dp-sub-title">视觉探索</div>
+          <div class="dp-sub-en">VISUAL EXPLORATION</div>
+        </div>
+      </div>
+      <p style="font-family:'Ma Shan Zheng',cursive;font-size:clamp(16px,2vw,22px);margin-bottom:4px;">从观察，到形成视觉语言。</p>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:var(--muted);font-style:italic;margin-bottom:16px;">From observation to visual language.</p>
+      <div class="dp-ve-flow">
+        <div class="dp-ve-step">
+          <div class="dp-ve-step-num">01</div>
+          <div class="dp-ve-step-title">REFERENCE<br>参考</div>
+          <div class="dp-ve-step-img"><img src="https://aka.doubaocdn.com/s/6U8yAv1TBv" alt="参考"></div>
+          <div class="dp-ve-step-desc">森林真实照片与自然素材收集</div>
+          <span class="dp-ve-arrow">→</span>
+        </div>
+        <div class="dp-ve-step">
+          <div class="dp-ve-step-num">02</div>
+          <div class="dp-ve-step-title">SKETCH<br>草图</div>
+          <div class="dp-ve-step-img"><img src="https://aka.doubaocdn.com/s/GwolUikVTl" alt="草图"></div>
+          <div class="dp-ve-step-desc">松树、木屋、帐篷、篝火手绘草图</div>
+          <span class="dp-ve-arrow">→</span>
+        </div>
+        <div class="dp-ve-step">
+          <div class="dp-ve-step-num">03</div>
+          <div class="dp-ve-step-title">SHAPE<br>形态提炼</div>
+          <div class="dp-ve-step-img"><img src="https://aka.doubaocdn.com/s/PKAH9lv0Sm" alt="形态"></div>
+          <div class="dp-ve-step-desc">简化后的手绘轮廓与有机形状</div>
+          <span class="dp-ve-arrow">→</span>
+        </div>
+        <div class="dp-ve-step">
+          <div class="dp-ve-step-num">04</div>
+          <div class="dp-ve-step-title">COLOR<br>色彩探索</div>
+          <div class="dp-ve-step-img"><img src="https://aka.doubaocdn.com/s/8ZV6lr7qBf" alt="色彩"></div>
+          <div class="dp-ve-step-desc">低饱和自然色系测试与确定</div>
+          <span class="dp-ve-arrow">→</span>
+        </div>
+        <div class="dp-ve-step">
+          <div class="dp-ve-step-num">05</div>
+          <div class="dp-ve-step-title">FINAL<br>最终视觉</div>
+          <div class="dp-ve-step-img"><img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="最终"></div>
+          <div class="dp-ve-step-desc">完整48H森林度假插画系统</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Visual Elements -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">05</div>
+        <div>
+          <div class="dp-sub-title">视觉元素设计</div>
+          <div class="dp-sub-en">VISUAL ELEMENTS</div>
+        </div>
+      </div>
+      <div class="dp-elements-grid">
+        <div class="dp-element"><div class="dp-element-icon">🌲</div><div class="dp-element-name">PINE TREE</div><div class="dp-element-cn">松树</div></div>
+        <div class="dp-element"><div class="dp-element-icon">🏠</div><div class="dp-element-name">CABIN</div><div class="dp-element-cn">木屋</div></div>
+        <div class="dp-element"><div class="dp-element-icon">⛺</div><div class="dp-element-name">TENT</div><div class="dp-element-cn">帐篷</div></div>
+        <div class="dp-element"><div class="dp-element-icon">🔥</div><div class="dp-element-name">CAMPFIRE</div><div class="dp-element-cn">篝火</div></div>
+        <div class="dp-element"><div class="dp-element-icon">🏞️</div><div class="dp-element-name">RIVER</div><div class="dp-element-cn">溪流</div></div>
+        <div class="dp-element"><div class="dp-element-icon">🥾</div><div class="dp-element-name">HIKING</div><div class="dp-element-cn">徒步</div></div>
+        <div class="dp-element"><div class="dp-element-icon">🍄</div><div class="dp-element-name">MUSHROOM</div><div class="dp-element-cn">蘑菇</div></div>
+        <div class="dp-element"><div class="dp-element-icon">🍃</div><div class="dp-element-name">LEAF</div><div class="dp-element-cn">树叶</div></div>
+      </div>
+      <div class="dp-elements-full">
+        <img src="https://aka.doubaocdn.com/s/PKAH9lv0Sm" alt="完整视觉元素素材库">
+      </div>
+    </div>
+
+    <!-- 06 Character / Scene -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">06</div>
+        <div>
+          <div class="dp-sub-title">人物与场景探索</div>
+          <div class="dp-sub-en">CHARACTER & SCENE</div>
+        </div>
+      </div>
+      <div class="dp-char-grid">
+        <div class="dp-char-text">
+          <h4>统一的角色与场景语言</h4>
+          <p>同一角色在不同场景中保持统一的造型、比例和线条质量。</p>
+          <p>从徒步行走、露营、阅读、喝咖啡到围坐篝火，每个动作都延续相同的插画语言。</p>
+          <div class="dp-char-tags">
+            <span class="dp-char-tag">walking</span>
+            <span class="dp-char-tag">camping</span>
+            <span class="dp-char-tag">reading</span>
+            <span class="dp-char-tag">coffee</span>
+            <span class="dp-char-tag">campfire</span>
+            <span class="dp-char-tag">packing</span>
+          </div>
+        </div>
+        <div class="dp-char-img">
+          <img src="https://aka.doubaocdn.com/s/nZTdEZZUmz" alt="人物场景探索">
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 Color Exploration -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">07</div>
+        <div>
+          <div class="dp-sub-title">色彩探索</div>
+          <div class="dp-sub-en">COLOR EXPLORATION</div>
+        </div>
+      </div>
+      <div class="dp-color-grid">
+        <div class="dp-color-phase">
+          <div class="dp-color-phase-num">01</div>
+          <div class="dp-color-phase-title">EARLY COLOR TEST</div>
+          <div class="dp-color-swatches">
+            <div class="dp-swatch" style="background:#A8C49A;"><span>Green</span></div>
+            <div class="dp-swatch" style="background:#C4D8E0;"><span>Blue</span></div>
+            <div class="dp-swatch" style="background:#E8DCC0;"><span>Cream</span></div>
+            <div class="dp-swatch" style="background:#D4A574;"><span>Terra</span></div>
+          </div>
+        </div>
+        <div class="dp-color-phase">
+          <div class="dp-color-phase-num">02</div>
+          <div class="dp-color-phase-title">NATURE PALETTE</div>
+          <div class="dp-color-swatches">
+            <div class="dp-swatch" style="background:#B8CFA8;"><span>#B8CFA8</span></div>
+            <div class="dp-swatch" style="background:#9EAF91;"><span>#9EAF91</span></div>
+            <div class="dp-swatch" style="background:#B8D2D8;"><span>#B8D2D8</span></div>
+            <div class="dp-swatch" style="background:#F4F0DC;"><span>#F4F0DC</span></div>
+            <div class="dp-swatch" style="background:#E8D47A;"><span>#E8D47A</span></div>
+            <div class="dp-swatch" style="background:#D99A7B;"><span>#D99A7B</span></div>
+          </div>
+        </div>
+        <div class="dp-color-phase">
+          <div class="dp-color-phase-num">03</div>
+          <div class="dp-color-phase-title">FINAL PALETTE</div>
+          <div class="dp-color-swatches">
+            <div class="dp-swatch" style="background:#B8CFA8;"><span>Forest</span></div>
+            <div class="dp-swatch" style="background:#9EAF91;"><span>Sage</span></div>
+            <div class="dp-swatch" style="background:#B8D2D8;"><span>Mist</span></div>
+            <div class="dp-swatch" style="background:#F4F0DC;"><span>Cream</span></div>
+            <div class="dp-swatch" style="background:#E8D47A;"><span>Butter</span></div>
+            <div class="dp-swatch" style="background:#D99A78;"><span>Terra</span></div>
+            <div class="dp-swatch" style="background:#555555;"><span>Ink</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dp-color-final">
+        <img src="https://aka.doubaocdn.com/s/8ZV6lr7qBf" alt="最终色彩规范">
+      </div>
+    </div>
+
+    <!-- 08 Typography -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">08</div>
+        <div>
+          <div class="dp-sub-title">字体探索</div>
+          <div class="dp-sub-en">TYPOGRAPHY</div>
+        </div>
+      </div>
+      <div class="dp-type-grid">
+        <div class="dp-type-block">
+          <div class="dp-type-label">CHINESE / 中文</div>
+          <div class="dp-type-cn-lg">森林度假计划</div>
+          <div class="dp-type-cn-lg" style="font-size:17px;color:var(--forest-deep);">48小时，换一种速度生活。</div>
+          <p class="dp-type-body">中文标题采用手写体，自然、轻松、有手写感；正文使用简洁现代无衬线字体。</p>
+          <div class="dp-type-slogan">Slow down. Breathe deeply.</div>
+        </div>
+        <div class="dp-type-block">
+          <div class="dp-type-label">ENGLISH / 英文</div>
+          <div class="dp-type-en-lg">48-HOUR<br>FOREST GETAWAY PLAN</div>
+          <p class="dp-type-body" style="font-family:'Space Grotesk',sans-serif;font-style:italic;">SLOW DOWN. BREATHE DEEPLY. STAY WITH NATURE.</p>
+          <p class="dp-type-body">英文使用现代简洁的 Editorial Sans Serif，与中文手写体形成对比与互补。</p>
+        </div>
+      </div>
+      <div class="dp-type-system">
+        <div class="dp-ts-item"><div class="dp-ts-label">HEADLINE</div><div class="dp-ts-sample hand" style="font-size:20px;">标题 48H</div></div>
+        <div class="dp-ts-item"><div class="dp-ts-label">SUBHEADLINE</div><div class="dp-ts-sample en" style="font-weight:600;">Subtitle 副标题</div></div>
+        <div class="dp-ts-item"><div class="dp-ts-label">BODY</div><div class="dp-ts-sample" style="font-size:12px;">正文内容 Body text</div></div>
+        <div class="dp-ts-item"><div class="dp-ts-label">CAPTION</div><div class="dp-ts-sample" style="font-size:10px;color:var(--muted);">注释 Caption</div></div>
+      </div>
+    </div>
+
+    <!-- 09 Layout Exploration -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">09</div>
+        <div>
+          <div class="dp-sub-title">版式探索</div>
+          <div class="dp-sub-en">LAYOUT EXPLORATION</div>
+        </div>
+      </div>
+      <div class="dp-layout-grid">
+        <div class="dp-layout-card">
+          <img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="Version 01">
+          <div class="dp-layout-info">
+            <div class="dp-layout-ver">VERSION 01</div>
+            <div class="dp-layout-name">Poster 海报</div>
+          </div>
+          <span class="dp-layout-note">More organic</span>
+        </div>
+        <div class="dp-layout-card">
+          <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="Version 02">
+          <div class="dp-layout-info">
+            <div class="dp-layout-ver">VERSION 02</div>
+            <div class="dp-layout-name">Social Media 社交</div>
+          </div>
+          <span class="dp-layout-note">Better hierarchy</span>
+        </div>
+        <div class="dp-layout-card">
+          <img src="https://aka.doubaocdn.com/s/V3QWzXmny5" alt="Version 03">
+          <div class="dp-layout-info">
+            <div class="dp-layout-ver">VERSION 03</div>
+            <div class="dp-layout-name">Postcard 明信片</div>
+          </div>
+          <span class="dp-layout-note">More breathing</span>
+        </div>
+        <div class="dp-layout-card">
+          <img src="https://aka.doubaocdn.com/s/8Qpj4bKa6E" alt="Final">
+          <div class="dp-layout-info">
+            <div class="dp-layout-ver">FINAL</div>
+            <div class="dp-layout-name">Travel Guide 手册</div>
+          </div>
+          <span class="dp-layout-note" style="background:rgba(107,133,96,.9);">FINAL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Final Visual System -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num">10</div>
+        <div>
+          <div class="dp-sub-title">最终视觉系统</div>
+          <div class="dp-sub-en">FINAL VISUAL SYSTEM</div>
+        </div>
+      </div>
+      <div class="dp-final-sys">
+        <h4 class="dp-final-sys-title">从零散元素，到完整视觉系统。</h4>
+        <p class="dp-final-sys-sub">From fragments to a visual system.</p>
+        <div class="dp-final-sys-img">
+          <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="最终视觉系统">
+        </div>
+        <div class="dp-final-sys-tags">
+          <span class="dp-fst">LOGO</span><span class="dp-fst">COLOR</span><span class="dp-fst">TYPE</span>
+          <span class="dp-fst">ILLUSTRATION</span><span class="dp-fst">ELEMENTS</span><span class="dp-fst">PATTERN</span>
+          <span class="dp-fst">LAYOUT</span><span class="dp-fst">MATERIAL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Application -->
+    <div class="dp-sub reveal">
+      <div class="dp-sub-head">
+        <div class="dp-sub-num" style="font-size:16px;">✦</div>
+        <div>
+          <div class="dp-sub-title">最终应用</div>
+          <div class="dp-sub-en">FINAL APPLICATION</div>
+        </div>
+      </div>
+      <div class="dp-app-grid">
+        <div class="dp-app-item">
+          <img src="https://aka.doubaocdn.com/s/x25nwsQvv7" alt="Poster">
+          <div class="dp-app-label">Poster 海报</div>
+        </div>
+        <div class="dp-app-item">
+          <img src="https://aka.doubaocdn.com/s/V3QWzXmny5" alt="Postcard">
+          <div class="dp-app-label">Postcard 明信片</div>
+        </div>
+        <div class="dp-app-item">
+          <img src="https://aka.doubaocdn.com/s/8Qpj4bKa6E" alt="Travel Guide">
+          <div class="dp-app-label">Travel Guide 手册</div>
+        </div>
+      </div>
+      <p class="dp-app-flow">RESEARCH → CONCEPT → VISUAL LANGUAGE → SYSTEM → APPLICATION</p>
+    </div>
+
+    <!-- Ending -->
+    <div class="dp-ending reveal">
+      <div class="dp-ending-48h">48H</div>
+      <div class="dp-ending-title">森林度假计划</div>
+      <div class="dp-ending-en">48-HOUR FOREST GETAWAY PLAN</div>
+      <div class="dp-ending-slogan">"48小时，换一种速度生活。"</div>
+      <div class="dp-ending-slogan-en">"48 hours to live at a different pace."</div>
+      <p class="dp-ending-desc">Leave the city behind. Find your way back to nature.<br>离开城市，重新找回与自然相处的时间。</p>
+      <div class="dp-ending-footer">
+        <span>DESIGN PROCESS / 2026</span>
+        <span style="font-size:14px;">🌲</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 Final Outcome ============ -->
+<section class="section">
+  <div class="wrap">
     <div class="sub-section" id="final">
       <div class="sec-head reveal">
         <div class="sec-num">10</div>
