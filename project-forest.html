@@ -1234,6 +1234,241 @@ a{color:inherit;text-decoration:none;}
 @media (max-width:768px){
   .decor-layer{display:none;}
 }
+
+/* ===== Final Visual System Board ===== */
+.dp-fvs-board{
+  background:#F4F0DC;
+  border-radius:16px;
+  padding:clamp(20px,3vw,36px);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-md);
+  margin-top:16px;
+}
+.dp-fvs-topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:14px;margin-bottom:20px;
+  border-bottom:1px solid rgba(85,85,85,.15);
+  font-family:"Space Grotesk",sans-serif;font-size:10px;
+  letter-spacing:.15em;color:var(--muted);text-transform:uppercase;
+}
+.dp-fvs-tb-center{
+  font-family:"Ma Shan Zheng",cursive;font-size:16px;
+  color:var(--ink);letter-spacing:.05em;
+}
+.dp-fvs-main{
+  display:grid;
+  grid-template-columns:1fr 1.3fr 1fr;
+  gap:clamp(16px,2.5vw,28px);
+  margin-bottom:24px;
+}
+.dp-fvs-col{display:flex;flex-direction:column;gap:20px;}
+.dp-fvs-module{
+  background:rgba(255,255,255,.55);
+  border-radius:10px;padding:clamp(12px,1.5vw,18px);
+  border:1px solid rgba(85,85,85,.08);
+}
+.dp-fvs-mod-label{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;
+  font-weight:600;letter-spacing:.18em;
+  color:var(--sage);text-transform:uppercase;
+  margin-bottom:10px;
+}
+/* Core Concept */
+.dp-fvs-concept-title{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(18px,2.2vw,26px);
+  font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.1;
+}
+.dp-fvs-concept-cn{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(14px,1.6vw,18px);
+  color:var(--forest-deep);margin:4px 0 8px;
+}
+.dp-fvs-concept-en{
+  font-family:"Space Grotesk",sans-serif;font-size:10px;
+  color:var(--muted);font-style:italic;letter-spacing:.05em;margin:0 0 2px;
+}
+.dp-fvs-concept-cn-sm{
+  font-size:11px;color:var(--muted);margin:0 0 12px;
+}
+.dp-fvs-flow{
+  display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+  font-family:"Space Grotesk",sans-serif;font-size:9px;
+  font-weight:600;letter-spacing:.1em;color:var(--ink);
+}
+.dp-fvs-flow i{
+  font-style:normal;color:var(--sage);font-size:11px;
+}
+.dp-fvs-flow span{
+  background:rgba(184,207,168,.25);padding:3px 7px;border-radius:3px;
+}
+/* Logo */
+.dp-fvs-logo-primary{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(32px,4vw,48px);
+  font-weight:700;color:var(--forest-deep);letter-spacing:-.02em;line-height:1;
+}
+.dp-fvs-logo-secondary{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(18px,2.2vw,26px);
+  color:var(--ink);margin:4px 0 2px;
+}
+.dp-fvs-logo-en{
+  font-family:"Space Grotesk",sans-serif;font-size:10px;
+  color:var(--muted);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.dp-fvs-logo-row{display:flex;flex-direction:column;gap:8px;}
+.dp-fvs-logo-item{display:flex;flex-direction:column;gap:2px;}
+.dp-fvs-logo-tag{
+  font-family:"Space Grotesk",sans-serif;font-size:8px;
+  letter-spacing:.15em;color:var(--sage);text-transform:uppercase;
+}
+.dp-fvs-logo-val{
+  font-family:"Space Grotesk",sans-serif;font-size:16px;font-weight:700;color:var(--ink);
+}
+.dp-fvs-logo-val.dp-fvs-hand{font-family:"Ma Shan Zheng",cursive;font-size:18px;font-weight:400;}
+.dp-fvs-logo-val.dp-fvs-small{font-size:9px;letter-spacing:.08em;font-weight:500;}
+.dp-fvs-note{
+  font-size:9px;color:var(--muted);font-style:italic;
+  margin:8px 0 0;letter-spacing:.03em;
+}
+/* Colors */
+.dp-fvs-colors{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
+}
+.dp-fvs-color{
+  aspect-ratio:1;border-radius:6px;position:relative;
+  display:flex;align-items:flex-end;padding:5px;
+  box-shadow:inset 0 0 0 1px rgba(85,85,85,.1);
+}
+.dp-fvs-color span{
+  font-family:"Space Grotesk",sans-serif;font-size:7px;
+  color:var(--ink);line-height:1.3;letter-spacing:.03em;
+  text-shadow:0 0 3px rgba(255,255,255,.6);
+}
+.dp-fvs-color span b{font-weight:700;font-size:8px;}
+.dp-fvs-color:nth-child(4) span,
+.dp-fvs-color:nth-child(8) span{color:#fff;text-shadow:0 0 3px rgba(0,0,0,.3);}
+/* Illustration */
+.dp-fvs-illus-grid{
+  display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;
+}
+.dp-fvs-illus-grid span{
+  font-family:"Space Grotesk",sans-serif;font-size:8px;
+  letter-spacing:.08em;color:var(--ink);
+  background:rgba(184,207,168,.2);padding:3px 6px;border-radius:3px;
+}
+.dp-fvs-illus-process{
+  display:flex;align-items:center;gap:5px;
+  font-family:"Space Grotesk",sans-serif;font-size:9px;
+  font-weight:600;color:var(--sage);margin-bottom:8px;
+}
+.dp-fvs-illus-process i{font-style:normal;color:var(--muted);}
+.dp-fvs-illus-img{border-radius:6px;overflow:hidden;border:1px solid rgba(85,85,85,.1);}
+.dp-fvs-illus-img img{width:100%;height:auto;display:block;}
+/* Graphic */
+.dp-fvs-graphic-row{
+  display:flex;flex-wrap:wrap;gap:5px;
+}
+.dp-fvs-graphic-row span{
+  font-size:10px;color:var(--ink);
+  border:1px dashed rgba(85,85,85,.25);padding:3px 7px;border-radius:3px;
+}
+/* Typography hierarchy */
+.dp-fvs-type-row{
+  display:flex;align-items:baseline;gap:8px;
+  padding:5px 0;border-bottom:1px solid rgba(85,85,85,.06);
+}
+.dp-fvs-type-row:last-child{border-bottom:none;}
+.dp-fvs-type-tag{
+  font-family:"Space Grotesk",sans-serif;font-size:7px;
+  letter-spacing:.15em;color:var(--sage);text-transform:uppercase;
+  min-width:62px;flex-shrink:0;
+}
+.dp-fvs-type-display{
+  font-family:"Space Grotesk",sans-serif;font-size:28px;font-weight:700;color:var(--forest-deep);
+}
+.dp-fvs-type-h1{font-family:"Ma Shan Zheng",cursive;font-size:18px;color:var(--ink);}
+.dp-fvs-type-h2{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.06em;color:var(--ink);}
+.dp-fvs-type-body{font-size:11px;color:var(--ink);}
+.dp-fvs-type-caption{font-family:"Space Grotesk",sans-serif;font-size:8px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;}
+.dp-fvs-type-anno{font-family:"Space Grotesk",sans-serif;font-size:9px;color:var(--terra);letter-spacing:.05em;}
+/* Layout */
+.dp-fvs-layout-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
+.dp-fvs-layout-list span{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;
+  letter-spacing:.08em;color:var(--ink);
+  padding-left:10px;position:relative;
+}
+.dp-fvs-layout-list span::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:1px;background:var(--sage);
+}
+.dp-fvs-layout-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.dp-fvs-layout-item{
+  aspect-ratio:1.4;background:rgba(184,210,216,.2);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(85,85,85,.08);
+}
+.dp-fvs-layout-item span{
+  font-family:"Space Grotesk",sans-serif;font-size:7px;
+  letter-spacing:.1em;color:var(--muted);text-transform:uppercase;
+}
+/* Material */
+.dp-fvs-material-row{display:flex;flex-wrap:wrap;gap:4px;}
+.dp-fvs-material-row span{
+  font-family:"Space Grotesk",sans-serif;font-size:8px;
+  letter-spacing:.08em;color:var(--ink);
+  background:rgba(216,201,167,.3);padding:3px 6px;border-radius:3px;
+}
+/* Apps */
+.dp-fvs-apps{
+  border-top:1px solid rgba(85,85,85,.12);
+  padding-top:18px;margin-bottom:20px;
+}
+.dp-fvs-app-label{margin-bottom:12px;}
+.dp-fvs-app-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;
+}
+.dp-fvs-app-item{
+  display:flex;flex-direction:column;gap:5px;
+}
+.dp-fvs-app-item img{
+  width:100%;aspect-ratio:1;object-fit:cover;
+  border-radius:6px;border:1px solid rgba(85,85,85,.1);
+}
+.dp-fvs-app-item span{
+  font-family:"Space Grotesk",sans-serif;font-size:7px;
+  letter-spacing:.1em;color:var(--muted);text-transform:uppercase;
+  text-align:center;
+}
+/* Statement */
+.dp-fvs-statement{
+  text-align:center;padding:20px 0 8px;
+  border-top:1px solid rgba(85,85,85,.12);
+}
+.dp-fvs-stmt-main{
+  font-family:"Space Grotesk",sans-serif;font-size:clamp(16px,2vw,22px);
+  font-weight:700;letter-spacing:.15em;color:var(--forest-deep);
+}
+.dp-fvs-stmt-cn{
+  font-family:"Ma Shan Zheng",cursive;font-size:clamp(13px,1.5vw,17px);
+  color:var(--ink);margin:6px 0 4px;letter-spacing:.1em;
+}
+.dp-fvs-stmt-en{
+  font-family:"Space Grotesk",sans-serif;font-size:9px;
+  letter-spacing:.12em;color:var(--muted);text-transform:uppercase;
+  font-style:italic;
+}
+.dp-fvs-stmt-cn-sm{font-size:10px;color:var(--muted);margin-top:3px;}
+
+@media (max-width:1024px){
+  .dp-fvs-main{grid-template-columns:1fr 1fr;}
+  .dp-fvs-right{grid-column:1/-1;}
+  .dp-fvs-app-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media (max-width:640px){
+  .dp-fvs-main{grid-template-columns:1fr;}
+  .dp-fvs-colors{grid-template-columns:repeat(2,1fr);}
+  .dp-fvs-app-grid{grid-template-columns:repeat(2,1fr);}
+}
 </style>
 </head>
 <body>
@@ -1859,16 +2094,161 @@ a{color:inherit;text-decoration:none;}
           <div class="dp-sub-en">FINAL VISUAL SYSTEM</div>
         </div>
       </div>
-      <div class="dp-final-sys">
-        <h4 class="dp-final-sys-title">从零散元素，到完整视觉系统。</h4>
-        <p class="dp-final-sys-sub">From fragments to a visual system.</p>
-        <div class="dp-final-sys-img">
-          <img src="https://aka.doubaocdn.com/s/fMI5UBydPV" alt="最终视觉系统">
+      <div class="dp-fvs-board">
+        <!-- 顶部标题条 -->
+        <div class="dp-fvs-topbar">
+          <span class="dp-fvs-tb-left">X / FINAL VISUAL SYSTEM</span>
+          <span class="dp-fvs-tb-center">最终视觉系统</span>
+          <span class="dp-fvs-tb-right">48H FOREST GETAWAY PLAN</span>
         </div>
-        <div class="dp-final-sys-tags">
-          <span class="dp-fst">LOGO</span><span class="dp-fst">COLOR</span><span class="dp-fst">TYPE</span>
-          <span class="dp-fst">ILLUSTRATION</span><span class="dp-fst">ELEMENTS</span><span class="dp-fst">PATTERN</span>
-          <span class="dp-fst">LAYOUT</span><span class="dp-fst">MATERIAL</span>
+
+        <!-- 主体三栏 -->
+        <div class="dp-fvs-main">
+          <!-- 左栏 -->
+          <div class="dp-fvs-col dp-fvs-left">
+            <!-- 核心概念 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">01 · CORE CONCEPT</div>
+              <div class="dp-fvs-concept-title">FROM BUSY TO SLOW</div>
+              <div class="dp-fvs-concept-cn">从忙碌，到放慢</div>
+              <p class="dp-fvs-concept-en">48 HOURS TO LIVE AT A DIFFERENT PACE.</p>
+              <p class="dp-fvs-concept-cn-sm">48小时，换一种速度生活。</p>
+              <div class="dp-fvs-flow">
+                <span>CITY</span><i>→</i><span>ESCAPE</span><i>→</i><span>FOREST</span><i>→</i><span>SLOW DOWN</span><i>→</i><span>MEMORY</span>
+              </div>
+            </div>
+
+            <!-- 标志与字体 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">02 · LOGO &amp; TYPOGRAPHY</div>
+              <div class="dp-fvs-logo-primary">48H</div>
+              <div class="dp-fvs-logo-secondary">森林度假计划</div>
+              <div class="dp-fvs-logo-en">48-HOUR FOREST GETAWAY PLAN</div>
+              <div class="dp-fvs-logo-row">
+                <div class="dp-fvs-logo-item">
+                  <span class="dp-fvs-logo-tag">PRIMARY MARK</span>
+                  <span class="dp-fvs-logo-val">48H</span>
+                </div>
+                <div class="dp-fvs-logo-item">
+                  <span class="dp-fvs-logo-tag">SECONDARY</span>
+                  <span class="dp-fvs-logo-val dp-fvs-hand">森林度假计划</span>
+                </div>
+                <div class="dp-fvs-logo-item">
+                  <span class="dp-fvs-logo-tag">ENGLISH</span>
+                  <span class="dp-fvs-logo-val dp-fvs-small">48-HOUR FOREST GETAWAY PLAN</span>
+                </div>
+              </div>
+              <p class="dp-fvs-note">Handwritten Chinese + clean minimalist English sans serif</p>
+            </div>
+          </div>
+
+          <!-- 中栏 -->
+          <div class="dp-fvs-col dp-fvs-center">
+            <!-- 色彩系统 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">03 · COLOR SYSTEM</div>
+              <div class="dp-fvs-colors">
+                <div class="dp-fvs-color" style="background:#B8CFA8;"><span>PALE FOREST GREEN<br><b>#B8CFA8</b></span></div>
+                <div class="dp-fvs-color" style="background:#9EAF91;"><span>SAGE GREEN<br><b>#9EAF91</b></span></div>
+                <div class="dp-fvs-color" style="background:#B8D2D8;"><span>MISTY BLUE<br><b>#B8D2D8</b></span></div>
+                <div class="dp-fvs-color" style="background:#F4F0DC;"><span>WARM CREAM<br><b>#F4F0DC</b></span></div>
+                <div class="dp-fvs-color" style="background:#D8C9A7;"><span>SAND BEIGE<br><b>#D8C9A7</b></span></div>
+                <div class="dp-fvs-color" style="background:#E8D47A;"><span>SOFT YELLOW<br><b>#E8D47A</b></span></div>
+                <div class="dp-fvs-color" style="background:#D99A7B;"><span>MUTED TERRACOTTA<br><b>#D99A7B</b></span></div>
+                <div class="dp-fvs-color" style="background:#555555;"><span>DARK GRAY INK<br><b>#555555</b></span></div>
+              </div>
+            </div>
+
+            <!-- 插画系统 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">04 · ILLUSTRATION SYSTEM</div>
+              <div class="dp-fvs-illus-grid">
+                <span>PINE TREE</span><span>WOODEN CABIN</span><span>TENT</span><span>MOUNTAIN</span>
+                <span>RIVER</span><span>HIKING TRAIL</span><span>CAMPFIRE</span><span>SUN</span>
+                <span>MOON</span><span>STARS</span><span>LEAVES</span><span>MUSHROOM</span>
+                <span>WILDFLOWERS</span>
+              </div>
+              <div class="dp-fvs-illus-process">
+                <span>LINE</span><i>→</i><span>SHAPE</span><i>→</i><span>COLOR</span><i>→</i><span>TEXTURE</span>
+              </div>
+              <div class="dp-fvs-illus-img">
+                <img src="https://aka.doubaocdn.com/s/PKAH9lv0Sm" alt="插画系统">
+              </div>
+            </div>
+
+            <!-- 图形元素 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">05 · GRAPHIC ELEMENTS</div>
+              <div class="dp-fvs-graphic-row">
+                <span>森林路线线条</span><span>手绘箭头</span><span>不规则边框</span><span>圆形标记</span>
+                <span>地图坐标</span><span>48H时间标记</span><span>树叶图标</span><span>山形轮廓</span>
+                <span>太阳/月亮/星星</span>
+              </div>
+              <p class="dp-fvs-note">Graphic Toolkit · 轻盈、自然、不规则</p>
+            </div>
+          </div>
+
+          <!-- 右栏 -->
+          <div class="dp-fvs-col dp-fvs-right">
+            <!-- 文字层级 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">06 · TYPOGRAPHIC HIERARCHY</div>
+              <div class="dp-fvs-type-row"><span class="dp-fvs-type-tag">DISPLAY</span><span class="dp-fvs-type-display">48H</span></div>
+              <div class="dp-fvs-type-row"><span class="dp-fvs-type-tag">H1</span><span class="dp-fvs-type-h1">森林度假计划</span></div>
+              <div class="dp-fvs-type-row"><span class="dp-fvs-type-tag">H2</span><span class="dp-fvs-type-h2">48-HOUR FOREST GETAWAY PLAN</span></div>
+              <div class="dp-fvs-type-row"><span class="dp-fvs-type-tag">BODY</span><span class="dp-fvs-type-body">48小时，换一种速度生活。</span></div>
+              <div class="dp-fvs-type-row"><span class="dp-fvs-type-tag">CAPTION</span><span class="dp-fvs-type-caption">FOREST / CABIN / CAMP / TRAIL</span></div>
+              <div class="dp-fvs-type-row"><span class="dp-fvs-type-tag">ANNOTATION</span><span class="dp-fvs-type-anno">48H / 06H / 18H / 24H / 30H / 42H / 48H</span></div>
+            </div>
+
+            <!-- 版式系统 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">07 · LAYOUT SYSTEM</div>
+              <div class="dp-fvs-layout-list">
+                <span>12-COLUMN GRID</span>
+                <span>ASYMMETRIC EDITORIAL LAYOUT</span>
+                <span>LARGE NEGATIVE SPACE</span>
+                <span>IMAGE + TYPOGRAPHY BALANCE</span>
+                <span>ORGANIC ELEMENTS BREAKING THE GRID</span>
+              </div>
+              <div class="dp-fvs-layout-mini">
+                <div class="dp-fvs-layout-item"><span>POSTER</span></div>
+                <div class="dp-fvs-layout-item"><span>TRAVEL GUIDE</span></div>
+                <div class="dp-fvs-layout-item"><span>SOCIAL MEDIA</span></div>
+              </div>
+            </div>
+
+            <!-- 材质与纹理 -->
+            <div class="dp-fvs-module">
+              <div class="dp-fvs-mod-label">08 · MATERIAL &amp; TEXTURE</div>
+              <div class="dp-fvs-material-row">
+                <span>RECYCLED PAPER</span><span>KRAFT PAPER</span><span>NATURAL CANVAS</span>
+                <span>LINEN</span><span>WOOD</span><span>WATERCOLOR PAPER</span><span>COTTON FABRIC</span>
+              </div>
+              <p class="dp-fvs-note">HANDMADE / NATURAL / TACTILE</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 底部应用预览 -->
+        <div class="dp-fvs-apps">
+          <div class="dp-fvs-mod-label dp-fvs-app-label">09 · APPLICATION PREVIEW</div>
+          <div class="dp-fvs-app-grid">
+            <div class="dp-fvs-app-item"><img src="https://aka.doubaocdn.com/s/MXyGSDVeAi" alt="CABIN KEY CARD"><span>CABIN KEY CARD</span></div>
+            <div class="dp-fvs-app-item"><img src="https://aka.doubaocdn.com/s/cUq0RWIkKb" alt="CAMPING CUP"><span>CAMPING CUP</span></div>
+            <div class="dp-fvs-app-item"><img src="https://aka.doubaocdn.com/s/qVXJkbcDfs" alt="FOREST MAP"><span>FOREST MAP</span></div>
+            <div class="dp-fvs-app-item"><img src="https://aka.doubaocdn.com/s/V3QWzXmny5" alt="POSTCARD"><span>POSTCARD</span></div>
+            <div class="dp-fvs-app-item"><img src="https://aka.doubaocdn.com/s/8Qpj4bKa6E" alt="TRAVEL GUIDE"><span>TRAVEL GUIDE</span></div>
+            <div class="dp-fvs-app-item"><img src="https://aka.doubaocdn.com/s/GwolUikVTl" alt="STICKER"><span>STICKER</span></div>
+          </div>
+        </div>
+
+        <!-- 最终视觉总结 -->
+        <div class="dp-fvs-statement">
+          <div class="dp-fvs-stmt-main">SOFT. NATURAL. HANDMADE. SLOW.</div>
+          <div class="dp-fvs-stmt-cn">柔和 · 自然 · 手作 · 慢下来</div>
+          <div class="dp-fvs-stmt-en">A VISUAL SYSTEM INSPIRED BY THE RHYTHM OF THE FOREST.</div>
+          <div class="dp-fvs-stmt-cn-sm">一套由森林节奏启发的视觉系统。</div>
         </div>
       </div>
     </div>
