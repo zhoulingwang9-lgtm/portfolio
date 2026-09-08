@@ -837,6 +837,29 @@ a{color:inherit;text-decoration:none;}
   font-family:"Space Grotesk","Noto Sans SC",sans-serif;
   letter-spacing:.04em;max-width:80vw;text-align:center;
 }
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;top:50%;transform:translateY(-50%);
+  color:#fff;font-size:32px;font-weight:300;
+  cursor:pointer;opacity:.6;
+  transition:opacity .2s, background .2s;
+  user-select:none;
+  width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  z-index:10;
+}
+.lightbox-prev{left:24px;}
+.lightbox-next{right:24px;}
+.lightbox-prev:hover,
+.lightbox-next:hover{opacity:1;background:rgba(255,255,255,.18);}
+.lightbox-counter{
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
+  color:#fff;font-size:13px;opacity:.6;
+  font-family:"Space Grotesk",sans-serif;
+  letter-spacing:.1em;
+}
 
 /* ============ Design Process 板块 ============ */
 .dp-block{padding:clamp(48px,6vw,80px) 0;}
@@ -2339,8 +2362,11 @@ a{color:inherit;text-decoration:none;}
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close">&times;</span>
+  <span class="lightbox-prev">&#10094;</span>
+  <span class="lightbox-next">&#10095;</span>
   <img class="lightbox-content" id="lightbox-img" alt="">
   <span class="lightbox-caption" id="lightbox-caption"></span>
+  <span class="lightbox-counter" id="lightbox-counter"></span>
 </div>
 
 <script>
@@ -2349,24 +2375,81 @@ a{color:inherit;text-decoration:none;}
   var lbImg = document.getElementById('lightbox-img');
   var lbCaption = document.getElementById('lightbox-caption');
   var lbClose = lightbox.querySelector('.lightbox-close');
+  var lbPrev = lightbox.querySelector('.lightbox-prev');
+  var lbNext = lightbox.querySelector('.lightbox-next');
+  var lbCounter = document.getElementById('lightbox-counter');
 
-  function openLightbox(src, alt){
+  var allImages = [];
+  var currentIndex = 0;
+
+  function collectImages(){
+    allImages = [];
+    document.querySelectorAll('img:not(#lightbox-img):not(.decor-item)').forEach(function(img){
+      if(img.src && img.naturalWidth > 0){
+        allImages.push(img);
+      }
+    });
+  }
+
+  function openLightbox(src, alt, index){
     lbImg.src = src;
     lbCaption.textContent = alt || '';
+    currentIndex = (typeof index === 'number') ? index : 0;
+    updateCounter();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+
   function closeLightbox(){
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('img:not(#lightbox-img)').forEach(function(img){
+  function updateCounter(){
+    if(allImages.length > 1){
+      lbCounter.textContent = (currentIndex + 1) + ' / ' + allImages.length;
+    } else {
+      lbCounter.textContent = '';
+    }
+  }
+
+  function showPrev(){
+    if(allImages.length <= 1) return;
+    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+    var img = allImages[currentIndex];
+    lbImg.src = img.src;
+    lbCaption.textContent = img.alt || '';
+    updateCounter();
+  }
+
+  function showNext(){
+    if(allImages.length <= 1) return;
+    currentIndex = (currentIndex + 1) % allImages.length;
+    var img = allImages[currentIndex];
+    lbImg.src = img.src;
+    lbCaption.textContent = img.alt || '';
+    updateCounter();
+  }
+
+  collectImages();
+
+  document.querySelectorAll('img:not(#lightbox-img):not(.decor-item)').forEach(function(img, idx){
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', function(e){
       e.stopPropagation();
-      openLightbox(this.src, this.alt);
+      collectImages();
+      var realIndex = allImages.indexOf(this);
+      openLightbox(this.src, this.alt, realIndex >= 0 ? realIndex : 0);
     });
+  });
+
+  lbPrev.addEventListener('click', function(e){
+    e.stopPropagation();
+    showPrev();
+  });
+  lbNext.addEventListener('click', function(e){
+    e.stopPropagation();
+    showNext();
   });
 
   lightbox.addEventListener('click', function(e){
@@ -2374,9 +2457,15 @@ a{color:inherit;text-decoration:none;}
       closeLightbox();
     }
   });
+
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && lightbox.classList.contains('active')){
+    if(!lightbox.classList.contains('active')) return;
+    if(e.key === 'Escape'){
       closeLightbox();
+    } else if(e.key === 'ArrowLeft'){
+      showPrev();
+    } else if(e.key === 'ArrowRight'){
+      showNext();
     }
   });
 })();
