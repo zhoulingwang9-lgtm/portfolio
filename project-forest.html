@@ -1216,6 +1216,24 @@ a{color:inherit;text-decoration:none;}
   .dp-ve-arrow{display:none;}
   .dp-app-grid{grid-template-columns:1fr;}
 }
+
+/* 装饰小元素层 */
+.decor-layer{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;overflow:hidden;
+}
+.decor-item{
+  position:absolute;
+  mix-blend-mode:multiply;
+  object-fit:contain;
+  transition:opacity .3s ease;
+}
+.decor-leaves{object-position:top right;}
+.decor-butterfly{object-position:center;}
+.decor-nature{object-fit:cover;object-position:top center;}
+@media (max-width:768px){
+  .decor-layer{display:none;}
+}
 </style>
 </head>
 <body>
@@ -2006,5 +2024,17 @@ a{color:inherit;text-decoration:none;}
   });
 })();
 </script>
+
+<!-- 装饰小元素层 -->
+<div class="decor-layer" aria-hidden="true">
+  <img class="decor-item decor-leaves" src="https://aka.doubaocdn.com/s/yV9Av7aDa6" style="top:8%;right:4%;width:70px;transform:rotate(12deg);opacity:.65;">
+  <img class="decor-item decor-butterfly" src="https://aka.doubaocdn.com/s/ibEiMIqdrV" style="top:18%;left:2%;width:55px;transform:rotate(-8deg);opacity:.6;">
+  <img class="decor-item decor-leaves" src="https://aka.doubaocdn.com/s/yV9Av7aDa6" style="top:32%;right:3%;width:60px;transform:rotate(-15deg);opacity:.55;">
+  <img class="decor-item decor-nature" src="https://aka.doubaocdn.com/s/Wlq7EgVCCu" style="top:45%;left:1.5%;width:50px;height:180px;transform:rotate(5deg);opacity:.5;">
+  <img class="decor-item decor-butterfly" src="https://aka.doubaocdn.com/s/ibEiMIqdrV" style="top:58%;right:2.5%;width:50px;transform:rotate(10deg);opacity:.55;">
+  <img class="decor-item decor-leaves" src="https://aka.doubaocdn.com/s/yV9Av7aDa6" style="top:72%;left:3%;width:65px;transform:rotate(20deg);opacity:.5;">
+  <img class="decor-item decor-nature" src="https://aka.doubaocdn.com/s/Wlq7EgVCCu" style="top:85%;right:3%;width:45px;height:160px;transform:rotate(-6deg);opacity:.45;">
+</div>
+
 </body>
 </html>
