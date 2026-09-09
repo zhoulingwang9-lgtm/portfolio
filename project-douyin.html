@@ -1520,6 +1520,51 @@ const showResult=()=>{
   document.getElementById('result').classList.add('show');
   document.getElementById('options').innerHTML='<button class="btn" onclick="location.reload()">再测一次</button>';
 };
+/* TASTE QUIZ */
+const questions=[
+  {q:'周末你更想怎样度过？',opts:[
+    {t:'苦',text:'找一家老字号，慢慢喝茶'},
+    {t:'甜',text:'吃一顿精致料理，逛逛夜景'},
+    {t:'辣',text:'来一顿火锅，热闹到深夜'},
+    {t:'酸',text:'逛一座古城，感受历史'}
+  ]},
+  {q:'你喜欢什么样的生活节奏？',opts:[
+    {t:'苦',text:'松弛、慢下来'},
+    {t:'甜',text:'精致、有仪式感'},
+    {t:'辣',text:'热烈、充满活力'},
+    {t:'酸',text:'沉稳、有时间感'}
+  ]},
+  {q:'旅行时你最关注什么？',opts:[
+    {t:'苦',text:'当地文化与日常'},
+    {t:'甜',text:'美食与精致体验'},
+    {t:'辣',text:'夜生活与烟火气'},
+    {t:'酸',text:'历史建筑与传统'}
+  ]},
+  {q:'你更愿意被怎样形容？',opts:[
+    {t:'苦',text:'清爽温润的人'},
+    {t:'甜',text:'浪漫摩登的人'},
+    {t:'辣',text:'直接热烈的人'},
+    {t:'酸',text:'质朴厚重的人'}
+  ]}
+];
+let score={苦:0,甜:0,辣:0,酸:0};
+let currentQ=0;
+function renderQuestion(){
+  if(currentQ>=questions.length){showResult();return;}
+  const q=questions[currentQ];
+  document.getElementById('question').textContent=q.q;
+  document.getElementById('progress').style.width=((currentQ)/questions.length*100)+'%';
+  document.getElementById('options').innerHTML=q.opts.map((o,i)=>
+    '<button class="option" data-taste="'+o.t+'">'+o.text+'</button>'
+  ).join('');
+  document.querySelectorAll('#options .option').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      score[btn.dataset.taste]++;
+      currentQ++;
+      renderQuestion();
+    });
+  });
+}
 renderQuestion();
 
 /* UGC - MY CITY MY TASTE */
