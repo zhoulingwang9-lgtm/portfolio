@@ -1506,8 +1506,6 @@ $$('[data-open]').forEach(card=>{
 document.getElementById('close').onclick=()=>document.getElementById('modal').classList.remove('show');
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('show')});
 
-/* Video play */
-};
 const showResult=()=>{
   const taste=Object.entries(score).sort((a,b)=>b[1]-a[1])[0][0];
   root.style.setProperty('--accent',theme[taste].color);
