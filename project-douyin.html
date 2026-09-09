@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抖音生活服务 × 酸甜苦辣 · 汪周灵作品集</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pacifico&display=swap">
+<style>
+:root{
+  --bg:#F7F5F0;
+  --bg-warm:#F2EDE4;
+  --ink:#2D2D2D;
+  --ink-soft:#6B6B6B;
+  --muted:#9A9A9A;
+  --line:#E0DCD4;
+  --bitter:#4A7C59;
+  --bitter-light:#A8C5A0;
+  --sweet:#E8A87C;
+  --sweet-light:#F4C2A1;
+  --spicy:#C8553D;
+  --spicy-light:#E07A5F;
+  --sour:#D4A843;
+  --sour-light:#E8C872;
+  --douyin:#000000;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans SC","Space Grotesk",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* ===== Nav ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;
+  background:rgba(247,245,240,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav .brand{font-weight:700;font-size:16px;letter-spacing:.02em;}
+.nav .brand span{color:var(--spicy);}
+.nav-links{display:flex;gap:32px;font-size:13px;font-weight:500;}
+.nav-links a{opacity:.7;transition:opacity .2s;}
+.nav-links a:hover{opacity:1;}
+.back-btn{
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;opacity:.7;
+  transition:opacity .2s;
+}
+.back-btn:hover{opacity:1;}
+
+/* ===== Hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 48px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(74,124,89,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(232,168,124,.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(200,85,61,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(212,168,67,.08) 0%, transparent 50%);
+}
+.hero-taste-chars{
+  position:absolute;
+  font-size:clamp(120px,18vw,280px);
+  font-weight:900;
+  opacity:.06;
+  line-height:1;
+  user-select:none;
+}
+.hero-taste-chars.c1{top:10%;left:5%;color:var(--bitter);}
+.hero-taste-chars.c2{top:15%;right:8%;color:var(--sweet);}
+.hero-taste-chars.c3{bottom:15%;left:15%;color:var(--spicy);}
+.hero-taste-chars.c4{bottom:10%;right:10%;color:var(--sour);}
+.hero-content{position:relative;z-index:2;max-width:900px;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:24px;
+  padding:6px 14px;border:1px solid var(--line);border-radius:20px;
+}
+.hero-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--spicy);}
+.hero h1{
+  font-size:clamp(42px,6vw,80px);
+  font-weight:900;line-height:1.1;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.hero h1 .taste{
+  background:linear-gradient(135deg,var(--bitter),var(--sweet),var(--spicy),var(--sour));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-en{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(14px,1.5vw,20px);
+  font-weight:300;letter-spacing:.08em;
+  color:var(--ink-soft);
+  margin-bottom:32px;
+}
+.hero-desc{
+  font-size:15px;color:var(--ink-soft);
+  max-width:560px;line-height:1.9;
+}
+.hero-meta{
+  display:flex;gap:40px;margin-top:48px;
+  padding-top:24px;border-top:1px solid var(--line);
+}
+.hero-meta-item .label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.hero-meta-item .value{font-size:14px;font-weight:500;}
+
+/* ===== Section Common ===== */
+.section{padding:clamp(60px,8vw,100px) 48px;}
+.section-alt{background:var(--bg-warm);}
+.wrap{max-width:1280px;margin:0 auto;}
+.sec-head{margin-bottom:48px;}
+.sec-num{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:.1em;
+  color:var(--spicy);margin-bottom:8px;
+}
+.sec-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-.01em;}
+.sec-en{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:12px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-top:6px;
+}
+.sec-desc{font-size:14px;color:var(--ink-soft);max-width:600px;margin-top:16px;line-height:1.9;}
+
+/* ===== 02 Overview ===== */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.overview-text p{font-size:14px;color:var(--ink-soft);line-height:2;margin-bottom:20px;}
+.overview-text p strong{color:var(--ink);font-weight:600;}
+.overview-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.stat-card{background:var(--bg);padding:28px 24px;}
+.stat-card .num{font-size:36px;font-weight:800;color:var(--spicy);font-family:"Space Grotesk",sans-serif;}
+.stat-card .label{font-size:12px;color:var(--ink-soft);margin-top:4px;}
+
+/* ===== 03 Concept ===== */
+.concept-block{
+  text-align:center;padding:60px 20px;
+  position:relative;
+}
+.concept-big{
+  font-size:clamp(36px,5vw,64px);font-weight:900;
+  line-height:1.3;margin-bottom:20px;
+}
+.concept-big .taste-word{
+  display:inline-block;padding:0 8px;
+  position:relative;
+}
+.concept-big .taste-word.bitter{color:var(--bitter);}
+.concept-big .taste-word.sweet{color:var(--sweet);}
+.concept-big .taste-word.spicy{color:var(--spicy);}
+.concept-big .taste-word.sour{color:var(--sour);}
+.concept-sub{font-size:15px;color:var(--ink-soft);max-width:600px;margin:0 auto;line-height:2;}
+
+/* ===== 04 Creative Logic ===== */
+.logic-flow{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:12px;margin:40px 0;
+}
+.logic-node{
+  padding:14px 24px;border-radius:30px;
+  font-size:14px;font-weight:600;
+  border:1.5px solid var(--line);
+  background:var(--bg);
+  transition:all .3s var(--ease);
+}
+.logic-node:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.logic-node.n1{border-color:var(--bitter-light);color:var(--bitter);}
+.logic-node.n2{border-color:var(--sweet-light);color:var(--sweet);}
+.logic-node.n3{border-color:var(--spicy-light);color:var(--spicy);}
+.logic-node.n4{border-color:var(--sour-light);color:var(--sour);}
+.logic-arrow{color:var(--muted);font-size:18px;}
+
+/* ===== 05 Four Tastes ===== */
+.tastes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.taste-card{
+  border-radius:16px;padding:32px 24px;
+  position:relative;overflow:hidden;
+  min-height:280px;
+  transition:transform .4s var(--ease);
+  cursor:pointer;
+}
+.taste-card:hover{transform:translateY(-6px);}
+.taste-card.bitter{background:linear-gradient(160deg,#4A7C59,#3A6349);color:#fff;}
+.taste-card.sweet{background:linear-gradient(160deg,#E8A87C,#D4906A);color:#fff;}
+.taste-card.spicy{background:linear-gradient(160deg,#C8553D,#A84430);color:#fff;}
+.taste-card.sour{background:linear-gradient(160deg,#D4A843,#B8922F);color:#fff;}
+.taste-char{font-size:56px;font-weight:900;line-height:1;margin-bottom:12px;}
+.taste-en{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.15em;opacity:.7;margin-bottom:16px;}
+.taste-city{font-size:20px;font-weight:700;margin-bottom:8px;}
+.taste-city-en{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.1em;opacity:.7;}
+.taste-desc{font-size:12px;opacity:.8;margin-top:16px;line-height:1.8;}
+.taste-icon{position:absolute;bottom:20px;right:20px;font-size:36px;opacity:.3;}
+
+/* ===== 06 Visual System ===== */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.vs-col h4{font-size:14px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.vs-col h4::before{content:"";width:3px;height:14px;background:var(--spicy);border-radius:2px;}
+.color-palette{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.color-swatch{border-radius:8px;overflow:hidden;}
+.color-swatch .swatch{height:60px;}
+.color-swatch .info{padding:8px;font-size:10px;background:var(--bg-warm);}
+.color-swatch .info .name{font-weight:600;}
+.color-swatch .info .hex{color:var(--muted);font-family:"Space Grotesk",sans-serif;}
+.type-sample{padding:20px;background:var(--bg-warm);border-radius:10px;margin-bottom:12px;}
+.type-sample .label{font-size:10px;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;text-transform:uppercase;}
+.type-sample .sample{font-size:24px;font-weight:800;}
+.type-sample .sample.en{font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:18px;letter-spacing:.05em;}
+
+/* ===== 07 Four Posters ===== */
+.posters-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.poster-card{
+  border-radius:14px;overflow:hidden;
+  position:relative;aspect-ratio:3/4;
+  display:flex;align-items:flex-end;
+  padding:32px;
+  transition:transform .4s var(--ease);
+  cursor:pointer;
+}
+.poster-card:hover{transform:scale(1.02);}
+.poster-card.bitter{background:linear-gradient(180deg,#5A8C69 0%,#3A6349 100%);}
+.poster-card.sweet{background:linear-gradient(180deg,#F0B894 0%,#D4906A 100%);}
+.poster-card.spicy{background:linear-gradient(180deg,#D8654D 0%,#A84430 100%);}
+.poster-card.sour{background:linear-gradient(180deg,#E0B853 0%,#B8922F 100%);}
+.poster-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.15) 0%,transparent 60%);
+}
+.poster-char{
+  position:absolute;top:24px;right:28px;
+  font-size:100px;font-weight:900;opacity:.15;color:#fff;line-height:1;
+}
+.poster-info{position:relative;z-index:2;color:#fff;}
+.poster-info .city{font-size:28px;font-weight:800;margin-bottom:4px;}
+.poster-info .city-en{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.15em;opacity:.7;}
+.poster-info .tagline{font-size:13px;opacity:.85;margin-top:12px;}
+
+/* ===== 08 Poster Details ===== */
+.pd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+.pd-item{
+  background:var(--bg-warm);border-radius:12px;padding:24px;
+  text-align:center;
+}
+.pd-item .pd-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.pd-item .pd-visual{
+  height:120px;border-radius:8px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;
+}
+.pd-item .pd-name{font-size:14px;font-weight:600;}
+.pd-item .pd-desc{font-size:11px;color:var(--ink-soft);margin-top:4px;}
+
+/* ===== 09 Poster to Motion ===== */
+.motion-transition{
+  display:flex;align-items:center;justify-content:center;gap:32px;
+  padding:40px 0;flex-wrap:wrap;
+}
+.mt-stage{
+  width:200px;height:140px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:600;color:#fff;
+  position:relative;overflow:hidden;
+}
+.mt-stage.static{background:linear-gradient(135deg,var(--bitter),var(--bitter-light));}
+.mt-stage.motion{background:linear-gradient(135deg,var(--spicy),var(--spicy-light));animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
+.mt-arrow{font-size:28px;color:var(--muted);}
+.mt-label{text-align:center;font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.08em;}
+
+/* ===== 10 Four Videos ===== */
+.videos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.video-card{
+  border-radius:12px;overflow:hidden;position:relative;
+  aspect-ratio:9/16;cursor:pointer;
+  transition:transform .3s var(--ease);
+}
+.video-card:hover{transform:translateY(-4px);}
+.video-card .thumb{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.video-card.bitter .thumb{background:linear-gradient(180deg,#4A7C59,#2D4A38);}
+.video-card.sweet .thumb{background:linear-gradient(180deg,#E8A87C,#B87850);}
+.video-card.spicy .thumb{background:linear-gradient(180deg,#C8553D,#8A3825);}
+.video-card.sour .thumb{background:linear-gradient(180deg,#D4A843,#9A7830);}
+.video-card .play-btn{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.2);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:16px;
+  border:1px solid rgba(255,255,255,.3);
+}
+.video-card .v-info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:16px;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.5));
+}
+.video-card .v-city{font-size:15px;font-weight:700;}
+.video-card .v-taste{font-size:10px;letter-spacing:.1em;opacity:.7;}
+
+/* ===== 11 Motion System ===== */
+.ms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.ms-card{
+  padding:24px;border-radius:12px;
+  border:1px solid var(--line);
+  text-align:center;
+}
+.ms-card .ms-icon{font-size:32px;margin-bottom:12px;}
+.ms-card .ms-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+.ms-card .ms-city{font-size:11px;color:var(--muted);margin-bottom:12px;}
+.ms-card .ms-keywords{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;}
+.ms-card .ms-keywords span{
+  font-size:10px;padding:3px 8px;border-radius:10px;
+  background:var(--bg-warm);color:var(--ink-soft);
+}
+
+/* ===== 12 Interactive Concept ===== */
+.ic-center{
+  text-align:center;padding:40px 0;
+}
+.ic-core{
+  display:inline-block;
+  padding:40px 60px;
+  border-radius:20px;
+  background:var(--ink);color:#fff;
+  position:relative;
+}
+.ic-core .ic-label{font-size:10px;letter-spacing:.2em;opacity:.5;margin-bottom:8px;}
+.ic-core .ic-title{font-size:32px;font-weight:800;margin-bottom:8px;}
+.ic-core .ic-sub{font-size:13px;opacity:.7;}
+.ic-core::after{
+  content:"";position:absolute;top:-2px;left:-2px;right:-2px;bottom:-2px;
+  border-radius:22px;
+  background:linear-gradient(135deg,var(--bitter),var(--sweet),var(--spicy),var(--sour));
+  z-index:-1;
+}
+
+/* ===== 13 Interactive Homepage ===== */
+.ih-demo{
+  background:var(--ink);border-radius:16px;
+  padding:40px;min-height:360px;
+  position:relative;overflow:hidden;
+}
+.ih-taste-row{
+  display:flex;justify-content:space-around;
+  margin-bottom:40px;
+}
+.ih-taste{
+  font-size:48px;font-weight:900;cursor:pointer;
+  transition:all .3s;opacity:.5;
+  padding:10px 20px;border-radius:10px;
+}
+.ih-taste:hover{opacity:1;transform:scale(1.1);}
+.ih-taste.bitter{color:var(--bitter-light);}
+.ih-taste.sweet{color:var(--sweet-light);}
+.ih-taste.spicy{color:var(--spicy-light);}
+.ih-taste.sour{color:var(--sour-light);}
+.ih-center-text{
+  text-align:center;color:#fff;
+  padding:40px 0;
+}
+.ih-center-text .q{font-size:24px;font-weight:700;margin-bottom:8px;}
+.ih-center-text .q-en{font-family:"Space Grotesk",sans-serif;font-size:13px;opacity:.5;letter-spacing:.1em;}
+.ih-hint{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.4);font-size:11px;letter-spacing:.1em;
+}
+
+/* ===== 14 City Exploration Map ===== */
+.ce-map{
+  background:var(--bg-warm);border-radius:16px;
+  padding:48px;min-height:400px;
+  position:relative;
+  background-image:
+    radial-gradient(circle at 25% 35%, rgba(74,124,89,.15) 0%, transparent 25%),
+    radial-gradient(circle at 75% 25%, rgba(232,168,124,.15) 0%, transparent 25%),
+    radial-gradient(circle at 70% 70%, rgba(200,85,61,.15) 0%, transparent 25%),
+    radial-gradient(circle at 30% 65%, rgba(212,168,67,.15) 0%, transparent 25%);
+}
+.ce-node{
+  position:absolute;width:100px;height:100px;
+  border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s var(--ease);
+  border:2px solid;
+}
+.ce-node:hover{transform:scale(1.15);}
+.ce-node .cn-char{font-size:24px;font-weight:800;}
+.ce-node .cn-city{font-size:9px;letter-spacing:.08em;opacity:.7;}
+.ce-node.gz{top:20%;left:18%;border-color:var(--bitter);color:var(--bitter);background:rgba(74,124,89,.1);}
+.ce-node.sh{top:15%;right:18%;border-color:var(--sweet);color:var(--sweet);background:rgba(232,168,124,.1);}
+.ce-node.cq{bottom:18%;right:22%;border-color:var(--spicy);color:var(--spicy);background:rgba(200,85,61,.1);}
+.ce-node.sx{bottom:22%;left:22%;border-color:var(--sour);color:var(--sour);background:rgba(212,168,67,.1);}
+.ce-lines{position:absolute;inset:0;pointer-events:none;}
+.ce-title{text-align:center;font-size:11px;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;}
+
+/* ===== 15 City Detail ===== */
+.cd-timeline{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  position:relative;
+}
+.cd-timeline::before{
+  content:"";position:absolute;top:30px;left:10%;right:10%;height:2px;
+  background:var(--line);
+}
+.cd-time{
+  text-align:center;position:relative;padding-top:60px;
+}
+.cd-time .time{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60px;height:60px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--spicy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:700;color:var(--spicy);
+  z-index:2;
+}
+.cd-time .scene{font-size:16px;font-weight:700;margin-bottom:4px;}
+.cd-time .scene-en{font-size:10px;color:var(--muted);letter-spacing:.08em;}
+.cd-time .scene-desc{font-size:11px;color:var(--ink-soft);margin-top:8px;line-height:1.7;padding:0 10px;}
+
+/* ===== 16 Food Exploration ===== */
+.fe-wall{
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:center;
+  padding:40px 0;
+}
+.fe-food{
+  padding:16px 24px;border-radius:30px;
+  background:var(--bg-warm);border:1px solid var(--line);
+  font-size:14px;font-weight:600;cursor:pointer;
+  transition:all .3s var(--ease);
+  display:flex;align-items:center;gap:8px;
+}
+.fe-food:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.fe-food .emoji{font-size:20px;}
+.fe-food .taste-tag{
+  font-size:9px;padding:2px 6px;border-radius:8px;
+  color:#fff;margin-left:4px;
+}
+.fe-food .taste-tag.bitter{background:var(--bitter);}
+.fe-food .taste-tag.sweet{background:var(--sweet);}
+.fe-food .taste-tag.spicy{background:var(--spicy);}
+.fe-food .taste-tag.sour{background:var(--sour);}
+
+/* ===== 17 Taste Meter ===== */
+.tm-demo{
+  background:var(--bg-warm);border-radius:16px;padding:48px;
+  text-align:center;
+}
+.tm-label{font-size:13px;font-weight:600;margin-bottom:24px;color:var(--bitter);}
+.tm-slider{
+  -webkit-appearance:none;appearance:none;
+  width:80%;max-width:500px;height:6px;border-radius:3px;
+  background:linear-gradient(90deg,var(--bitter-light),var(--bitter));
+  outline:none;margin:20px 0;
+}
+.tm-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--bitter);cursor:pointer;
+  border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.tm-labels{display:flex;justify-content:space-between;width:80%;max-width:500px;margin:0 auto;font-size:11px;color:var(--muted);}
+.tm-visual{
+  margin-top:32px;height:80px;border-radius:12px;
+  background:linear-gradient(90deg,rgba(74,124,89,.2),rgba(74,124,89,.6));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--bitter);font-size:14px;font-weight:600;
+  transition:all .3s;
+}
+
+/* ===== 18 Taste Quiz ===== */
+.quiz-demo{
+  background:var(--ink);border-radius:16px;padding:48px;
+  color:#fff;text-align:center;
+}
+.quiz-q{font-size:20px;font-weight:700;margin-bottom:32px;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:500px;margin:0 auto;}
+.quiz-opt{
+  padding:16px 20px;border-radius:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  font-size:13px;cursor:pointer;transition:all .2s;
+  text-align:left;
+}
+.quiz-opt:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);}
+.quiz-opt .letter{
+  display:inline-block;width:22px;height:22px;border-radius:50%;
+  background:var(--spicy);color:#fff;font-size:11px;font-weight:700;
+  text-align:center;line-height:22px;margin-right:8px;
+}
+.quiz-progress{margin-top:32px;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em;}
+
+/* ===== 19 Personality Result ===== */
+.pr-card{
+  max-width:420px;margin:0 auto;
+  border-radius:20px;overflow:hidden;
+  background:linear-gradient(160deg,#C8553D,#A84430);
+  color:#fff;padding:40px;text-align:center;
+  position:relative;
+}
+.pr-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.15) 0%,transparent 60%);
+}
+.pr-label{font-size:10px;letter-spacing:.2em;opacity:.6;margin-bottom:12px;position:relative;}
+.pr-result{font-size:64px;font-weight:900;line-height:1;margin-bottom:8px;position:relative;}
+.pr-result-en{font-family:"Space Grotesk",sans-serif;font-size:14px;letter-spacing:.15em;opacity:.7;margin-bottom:20px;position:relative;}
+.pr-city{font-size:22px;font-weight:700;margin-bottom:12px;position:relative;}
+.pr-quote{font-size:14px;opacity:.85;font-style:italic;margin-bottom:24px;position:relative;}
+.pr-keywords{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative;}
+.pr-keywords span{
+  font-size:11px;padding:5px 12px;border-radius:14px;
+  background:rgba(255,255,255,.15);
+}
+.pr-cta{
+  margin-top:28px;padding:12px 28px;border-radius:24px;
+  background:#fff;color:var(--spicy);font-size:13px;font-weight:700;
+  display:inline-block;cursor:pointer;position:relative;
+}
+
+/* ===== 20 Local Service ===== */
+.ls-flow{
+  display:flex;align-items:stretch;gap:0;
+  overflow-x:auto;padding:20px 0;
+}
+.ls-step{
+  flex:1;min-width:160px;padding:24px 16px;
+  text-align:center;position:relative;
+  border-right:1px dashed var(--line);
+}
+.ls-step:last-child{border-right:none;}
+.ls-step .ls-num{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;color:var(--spicy);font-weight:700;
+  margin-bottom:8px;
+}
+.ls-step .ls-icon{font-size:28px;margin-bottom:8px;}
+.ls-step .ls-name{font-size:13px;font-weight:700;margin-bottom:4px;}
+.ls-step .ls-desc{font-size:10px;color:var(--ink-soft);line-height:1.6;}
+.ls-step .ls-arrow{
+  position:absolute;right:-8px;top:50%;transform:translateY(-50%);
+  color:var(--muted);font-size:14px;z-index:2;
+}
+
+/* ===== 21 City Map ===== */
+.cm-demo{
+  background:var(--bg-warm);border-radius:16px;
+  min-height:360px;position:relative;overflow:hidden;
+  padding:32px;
+}
+.cm-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);
+  background-size:30px 30px;
+}
+.cm-pin{
+  position:absolute;cursor:pointer;
+  transition:transform .2s;
+}
+.cm-pin:hover{transform:scale(1.2);}
+.cm-pin .pin-icon{
+  width:36px;height:36px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;border:2px solid var(--spicy);
+}
+.cm-pin .pin-label{
+  position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  white-space:nowrap;font-size:10px;font-weight:600;
+  background:var(--ink);color:#fff;padding:3px 8px;border-radius:6px;
+  margin-top:4px;opacity:0;transition:opacity .2s;
+}
+.cm-pin:hover .pin-label{opacity:1;}
+.cm-legend{
+  position:absolute;bottom:16px;left:16px;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+  padding:12px 16px;border-radius:10px;
+  font-size:10px;display:flex;gap:12px;flex-wrap:wrap;
+}
+.cm-legend span{display:flex;align-items:center;gap:4px;}
+
+/* ===== 22 UGC ===== */
+.ugc-demo{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;
+}
+.ugc-form{
+  background:var(--bg-warm);border-radius:14px;padding:32px;
+}
+.ugc-form h4{font-size:16px;font-weight:700;margin-bottom:20px;}
+.ugc-input{
+  width:100%;padding:12px 16px;border:1px solid var(--line);
+  border-radius:8px;font-size:13px;margin-bottom:12px;
+  background:var(--bg);font-family:inherit;
+}
+.ugc-input:focus{outline:none;border-color:var(--spicy);}
+.ugc-textarea{
+  width:100%;padding:12px 16px;border:1px solid var(--line);
+  border-radius:8px;font-size:13px;margin-bottom:16px;
+  background:var(--bg);font-family:inherit;resize:vertical;min-height:80px;
+}
+.ugc-btn{
+  width:100%;padding:12px;border-radius:8px;
+  background:var(--ink);color:#fff;font-size:13px;font-weight:600;
+  border:none;cursor:pointer;transition:opacity .2s;
+}
+.ugc-btn:hover{opacity:.85;}
+.ugc-card-preview{
+  border-radius:14px;overflow:hidden;
+  background:linear-gradient(160deg,var(--sweet),var(--sweet-light));
+  color:#fff;padding:32px;text-align:center;min-height:280px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.ugc-card-preview .uc-label{font-size:10px;letter-spacing:.15em;opacity:.6;margin-bottom:12px;}
+.ugc-card-preview .uc-city{font-size:28px;font-weight:800;margin-bottom:4px;}
+.ugc-card-preview .uc-taste{font-size:36px;font-weight:900;margin:8px 0;}
+.ugc-card-preview .uc-quote{font-size:12px;opacity:.8;font-style:italic;line-height:1.8;}
+
+/* ===== 23 Social Media ===== */
+.sm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.sm-card{
+  border-radius:12px;overflow:hidden;
+  background:var(--bg-warm);aspect-ratio:9/16;
+  position:relative;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:20px;color:#fff;
+}
+.sm-card.s1{background:linear-gradient(180deg,var(--bitter),#2D4A38);}
+.sm-card.s2{background:linear-gradient(180deg,var(--spicy),#8A3825);}
+.sm-card.s3{background:linear-gradient(180deg,var(--sour),#9A7830);}
+.sm-card .sm-hashtag{
+  position:absolute;top:16px;left:16px;
+  font-size:10px;font-weight:600;letter-spacing:.05em;
+  background:rgba(255,255,255,.2);padding:4px 10px;border-radius:10px;
+}
+.sm-card .sm-title{font-size:18px;font-weight:800;margin-bottom:4px;}
+.sm-card .sm-sub{font-size:11px;opacity:.7;}
+.sm-card .sm-actions{
+  display:flex;gap:12px;margin-top:12px;font-size:11px;opacity:.8;
+}
+
+/* ===== 24 Online x Offline ===== */
+.oo-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
+.oo-side{
+  padding:32px;border-radius:14px;text-align:center;
+}
+.oo-side.online{background:var(--ink);color:#fff;}
+.oo-side.offline{background:var(--bg-warm);border:1px solid var(--line);}
+.oo-side .oo-icon{font-size:36px;margin-bottom:12px;}
+.oo-side .oo-title{font-size:18px;font-weight:800;margin-bottom:8px;}
+.oo-side .oo-list{font-size:12px;opacity:.7;line-height:2;}
+.oo-connector{
+  font-size:24px;color:var(--spicy);font-weight:800;
+  writing-mode:vertical-rl;letter-spacing:.2em;
+}
+
+/* ===== 25 User Journey ===== */
+.uj-table{
+  width:100%;border-collapse:collapse;
+  font-size:13px;
+}
+.uj-table th{
+  text-align:left;padding:14px 16px;
+  background:var(--ink);color:#fff;
+  font-size:11px;letter-spacing:.08em;font-weight:600;
+}
+.uj-table th:first-child{border-radius:8px 0 0 0;}
+.uj-table th:last-child{border-radius:0 8px 0 0;}
+.uj-table td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+.uj-table tr:hover td{background:var(--bg-warm);}
+.uj-table .stage{font-weight:700;color:var(--spicy);}
+.uj-table .action{color:var(--ink-soft);}
+.uj-table .interaction{font-size:12px;color:var(--muted);}
+.uj-table .result{font-size:12px;}
+
+/* ===== 26 Interaction Architecture ===== */
+.ia-diagram{
+  background:var(--bg-warm);border-radius:16px;padding:48px;
+  text-align:center;
+}
+.ia-level{margin-bottom:24px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.ia-node{
+  padding:10px 20px;border-radius:8px;
+  font-size:12px;font-weight:600;
+  background:var(--bg);border:1px solid var(--line);
+}
+.ia-node.root{background:var(--ink);color:#fff;border-color:var(--ink);font-size:14px;padding:12px 28px;}
+.ia-node.l1{background:var(--spicy);color:#fff;border-color:var(--spicy);}
+.ia-node.l2{background:var(--sweet-light);border-color:var(--sweet);}
+.ia-connector{color:var(--muted);font-size:18px;margin:8px 0;}
+
+/* ===== 27 Final Campaign ===== */
+.fc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.fc-item{
+  border-radius:12px;padding:28px 20px;text-align:center;
+  border:1px solid var(--line);background:var(--bg);
+  transition:all .3s var(--ease);
+}
+.fc-item:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08);}
+.fc-item .fc-icon{font-size:32px;margin-bottom:12px;}
+.fc-item .fc-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+.fc-item .fc-desc{font-size:11px;color:var(--ink-soft);line-height:1.7;}
+
+/* ===== 28 Summary ===== */
+.summary{
+  background:var(--ink);color:#fff;
+  padding:clamp(60px,8vw,100px) 48px;
+}
+.summary .wrap{max-width:900px;margin:0 auto;text-align:center;}
+.summary .s-label{font-size:11px;letter-spacing:.2em;opacity:.5;margin-bottom:20px;}
+.summary .s-quote{
+  font-size:clamp(24px,3vw,36px);font-weight:800;
+  line-height:1.5;margin-bottom:24px;
+}
+.summary .s-quote .taste{
+  background:linear-gradient(135deg,var(--bitter-light),var(--sweet-light),var(--spicy-light),var(--sour-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.summary .s-text{font-size:14px;opacity:.6;line-height:2;max-width:600px;margin:0 auto;}
+
+/* ===== 29 Ending ===== */
+.ending{
+  padding:clamp(80px,12vw,160px) 48px;
+  text-align:center;
+  background:var(--bg);
+}
+.ending .e-big{
+  font-size:clamp(32px,5vw,56px);font-weight:900;
+  line-height:1.4;margin-bottom:16px;
+}
+.ending .e-big .taste{
+  background:linear-gradient(135deg,var(--bitter),var(--sweet),var(--spicy),var(--sour));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.ending .e-en{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:14px;letter-spacing:.15em;color:var(--muted);
+  margin-bottom:40px;
+}
+.ending .e-line{
+  width:60px;height:1px;background:var(--line);
+  margin:0 auto 40px;
+}
+.ending .e-sign{font-size:12px;color:var(--muted);letter-spacing:.1em;}
+
+/* ===== Lightbox ===== */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(20,20,20,.92);
+  align-items:center;justify-content:center;
+  cursor:zoom-out;
+}
+.lightbox.active{display:flex;}
+.lightbox-content{
+  max-width:92vw;max-height:82vh;
+  object-fit:contain;border-radius:10px;
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+}
+.lightbox-close{
+  position:absolute;top:18px;right:26px;
+  color:#fff;font-size:38px;font-weight:300;cursor:pointer;opacity:.7;
+}
+.lightbox-prev,.lightbox-next{
+  position:absolute;top:50%;transform:translateY(-50%);
+  color:#fff;font-size:32px;font-weight:300;cursor:pointer;opacity:.6;
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.08);z-index:10;
+}
+.lightbox-prev{left:24px;}.lightbox-next{right:24px;}
+.lightbox-prev:hover,.lightbox-next:hover{opacity:1;background:rgba(255,255,255,.18);}
+.lightbox-counter{
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
+  color:#fff;font-size:13px;opacity:.6;font-family:"Space Grotesk",sans-serif;
+}
+
+/* ===== Reveal Animation ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){
+  .nav{padding:14px 24px;}
+  .nav-links{display:none;}
+  .hero{padding:100px 24px 60px;}
+  .section{padding:60px 24px;}
+  .overview-grid,.vs-grid,.ugc-demo,.oo-grid{grid-template-columns:1fr;}
+  .tastes-grid,.posters-grid,.videos-grid,.ms-grid,.fc-grid{grid-template-columns:repeat(2,1fr);}
+  .pd-grid{grid-template-columns:1fr;}
+  .cd-timeline{grid-template-columns:repeat(2,1fr);gap:40px 0;}
+  .cd-timeline::before{display:none;}
+  .sm-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .tastes-grid,.posters-grid,.videos-grid,.ms-grid,.fc-grid{grid-template-columns:1fr;}
+  .hero-meta{flex-direction:column;gap:20px;}
+  .logic-flow{flex-direction:column;}
+  .logic-arrow{transform:rotate(90deg);}
+  .ce-node{width:70px;height:70px;}
+  .ce-node .cn-char{font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="index.html" class="brand">汪周灵<span>.</span></a>
+  <div class="nav-links">
+    <a href="index.html#works">作品</a>
+    <a href="index.html#about">关于我</a>
+    <a href="index.html#experience">实习经历</a>
+    <a href="index.html#contact">联系我</a>
+  </div>
+  <a href="index.html" class="back-btn">← 返回作品</a>
+</nav>
+
+<!-- 01 COVER -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-taste-chars c1">苦</div>
+  <div class="hero-taste-chars c2">甜</div>
+  <div class="hero-taste-chars c3">辣</div>
+  <div class="hero-taste-chars c4">酸</div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="dot"></span>INTERACTIVE CAMPAIGN · 2026</div>
+    <h1>抖音生活服务<br><span class="taste">× 酸甜苦辣</span></h1>
+    <div class="hero-en">CITY TASTE · INTERACTIVE CAMPAIGN</div>
+    <p class="hero-desc">城市有自己的味道。通过视觉 × 动态 × 交互 × 本地生活，让用户从"看见一座城市"，逐渐进入"探索一座城市"。以酸甜苦辣四味映射四座城市，构建一场可尝、可玩、可分享的城市味觉旅行。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">CLIENT</div><div class="value">抖音生活服务</div></div>
+      <div class="hero-meta-item"><div class="label">ROLE</div><div class="value">视觉设计 / 交互设计</div></div>
+      <div class="hero-meta-item"><div class="label">YEAR</div><div class="value">2026</div></div>
+      <div class="hero-meta-item"><div class="label">DELIVERABLES</div><div class="value">海报 / 视频 / 交互网站</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROJECT OVERVIEW -->
+<section class="section" id="overview">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01</div>
+      <div class="sec-title">项目概述</div>
+      <div class="sec-en">PROJECT OVERVIEW</div>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-text reveal">
+        <p><strong>项目背景：</strong>抖音生活服务希望通过一场创意campaign，将平台与城市本地生活深度绑定，让用户在内容消费中自然产生到店消费的动机。</p>
+        <p><strong>核心目标：</strong>以"城市味觉"为创意切入点，将抽象的城市文化转化为可感知的味觉体验，通过四味四城的对应关系，建立用户与城市之间的情感连接。</p>
+        <p><strong>项目定位：</strong>视觉设计 + Motion Design + UI/UX + Interactive Campaign + Social Media，不只是四张城市海报，而是一套完整的交互式城市味觉体验系统。</p>
+        <p><strong>目标用户：</strong>18-35岁城市年轻群体，热爱美食、旅行、社交分享，是抖音生活服务的核心消费人群。</p>
+      </div>
+      <div class="overview-stats reveal">
+        <div class="stat-card"><div class="num">4</div><div class="label">座城市</div></div>
+        <div class="stat-card"><div class="num">4</div><div class="label">种味道</div></div>
+        <div class="stat-card"><div class="num">5+</div><div class="label">核心交互</div></div>
+        <div class="stat-card"><div class="num">29</div><div class="label">设计模块</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CREATIVE CONCEPT -->
+<section class="section section-alt" id="concept">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02</div>
+      <div class="sec-title">创意概念</div>
+      <div class="sec-en">CREATIVE CONCEPT</div>
+    </div>
+    <div class="concept-block reveal">
+      <div class="concept-big">
+        如果城市真的有味道，<br>
+        用户能不能<span class="taste-word spicy">"尝一口"</span>城市？
+      </div>
+      <p class="concept-sub">TASTE THE CITY —— 以味觉为钥匙，打开四座城市的大门。用户不再是被动阅读城市信息，而是主动选择味道、进入城市、探索美食、完成一次城市味觉旅行。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CREATIVE LOGIC -->
+<section class="section" id="logic">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03</div>
+      <div class="sec-title">创意逻辑</div>
+      <div class="sec-en">CREATIVE LOGIC</div>
+      <p class="sec-desc">从味觉出发，经过美食、文化、城市，最终落地到本地生活服务体验。</p>
+    </div>
+    <div class="logic-flow reveal">
+      <div class="logic-node n1">味觉 TASTE</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n2">美食 FOOD</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n3">文化 CULTURE</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n4">城市 CITY</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n1">生活 LIFE</div>
+    </div>
+    <div class="logic-flow reveal" style="margin-top:16px;">
+      <div class="logic-node n2">DISCOVER 发现</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n3">TASTE 选择味觉</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n4">EXPLORE 探索城市</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n1">INTERACT 参与互动</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n2">SEARCH 搜索服务</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n3">EXPERIENCE 线下体验</div>
+      <span class="logic-arrow">→</span>
+      <div class="logic-node n4">SHARE 分享</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 FOUR TASTES -->
+<section class="section section-alt" id="tastes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04</div>
+      <div class="sec-title">四味四城</div>
+      <div class="sec-en">FOUR TASTES · FOUR CITIES</div>
+    </div>
+    <div class="tastes-grid">
+      <div class="taste-card bitter reveal">
+        <div class="taste-char">苦</div>
+        <div class="taste-en">BITTER</div>
+        <div class="taste-city">广州</div>
+        <div class="taste-city-en">GUANGZHOU</div>
+        <div class="taste-desc">凉茶入喉，苦尽甘来。岭南文化的厚重与从容，尽在一杯凉茶之中。</div>
+        <div class="taste-icon">🍵</div>
+      </div>
+      <div class="taste-card sweet reveal">
+        <div class="taste-char">甜</div>
+        <div class="taste-en">SWEET</div>
+        <div class="taste-city">上海</div>
+        <div class="taste-city-en">SHANGHAI</div>
+        <div class="taste-desc">浓油赤酱，甜在舌尖。都市的精致与浪漫，藏在每一道本帮菜里。</div>
+        <div class="taste-icon">🥟</div>
+      </div>
+      <div class="taste-card spicy reveal">
+        <div class="taste-char">辣</div>
+        <div class="taste-en">SPICY</div>
+        <div class="taste-city">重庆</div>
+        <div class="taste-city-en">CHONGQING</div>
+        <div class="taste-desc">火锅沸腾，麻辣鲜香。山城的热烈与烟火气，在辣椒中燃烧。</div>
+        <div class="taste-icon">🌶️</div>
+      </div>
+      <div class="taste-card sour reveal">
+        <div class="taste-char">酸</div>
+        <div class="taste-en">SOUR</div>
+        <div class="taste-city">山西</div>
+        <div class="taste-city-en">SHANXI</div>
+        <div class="taste-desc">老陈醋香，酸中带醇。古城的历史与厚重，酝酿在醋坛之中。</div>
+        <div class="taste-icon">🏺</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 VISUAL SYSTEM -->
+<section class="section" id="visual">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">05</div>
+      <div class="sec-title">视觉系统</div>
+      <div class="sec-en">VISUAL SYSTEM</div>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-col reveal">
+        <h4>色彩系统 / COLOR</h4>
+        <div class="color-palette">
+          <div class="color-swatch"><div class="swatch" style="background:#4A7C59;"></div><div class="info"><div class="name">苦·广州</div><div class="hex">#4A7C59</div></div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#E8A87C;"></div><div class="info"><div class="name">甜·上海</div><div class="hex">#E8A87C</div></div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#C8553D;"></div><div class="info"><div class="name">辣·重庆</div><div class="hex">#C8553D</div></div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#D4A843;"></div><div class="info"><div class="name">酸·山西</div><div class="hex">#D4A843</div></div></div>
+        </div>
+        <div style="margin-top:24px;">
+          <h4>字体系统 / TYPOGRAPHY</h4>
+          <div class="type-sample"><div class="label">HEADLINE 标题</div><div class="sample">酸甜苦辣 城市味道</div></div>
+          <div class="type-sample"><div class="label">ENGLISH 英文</div><div class="sample en">CITY TASTE · TASTE THE CITY</div></div>
+          <div class="type-sample"><div class="label">BODY 正文</div><div class="sample" style="font-size:14px;font-weight:400;">城市有自己的味道，每一口都是一段故事。</div></div>
+        </div>
+      </div>
+      <div class="vs-col reveal">
+        <h4>插画风格 / ILLUSTRATION</h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="background:linear-gradient(135deg,#4A7C59,#6B9E78);border-radius:10px;height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;">🍵🏙️</div>
+          <div style="background:linear-gradient(135deg,#E8A87C,#F4C2A1);border-radius:10px;height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;">🥟🌃</div>
+          <div style="background:linear-gradient(135deg,#C8553D,#E07A5F);border-radius:10px;height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;">🌶️🏔️</div>
+          <div style="background:linear-gradient(135deg,#D4A843,#E8C872);border-radius:10px;height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;">🏺🏯</div>
+        </div>
+        <div style="margin-top:24px;">
+          <h4>构图原则 / COMPOSITION</h4>
+          <div style="font-size:13px;color:var(--ink-soft);line-height:2;">
+            · 大字标题 + 城市景观的对比构图<br>
+            · 味觉字符作为核心视觉符号<br>
+            · 高饱和城市色 + 深色文字层级<br>
+            · 动态粒子增强味觉感知<br>
+            · 四色渐变贯穿整个视觉系统
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 FOUR POSTERS -->
+<section class="section section-alt" id="posters">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">06</div>
+      <div class="sec-title">四张城市海报</div>
+      <div class="sec-en">FOUR CITY POSTERS</div>
+    </div>
+    <div class="posters-grid">
+      <div class="poster-card bitter reveal">
+        <div class="poster-char">苦</div>
+        <div class="poster-info">
+          <div class="city">广州</div>
+          <div class="city-en">GUANGZHOU · BITTER</div>
+          <div class="tagline">凉茶入喉，苦尽甘来</div>
+        </div>
+      </div>
+      <div class="poster-card sweet reveal">
+        <div class="poster-char">甜</div>
+        <div class="poster-info">
+          <div class="city">上海</div>
+          <div class="city-en">SHANGHAI · SWEET</div>
+          <div class="tagline">浓油赤酱，甜在舌尖</div>
+        </div>
+      </div>
+      <div class="poster-card spicy reveal">
+        <div class="poster-char">辣</div>
+        <div class="poster-info">
+          <div class="city">重庆</div>
+          <div class="city-en">CHONGQING · SPICY</div>
+          <div class="tagline">火锅沸腾，麻辣鲜香</div>
+        </div>
+      </div>
+      <div class="poster-card sour reveal">
+        <div class="poster-char">酸</div>
+        <div class="poster-info">
+          <div class="city">山西</div>
+          <div class="city-en">SHANXI · SOUR</div>
+          <div class="tagline">老陈醋香，酸中带醇</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 POSTER DETAILS -->
+<section class="section" id="poster-details">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">07</div>
+      <div class="sec-title">海报视觉拆解</div>
+      <div class="sec-en">POSTER VISUAL BREAKDOWN</div>
+    </div>
+    <div class="pd-grid">
+      <div class="pd-item reveal">
+        <div class="pd-label">LAYER 01</div>
+        <div class="pd-visual" style="background:linear-gradient(135deg,var(--bitter),var(--bitter-light));">🏙️</div>
+        <div class="pd-name">城市背景</div>
+        <div class="pd-desc">地标建筑 + 天际线</div>
+      </div>
+      <div class="pd-item reveal">
+        <div class="pd-label">LAYER 02</div>
+        <div class="pd-visual" style="background:linear-gradient(135deg,var(--sweet),var(--sweet-light));">🍜</div>
+        <div class="pd-name">美食元素</div>
+        <div class="pd-desc">代表性食物插画</div>
+      </div>
+      <div class="pd-item reveal">
+        <div class="pd-label">LAYER 03</div>
+        <div class="pd-visual" style="background:linear-gradient(135deg,var(--spicy),var(--spicy-light));">辣</div>
+        <div class="pd-name">味觉大字</div>
+        <div class="pd-desc">核心味觉符号</div>
+      </div>
+      <div class="pd-item reveal">
+        <div class="pd-label">LAYER 04</div>
+        <div class="pd-visual" style="background:linear-gradient(135deg,var(--sour),var(--sour-light));">✨</div>
+        <div class="pd-name">动态粒子</div>
+        <div class="pd-desc">味觉氛围粒子效果</div>
+      </div>
+      <div class="pd-item reveal">
+        <div class="pd-label">LAYER 05</div>
+        <div class="pd-visual" style="background:var(--ink);color:#fff;">文</div>
+        <div class="pd-name">文字信息</div>
+        <div class="pd-desc">城市名 + 标语 + Logo</div>
+      </div>
+      <div class="pd-item reveal">
+        <div class="pd-label">LAYER 06</div>
+        <div class="pd-visual" style="background:var(--bg-warm);">🎨</div>
+        <div class="pd-name">色彩统一</div>
+        <div class="pd-desc">四城四色系统</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 FROM POSTER TO MOTION -->
+<section class="section section-alt" id="motion-transition">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">08</div>
+      <div class="sec-title">从静态到动态</div>
+      <div class="sec-en">FROM POSTER TO MOTION</div>
+      <p class="sec-desc">静态海报不是终点，而是动态体验的起点。将海报拆解为多个图层，赋予每一层独立的运动规律。</p>
+    </div>
+    <div class="motion-transition reveal">
+      <div>
+        <div class="mt-stage static">🖼️ 静态海报</div>
+        <div class="mt-label">STATIC POSTER</div>
+      </div>
+      <div class="mt-arrow">→</div>
+      <div>
+        <div class="mt-stage" style="background:linear-gradient(135deg,var(--sour),var(--sour-light));">📐 图层拆解</div>
+        <div class="mt-label">LAYER BREAKDOWN</div>
+      </div>
+      <div class="mt-arrow">→</div>
+      <div>
+        <div class="mt-stage motion">🎬 动态视频</div>
+        <div class="mt-label">MOTION VIDEO</div>
+      </div>
+      <div class="mt-arrow">→</div>
+      <div>
+        <div class="mt-stage" style="background:linear-gradient(135deg,var(--bitter),var(--bitter-light));">🖱️ 可交互</div>
+        <div class="mt-label">INTERACTIVE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 FOUR VIDEOS -->
+<section class="section" id="videos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">09</div>
+      <div class="sec-title">四支城市短视频</div>
+      <div class="sec-en">FOUR CITY VIDEOS</div>
+    </div>
+    <div class="videos-grid">
+      <div class="video-card bitter reveal">
+        <div class="thumb"><div class="play-btn">▶</div></div>
+        <div class="v-info"><div class="v-city">广州</div><div class="v-taste">BITTER · 苦</div></div>
+      </div>
+      <div class="video-card sweet reveal">
+        <div class="thumb"><div class="play-btn">▶</div></div>
+        <div class="v-info"><div class="v-city">上海</div><div class="v-taste">SWEET · 甜</div></div>
+      </div>
+      <div class="video-card spicy reveal">
+        <div class="thumb"><div class="play-btn">▶</div></div>
+        <div class="v-info"><div class="v-city">重庆</div><div class="v-taste">SPICY · 辣</div></div>
+      </div>
+      <div class="video-card sour reveal">
+        <div class="thumb"><div class="play-btn">▶</div></div>
+        <div class="v-info"><div class="v-city">山西</div><div class="v-taste">SOUR · 酸</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 MOTION SYSTEM -->
+<section class="section section-alt" id="motion-system">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">10</div>
+      <div class="sec-title">四种城市动态人格</div>
+      <div class="sec-en">MOTION PERSONALITY SYSTEM</div>
+    </div>
+    <div class="ms-grid">
+      <div class="ms-card reveal">
+        <div class="ms-icon">🍵</div>
+        <div class="ms-name">苦 · 广州</div>
+        <div class="ms-city">BITTER MOTION</div>
+        <div class="ms-keywords"><span>缓慢</span><span>沉淀</span><span>从容</span><span>茶叶飘落</span></div>
+      </div>
+      <div class="ms-card reveal">
+        <div class="ms-icon">🥟</div>
+        <div class="ms-name">甜 · 上海</div>
+        <div class="ms-city">SWEET MOTION</div>
+        <div class="ms-keywords"><span>流畅</span><span>精致</span><span>闪烁</span><span>灯光亮起</span></div>
+      </div>
+      <div class="ms-card reveal">
+        <div class="ms-icon">🌶️</div>
+        <div class="ms-name">辣 · 重庆</div>
+        <div class="ms-city">SPICY MOTION</div>
+        <div class="ms-keywords"><span>热烈</span><span>跳跃</span><span>沸腾</span><span>辣椒飞溅</span></div>
+      </div>
+      <div class="ms-card reveal">
+        <div class="ms-icon">🏺</div>
+        <div class="ms-name">酸 · 山西</div>
+        <div class="ms-city">SOUR MOTION</div>
+        <div class="ms-keywords"><span>沉稳</span><span>酝酿</span><span>流动</span><span>醋液涟漪</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 INTERACTIVE CONCEPT -->
+<section class="section" id="interactive-concept">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">11</div>
+      <div class="sec-title">交互概念</div>
+      <div class="sec-en">INTERACTIVE CONCEPT</div>
+      <p class="sec-desc">不把"交互"理解成简单的按钮，而是围绕"尝一口城市"这个核心问题展开设计。</p>
+    </div>
+    <div class="ic-center reveal">
+      <div class="ic-core">
+        <div class="ic-label">CORE INTERACTION</div>
+        <div class="ic-title">TASTE THE CITY</div>
+        <div class="ic-sub">选择味道 → 进入城市 → 探索美食 → 发现生活服务</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 INTERACTIVE HOMEPAGE -->
+<section class="section section-alt" id="interactive-home">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">12</div>
+      <div class="sec-title">交互式首页</div>
+      <div class="sec-en">INTERACTIVE HOMEPAGE</div>
+      <p class="sec-desc">鼠标经过酸甜苦辣，对应城市产生视觉变化。用户主动选择城市，而非被动阅读。</p>
+    </div>
+    <div class="ih-demo reveal">
+      <div class="ih-taste-row">
+        <div class="ih-taste bitter">苦</div>
+        <div class="ih-taste sweet">甜</div>
+        <div class="ih-taste spicy">辣</div>
+        <div class="ih-taste sour">酸</div>
+      </div>
+      <div class="ih-center-text">
+        <div class="q">你的城市，是什么味道？</div>
+        <div class="q-en">WHAT DOES YOUR CITY TASTE LIKE?</div>
+      </div>
+      <div class="ih-hint">HOVER 味觉字符 · 探索对应城市</div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 CITY EXPLORATION MAP -->
+<section class="section" id="city-map">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">13</div>
+      <div class="sec-title">四城交互地图</div>
+      <div class="sec-en">CITY EXPLORATION MAP</div>
+      <p class="sec-desc">四个城市分别成为交互节点，Hover城市节点放大，周围出现代表性美食与地标。</p>
+    </div>
+    <div class="ce-map reveal">
+      <div class="ce-title">EXPLORE THE FOUR TASTES</div>
+      <div class="ce-node gz"><div class="cn-char">苦</div><div class="cn-city">广州</div></div>
+      <div class="ce-node sh"><div class="cn-char">甜</div><div class="cn-city">上海</div></div>
+      <div class="ce-node cq"><div class="cn-char">辣</div><div class="cn-city">重庆</div></div>
+      <div class="ce-node sx"><div class="cn-char">酸</div><div class="cn-city">山西</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 CITY DETAIL -->
+<section class="section section-alt" id="city-detail">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">14</div>
+      <div class="sec-title">城市沉浸式详情</div>
+      <div class="sec-en">CITY DETAIL · 24H EXPERIENCE</div>
+      <p class="sec-desc">以广州为例，用户向下滚动时时间不断变化，城市画面也跟着变化，形成24H城市体验。</p>
+    </div>
+    <div class="cd-timeline reveal">
+      <div class="cd-time">
+        <div class="time">08:00</div>
+        <div class="scene">早茶</div>
+        <div class="scene-en">MORNING TEA</div>
+        <div class="scene-desc">虾饺烧卖肠粉，一盅两件开启广州人的一天</div>
+      </div>
+      <div class="cd-time">
+        <div class="time">12:00</div>
+        <div class="scene">凉茶</div>
+        <div class="scene-en">HERBAL TEA</div>
+        <div class="scene-desc">王老吉、黄振龙，苦尽甘来的岭南智慧</div>
+      </div>
+      <div class="cd-time">
+        <div class="time">17:00</div>
+        <div class="scene">珠江漫游</div>
+        <div class="scene-en">PEARL RIVER</div>
+        <div class="scene-desc">沿江漫步，看广州塔亮起，感受城市节奏</div>
+      </div>
+      <div class="cd-time">
+        <div class="time">20:00</div>
+        <div class="scene">夜间城市</div>
+        <div class="scene-en">NIGHT LIFE</div>
+        <div class="scene-desc">夜宵大排档，珠江夜游，广州的夜不打烊</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 FOOD EXPLORATION -->
+<section class="section" id="food">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">15</div>
+      <div class="sec-title">美食探索交互</div>
+      <div class="sec-en">FOOD EXPLORATION</div>
+      <p class="sec-desc">食物漂浮墙，Hover食物放大并显示味觉标签与推荐体验，点击进入本地生活服务入口。</p>
+    </div>
+    <div class="fe-wall reveal">
+      <div class="fe-food"><span class="emoji">🍵</span>凉茶<span class="taste-tag bitter">苦</span></div>
+      <div class="fe-food"><span class="emoji">🥟</span>虾饺<span class="taste-tag sweet">甜</span></div>
+      <div class="fe-food"><span class="emoji">🍜</span>烧卖<span class="taste-tag sweet">甜</span></div>
+      <div class="fe-food"><span class="emoji">🍚</span>肠粉<span class="taste-tag sweet">甜</span></div>
+      <div class="fe-food"><span class="emoji">🍲</span>艇仔粥<span class="taste-tag bitter">苦</span></div>
+      <div class="fe-food"><span class="emoji">🌶️</span>火锅<span class="taste-tag spicy">辣</span></div>
+      <div class="fe-food"><span class="emoji">🍢</span>串串<span class="taste-tag spicy">辣</span></div>
+      <div class="fe-food"><span class="emoji">🏺</span>老陈醋<span class="taste-tag sour">酸</span></div>
+      <div class="fe-food"><span class="emoji">🍜</span>刀削面<span class="taste-tag sour">酸</span></div>
+      <div class="fe-food"><span class="emoji">🥮</span>点心<span class="taste-tag sweet">甜</span></div>
+      <div class="fe-food"><span class="emoji">🦐</span>白切鸡<span class="taste-tag bitter">苦</span></div>
+      <div class="fe-food"><span class="emoji">🍖</span>红烧肉<span class="taste-tag sweet">甜</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 TASTE METER -->
+<section class="section section-alt" id="taste-meter">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">16</div>
+      <div class="sec-title">味觉强度交互</div>
+      <div class="sec-en">TASTE METER</div>
+      <p class="sec-desc">用户拖动味觉强度滑块，城市画面的颜色、粒子、食物数量和视觉强度同步变化。</p>
+    </div>
+    <div class="tm-demo reveal">
+      <div class="tm-label">苦度 BITTERNESS</div>
+      <input type="range" class="tm-slider" min="0" max="100" value="50">
+      <div class="tm-labels"><span>LIGHT 清淡</span><span>INTENSE 浓烈</span></div>
+      <div class="tm-visual">🍵 拖动滑块，感受苦度变化 → 茶叶密度 / 颜色深度 / 液体流速同步变化</div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 TASTE QUIZ -->
+<section class="section" id="quiz">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">17</div>
+      <div class="sec-title">城市味觉人格测试</div>
+      <div class="sec-en">TASTE QUIZ</div>
+      <p class="sec-desc">用户回答4-5个问题，最终生成自己的城市味觉人格，成为项目最重要的互动功能。</p>
+    </div>
+    <div class="quiz-demo reveal">
+      <div class="quiz-q">Q1 · 周末你更想：</div>
+      <div class="quiz-options">
+        <div class="quiz-opt"><span class="letter">A</span>找一家老字号，慢慢品味</div>
+        <div class="quiz-opt"><span class="letter">B</span>吃一顿精致料理，仪式感满满</div>
+        <div class="quiz-opt"><span class="letter">C</span>来一顿火锅，热辣社交</div>
+        <div class="quiz-opt"><span class="letter">D</span>逛一座古城，感受历史</div>
+      </div>
+      <div class="quiz-progress">QUESTION 1 / 5</div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 PERSONALITY RESULT -->
+<section class="section section-alt" id="result">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">18</div>
+      <div class="sec-title">味觉人格结果</div>
+      <div class="sec-en">PERSONALITY RESULT</div>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-label">YOUR CITY TASTE</div>
+      <div class="pr-result">辣</div>
+      <div class="pr-result-en">SPICY PERSONALITY</div>
+      <div class="pr-city">重庆 CHONGQING</div>
+      <div class="pr-quote">"生活就要滚烫一点。"</div>
+      <div class="pr-keywords">
+        <span>热烈</span><span>冒险</span><span>社交</span><span>烟火气</span>
+      </div>
+      <div class="pr-cta">🔥 探索重庆生活 →</div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 LOCAL SERVICE -->
+<section class="section" id="local-service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">19</div>
+      <div class="sec-title">本地生活服务入口</div>
+      <div class="sec-en">LOCAL SERVICE CONNECTION</div>
+      <p class="sec-desc">不让"抖音生活服务"只是底部Logo，而让它成为用户完成体验的终点。</p>
+    </div>
+    <div class="ls-flow reveal">
+      <div class="ls-step"><div class="ls-num">01</div><div class="ls-icon">👀</div><div class="ls-name">DISCOVER</div><div class="ls-desc">发现城市<br>产生兴趣</div><div class="ls-arrow">→</div></div>
+      <div class="ls-step"><div class="ls-num">02</div><div class="ls-icon">🔍</div><div class="ls-name">EXPLORE</div><div class="ls-desc">浏览城市<br>了解文化</div><div class="ls-arrow">→</div></div>
+      <div class="ls-step"><div class="ls-num">03</div><div class="ls-icon">📍</div><div class="ls-name">SEARCH</div><div class="ls-desc">查看美食<br>找到服务</div><div class="ls-arrow">→</div></div>
+      <div class="ls-step"><div class="ls-num">04</div><div class="ls-icon">🎫</div><div class="ls-name">BOOK/BUY</div><div class="ls-desc">团购优惠<br>预约到店</div><div class="ls-arrow">→</div></div>
+      <div class="ls-step"><div class="ls-num">05</div><div class="ls-icon">🎉</div><div class="ls-name">EXPERIENCE</div><div class="ls-desc">到店体验<br>真实消费</div><div class="ls-arrow">→</div></div>
+      <div class="ls-step"><div class="ls-num">06</div><div class="ls-icon">📱</div><div class="ls-name">SHARE</div><div class="ls-desc">生成卡片<br>二次传播</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 CITY LIFE MAP -->
+<section class="section section-alt" id="life-map">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">20</div>
+      <div class="sec-title">城市生活地图</div>
+      <div class="sec-en">CITY LIFE MAP</div>
+      <p class="sec-desc">以重庆为例，地图上标注火锅、老街、地标、咖啡、展览、夜生活等节点，点击查看对应本地生活服务。</p>
+    </div>
+    <div class="cm-demo reveal">
+      <div class="cm-grid-bg"></div>
+      <div class="cm-pin" style="top:25%;left:20%;"><div class="pin-icon">🍲</div><div class="pin-label">重庆火锅 · 麻辣/烟火/夜生活</div></div>
+      <div class="cm-pin" style="top:40%;left:55%;"><div class="pin-icon">🏮</div><div class="pin-label">洪崖洞 · 老街/夜景/打卡</div></div>
+      <div class="cm-pin" style="top:20%;left:70%;"><div class="pin-icon">🌉</div><div class="pin-label">长江大桥 · 地标/观景</div></div>
+      <div class="cm-pin" style="top:60%;left:30%;"><div class="pin-icon">☕</div><div class="pin-label">山城咖啡 · 文艺/休闲</div></div>
+      <div class="cm-pin" style="top:55%;left:65%;"><div class="pin-icon">🎨</div><div class="pin-label">川美展览 · 艺术/文化</div></div>
+      <div class="cm-pin" style="top:70%;left:50%;"><div class="pin-icon">🌃</div><div class="pin-label">南山夜景观景 · 夜生活</div></div>
+      <div class="cm-legend">
+        <span>🍲 美食</span><span>🏮 老街</span><span>🌉 地标</span><span>☕ 咖啡</span><span>🎨 展览</span><span>🌃 夜生活</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22 UGC -->
+<section class="section" id="ugc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">21</div>
+      <div class="sec-title">用户共创</div>
+      <div class="sec-en">USER GENERATED CONTENT</div>
+      <p class="sec-desc">用户提交自己的城市味觉，自动生成城市味觉卡片，可保存、分享、发布到抖音。从品牌单向传播变成用户共同创作。</p>
+    </div>
+    <div class="ugc-demo">
+      <div class="ugc-form reveal">
+        <h4>MY CITY TASTE</h4>
+        <input class="ugc-input" placeholder="你的城市（如：成都）">
+        <input class="ugc-input" placeholder="你觉得是什么味道（如：麻）">
+        <input class="ugc-input" placeholder="推荐美食（如：冒菜）">
+        <textarea class="ugc-textarea" placeholder="一句话描述（如：下班后最幸福的事情，就是坐下来吃一顿冒菜。）"></textarea>
+        <button class="ugc-btn">生成我的城市味觉卡</button>
+      </div>
+      <div class="ugc-card-preview reveal">
+        <div class="uc-label">MY CITY TASTE CARD</div>
+        <div class="uc-city">成都 CHENGDU</div>
+        <div class="uc-taste">麻</div>
+        <div class="uc-quote">"下班后最幸福的事情，<br>就是坐下来吃一顿冒菜。"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 23 SOCIAL MEDIA -->
+<section class="section section-alt" id="social">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">22</div>
+      <div class="sec-title">社交媒体传播</div>
+      <div class="sec-en">SOCIAL MEDIA</div>
+    </div>
+    <div class="sm-grid">
+      <div class="sm-card s1 reveal">
+        <div class="sm-hashtag">#酸甜苦辣城市挑战</div>
+        <div class="sm-title">尝一口广州</div>
+        <div class="sm-sub">凉茶入喉，苦尽甘来</div>
+        <div class="sm-actions"><span>❤️ 2.3w</span><span>💬 1.2k</span><span>↗ 分享</span></div>
+      </div>
+      <div class="sm-card s2 reveal">
+        <div class="sm-hashtag">#城市味觉人格</div>
+        <div class="sm-title">我是辣味人格</div>
+        <div class="sm-sub">生活就要滚烫一点</div>
+        <div class="sm-actions"><span>❤️ 5.6w</span><span>💬 3.4k</span><span>↗ 分享</span></div>
+      </div>
+      <div class="sm-card s3 reveal">
+        <div class="sm-hashtag">#抖音生活服务</div>
+        <div class="sm-title">山西的酸</div>
+        <div class="sm-sub">老陈醋香，酸中带醇</div>
+        <div class="sm-actions"><span>❤️ 1.8w</span><span>💬 890</span><span>↗ 分享</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 24 ONLINE x OFFLINE -->
+<section class="section" id="online-offline">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">23</div>
+      <div class="sec-title">线上线下体验</div>
+      <div class="sec-en">ONLINE × OFFLINE</div>
+    </div>
+    <div class="oo-grid">
+      <div class="oo-side online reveal">
+        <div class="oo-icon">📱</div>
+        <div class="oo-title">线上 ONLINE</div>
+        <div class="oo-list">
+          交互式网站体验<br>
+          味觉人格测试<br>
+          城市短视频传播<br>
+          UGC味觉卡生成<br>
+          抖音话题挑战
+        </div>
+      </div>
+      <div class="oo-connector">×</div>
+      <div class="oo-side offline reveal">
+        <div class="oo-icon">🏙️</div>
+        <div class="oo-title">线下 OFFLINE</div>
+        <div class="oo-list">
+          城市快闪店<br>
+          味觉主题市集<br>
+          合作餐厅到店体验<br>
+          城市漫游路线<br>
+          本地生活服务消费
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 25 USER JOURNEY -->
+<section class="section section-alt" id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">24</div>
+      <div class="sec-title">用户完整旅程</div>
+      <div class="sec-en">USER JOURNEY</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="uj-table reveal">
+        <thead>
+          <tr><th>阶段 STAGE</th><th>用户行为 BEHAVIOR</th><th>交互 INTERACTION</th><th>结果 RESULT</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="stage">Discover 发现</td><td class="action">看到Campaign</td><td class="interaction">Hover / Scroll</td><td class="result">产生兴趣</td></tr>
+          <tr><td class="stage">Taste 选择</td><td class="action">选择味道</td><td class="interaction">Click</td><td class="result">匹配城市</td></tr>
+          <tr><td class="stage">Explore 探索</td><td class="action">浏览城市</td><td class="interaction">Parallax</td><td class="result">了解文化</td></tr>
+          <tr><td class="stage">Play 测试</td><td class="action">味觉测试</td><td class="interaction">Quiz</td><td class="result">获得人格</td></tr>
+          <tr><td class="stage">Search 搜索</td><td class="action">查看美食</td><td class="interaction">Filter</td><td class="result">找到服务</td></tr>
+          <tr><td class="stage">Go 到店</td><td class="action">查看推荐</td><td class="interaction">CTA</td><td class="result">到店体验</td></tr>
+          <tr><td class="stage">Share 分享</td><td class="action">生成卡片</td><td class="interaction">Share</td><td class="result">二次传播</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 26 INTERACTION ARCHITECTURE -->
+<section class="section" id="architecture">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">25</div>
+      <div class="sec-title">交互信息架构</div>
+      <div class="sec-en">INTERACTION ARCHITECTURE</div>
+    </div>
+    <div class="ia-diagram reveal">
+      <div class="ia-level"><div class="ia-node root">🏠 HOME 首页</div></div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level">
+        <div class="ia-node l1">🎯 TASTE TEST 味觉测试</div>
+        <div class="ia-node l1">🗺️ EXPLORE CITY 探索城市</div>
+      </div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level">
+        <div class="ia-node l2">酸</div>
+        <div class="ia-node l2">甜</div>
+        <div class="ia-node l2">苦</div>
+        <div class="ia-node l2">辣</div>
+        <div class="ia-node l2">广州</div>
+        <div class="ia-node l2">上海</div>
+        <div class="ia-node l2">重庆</div>
+        <div class="ia-node l2">山西</div>
+      </div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level">
+        <div class="ia-node">🍜 FOOD 美食</div>
+        <div class="ia-node">🏛️ LANDMARK 地标</div>
+        <div class="ia-node">🎭 LIFE 生活</div>
+      </div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level"><div class="ia-node root" style="background:var(--spicy);">📍 LOCAL SERVICE 本地生活服务</div></div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level">
+        <div class="ia-node">🔍 SEARCH 搜索</div>
+        <div class="ia-node">🎫 OFFER 优惠</div>
+        <div class="ia-node">🚶 GO 到店</div>
+      </div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level"><div class="ia-node root" style="background:var(--bitter);">🎉 EXPERIENCE 体验</div></div>
+      <div class="ia-connector">↓</div>
+      <div class="ia-level"><div class="ia-node root" style="background:var(--sour);">📱 SHARE 分享</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 27 FINAL CAMPAIGN -->
+<section class="section section-alt" id="final-campaign">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">26</div>
+      <div class="sec-title">最终Campaign整合</div>
+      <div class="sec-en">FINAL CAMPAIGN</div>
+    </div>
+    <div class="fc-grid">
+      <div class="fc-item reveal">
+        <div class="fc-icon">🖼️</div>
+        <div class="fc-name">四张城市海报</div>
+        <div class="fc-desc">酸甜苦辣四城主视觉，统一视觉语言</div>
+      </div>
+      <div class="fc-item reveal">
+        <div class="fc-icon">🎬</div>
+        <div class="fc-name">四支动态视频</div>
+        <div class="fc-desc">每种味道独立动态人格，短视频传播</div>
+      </div>
+      <div class="fc-item reveal">
+        <div class="fc-icon">🖱️</div>
+        <div class="fc-name">交互式网站</div>
+        <div class="fc-desc">Hover/Scroll/Quiz/Map多维交互体验</div>
+      </div>
+      <div class="fc-item reveal">
+        <div class="fc-icon">📱</div>
+        <div class="fc-name">社交传播</div>
+        <div class="fc-desc">味觉人格卡 + UGC共创，抖音话题裂变</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 28 SUMMARY -->
+<section class="summary" id="summary">
+  <div class="wrap">
+    <div class="s-label reveal">PROJECT SUMMARY</div>
+    <div class="s-quote reveal">
+      不只是四张城市海报，<br>
+      而是一套<span class="taste">可尝、可玩、可分享</span>的<br>
+      城市味觉交互体验系统。
+    </div>
+    <p class="s-text reveal">通过"味觉人格测试 → 城市推荐 → 本地生活服务 → 生成分享卡"这一核心链路，将创意概念、视觉设计、交互体验和抖音生活服务商业逻辑真正串联起来。</p>
+  </div>
+</section>
+
+<!-- 29 ENDING -->
+<section class="ending" id="ending">
+  <div class="e-line"></div>
+  <div class="e-big reveal"><span class="taste">Taste the city.</span><br>Live the city.</div>
+  <div class="e-en reveal">尝一口城市，活在这座城市。</div>
+  <div class="e-sign reveal">抖音生活服务 × 酸甜苦辣 · 2026</div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <span class="lightbox-prev">&#10094;</span>
+  <span class="lightbox-next">&#10095;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="">
+  <span class="lightbox-counter" id="lightbox-counter"></span>
+</div>
+
+<script>
+(function(){
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  },{threshold:0.1});
+  reveals.forEach(function(el){observer.observe(el);});
+
+  // Lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var lbClose = lightbox.querySelector('.lightbox-close');
+  var lbPrev = lightbox.querySelector('.lightbox-prev');
+  var lbNext = lightbox.querySelector('.lightbox-next');
+  var lbCounter = document.getElementById('lightbox-counter');
+  var allImages = [];
+  var currentIndex = 0;
+
+  function collectImages(){
+    allImages = [];
+    document.querySelectorAll('img:not(#lightbox-img)').forEach(function(img){
+      if(img.src && img.naturalWidth > 0){ allImages.push(img); }
+    });
+  }
+  function openLightbox(src, alt, index){
+    lbImg.src = src;
+    currentIndex = index || 0;
+    updateCounter();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function updateCounter(){
+    lbCounter.textContent = allImages.length > 1 ? (currentIndex+1)+' / '+allImages.length : '';
+  }
+  function showPrev(){
+    if(allImages.length<=1) return;
+    currentIndex = (currentIndex-1+allImages.length)%allImages.length;
+    lbImg.src = allImages[currentIndex].src;
+    updateCounter();
+  }
+  function showNext(){
+    if(allImages.length<=1) return;
+    currentIndex = (currentIndex+1)%allImages.length;
+    lbImg.src = allImages[currentIndex].src;
+    updateCounter();
+  }
+  collectImages();
+  document.querySelectorAll('img:not(#lightbox-img)').forEach(function(img){
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(e){
+      e.stopPropagation();
+      collectImages();
+      var idx = allImages.indexOf(this);
+      openLightbox(this.src, this.alt, idx>=0?idx:0);
+    });
+  });
+  lbPrev.addEventListener('click', function(e){e.stopPropagation();showPrev();});
+  lbNext.addEventListener('click', function(e){e.stopPropagation();showNext();});
+  lightbox.addEventListener('click', function(e){
+    if(e.target===lightbox||e.target===lbClose){closeLightbox();}
+  });
+  document.addEventListener('keydown', function(e){
+    if(!lightbox.classList.contains('active')) return;
+    if(e.key==='Escape'){closeLightbox();}
+    else if(e.key==='ArrowLeft'){showPrev();}
+    else if(e.key==='ArrowRight'){showNext();}
+  });
+})();
+</script>
+</body>
+</html>
