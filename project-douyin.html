@@ -313,6 +313,15 @@ h1,h2,h3,p{margin-top:0}
 .node-sh{left:80%;top:50%}.node-sh .node-dot{background:#ee8e51}
 .node-cq{left:56%;top:62%}.node-cq .node-dot{background:#e43e32}
 .node-sx{left:60%;top:38%}.node-sx .node-dot{background:#d6a938}
+/* 商家标记 */
+.svc-shop-markers{position:absolute;inset:0;pointer-events:none;z-index:3}
+.shop-marker{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.3);transform:translate(-50%,-50%);transition:.3s;pointer-events:auto;cursor:pointer;animation:markerPop .4s ease both}
+.shop-marker:hover{transform:translate(-50%,-50%) scale(1.6);z-index:5}
+.shop-marker .sm-tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:4px 10px;border-radius:8px;font-size:10px;white-space:nowrap;opacity:0;transition:.2s;pointer-events:none;font-weight:600}
+.shop-marker:hover .sm-tip{opacity:1}
+@keyframes markerPop{from{opacity:0;transform:translate(-50%,-50%) scale(0)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.svc-map.searching .svc-node{opacity:.25;pointer-events:none}
+.svc-map.searching .svc-node.active{opacity:.6}
 .svc-city-info{margin-top:18px;padding:18px;background:var(--bg);border-radius:16px;border:1px solid var(--line)}
 .sci-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .sci-city{font-size:22px;font-weight:900}
@@ -1109,6 +1118,8 @@ h1,h2,h3,p{margin-top:0}
           <div class="node-dot"></div>
           <div class="node-label">山西<span class="node-taste">酸 · SOUR</span></div>
         </div>
+        <!-- 商家标记层 -->
+        <div class="svc-shop-markers" id="svcShopMarkers"></div>
       </div>
       <!-- 城市信息 -->
       <div class="svc-city-info" id="svcCityInfo">
@@ -1854,33 +1865,52 @@ function clearSvcSearch(){
 }
 /* 产品数据库 */
 const svcProducts=[
-  {icon:'🍲',name:'珮姐老火锅(解放碑店)',desc:'重庆火锅 · 招牌毛肚 · 必吃榜',city:'重庆',cat:'food',price:'¥118/人',dist:'0.6km',rating:'4.8',tags:['火锅','重庆','麻辣','毛肚']},
-  {icon:'🍲',name:'周师兄大刀腰片火锅',desc:'火锅 · 招牌腰片 · 网红店',city:'重庆',cat:'food',price:'¥110/人',dist:'1.2km',rating:'4.7',tags:['火锅','重庆','腰片']},
-  {icon:'🍜',name:'花市豌杂面',desc:'小面 · 必吃榜 · 本地人推荐',city:'重庆',cat:'food',price:'¥15/碗',dist:'0.3km',rating:'4.9',tags:['小面','重庆','豌杂']},
-  {icon:'🌶️',name:'石灰市李串串',desc:'串串香 · 网红店 · 深夜食堂',city:'重庆',cat:'food',price:'¥65/人',dist:'0.7km',rating:'4.6',tags:['串串','重庆','辣']},
-  {icon:'🌃',name:'洪崖洞民俗风貌区',desc:'景点 · 吊脚楼 · 免费开放',city:'重庆',cat:'night',price:'免费',dist:'1.8km',rating:'4.8',tags:['洪崖洞','重庆','夜景','吊脚楼']},
-  {icon:'🏔️',name:'磁器口古镇',desc:'古镇 · 陈麻花 · 免费',city:'重庆',cat:'culture',price:'免费',dist:'5.2km',rating:'4.5',tags:['磁器口','重庆','古镇','文化']},
-  {icon:'🚶',name:'山城第三步道',desc:'步道 · 老重庆记忆 · 免费',city:'重庆',cat:'play',price:'免费',dist:'1.0km',rating:'4.6',tags:['步道','重庆','山城']},
-  {icon:'🍵',name:'黄振龙凉茶(上下九店)',desc:'凉茶 · 老字号 · 二十四味',city:'广州',cat:'food',price:'¥12/杯',dist:'0.3km',rating:'4.5',tags:['凉茶','广州','苦','二十四味']},
-  {icon:'🥟',name:'点都德(上下九店)',desc:'早茶 · 全天茶市 · 虾饺烧卖',city:'广州',cat:'food',price:'¥75/人',dist:'0.9km',rating:'4.7',tags:['早茶','广州','点心','虾饺']},
-  {icon:'🥟',name:'陶陶居(第十甫店)',desc:'茶楼 · 百年老字号 · 粤菜',city:'广州',cat:'food',price:'¥88/人',dist:'0.5km',rating:'4.6',tags:['茶楼','广州','早茶','粤菜']},
-  {icon:'🏙️',name:'广州塔',desc:'景点 · 小蛮腰 · 观光',city:'广州',cat:'night',price:'¥150',dist:'2.5km',rating:'4.8',tags:['广州塔','广州','夜景','地标']},
-  {icon:'🏛️',name:'陈家祠',desc:'文化 · 岭南建筑 · 砖雕木雕',city:'广州',cat:'culture',price:'¥10',dist:'1.8km',rating:'4.7',tags:['陈家祠','广州','岭南','文化']},
-  {icon:'🌊',name:'珠江夜游(天字码头)',desc:'游船 · 江景 · 夜景',city:'广州',cat:'play',price:'¥88',dist:'1.5km',rating:'4.5',tags:['珠江','广州','游船','夜游']},
-  {icon:'🥟',name:'南翔馒头店(豫园店)',desc:'小笼包 · 百年老店 · 蟹粉',city:'上海',cat:'food',price:'¥60/人',dist:'0.8km',rating:'4.6',tags:['小笼包','上海','豫园','点心']},
-  {icon:'🥟',name:'大壶春(四川中路店)',desc:'生煎 · 老字号 · 鲜肉生煎',city:'上海',cat:'food',price:'¥20/份',dist:'0.3km',rating:'4.7',tags:['生煎','上海','本帮菜']},
-  {icon:'🍰',name:'沈大成(南京东路店)',desc:'点心 · 条头糕 · 老字号',city:'上海',cat:'food',price:'¥30/人',dist:'0.4km',rating:'4.5',tags:['点心','上海','条头糕','甜']},
-  {icon:'🍖',name:'老正兴(福州路店)',desc:'本帮菜 · 红烧肉 · 老字号',city:'上海',cat:'food',price:'¥120/人',dist:'1.0km',rating:'4.6',tags:['本帮菜','上海','红烧肉','甜']},
-  {icon:'🌆',name:'外滩',desc:'景点 · 万国建筑 · 免费',city:'上海',cat:'night',price:'免费',dist:'1.2km',rating:'4.9',tags:['外滩','上海','夜景','万国建筑']},
-  {icon:'🏙️',name:'东方明珠',desc:'景点 · 观光 · 地标',city:'上海',cat:'play',price:'¥160',dist:'2.0km',rating:'4.7',tags:['东方明珠','上海','地标']},
-  {icon:'🏛️',name:'豫园',desc:'园林 · 古典建筑 · 南翔小笼',city:'上海',cat:'culture',price:'¥40',dist:'0.8km',rating:'4.6',tags:['豫园','上海','园林','文化']},
-  {icon:'🍜',name:'大同刀削面(解放路店)',desc:'面食 · 刀削面 · 地道山西味',city:'山西',cat:'food',price:'¥18/碗',dist:'0.3km',rating:'4.6',tags:['刀削面','山西','面食']},
-  {icon:'🍜',name:'山西老面馆(柳巷店)',desc:'面食 · 打卤面 · 本地人食堂',city:'山西',cat:'food',price:'¥25/人',dist:'0.5km',rating:'4.5',tags:['面食','山西','打卤面']},
-  {icon:'🏺',name:'东湖醋园(马道坡店)',desc:'醋文化 · 非遗 · 免费参观品鉴',city:'山西',cat:'culture',price:'免费',dist:'3.0km',rating:'4.7',tags:['醋','山西','老陈醋','非遗','文化']},
-  {icon:'🥩',name:'冠云平遥牛肉(专卖店)',desc:'特产 · 中华老字号 · 礼盒装',city:'山西',cat:'food',price:'¥58/斤',dist:'1.5km',rating:'4.6',tags:['牛肉','山西','平遥','特产']},
-  {icon:'🏯',name:'太原古城墙',desc:'景点 · 明代建筑 · 骑行',city:'山西',cat:'play',price:'免费',dist:'2.2km',rating:'4.5',tags:['古城','山西','城墙','文化']},
-  {icon:'🏛️',name:'晋祠博物馆',desc:'古建筑 · 周柏唐槐 · 千年文化',city:'山西',cat:'culture',price:'¥80',dist:'15km',rating:'4.8',tags:['晋祠','山西','古建筑','文化']},
-  {icon:'🍢',name:'柳巷夜市',desc:'夜市 · 小吃街 · 本地风味',city:'山西',cat:'night',price:'¥30/人',dist:'0.6km',rating:'4.4',tags:['夜市','山西','柳巷','小吃']}
+  {icon:'🍲',name:'珮姐老火锅(解放碑店)',desc:'重庆火锅 · 招牌毛肚 · 必吃榜',city:'重庆',cat:'food',price:'¥118/人',dist:'0.6km',rating:'4.8',tags:['火锅','重庆','麻辣','毛肚'],mx:54,my:60},
+  {icon:'🍲',name:'周师兄大刀腰片火锅',desc:'火锅 · 招牌腰片 · 网红店',city:'重庆',cat:'food',price:'¥110/人',dist:'1.2km',rating:'4.7',tags:['火锅','重庆','腰片'],mx:58,my:64},
+  {icon:'🍲',name:'小龙坎老火锅(观音桥店)',desc:'火锅 · 九宫格 · 排队王',city:'重庆',cat:'food',price:'¥105/人',dist:'2.0km',rating:'4.6',tags:['火锅','重庆','九宫格'],mx:52,my:58},
+  {icon:'🍲',name:'德庄火锅(南坪店)',desc:'火锅 · 毛肚鸭肠 · 老字号',city:'重庆',cat:'food',price:'¥98/人',dist:'3.5km',rating:'4.5',tags:['火锅','重庆','德庄'],mx:60,my:66},
+  {icon:'🍜',name:'花市豌杂面',desc:'小面 · 必吃榜 · 本地人推荐',city:'重庆',cat:'food',price:'¥15/碗',dist:'0.3km',rating:'4.9',tags:['小面','重庆','豌杂'],mx:55,my:63},
+  {icon:'🍜',name:'胖妹面庄',desc:'小面 · 豌杂面 · 网红店',city:'重庆',cat:'food',price:'¥18/碗',dist:'1.5km',rating:'4.7',tags:['小面','重庆','胖妹'],mx:57,my:61},
+  {icon:'🌶️',name:'石灰市李串串',desc:'串串香 · 网红店 · 深夜食堂',city:'重庆',cat:'food',price:'¥65/人',dist:'0.7km',rating:'4.6',tags:['串串','重庆','辣'],mx:53,my:65},
+  {icon:'🍢',name:'八一路好吃街',desc:'小吃街 · 酸辣粉 · 烤脑花',city:'重庆',cat:'food',price:'¥40/人',dist:'0.5km',rating:'4.5',tags:['小吃','重庆','好吃街'],mx:56,my:59},
+  {icon:'🌃',name:'洪崖洞民俗风貌区',desc:'景点 · 吊脚楼 · 免费开放',city:'重庆',cat:'night',price:'免费',dist:'1.8km',rating:'4.8',tags:['洪崖洞','重庆','夜景','吊脚楼'],mx:59,my:63},
+  {icon:'🌃',name:'南山一棵树观景台',desc:'景点 · 夜景 · 俯瞰全城',city:'重庆',cat:'night',price:'¥30',dist:'6.0km',rating:'4.7',tags:['南山','重庆','夜景'],mx:61,my:67},
+  {icon:'🏔️',name:'磁器口古镇',desc:'古镇 · 陈麻花 · 免费',city:'重庆',cat:'culture',price:'免费',dist:'5.2km',rating:'4.5',tags:['磁器口','重庆','古镇','文化'],mx:50,my:60},
+  {icon:'🚶',name:'山城第三步道',desc:'步道 · 老重庆记忆 · 免费',city:'重庆',cat:'play',price:'免费',dist:'1.0km',rating:'4.6',tags:['步道','重庆','山城'],mx:57,my:62},
+  {icon:'🚇',name:'李子坝轻轨穿楼',desc:'景点 · 网红打卡 · 免费',city:'重庆',cat:'play',price:'免费',dist:'3.0km',rating:'4.6',tags:['李子坝','重庆','轻轨'],mx:51,my:64},
+  {icon:'🍵',name:'黄振龙凉茶(上下九店)',desc:'凉茶 · 老字号 · 二十四味',city:'广州',cat:'food',price:'¥12/杯',dist:'0.3km',rating:'4.5',tags:['凉茶','广州','苦','二十四味'],mx:66,my:70},
+  {icon:'🍵',name:'邓老凉茶(北京路店)',desc:'凉茶 · 连锁 · 清热解毒',city:'广州',cat:'food',price:'¥10/杯',dist:'0.8km',rating:'4.4',tags:['凉茶','广州','邓老'],mx:70,my:73},
+  {icon:'🥟',name:'点都德(上下九店)',desc:'早茶 · 全天茶市 · 虾饺烧卖',city:'广州',cat:'food',price:'¥75/人',dist:'0.9km',rating:'4.7',tags:['早茶','广州','点心','虾饺'],mx:67,my:74},
+  {icon:'🥟',name:'陶陶居(第十甫店)',desc:'茶楼 · 百年老字号 · 粤菜',city:'广州',cat:'food',price:'¥88/人',dist:'0.5km',rating:'4.6',tags:['茶楼','广州','早茶','粤菜'],mx:65,my:71},
+  {icon:'🥟',name:'广州酒家(文昌店)',desc:'粤菜 · 老字号 · 文昌鸡',city:'广州',cat:'food',price:'¥120/人',dist:'1.2km',rating:'4.7',tags:['粤菜','广州','广州酒家'],mx:69,my:70},
+  {icon:'🍤',name:'宝华面店',desc:'云吞面 · 老字号 · 鲜虾云吞',city:'广州',cat:'food',price:'¥25/碗',dist:'0.4km',rating:'4.6',tags:['云吞面','广州','宝华'],mx:64,my:73},
+  {icon:'🏙️',name:'广州塔',desc:'景点 · 小蛮腰 · 观光',city:'广州',cat:'night',price:'¥150',dist:'2.5km',rating:'4.8',tags:['广州塔','广州','夜景','地标'],mx:72,my:75},
+  {icon:'🌃',name:'珠江夜游(天字码头)',desc:'游船 · 江景 · 夜景',city:'广州',cat:'night',price:'¥88',dist:'1.5km',rating:'4.5',tags:['珠江','广州','游船','夜游'],mx:68,my:76},
+  {icon:'🏛️',name:'陈家祠',desc:'文化 · 岭南建筑 · 砖雕木雕',city:'广州',cat:'culture',price:'¥10',dist:'1.8km',rating:'4.7',tags:['陈家祠','广州','岭南','文化'],mx:63,my:69},
+  {icon:'🏛️',name:'沙面岛',desc:'文化 · 欧陆建筑 · 拍照圣地',city:'广州',cat:'culture',price:'免费',dist:'2.0km',rating:'4.6',tags:['沙面','广州','欧陆','文化'],mx:65,my:75},
+  {icon:'🚶',name:'永庆坊',desc:'街区 · 西关大屋 · 粤剧博物馆',city:'广州',cat:'play',price:'免费',dist:'1.0km',rating:'4.6',tags:['永庆坊','广州','西关'],mx:66,my:72},
+  {icon:'🥟',name:'南翔馒头店(豫园店)',desc:'小笼包 · 百年老店 · 蟹粉',city:'上海',cat:'food',price:'¥60/人',dist:'0.8km',rating:'4.6',tags:['小笼包','上海','豫园','点心'],mx:78,my:48},
+  {icon:'🥟',name:'大壶春(四川中路店)',desc:'生煎 · 老字号 · 鲜肉生煎',city:'上海',cat:'food',price:'¥20/份',dist:'0.3km',rating:'4.7',tags:['生煎','上海','本帮菜'],mx:82,my:50},
+  {icon:'🥟',name:'小杨生煎(吴江路店)',desc:'生煎 · 网红 · 汤汁丰富',city:'上海',cat:'food',price:'¥18/份',dist:'0.6km',rating:'4.6',tags:['生煎','上海','小杨'],mx:79,my:52},
+  {icon:'🍰',name:'沈大成(南京东路店)',desc:'点心 · 条头糕 · 老字号',city:'上海',cat:'food',price:'¥30/人',dist:'0.4km',rating:'4.5',tags:['点心','上海','条头糕','甜'],mx:81,my:49},
+  {icon:'🍖',name:'老正兴(福州路店)',desc:'本帮菜 · 红烧肉 · 老字号',city:'上海',cat:'food',price:'¥120/人',dist:'1.0km',rating:'4.6',tags:['本帮菜','上海','红烧肉','甜'],mx:80,my:51},
+  {icon:'🍖',name:'绿波廊(豫园店)',desc:'本帮菜 · 国宴 · 松鼠桂鱼',city:'上海',cat:'food',price:'¥180/人',dist:'0.9km',rating:'4.7',tags:['本帮菜','上海','绿波廊'],mx:77,my:49},
+  {icon:'🍜',name:'味香斋',desc:'麻酱面 · 老字号 · 小牛汤',city:'上海',cat:'food',price:'¥22/碗',dist:'0.7km',rating:'4.5',tags:['麻酱面','上海','味香斋'],mx:83,my:52},
+  {icon:'🌆',name:'外滩',desc:'景点 · 万国建筑 · 免费',city:'上海',cat:'night',price:'免费',dist:'1.2km',rating:'4.9',tags:['外滩','上海','夜景','万国建筑'],mx:81,my:47},
+  {icon:'🌃',name:'新天地',desc:'街区 · 酒吧 · 夜生活',city:'上海',cat:'night',price:'免费',dist:'1.5km',rating:'4.6',tags:['新天地','上海','酒吧','夜生活'],mx:78,my:51},
+  {icon:'🏙️',name:'东方明珠',desc:'景点 · 观光 · 地标',city:'上海',cat:'play',price:'¥160',dist:'2.0km',rating:'4.7',tags:['东方明珠','上海','地标'],mx:84,my:48},
+  {icon:'🏛️',name:'豫园',desc:'园林 · 古典建筑 · 南翔小笼',city:'上海',cat:'culture',price:'¥40',dist:'0.8km',rating:'4.6',tags:['豫园','上海','园林','文化'],mx:79,my:50},
+  {icon:'🏛️',name:'田子坊',desc:'街区 · 弄堂文化 · 创意小店',city:'上海',cat:'culture',price:'免费',dist:'2.5km',rating:'4.5',tags:['田子坊','上海','弄堂','文化'],mx:76,my:53},
+  {icon:'🍜',name:'大同刀削面(解放路店)',desc:'面食 · 刀削面 · 地道山西味',city:'山西',cat:'food',price:'¥18/碗',dist:'0.3km',rating:'4.6',tags:['刀削面','山西','面食'],mx:58,my:36},
+  {icon:'🍜',name:'山西老面馆(柳巷店)',desc:'面食 · 打卤面 · 本地人食堂',city:'山西',cat:'food',price:'¥25/人',dist:'0.5km',rating:'4.5',tags:['面食','山西','打卤面'],mx:61,my:39},
+  {icon:'🍜',name:'清和元头脑(桥头街店)',desc:'早餐 · 头脑 · 非遗美食',city:'山西',cat:'food',price:'¥35/碗',dist:'0.8km',rating:'4.4',tags:['头脑','山西','清和元'],mx:59,my:37},
+  {icon:'🍜',name:'认一力蒸饺(桥头街店)',desc:'蒸饺 · 老字号 · 羊肉蒸饺',city:'山西',cat:'food',price:'¥28/份',dist:'0.6km',rating:'4.5',tags:['蒸饺','山西','认一力'],mx:62,my:38},
+  {icon:'🏺',name:'东湖醋园(马道坡店)',desc:'醋文化 · 非遗 · 免费参观品鉴',city:'山西',cat:'culture',price:'免费',dist:'3.0km',rating:'4.7',tags:['醋','山西','老陈醋','非遗','文化'],mx:56,my:35},
+  {icon:'🥩',name:'冠云平遥牛肉(专卖店)',desc:'特产 · 中华老字号 · 礼盒装',city:'山西',cat:'food',price:'¥58/斤',dist:'1.5km',rating:'4.6',tags:['牛肉','山西','平遥','特产'],mx:60,my:40},
+  {icon:'🏯',name:'太原古城墙',desc:'景点 · 明代建筑 · 骑行',city:'山西',cat:'play',price:'免费',dist:'2.2km',rating:'4.5',tags:['古城','山西','城墙','文化'],mx:63,my:36},
+  {icon:'🏛️',name:'晋祠博物馆',desc:'古建筑 · 周柏唐槐 · 千年文化',city:'山西',cat:'culture',price:'¥80',dist:'15km',rating:'4.8',tags:['晋祠','山西','古建筑','文化'],mx:54,my:33},
+  {icon:'🍢',name:'柳巷夜市',desc:'夜市 · 小吃街 · 本地风味',city:'山西',cat:'night',price:'¥30/人',dist:'0.6km',rating:'4.4',tags:['夜市','山西','柳巷','小吃'],mx:61,my:38},
+  {icon:'🏮',name:'平遥古城',desc:'古城 · 世界遗产 · 票号文化',city:'山西',cat:'culture',price:'¥125',dist:'80km',rating:'4.8',tags:['平遥','山西','古城','文化'],mx:57,my:41}
 ];
 function filterSvcCards(){
   const q=document.getElementById('svcSearchInput').value.trim().toLowerCase();
@@ -1894,6 +1924,8 @@ function filterSvcCards(){
     card.classList.toggle('hidden',!(matchFilter&&matchSearch));
   });
   /* 搜索结果面板 */
+  const mapEl=document.getElementById('svcMap');
+  const markersEl=document.getElementById('svcShopMarkers');
   if(q){
     const matched=svcProducts.filter(p=>{
       const matchFilter=svcActiveFilter==='all'||p.cat===svcActiveFilter;
@@ -1914,12 +1946,21 @@ function filterSvcCards(){
             <div class="ssr-item-dist">📍 ${p.dist}</div>
           </div>
         </div>`).join('');
+      /* 地图标记 */
+      mapEl.classList.add('searching');
+      markersEl.innerHTML=matched.map((p,i)=>`
+        <div class="shop-marker" style="left:${p.mx}%;top:${p.my}%;animation-delay:${i*0.03}s" onclick="window.open('https://www.douyin.com/search/${encodeURIComponent(p.name+' 团购')}','_blank')">
+          <div class="sm-tip">${p.icon} ${p.name}</div>
+        </div>`).join('');
     }else{
       ssrList.innerHTML=`<div class="ssr-empty">未找到"${q}"相关结果<br><span style="font-size:11px">试试搜索：火锅 / 凉茶 / 生煎 / 陈醋</span></div>`;
+      markersEl.innerHTML='';
     }
     resultsPanel.style.display='block';
   }else{
     resultsPanel.style.display='none';
+    mapEl.classList.remove('searching');
+    markersEl.innerHTML='';
   }
 }
 function setSvcFilter(el,filter){
