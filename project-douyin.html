@@ -215,10 +215,8 @@ h1,h2,h3,p{margin-top:0}
 /* ===== 22 VIDEOS ===== */
 .video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px}
 .video-slot{background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px;overflow:hidden}
-.video-frame{aspect-ratio:9/16;border-radius:17px;position:relative;overflow:hidden;background:#171717}
-.video-frame img{width:100%;height:100%;object-fit:cover;opacity:.65}
-.video-frame:after{content:'VIDEO / 15S';position:absolute;left:15px;top:15px;color:#fff;font-size:9px;letter-spacing:.12em}
-.video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;border:1px solid #fff;background:rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(10px);z-index:2;cursor:pointer}
+.video-frame{aspect-ratio:16/9;border-radius:17px;position:relative;overflow:hidden;background:#171717}
+.video-frame video{width:100%;height:100%;object-fit:cover;background:#000}
 .video-slot h4{margin:15px 5px 4px;font-size:14px}
 .video-slot p{font-size:10px;color:#777;margin:0 5px 10px;line-height:1.6}
 .video-timeline{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px}
@@ -940,10 +938,10 @@ h1,h2,h3,p{margin-top:0}
   <div class="eyebrow">22 / FOUR VIDEOS</div>
   <h2 class="title-xl" style="margin-top:20px">四支视频<br>完整展开</h2>
   <div class="video-grid">
-    <article class="video-slot"><div class="video-frame"><img src="https://aka.doubaocdn.com/s/QZqGXy2pou"><button class="video-play" data-video="广州 / 苦">▶</button></div><h4>广州 / 苦</h4><p>慢速推镜 → 茶雾 → 凉茶 → 广州塔 → LET'S 广州。</p></article>
-    <article class="video-slot"><div class="video-frame"><img src="https://aka.doubaocdn.com/s/wAyKJZPOVE"><button class="video-play" data-video="上海 / 甜">▶</button></div><h4>上海 / 甜</h4><p>柔和漂浮 → 点心展开 → 夜景发光 → LET'S 上海。</p></article>
-    <article class="video-slot"><div class="video-frame"><img src="https://aka.doubaocdn.com/s/fnvIuVO1Ar"><button class="video-play" data-video="重庆 / 辣">▶</button></div><h4>重庆 / 辣</h4><p>快速剪辑 → 辣椒飞入 → 火锅沸腾 → 城市推进。</p></article>
-    <article class="video-slot"><div class="video-frame"><img src="https://aka.doubaocdn.com/s/aIUjr0Nur8"><button class="video-play" data-video="山西 / 酸">▶</button></div><h4>山西 / 酸</h4><p>慢慢显影 → 醋坛 → 面食 → 古城 → 时间感收束。</p></article>
+    <article class="video-slot"><div class="video-frame"><video controls preload="metadata" poster="https://aka.doubaocdn.com/s/QZqGXy2pou" playsinline><source src="https://aka.doubaocdn.com/s/Si8EYUfxHA" type="video/mp4"></video></div><h4>广州 / 苦</h4><p>慢速推镜 → 茶雾 → 凉茶 → 广州塔 → LET'S 广州。</p></article>
+    <article class="video-slot"><div class="video-frame"><video controls preload="metadata" poster="https://aka.doubaocdn.com/s/wAyKJZPOVE" playsinline><source src="https://aka.doubaocdn.com/s/gWqcLUvRcn" type="video/mp4"></video></div><h4>上海 / 甜</h4><p>柔和漂浮 → 点心展开 → 夜景发光 → LET'S 上海。</p></article>
+    <article class="video-slot"><div class="video-frame"><video controls preload="metadata" poster="https://aka.doubaocdn.com/s/fnvIuVO1Ar" playsinline><source src="https://aka.doubaocdn.com/s/3Q1LolZE5Z" type="video/mp4"></video></div><h4>重庆 / 辣</h4><p>快速剪辑 → 辣椒飞入 → 火锅沸腾 → 城市推进。</p></article>
+    <article class="video-slot"><div class="video-frame"><video controls preload="metadata" poster="https://aka.doubaocdn.com/s/aIUjr0Nur8" playsinline><source src="https://aka.doubaocdn.com/s/UOQQoFfU1I" type="video/mp4"></video></div><h4>山西 / 酸</h4><p>慢慢显影 → 醋坛 → 面食 → 古城 → 时间感收束。</p></article>
   </div>
   <div class="video-timeline">
     <h4>VIDEO TIMELINE / 以重庆·辣为例</h4>
@@ -1509,30 +1507,6 @@ document.getElementById('close').onclick=()=>document.getElementById('modal').cl
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('show')});
 
 /* Video play */
-$$('.video-play').forEach(btn=>btn.addEventListener('click',e=>{
-  e.stopPropagation();toast('视频入口：'+btn.dataset.video+'（可替换为真实 MP4 / WebM）');
-}));
-
-/* Quiz */
-const questions=[
-  {q:'周末你更想怎样度过？',a:[['慢慢吃一顿早茶','苦'],['逛街、吃点精致甜品','甜'],['约朋友来一顿火锅','辣'],['去古城感受传统文化','酸']]},
-  {q:'哪种城市氛围最吸引你？',a:[['松弛、清爽、有烟火气','苦'],['摩登、浪漫、有设计感','甜'],['热烈、直接、越夜越精彩','辣'],['厚重、安静、充满历史','酸']]},
-  {q:'旅行时你最在意什么？',a:[['当地饮食文化','苦'],['美食与城市生活方式','甜'],['夜生活和社交体验','辣'],['历史建筑和传统手艺','酸']]},
-  {q:'你希望这趟旅行留下什么？',a:[['一种舒服的生活节奏','苦'],['一段精致的城市记忆','甜'],['一次热烈的冒险','辣'],['一种时间沉淀后的味道','酸']]}
-];
-let qi=0,score={苦:0,甜:0,辣:0,酸:0};
-const renderQuestion=()=>{
-  document.getElementById('question').textContent=questions[qi].q;
-  document.getElementById('progress').style.width=((qi+1)/questions.length*100)+'%';
-  const box=document.getElementById('options');box.innerHTML='';
-  questions[qi].a.forEach(([text,taste])=>{
-    const b=document.createElement('button');b.className='option';b.textContent=text;
-    b.onclick=()=>{
-      score[taste]++;
-      $$('.option').forEach(x=>x.disabled=true);
-      setTimeout(()=>{qi++;if(qi<questions.length)renderQuestion();else showResult();},180);
-    };box.appendChild(b);
-  });
 };
 const showResult=()=>{
   const taste=Object.entries(score).sort((a,b)=>b[1]-a[1])[0][0];
