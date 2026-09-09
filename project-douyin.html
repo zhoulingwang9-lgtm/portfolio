@@ -271,20 +271,44 @@ h1,h2,h3,p{margin-top:0}
 .food-item .fi-action{margin-top:12px;font-size:11px;color:var(--accent);font-weight:800;opacity:0;transition:.3s}
 .food-item:hover .fi-action{opacity:1}
 
-/* ===== 29 CITY MAP ===== */
-.map{
-  position:relative;height:520px;border-radius:32px;background:
-  linear-gradient(135deg,#e8eadf,#f8f3df);overflow:hidden;border:1px solid var(--line);margin-top:45px;
+/* ===== 29 CITY MAP × 抖音团购 ===== */
+.china-map-wrap{margin-top:45px;display:grid;grid-template-columns:1fr;gap:20px}
+.map-search{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.map-search label{font-size:11px;letter-spacing:.12em;color:var(--muted);font-weight:800;display:block;margin-bottom:6px}
+.map-search input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fafaf7;outline:none;transition:.2s}
+.map-search input:focus{border-color:var(--accent);background:#fff}
+.map-search .search-btn{padding:14px 24px;border:0;border-radius:14px;background:var(--accent);color:#fff;font-weight:800;font-size:14px;cursor:pointer;transition:.2s;white-space:nowrap}
+.map-search .search-btn:hover{filter:brightness(.92);transform:translateY(-1px)}
+.hot-tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px}
+.hot-tags span{font-size:12px;color:var(--muted)}
+.hot-tags button{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:12px;cursor:pointer;transition:.2s}
+.hot-tags button:hover{border-color:var(--accent);color:var(--accent)}
+.china-map{
+  position:relative;height:560px;border-radius:32px;background:linear-gradient(135deg,#f0efe6,#f8f6ed);
+  overflow:hidden;border:1px solid var(--line);
 }
-.map:before{content:"";position:absolute;inset:40px;background:
-  linear-gradient(20deg,transparent 48%,rgba(0,0,0,.08) 49% 51%,transparent 52%),
-  linear-gradient(110deg,transparent 48%,rgba(0,0,0,.07) 49% 51%,transparent 52%);
-  opacity:.5}
-.map-node{position:absolute;width:88px;height:88px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;cursor:pointer;border:6px solid rgba(255,255,255,.65);transition:.3s;font-size:14px}
-.map-node:hover{transform:scale(1.15)}
-.map-gz{left:24%;top:28%;background:var(--green)}.map-sh{left:68%;top:19%;background:var(--orange)}
-.map-cq{left:73%;top:64%;background:var(--red)}.map-sx{left:35%;top:68%;background:var(--yellow)}
-.map-info{position:absolute;right:24px;bottom:24px;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-radius:20px;padding:18px;width:260px;min-height:130px}
+.china-map svg{width:100%;height:100%}
+.china-map .province{fill:#e5e3d8;stroke:#cfcdc2;stroke-width:.8;transition:fill .2s}
+.china-map .province:hover{fill:#d8d6c8}
+.map-marker{position:absolute;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer;transition:.3s;transform:translate(-50%,-50%)}
+.map-marker:hover{transform:translate(-50%,-50%) scale(1.4)}
+.map-marker.active{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 0 6px rgba(0,0,0,.08)}
+.mm-gz{left:72%;top:78%;background:var(--green)}
+.mm-sh{left:81%;top:57%;background:var(--orange)}
+.mm-cq{left:60%;top:67%;background:var(--red)}
+.mm-sx{left:65%;top:43%;background:var(--yellow)}
+.map-label{position:absolute;font-size:12px;font-weight:800;color:#444;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;transform:translate(-50%,-160%);pointer-events:none;white-space:nowrap;backdrop-filter:blur(4px)}
+.map-result{position:absolute;left:24px;bottom:24px;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-radius:20px;padding:20px 24px;max-width:320px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.map-result h3{font-size:18px;margin:0 0 6px}
+.map-result p{font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 12px}
+.map-result .food-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.map-result .food-chips span{padding:4px 10px;background:var(--bg);border-radius:999px;font-size:11px;cursor:pointer;transition:.2s;border:1px solid transparent}
+.map-result .food-chips span:hover{border-color:var(--accent);color:var(--accent)}
+.map-result .go-btn{display:inline-block;padding:8px 18px;background:var(--accent);color:#fff;border-radius:999px;font-size:12px;font-weight:800;cursor:pointer;border:0;transition:.2s}
+.map-result .go-btn:hover{filter:brightness(.92)}
+.map-legend{position:absolute;right:24px;top:24px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-radius:14px;padding:12px 16px;font-size:11px}
+.map-legend div{display:flex;align-items:center;gap:6px;margin:4px 0}
+.map-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
 
 /* ===== 30 QUIZ ===== */
 .quiz-wrap{background:#171717;color:#fff;border-radius:36px;padding:55px;display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
@@ -406,6 +430,10 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
   .brand-loop,.service-flow,.build-steps,.motion-layers,.strategy-grid{grid-template-columns:1fr 1fr}
   .posters{grid-template-columns:1fr}
   .selector-node{width:70px;height:70px;font-size:14px}
+  .map-search{grid-template-columns:1fr}
+  .china-map{height:400px}
+  .map-result{max-width:240px;padding:14px}
+  .map-legend{display:none}
 }
 @media(max-width:560px){
   .section{padding:80px 0}
@@ -819,17 +847,69 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
   </div>
 </section>
 
-<!-- ===== 29 CITY MAP ===== -->
-<section class="section reveal">
-  <div class="eyebrow">29 / CITY LIFE MAP</div>
+<!-- ===== 29 CITY MAP × 抖音团购 ===== -->
+<section class="section reveal" id="citymap">
+  <div class="eyebrow">29 / CITY LIFE MAP × 抖音团购</div>
   <h2 class="title-xl" style="margin-top:20px">城市生活地图</h2>
-  <p class="lead">点击城市节点，探索当地美食、地标与生活方式。</p>
-  <div class="map">
-    <button class="map-node map-gz" data-map="广州" data-color="var(--green)">广州</button>
-    <button class="map-node map-sh" data-map="上海" data-color="var(--orange)">上海</button>
-    <button class="map-node map-cq" data-map="重庆" data-color="var(--red)">重庆</button>
-    <button class="map-node map-sx" data-map="山西" data-color="var(--yellow)">山西</button>
-    <div class="map-info"><div class="eyebrow">CITY LIFE</div><h3 id="mapCity">选择城市</h3><p id="mapText" style="color:#777;font-size:13px;line-height:1.6">美食 · 地标 · 玩乐 · 本地体验</p></div>
+  <p class="lead">搜索城市与美食，一键跳转抖音团购，挑选当地美食。</p>
+  <div class="china-map-wrap">
+    <div class="map-search">
+      <div><label>城市</label><input id="searchCity" placeholder="如：重庆" value="重庆"></div>
+      <div><label>美食</label><input id="searchFood" placeholder="如：火锅" value="火锅"></div>
+      <button class="search-btn" onclick="searchDouyin()">搜索抖音团购 →</button>
+      <div class="hot-tags">
+        <span>热门搜索：</span>
+        <button onclick="quickSearch('广州','凉茶')">广州凉茶</button>
+        <button onclick="quickSearch('上海','生煎')">上海生煎</button>
+        <button onclick="quickSearch('重庆','火锅')">重庆火锅</button>
+        <button onclick="quickSearch('山西','面食')">山西面食</button>
+        <button onclick="quickSearch('成都','冒菜')">成都冒菜</button>
+        <button onclick="quickSearch('长沙','臭豆腐')">长沙臭豆腐</button>
+        <button onclick="quickSearch('西安','肉夹馍')">西安肉夹馍</button>
+      </div>
+    </div>
+    <div class="china-map">
+      <svg viewBox="0 0 800 620" preserveAspectRatio="xMidYMid meet">
+        <!-- 简化中国地图轮廓 -->
+        <path class="province" d="M180,120 L240,95 L310,80 L380,72 L450,68 L520,72 L580,82 L620,100 L650,125 L670,155 L685,190 L695,225 L700,260 L705,295 L700,330 L690,365 L675,395 L655,420 L630,440 L600,455 L570,465 L540,480 L510,500 L480,515 L450,525 L420,530 L390,525 L360,515 L330,500 L300,485 L275,465 L255,440 L240,410 L228,375 L220,340 L215,305 L212,270 L215,235 L222,200 L232,168 L245,140 L260,120 Z M560,470 L580,490 L570,510 L550,515 L535,500 L545,480 Z"/>
+        <!-- 海南 -->
+        <ellipse class="province" cx="555" cy="545" rx="22" ry="14"/>
+        <!-- 台湾 -->
+        <ellipse class="province" cx="680" cy="470" rx="10" ry="25"/>
+        <!-- 省份分隔线（装饰） -->
+        <path d="M350,150 L380,250 L360,350 L340,450" fill="none" stroke="#cfcdc2" stroke-width=".6" stroke-dasharray="4,4"/>
+        <path d="M480,100 L500,200 L520,300 L510,400" fill="none" stroke="#cfcdc2" stroke-width=".6" stroke-dasharray="4,4"/>
+        <path d="M280,300 L400,320 L520,310 L640,330" fill="none" stroke="#cfcdc2" stroke-width=".6" stroke-dasharray="4,4"/>
+      </svg>
+      <!-- 城市标记 -->
+      <div class="map-marker mm-gz active" data-city="广州" data-food="凉茶" onclick="selectCity(this)"></div>
+      <div class="map-label" style="left:72%;top:74%">广州</div>
+      <div class="map-marker mm-sh" data-city="上海" data-food="生煎" onclick="selectCity(this)"></div>
+      <div class="map-label" style="left:81%;top:53%">上海</div>
+      <div class="map-marker mm-cq" data-city="重庆" data-food="火锅" onclick="selectCity(this)"></div>
+      <div class="map-label" style="left:60%;top:63%">重庆</div>
+      <div class="map-marker mm-sx" data-city="山西" data-food="面食" onclick="selectCity(this)"></div>
+      <div class="map-label" style="left:65%;top:39%">山西</div>
+      <!-- 图例 -->
+      <div class="map-legend">
+        <div><i style="background:var(--green)"></i>苦 · 广州</div>
+        <div><i style="background:var(--orange)"></i>甜 · 上海</div>
+        <div><i style="background:var(--red)"></i>辣 · 重庆</div>
+        <div><i style="background:var(--yellow)"></i>酸 · 山西</div>
+      </div>
+      <!-- 城市信息卡 -->
+      <div class="map-result" id="mapResult">
+        <h3 id="mrCity">重庆</h3>
+        <p id="mrDesc">火锅 · 山城夜游 · 洪崖洞 · 城市观景</p>
+        <div class="food-chips" id="mrFoods">
+          <span onclick="quickSearch('重庆','火锅')">火锅</span>
+          <span onclick="quickSearch('重庆','小面')">小面</span>
+          <span onclick="quickSearch('重庆','串串')">串串</span>
+          <span onclick="quickSearch('重庆','冰粉')">冰粉</span>
+        </div>
+        <button class="go-btn" onclick="searchDouyin()">去抖音团购 →</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1090,18 +1170,39 @@ $$('.video-play').forEach(btn=>btn.addEventListener('click',e=>{
   e.stopPropagation();toast('视频入口：'+btn.dataset.video+'（可替换为真实 MP4 / WebM）');
 }));
 
-/* Map */
-const mapCopy={
-  广州:'凉茶 · 早茶 · 岭南建筑 · 珠江漫游',
-  上海:'本帮菜 · 生煎 · 外滩 · 海派夜生活',
-  重庆:'火锅 · 山城夜游 · 洪崖洞 · 城市观景',
-  山西:'陈醋 · 面食 · 古城 · 传统建筑'
+/* China Map × 抖音团购 */
+const cityData={
+  广州:{desc:'凉茶 · 早茶 · 岭南建筑 · 珠江漫游',foods:['凉茶','早茶','烧腊','艇仔粥'],color:'var(--green)'},
+  上海:{desc:'本帮菜 · 生煎 · 外滩 · 海派夜生活',foods:['生煎','小笼包','本帮菜','点心'],color:'var(--orange)'},
+  重庆:{desc:'火锅 · 山城夜游 · 洪崖洞 · 城市观景',foods:['火锅','小面','串串','冰粉'],color:'var(--red)'},
+  山西:{desc:'陈醋 · 面食 · 古城 · 传统建筑',foods:['面食','刀削面','陈醋','平遥牛肉'],color:'var(--yellow)'}
 };
-$$('.map-node').forEach(n=>n.addEventListener('click',()=>{
-  const city=n.dataset.map;document.getElementById('mapCity').textContent=city;
-  document.getElementById('mapText').textContent=mapCopy[city];
-  root.style.setProperty('--accent',n.dataset.color);
-}));
+function selectCity(el){
+  const city=el.dataset.city;
+  const data=cityData[city];
+  document.querySelectorAll('.map-marker').forEach(m=>m.classList.remove('active'));
+  el.classList.add('active');
+  root.style.setProperty('--accent',data.color);
+  document.getElementById('mrCity').textContent=city;
+  document.getElementById('mrDesc').textContent=data.desc;
+  document.getElementById('searchCity').value=city;
+  document.getElementById('searchFood').value=el.dataset.food;
+  const chips=document.getElementById('mrFoods');
+  chips.innerHTML=data.foods.map(f=>`<span onclick="quickSearch('${city}','${f}')">${f}</span>`).join('');
+}
+function quickSearch(city,food){
+  document.getElementById('searchCity').value=city;
+  document.getElementById('searchFood').value=food;
+  searchDouyin();
+}
+function searchDouyin(){
+  const city=document.getElementById('searchCity').value.trim();
+  const food=document.getElementById('searchFood').value.trim();
+  if(!city&&!food){toast('请输入城市或美食');return;}
+  const query=encodeURIComponent(city+' '+food+' 团购');
+  window.open('https://www.douyin.com/search/'+query,'_blank');
+  toast('正在跳转抖音团购：'+city+' '+food);
+}
 
 /* Quiz */
 const questions=[
