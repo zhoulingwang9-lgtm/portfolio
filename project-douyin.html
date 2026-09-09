@@ -299,6 +299,16 @@ h1,h2,h3,p{margin-top:0}
 .sfs-cn{font-size:10px;color:var(--muted)}
 .sfs-arrow{color:var(--accent);font-weight:900;font-size:16px}
 .svc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-bottom:50px}
+/* 全宽搜索 */
+.svc-search-full{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px 40px;margin-bottom:50px}
+.svc-search-box-lg{display:flex;align-items:center;gap:16px;padding:0 24px;height:72px;border:1px solid var(--line);border-radius:20px;background:#fafaf7;transition:.25s;margin-bottom:20px}
+.svc-search-box-lg:focus-within{border-color:var(--accent);box-shadow:0 0 0 5px var(--accent)18;background:#fff}
+.ss-icon-lg{font-size:26px}
+.ss-input-lg{flex:1;border:0;background:transparent;outline:none;font-size:20px;font-family:inherit;font-weight:500}
+.ss-input-lg::placeholder{color:#aaa}
+.svc-suggestions-lg{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.svc-filters-lg{display:flex;flex-wrap:wrap;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
+.ssr-list-lg{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:480px;overflow-y:auto;padding-right:4px}
 .svc-panel-title{font-size:11px;letter-spacing:.15em;color:var(--muted);font-weight:800;margin-bottom:16px;text-transform:uppercase}
 .svc-map-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
 .svc-map{position:relative;height:340px;border-radius:18px;background:linear-gradient(135deg,#f5f4ec,#ebe9df);overflow:hidden;border:1px solid var(--line)}
@@ -1090,82 +1100,39 @@ h1,h2,h3,p{margin-top:0}
     <div class="svc-flow-step"><span class="sfs-num">06</span><span class="sfs-icon">📤</span><span class="sfs-label">SHARE</span><span class="sfs-cn">分享内容</span></div>
   </div>
 
-  <!-- 城市服务地图 + 搜索 -->
-  <div class="svc-grid">
-    <!-- 左侧：城市服务地图 -->
-    <div class="svc-map-panel">
-      <div class="svc-panel-title">CITY SERVICE MAP / 城市服务地图</div>
-      <div class="svc-map" id="svcMap">
-        <!-- 简化中国地图 -->
-        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" class="svc-map-svg">
-          <path d="M100,60 L160,40 L230,30 L300,25 L370,30 L420,50 L450,80 L465,120 L470,160 L465,200 L455,240 L440,275 L420,305 L395,330 L365,345 L335,355 L305,365 L275,370 L245,365 L215,355 L185,340 L160,320 L140,295 L125,265 L115,230 L110,195 L112,160 L118,125 L130,95 L145,70 Z" fill="#e8e6dc" stroke="#cfcdc2" stroke-width="1"/>
-          <ellipse cx="340" cy="385" rx="18" ry="10" fill="#e8e6dc" stroke="#cfcdc2" stroke-width="1"/>
-        </svg>
-        <!-- 四城节点 -->
-        <div class="svc-node node-gz active" data-city="广州" data-taste="苦" data-color="#58b56e" data-personality="CALM" onclick="selectSvcCity(this)">
-          <div class="node-dot"></div>
-          <div class="node-label">广州<span class="node-taste">苦 · BITTER</span></div>
-        </div>
-        <div class="svc-node node-sh" data-city="上海" data-taste="甜" data-color="#ee8e51" data-personality="DREAMY" onclick="selectSvcCity(this)">
-          <div class="node-dot"></div>
-          <div class="node-label">上海<span class="node-taste">甜 · SWEET</span></div>
-        </div>
-        <div class="svc-node node-cq" data-city="重庆" data-taste="辣" data-color="#e43e32" data-personality="ENERGETIC" onclick="selectSvcCity(this)">
-          <div class="node-dot"></div>
-          <div class="node-label">重庆<span class="node-taste">辣 · SPICY</span></div>
-        </div>
-        <div class="svc-node node-sx" data-city="山西" data-taste="酸" data-color="#d6a938" data-personality="TIMELESS" onclick="selectSvcCity(this)">
-          <div class="node-dot"></div>
-          <div class="node-label">山西<span class="node-taste">酸 · SOUR</span></div>
-        </div>
-        <!-- 商家标记层 -->
-        <div class="svc-shop-markers" id="svcShopMarkers"></div>
-      </div>
-      <!-- 城市信息 -->
-      <div class="svc-city-info" id="svcCityInfo">
-        <div class="sci-top">
-          <span class="sci-city" id="sciCity">重庆</span>
-          <span class="sci-personality" id="sciPersonality">ENERGETIC</span>
-        </div>
-        <div class="sci-elements" id="sciElements">
-          <span class="sci-el">🍲 火锅</span>
-          <span class="sci-el">🌶️ 辣椒</span>
-          <span class="sci-el">🏙️ 洪崖洞</span>
-          <span class="sci-el">🌃 夜生活</span>
-        </div>
-      </div>
+  <!-- 搜索体验（全宽） -->
+  <div class="svc-search-full">
+    <div class="svc-panel-title">SEARCH / 搜索体验</div>
+    <div class="svc-search-box-lg">
+      <span class="ss-icon-lg">🔍</span>
+      <input class="ss-input-lg" id="svcSearchInput" placeholder="What do you want to experience? 搜索城市、美食、景点…" oninput="filterSvcCards()">
     </div>
-
-    <!-- 右侧：搜索 + 筛选 -->
-    <div class="svc-search-panel">
-      <div class="svc-panel-title">SEARCH / 搜索体验</div>
-      <div class="svc-search-box">
-        <span class="ss-icon">🔍</span>
-        <input class="ss-input" id="svcSearchInput" placeholder="What do you want to experience?" oninput="filterSvcCards()">
+    <div class="svc-suggestions-lg">
+      <span class="ss-label">SUGGESTED / 热门搜索</span>
+      <button class="ss-chip" onclick="setSvcSearch('重庆')">重庆</button>
+      <button class="ss-chip" onclick="setSvcSearch('广州')">广州</button>
+      <button class="ss-chip" onclick="setSvcSearch('上海')">上海</button>
+      <button class="ss-chip" onclick="setSvcSearch('山西')">山西</button>
+      <button class="ss-chip" onclick="setSvcSearch('火锅')">火锅</button>
+      <button class="ss-chip" onclick="setSvcSearch('凉茶')">凉茶</button>
+      <button class="ss-chip" onclick="setSvcSearch('生煎')">生煎</button>
+      <button class="ss-chip" onclick="setSvcSearch('陈醋')">陈醋</button>
+    </div>
+    <div class="svc-filters-lg">
+      <button class="sf-chip active" data-filter="all" onclick="setSvcFilter(this,'all')">ALL 全部</button>
+      <button class="sf-chip" data-filter="food" onclick="setSvcFilter(this,'food')">FOOD 美食</button>
+      <button class="sf-chip" data-filter="play" onclick="setSvcFilter(this,'play')">PLAY 玩乐</button>
+      <button class="sf-chip" data-filter="night" onclick="setSvcFilter(this,'night')">NIGHT 夜游</button>
+      <button class="sf-chip" data-filter="culture" onclick="setSvcFilter(this,'culture')">CULTURE 文化</button>
+    </div>
+    <!-- 搜索结果 -->
+    <div class="svc-search-results" id="svcSearchResults" style="display:none">
+      <div class="ssr-header">
+        <span class="ssr-count" id="ssrCount">0</span>
+        <span class="ssr-label">个结果</span>
+        <button class="ssr-clear" onclick="clearSvcSearch()">✕ 清除</button>
       </div>
-      <div class="svc-suggestions">
-        <span class="ss-label">SUGGESTED</span>
-        <button class="ss-chip" onclick="setSvcSearch('重庆')">重庆</button>
-        <button class="ss-chip" onclick="setSvcSearch('广州')">广州</button>
-        <button class="ss-chip" onclick="setSvcSearch('上海')">上海</button>
-        <button class="ss-chip" onclick="setSvcSearch('山西')">山西</button>
-      </div>
-      <div class="svc-filters">
-        <button class="sf-chip active" data-filter="all" onclick="setSvcFilter(this,'all')">ALL</button>
-        <button class="sf-chip" data-filter="food" onclick="setSvcFilter(this,'food')">FOOD 美食</button>
-        <button class="sf-chip" data-filter="play" onclick="setSvcFilter(this,'play')">PLAY 玩乐</button>
-        <button class="sf-chip" data-filter="night" onclick="setSvcFilter(this,'night')">NIGHT 夜游</button>
-        <button class="sf-chip" data-filter="culture" onclick="setSvcFilter(this,'culture')">CULTURE 文化</button>
-      </div>
-      <!-- 搜索结果 -->
-      <div class="svc-search-results" id="svcSearchResults" style="display:none">
-        <div class="ssr-header">
-          <span class="ssr-count" id="ssrCount">0</span>
-          <span class="ssr-label">个结果</span>
-          <button class="ssr-clear" onclick="clearSvcSearch()">✕ 清除</button>
-        </div>
-        <div class="ssr-list" id="ssrList"></div>
-      </div>
+      <div class="ssr-list-lg" id="ssrList"></div>
     </div>
   </div>
 
@@ -1924,8 +1891,6 @@ function filterSvcCards(){
     card.classList.toggle('hidden',!(matchFilter&&matchSearch));
   });
   /* 搜索结果面板 */
-  const mapEl=document.getElementById('svcMap');
-  const markersEl=document.getElementById('svcShopMarkers');
   if(q){
     const matched=svcProducts.filter(p=>{
       const matchFilter=svcActiveFilter==='all'||p.cat===svcActiveFilter;
@@ -1946,21 +1911,12 @@ function filterSvcCards(){
             <div class="ssr-item-dist">📍 ${p.dist}</div>
           </div>
         </div>`).join('');
-      /* 地图标记 */
-      mapEl.classList.add('searching');
-      markersEl.innerHTML=matched.map((p,i)=>`
-        <div class="shop-marker" style="left:${p.mx}%;top:${p.my}%;animation-delay:${i*0.03}s" onclick="window.open('https://www.douyin.com/search/${encodeURIComponent(p.name+' 团购')}','_blank')">
-          <div class="sm-tip">${p.icon} ${p.name}</div>
-        </div>`).join('');
     }else{
       ssrList.innerHTML=`<div class="ssr-empty">未找到"${q}"相关结果<br><span style="font-size:11px">试试搜索：火锅 / 凉茶 / 生煎 / 陈醋</span></div>`;
-      markersEl.innerHTML='';
     }
     resultsPanel.style.display='block';
   }else{
     resultsPanel.style.display='none';
-    mapEl.classList.remove('searching');
-    markersEl.innerHTML='';
   }
 }
 function setSvcFilter(el,filter){
