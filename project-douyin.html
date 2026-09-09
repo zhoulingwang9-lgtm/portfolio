@@ -306,6 +306,36 @@ h1,h2,h3,p{margin-top:0}
 .map-legend{position:absolute;right:24px;top:24px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-radius:14px;padding:12px 16px;font-size:11px}
 .map-legend div{display:flex;align-items:center;gap:6px;margin:4px 0}
 .map-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+/* City Map Overlay */
+.city-map-overlay{position:absolute;inset:0;background:linear-gradient(135deg,#eae8de,#f4f2e8);border-radius:32px;z-index:20;display:none;flex-direction:column;animation:mapFadeIn .45s ease}
+.city-map-overlay.show{display:flex}
+@keyframes mapFadeIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.city-map-header{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.7);backdrop-filter:blur(8px)}
+.city-map-header h3{font-size:17px;margin:0;display:flex;align-items:center;gap:10px}
+.city-map-header h3 .cm-badge{font-size:11px;padding:3px 10px;background:var(--accent);color:#fff;border-radius:999px;font-weight:700}
+.city-map-header .back-btn{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:12px;font-weight:700;transition:.2s}
+.city-map-header .back-btn:hover{border-color:var(--accent);color:var(--accent)}
+.city-map-body{flex:1;position:relative;overflow:hidden}
+.city-streets{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.5%,#d5d3c7 49.5%,#d5d3c7 50.5%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,#d5d3c7 49.5%,#d5d3c7 50.5%,transparent 50.5%);background-size:90px 90px;opacity:.6}
+.city-river{position:absolute;width:60%;height:40px;background:linear-gradient(90deg,transparent,#c8d8e0,transparent);border-radius:50%;top:55%;left:10%;transform:rotate(-8deg);opacity:.5}
+.city-park{position:absolute;width:120px;height:120px;background:#d4e4c8;border-radius:50%;top:20%;right:15%;opacity:.5}
+.shop-pin{position:absolute;transform:translate(-50%,-100%);cursor:pointer;transition:.2s;z-index:5}
+.shop-pin:hover{transform:translate(-50%,-100%) scale(1.12)}
+.shop-pin .pin-dot{width:38px;height:38px;border-radius:50% 50% 50% 0;background:var(--accent);transform:rotate(-45deg);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.25);border:2px solid #fff}
+.shop-pin .pin-dot span{transform:rotate(45deg);font-size:17px}
+.shop-pin .pin-label{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#fff;padding:5px 10px;border-radius:8px;font-size:11px;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.12);font-weight:700}
+.shop-list{position:absolute;right:18px;top:18px;bottom:18px;width:270px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-radius:18px;padding:16px 18px;overflow-y:auto;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.shop-list h4{font-size:13px;color:var(--muted);margin:0 0 10px;letter-spacing:.08em}
+.shop-item{padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:.2s}
+.shop-item:hover{padding-left:6px}
+.shop-item:last-child{border-bottom:0}
+.shop-item .si-name{font-size:14px;font-weight:800;margin:0 0 4px}
+.shop-item .si-meta{display:flex;gap:12px;font-size:11px;color:var(--muted);align-items:center}
+.shop-item .si-rating{color:#e8a317;font-weight:800}
+.shop-item .si-price{color:var(--accent);font-weight:700}
+.shop-item .si-tag{display:inline-block;margin-top:5px;font-size:10px;padding:2px 8px;background:var(--bg);border-radius:999px;color:var(--muted)}
+.city-map-footer{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-radius:14px;padding:12px 18px;font-size:12px}
+.city-map-footer b{color:var(--accent)}
 
 /* ===== 30 QUIZ ===== */
 .quiz-wrap{background:#171717;color:#fff;border-radius:36px;padding:55px;display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
@@ -879,15 +909,11 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
         <path d="M480,100 L500,200 L520,300 L510,400" fill="none" stroke="#cfcdc2" stroke-width=".6" stroke-dasharray="4,4"/>
         <path d="M280,300 L400,320 L520,310 L640,330" fill="none" stroke="#cfcdc2" stroke-width=".6" stroke-dasharray="4,4"/>
       </svg>
-      <!-- 城市标记 -->
+      <!-- 城市标记（无文字标签） -->
       <div class="map-marker mm-gz active" data-city="广州" data-food="凉茶" onclick="selectCity(this)"></div>
-      <div class="map-label" style="left:72%;top:74%">广州</div>
       <div class="map-marker mm-sh" data-city="上海" data-food="生煎" onclick="selectCity(this)"></div>
-      <div class="map-label" style="left:81%;top:53%">上海</div>
       <div class="map-marker mm-cq" data-city="重庆" data-food="火锅" onclick="selectCity(this)"></div>
-      <div class="map-label" style="left:60%;top:63%">重庆</div>
       <div class="map-marker mm-sx" data-city="山西" data-food="面食" onclick="selectCity(this)"></div>
-      <div class="map-label" style="left:65%;top:39%">山西</div>
       <!-- 图例 -->
       <div class="map-legend">
         <div><i style="background:var(--green)"></i>苦 · 广州</div>
@@ -905,7 +931,25 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
           <span onclick="quickSearch('重庆','串串')">串串</span>
           <span onclick="quickSearch('重庆','冰粉')">冰粉</span>
         </div>
-        <button class="go-btn" onclick="searchDouyin()">去抖音团购 →</button>
+        <button class="go-btn" onclick="searchDouyin()">查看当地地图 →</button>
+      </div>
+      <!-- 城市地图覆盖层 -->
+      <div class="city-map-overlay" id="cityMapOverlay">
+        <div class="city-map-header">
+          <h3 id="cmTitle">重庆 · 火锅 <span class="cm-badge" id="cmCount">6 家店铺</span></h3>
+          <button class="back-btn" onclick="backToChina()">← 返回全国</button>
+        </div>
+        <div class="city-map-body">
+          <div class="city-streets"></div>
+          <div class="city-river"></div>
+          <div class="city-park"></div>
+          <div id="shopPins"></div>
+          <div class="shop-list" id="shopList">
+            <h4>NEARBY SHOPS / 附近店铺</h4>
+            <div id="shopItems"></div>
+          </div>
+          <div class="city-map-footer">点击店铺标记或右侧列表查看详情 · <b>抖音团购</b></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1173,7 +1217,126 @@ const cityData={
   广州:{desc:'凉茶 · 早茶 · 岭南建筑 · 珠江漫游',foods:['凉茶','早茶','烧腊','艇仔粥'],color:'var(--green)'},
   上海:{desc:'本帮菜 · 生煎 · 外滩 · 海派夜生活',foods:['生煎','小笼包','本帮菜','点心'],color:'var(--orange)'},
   重庆:{desc:'火锅 · 山城夜游 · 洪崖洞 · 城市观景',foods:['火锅','小面','串串','冰粉'],color:'var(--red)'},
-  山西:{desc:'陈醋 · 面食 · 古城 · 传统建筑',foods:['面食','刀削面','陈醋','平遥牛肉'],color:'var(--yellow)'}
+  山西:{desc:'陈醋 · 面食 · 古城 · 传统建筑',foods:['面食','刀削面','陈醋','平遥牛肉'],color:'var(--yellow)'},
+  成都:{desc:'冒菜 · 宽窄巷子 · 熊猫 · 茶馆',foods:['冒菜','火锅','串串','担担面'],color:'var(--red)'},
+  长沙:{desc:'臭豆腐 · 橘子洲 · 夜生活 · 米粉',foods:['臭豆腐','米粉','口味虾','糖油粑粑'],color:'var(--orange)'},
+  西安:{desc:'肉夹馍 · 兵马俑 · 古城墙 · 回民街',foods:['肉夹馍','凉皮','羊肉泡馍','biangbiang面'],color:'var(--yellow)'}
+};
+/* 店铺模拟数据 */
+const shopDB={
+  重庆:{火锅:[
+    {name:'珮姐老火锅(解放碑店)',rating:4.8,price:'¥98/人',dist:'0.6km',tag:'老字号 · 排队王'},
+    {name:'周师兄大刀腰片火锅',rating:4.7,price:'¥110/人',dist:'1.2km',tag:'招牌腰片'},
+    {name:'楠火锅(洪崖洞店)',rating:4.6,price:'¥85/人',dist:'0.9km',tag:'甜品免费'},
+    {name:'渝宗老灶火锅',rating:4.5,price:'¥78/人',dist:'2.1km',tag:'本地人推荐'},
+    {name:'刘一手火锅(观音桥店)',rating:4.4,price:'¥92/人',dist:'3.5km',tag:'连锁品牌'},
+    {name:'小天鹅火锅(解放碑店)',rating:4.3,price:'¥120/人',dist:'1.8km',tag:'观景位'}
+  ],小面:[
+    {name:'花市豌杂面',rating:4.8,price:'¥15/人',dist:'0.3km',tag:'必吃榜'},
+    {name:'胖妹面庄',rating:4.7,price:'¥18/人',dist:'0.8km',tag:'麻辣鲜香'},
+    {name:'开半天小面',rating:4.5,price:'¥12/人',dist:'1.5km',tag:'24小时'},
+    {name:'板凳面庄',rating:4.6,price:'¥14/人',dist:'2.0km',tag:'蹲着吃'}
+  ],串串:[
+    {name:'石灰市李串串',rating:4.7,price:'¥65/人',dist:'0.7km',tag:'网红店'},
+    {name:'袁记串串香',rating:4.5,price:'¥58/人',dist:'1.3km',tag:'性价比高'},
+    {name:'小郡肝串串',rating:4.6,price:'¥62/人',dist:'2.5km',tag:'招牌小郡肝'}
+  ],冰粉:[
+    {name:'玫瑰冰粉(八一路店)',rating:4.6,price:'¥10/人',dist:'0.2km',tag:'解暑神器'},
+    {name:'手工冰粉凉虾',rating:4.4,price:'¥8/人',dist:'1.0km',tag:'传统手艺'}
+  ]},
+  广州:{凉茶:[
+    {name:'黄振龙凉茶(上下九店)',rating:4.7,price:'¥12/人',dist:'0.3km',tag:'老字号'},
+    {name:'王老吉凉茶(北京路店)',rating:4.5,price:'¥15/人',dist:'0.8km',tag:'百年品牌'},
+    {name:'清心堂凉茶',rating:4.6,price:'¥10/人',dist:'1.2km',tag:'二十四味'},
+    {name:'邓老凉茶(荔湾店)',rating:4.4,price:'¥13/人',dist:'2.0km',tag:'养生凉茶'}
+  ],早茶:[
+    {name:'陶陶居(第十甫店)',rating:4.8,price:'¥88/人',dist:'0.5km',tag:'百年茶楼'},
+    {name:'点都德(上下九店)',rating:4.7,price:'¥75/人',dist:'0.9km',tag:'全天茶市'},
+    {name:'广州酒家(文昌店)',rating:4.8,price:'¥95/人',dist:'1.5km',tag:'粤菜代表'},
+    {name:'莲香楼',rating:4.6,price:'¥80/人',dist:'0.7km',tag:'始创于1889'}
+  ],烧腊:[
+    {name:'炳胜品味(珠江新城店)',rating:4.8,price:'¥150/人',dist:'2.0km',tag:'米其林'},
+    {name:'广州烧鹅仔',rating:4.5,price:'¥45/人',dist:'0.6km',tag:'平价烧腊'}
+  ],艇仔粥:[
+    {name:'猫记艇仔粥',rating:4.6,price:'¥25/人',dist:'1.0km',tag:'传统做法'},
+    {name:'满记艇仔粥',rating:4.4,price:'¥22/人',dist:'1.8km',tag:'料足味鲜'}
+  ]},
+  上海:{生煎:[
+    {name:'大壶春(四川中路店)',rating:4.7,price:'¥20/人',dist:'0.3km',tag:'老字号'},
+    {name:'小杨生煎(南京东路店)',rating:4.6,price:'¥25/人',dist:'0.5km',tag:'连锁名店'},
+    {name:'舒蔡记生煎',rating:4.5,price:'¥18/人',dist:'1.2km',tag:'本地推荐'},
+    {name:'阿德生煎',rating:4.4,price:'¥22/人',dist:'2.0km',tag:'皮薄汁多'}
+  ],小笼包:[
+    {name:'南翔馒头店(豫园店)',rating:4.7,price:'¥60/人',dist:'0.8km',tag:'百年老店'},
+    {name:'佳家汤包',rating:4.6,price:'¥35/人',dist:'1.5km',tag:'蟹粉小笼'},
+    {name:'富春小笼',rating:4.5,price:'¥40/人',dist:'2.2km',tag:'老字号'}
+  ],本帮菜:[
+    {name:'老正兴(福州路店)',rating:4.7,price:'¥120/人',dist:'0.6km',tag:'本帮鼻祖'},
+    {name:'上海老饭店',rating:4.6,price:'¥130/人',dist:'1.0km',tag:'豫园附近'},
+    {name:'绿波廊',rating:4.8,price:'¥180/人',dist:'0.9km',tag:'国宴级别'}
+  ],点心:[
+    {name:'沈大成(南京东路店)',rating:4.5,price:'¥30/人',dist:'0.4km',tag:'条头糕'},
+    {name:'王家沙点心店',rating:4.4,price:'¥35/人',dist:'1.3km',tag:'蟹粉汤圆'}
+  ]},
+  山西:{面食:[
+    {name:'山西老面馆(柳巷店)',rating:4.7,price:'¥25/人',dist:'0.3km',tag:'地道山西味'},
+    {name:'清和元(桥头街店)',rating:4.6,price:'¥30/人',dist:'0.7km',tag:'百年老字号'},
+    {name:'山西面食馆',rating:4.5,price:'¥22/人',dist:'1.2km',tag:'剔尖擦尖'},
+    {name:'老太原打卤面',rating:4.4,price:'¥18/人',dist:'2.0km',tag:'本地人食堂'}
+  ],刀削面:[
+    {name:'大同刀削面(解放路店)',rating:4.6,price:'¥20/人',dist:'0.5km',tag:'正宗大同味'},
+    {name:'晋韵刀削面',rating:4.5,price:'¥22/人',dist:'1.0km',tag:'手工削面'},
+    {name:'老柴刀削面',rating:4.4,price:'¥18/人',dist:'1.8km',tag:'量大实惠'}
+  ],陈醋:[
+    {name:'东湖醋园(马道坡店)',rating:4.8,price:'免费参观',dist:'3.0km',tag:'醋文化博物馆'},
+    {name:'宁化府醋(桥头街店)',rating:4.7,price:'¥15/瓶',dist:'0.6km',tag:'老字号醋坊'}
+  ],平遥牛肉:[
+    {name:'冠云平遥牛肉(专卖店)',rating:4.7,price:'¥58/斤',dist:'1.5km',tag:'中华老字号'},
+    {name:'平遥牛肉馆',rating:4.5,price:'¥68/人',dist:'2.5km',tag:'现场切片'}
+  ]},
+  成都:{冒菜:[
+    {name:'冒椒火辣(奎星楼店)',rating:4.8,price:'¥45/人',dist:'0.4km',tag:'网红冒菜'},
+    {name:'芙蓉树下冒菜',rating:4.6,price:'¥35/人',dist:'1.0km',tag:'连锁品牌'},
+    {name:'三顾冒菜(春熙路店)',rating:4.5,price:'¥38/人',dist:'0.7km',tag:'菜品丰富'}
+  ],火锅:[
+    {name:'小龙坎老火锅(春熙路店)',rating:4.7,price:'¥100/人',dist:'0.5km',tag:'排队王'},
+    {name:'蜀大侠火锅',rating:4.6,price:'¥95/人',dist:'1.2km',tag:'侠客主题'},
+    {name:'大龙燚火锅',rating:4.5,price:'¥90/人',dist:'2.0km',tag:'麻辣鲜香'}
+  ],串串:[
+    {name:'钢管厂五区小郡肝',rating:4.7,price:'¥60/人',dist:'0.8km',tag:'创始店'},
+    {name:'冒椒火辣串串',rating:4.6,price:'¥55/人',dist:'1.5km',tag:'冷锅串串'}
+  ],担担面:[
+    {name:'陈麻婆豆腐(青华路店)',rating:4.7,price:'¥50/人',dist:'1.0km',tag:'百年老字号'},
+    {name:'成都担担面(总府路店)',rating:4.5,price:'¥18/人',dist:'0.6km',tag:'传统小吃'}
+  ]},
+  长沙:{臭豆腐:[
+    {name:'黑色经典臭豆腐(黄兴广场店)',rating:4.8,price:'¥15/份',dist:'0.2km',tag:'必吃打卡'},
+    {name:'罗家臭豆腐',rating:4.6,price:'¥12/份',dist:'0.6km',tag:'外酥里嫩'},
+    {name:'火宫殿臭豆腐',rating:4.5,price:'¥18/份',dist:'1.0km',tag:'老字号'}
+  ],米粉:[
+    {name:'常德津市牛肉粉',rating:4.7,price:'¥20/人',dist:'0.5km',tag:'湖南米粉'},
+    {name:'长沙米粉店',rating:4.5,price:'¥15/人',dist:'1.2km',tag:'码子丰富'}
+  ],口味虾:[
+    {name:'文和友老长沙龙虾馆',rating:4.7,price:'¥120/人',dist:'0.8km',tag:'复古场景'},
+    {name:'天宝兄弟',rating:4.6,price:'¥100/人',dist:'1.5km',tag:'口味虾名店'}
+  ],糖油粑粑:[
+    {name:'李公庙糖油粑粑',rating:4.6,price:'¥8/份',dist:'0.4km',tag:'外脆内糯'},
+    {name:'金记糖油粑粑',rating:4.4,price:'¥6/份',dist:'1.0km',tag:'老长沙味'}
+  ]},
+  西安:{肉夹馍:[
+    {name:'秦豫肉夹馍(东木头市店)',rating:4.8,price:'¥12/个',dist:'0.3km',tag:'西安必吃'},
+    {name:'樊记腊汁肉夹馍',rating:4.7,price:'¥15/个',dist:'0.7km',tag:'老字号'},
+    {name:'子午路张记肉夹馍',rating:4.6,price:'¥13/个',dist:'1.2km',tag:'肥而不腻'}
+  ],凉皮:[
+    {name:'魏家凉皮(钟楼店)',rating:4.5,price:'¥18/人',dist:'0.5km',tag:'连锁品牌'},
+    {name:'盛志望麻酱酿皮',rating:4.6,price:'¥16/人',dist:'1.0km',tag:'麻酱浓郁'}
+  ],羊肉泡馍:[
+    {name:'老孙家泡馍(东关店)',rating:4.7,price:'¥45/人',dist:'1.5km',tag:'百年老店'},
+    {name:'同盛祥泡馍',rating:4.6,price:'¥48/人',dist:'0.8km',tag:'非遗传承'}
+  ],biangbiang面:[
+    {name:'老白家biangbiang面',rating:4.7,price:'¥25/人',dist:'0.6km',tag:'一根一碗'},
+    {name:'西安面馆',rating:4.4,price:'¥22/人',dist:'1.3km',tag:'油泼辣子香'}
+  ]}
 };
 function selectCity(el){
   const city=el.dataset.city;
@@ -1196,10 +1359,67 @@ function quickSearch(city,food){
 function searchDouyin(){
   const city=document.getElementById('searchCity').value.trim();
   const food=document.getElementById('searchFood').value.trim();
-  if(!city&&!food){toast('请输入城市或美食');return;}
-  const query=encodeURIComponent(city+' '+food+' 团购');
-  window.open('https://www.douyin.com/search/'+query,'_blank');
-  toast('正在跳转抖音团购：'+city+' '+food);
+  if(!city){toast('请输入城市名称');return;}
+  showCityMap(city,food||'美食');
+}
+function showCityMap(city,food){
+  const overlay=document.getElementById('cityMapOverlay');
+  const data=cityData[city];
+  if(data&&data.color) root.style.setProperty('--accent',data.color);
+  document.getElementById('cmTitle').innerHTML=city+' · '+food+' <span class="cm-badge" id="cmCount">加载中…</span>';
+  /* 获取店铺数据 */
+  let shops=[];
+  if(shopDB[city]&&shopDB[city][food]){
+    shops=shopDB[city][food];
+  } else if(shopDB[city]){
+    /* 取该城市第一个类别的店铺 */
+    const firstKey=Object.keys(shopDB[city])[0];
+    shops=shopDB[city][firstKey]||[];
+  }
+  if(shops.length===0){
+    /* 通用模拟店铺 */
+    shops=[
+      {name:city+food+'推荐店A',rating:4.6,price:'¥50/人',dist:'0.8km',tag:'热门推荐'},
+      {name:city+food+'推荐店B',rating:4.5,price:'¥45/人',dist:'1.5km',tag:'本地人常去'},
+      {name:city+food+'推荐店C',rating:4.4,price:'¥55/人',dist:'2.2km',tag:'新店开业'},
+      {name:city+food+'推荐店D',rating:4.3,price:'¥40/人',dist:'3.0km',tag:'性价比高'}
+    ];
+  }
+  document.getElementById('cmCount').textContent=shops.length+' 家店铺';
+  /* 生成地图标记 */
+  const pinsEl=document.getElementById('shopPins');
+  const positions=[
+    {left:'20%',top:'35%'},{left:'45%',top:'25%'},{left:'65%',top:'40%'},{left:'35%',top:'55%'},
+    {left:'55%',top:'65%'},{left:'75%',top:'55%'},{left:'25%',top:'70%'},{left:'50%',top:'45%'}
+  ];
+  pinsEl.innerHTML=shops.map((s,i)=>{
+    const pos=positions[i%positions.length];
+    return `<div class="shop-pin" style="left:${pos.left};top:${pos.top}" onclick="focusShop(${i})">
+      <div class="pin-label">${s.name}</div>
+      <div class="pin-dot"><span>🍜</span></div>
+    </div>`;
+  }).join('');
+  /* 生成店铺列表 */
+  const listEl=document.getElementById('shopItems');
+  listEl.innerHTML=shops.map((s,i)=>`
+    <div class="shop-item" onclick="focusShop(${i})">
+      <div class="si-name">${s.name}</div>
+      <div class="si-meta">
+        <span class="si-rating">★ ${s.rating}</span>
+        <span>${s.price}</span>
+        <span>${s.dist}</span>
+      </div>
+      <span class="si-tag">${s.tag}</span>
+    </div>
+  `).join('');
+  overlay.classList.add('show');
+  toast('已跳转 '+city+' 当地地图，找到 '+shops.length+' 家'+food+'店铺');
+}
+function focusShop(i){
+  toast('店铺详情：跳转抖音团购查看菜单和优惠');
+}
+function backToChina(){
+  document.getElementById('cityMapOverlay').classList.remove('show');
 }
 
 /* Quiz */
