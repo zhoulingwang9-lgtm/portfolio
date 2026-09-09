@@ -474,8 +474,8 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
   .navlinks{display:none}.menu{display:block}
 }
 </style>
-<!-- 高德地图 JS API — 请将 YOUR_AMAP_KEY 替换为你在 https://console.amap.com/ 申请的 Web端(JS API) Key -->
-<script src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
+<!-- 百度地图 JS API — 请将 YOUR_BAIDU_AK 替换为你在 https://lbsyun.baidu.com/ 申请的浏览器端 AK -->
+<script src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_BAIDU_AK"></script>
 </head>
 <body>
 
@@ -946,7 +946,7 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
         </div>
         <div class="city-map-body">
           <div id="amapContainer"></div>
-          <div class="amap-loading" id="amapLoading">正在加载高德地图…</div>
+          <div class="amap-loading" id="amapLoading">正在加载百度地图…</div>
           <div class="shop-list" id="shopList">
             <h4>NEARBY SHOPS / 附近店铺</h4>
             <div id="shopItems"></div>
@@ -1405,8 +1405,8 @@ function showCityMap(city,food){
     </div>
   `).join('');
   overlay.classList.add('show');
-  /* 初始化高德地图 */
-  initAmap(city,shops);
+  /* 初始化百度地图 */
+  initBmap(city,shops);
   toast('已跳转 '+city+' 当地地图，找到 '+shops.length+' 家'+food+'店铺');
 }
 /* 城市经纬度 */
@@ -1414,58 +1414,67 @@ const cityCoords={
   广州:[113.2644,23.1291],上海:[121.4737,31.2304],重庆:[106.5516,29.5630],
   山西:[112.5489,37.8706],成都:[104.0668,30.5728],长沙:[112.9388,28.2282],西安:[108.9398,34.3416]
 };
-let amapInstance=null,amapMarkers=[],currentShops=[];
-function initAmap(city,shops){
+let bmapInstance=null,bmapMarkers=[],currentShops=[];
+function initBmap(city,shops){
   const loading=document.getElementById('amapLoading');
   loading.classList.remove('hidden');
+  loading.textContent='正在加载百度地图…';
   currentShops=shops;
-  /* 检查高德 API 是否加载 */
-  if(typeof AMap==='undefined'){
-    loading.textContent='高德地图未加载：请在代码中配置你的高德 API Key（https://console.amap.com/）';
+  /* 检查百度地图 API 是否加载 */
+  if(typeof BMap==='undefined'){
+    loading.textContent='百度地图未加载：请在代码中配置你的百度地图 AK（https://lbsyun.baidu.com/）';
     return;
   }
   /* 销毁旧地图 */
-  if(amapInstance){amapInstance.destroy();amapInstance=null;}
-  amapMarkers=[];
-  const center=cityCoords[city]||[116.3974,39.9093];
+  if(bmapInstance){bmapInstance=null;}
+  bmapMarkers=[];
+  const center=cityCoords[city]||[116.404,39.915];
   try{
-    amapInstance=new AMap.Map('amapContainer',{
-      zoom:12,center:center,mapStyle:'amap://styles/whitesmoke',viewMode:'2D'
-    });
+    bmapInstance=new BMap.Map('amapContainer');
+    bmapInstance.centerAndZoom(new BMap.Point(center[0],center[1]),12);
+    bmapInstance.enableScrollWheelZoom(true);
+    bmapInstance.addControl(new BMap.NavigationControl());
     loading.classList.add('hidden');
-    /* 为每个店铺生成标记点（在城市中心周围随机分布） */
+    /* 为每个店铺生成标记点 */
+    const points=[];
     shops.forEach((s,i)=>{
       const offsetLng=(Math.random()-0.5)*0.06;
       const offsetLat=(Math.random()-0.5)*0.05;
-      const pos=[center[0]+offsetLng,center[1]+offsetLat];
-      const marker=new AMap.Marker({
-        position:pos,
-        title:s.name,
-        content:`<div style="background:var(--accent);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2);border:2px solid #fff;transform:translateY(-4px)">${i+1}. ${s.name}</div>`,
-        offset:new AMap.Pixel(-20,-30)
+      const pt=new BMap.Point(center[0]+offsetLng,center[1]+offsetLat);
+      points.push(pt);
+      /* 自定义标注 */
+      const labelContent=`<div style="background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;transform:translateY(-6px)">${i+1}. ${s.name}</div>`;
+      const marker=new BMap.Marker(pt);
+      const label=new BMap.Label(labelContent,{offset:new BMap.Size(-20,-30)});
+      label.setStyle({border:'none',background:'transparent',padding:'0'});
+      marker.setLabel(label);
+      marker.addEventListener('click',function(){
+        bmapInstance.centerAndZoom(pt,15);
+        const info=new BMap.InfoWindow(`<div style="padding:6px 4px"><b>${s.name}</b><br>★ ${s.rating} · ${s.price} · ${s.dist}<br><span style="color:#999">${s.tag}</span></div>`);
+        bmapInstance.openInfoWindow(info,pt);
       });
-      marker.on('click',()=>{
-        amapInstance.setZoomAndCenter(15,pos);
-        toast(s.name+' · ★'+s.rating+' · '+s.price);
-      });
-      amapMarkers.push(marker);
+      bmapInstance.addOverlay(marker);
+      bmapMarkers.push(marker);
     });
-    amapInstance.add(amapMarkers);
-    amapInstance.setFitView(amapMarkers,false,[60,60,300,60]);
+    /* 自适应视野 */
+    if(points.length>0){
+      bmapInstance.setViewport(points);
+    }
   }catch(e){
     loading.textContent='地图加载失败：'+e.message;
   }
 }
 function panToShop(i){
-  if(amapInstance&&amapMarkers[i]){
-    const pos=amapMarkers[i].getPosition();
-    amapInstance.setZoomAndCenter(16,[pos.lng,pos.lat]);
+  if(bmapInstance&&bmapMarkers[i]){
+    const pt=bmapMarkers[i].getPosition();
+    bmapInstance.centerAndZoom(pt,16);
+    bmapMarkers[i].dispatchEvent('click');
     toast(currentShops[i].name);
   }
 }
 function backToChina(){
   document.getElementById('cityMapOverlay').classList.remove('show');
-  if(amapInstance){amapInstance.destroy();amapInstance=null;}
+  bmapInstance=null;
   document.getElementById('amapLoading').classList.remove('hidden');
 }
 
