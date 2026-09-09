@@ -369,21 +369,6 @@ h1,h2,h3,p{margin-top:0}
 .ssr-item-price{font-size:13px;font-weight:900;color:var(--accent)}
 .ssr-item-dist{font-size:10px;color:var(--muted)}
 .ssr-empty{padding:24px;text-align:center;color:var(--muted);font-size:13px}
-.svc-discovery{margin-bottom:50px}
-.svc-section-title{font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:20px;text-transform:uppercase}
-.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.svc-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
-.svc-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1);border-color:var(--accent)}
-.svc-card.hidden{display:none}
-.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.sc-city{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.08em}
-.sc-cat{font-size:9px;letter-spacing:.15em;font-weight:800;padding:3px 8px;background:var(--bg);border-radius:6px;color:var(--muted)}
-.sc-title{font-size:18px;font-weight:900;margin:0 0 8px}
-.sc-desc{font-size:13px;color:#666;line-height:1.6;margin:0 0 14px}
-.sc-meta{display:flex;gap:12px;font-size:11px;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
-.sc-discount{color:var(--accent);font-weight:700}
-.sc-cta{padding:10px 20px;border:0;border-radius:999px;background:#171717;color:#fff;font-size:12px;font-weight:800;cursor:pointer;transition:.25s;letter-spacing:.03em}
-.sc-cta:hover{background:var(--accent)}
 .svc-timeline{margin-bottom:50px}
 .timeline-track{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;padding:20px 0}
 .timeline-track:before{content:'';position:absolute;top:44px;left:5%;right:5%;height:2px;background:var(--line)}
@@ -410,15 +395,13 @@ h1,h2,h3,p{margin-top:0}
 .nb-cta:hover{filter:brightness(1.1)}
 @media(max-width:900px){
   .svc-grid{grid-template-columns:1fr}
-  .svc-cards{grid-template-columns:1fr 1fr}
-  .timeline-track{grid-template-columns:1fr 1fr}
+    .timeline-track{grid-template-columns:1fr 1fr}
   .timeline-track:before{display:none}
   .svc-flow{justify-content:center}
   .sfs-arrow{display:none}
 }
 @media(max-width:560px){
-  .svc-cards{grid-template-columns:1fr}
-  .timeline-track{grid-template-columns:1fr}
+    .timeline-track{grid-template-columns:1fr}
   .nb-item{flex-wrap:wrap}
   .nb-meta{flex-direction:row;align-items:center;gap:10px}
 }
@@ -1132,54 +1115,6 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </div>
 
-  <!-- LOCAL DISCOVERY 生活方式卡片 -->
-  <div class="svc-discovery">
-    <div class="svc-section-title">LOCAL DISCOVERY / 本地发现</div>
-    <div class="svc-cards" id="svcCards">
-      <div class="svc-card" data-category="food" data-city="重庆" data-search="火锅">
-        <div class="sc-top"><span class="sc-city">重庆</span><span class="sc-cat">FOOD</span></div>
-        <h4 class="sc-title">山城老火锅</h4>
-        <p class="sc-desc">九宫格牛油锅底，毛肚鸭肠现涮，重庆人的夜生活从这里开始。</p>
-        <div class="sc-meta"><span>📍 0.8km</span><span>💰 ¥98/人</span><span class="sc-discount">🔥 团购8.5折</span></div>
-        <button class="sc-cta">EXPLORE →</button>
-      </div>
-      <div class="svc-card" data-category="night" data-city="重庆" data-search="洪崖洞">
-        <div class="sc-top"><span class="sc-city">重庆</span><span class="sc-cat">NIGHT</span></div>
-        <h4 class="sc-title">洪崖洞夜景</h4>
-        <p class="sc-desc">千厮门大桥视角，吊脚楼群灯光璀璨，现实版千与千寻。</p>
-        <div class="sc-meta"><span>📍 1.2km</span><span>💰 免费</span><span class="sc-discount">⭐ 必打卡</span></div>
-        <button class="sc-cta">EXPLORE →</button>
-      </div>
-      <div class="svc-card" data-category="food" data-city="广州" data-search="凉茶">
-        <div class="sc-top"><span class="sc-city">广州</span><span class="sc-cat">FOOD</span></div>
-        <h4 class="sc-title">老字号凉茶铺</h4>
-        <p class="sc-desc">二十四味凉茶，苦尽甘来，岭南人消暑祛湿的日常智慧。</p>
-        <div class="sc-meta"><span>📍 0.5km</span><span>💰 ¥12/杯</span><span class="sc-discount">🌿 手工现熬</span></div>
-        <button class="sc-cta">EXPLORE →</button>
-      </div>
-      <div class="svc-card" data-category="culture" data-city="广州" data-search="早茶">
-        <div class="sc-top"><span class="sc-city">广州</span><span class="sc-cat">CULTURE</span></div>
-        <h4 class="sc-title">百年茶楼早茶</h4>
-        <p class="sc-desc">一盅两件，虾饺烧卖肠粉，广州人的早晨从茶楼开始。</p>
-        <div class="sc-meta"><span>📍 1.0km</span><span>💰 ¥75/人</span><span class="sc-discount">🍵 全天茶市</span></div>
-        <button class="sc-cta">EXPLORE →</button>
-      </div>
-      <div class="svc-card" data-category="food" data-city="上海" data-search="生煎">
-        <div class="sc-top"><span class="sc-city">上海</span><span class="sc-cat">FOOD</span></div>
-        <h4 class="sc-title">本帮生煎包</h4>
-        <p class="sc-desc">底脆汁多，皮薄馅大，上海弄堂里的甜咸滋味。</p>
-        <div class="sc-meta"><span>📍 0.6km</span><span>💰 ¥20/份</span><span class="sc-discount">🥟 现包现煎</span></div>
-        <button class="sc-cta">EXPLORE →</button>
-      </div>
-      <div class="svc-card" data-category="culture" data-city="山西" data-search="陈醋">
-        <div class="sc-top"><span class="sc-city">山西</span><span class="sc-cat">CULTURE</span></div>
-        <h4 class="sc-title">东湖醋园体验</h4>
-        <p class="sc-desc">参观千年酿醋工艺，品尝老陈醋，了解山西醋文化。</p>
-        <div class="sc-meta"><span>📍 2.5km</span><span>💰 免费参观</span><span class="sc-discount">🏺 非遗传承</span></div>
-        <button class="sc-cta">EXPLORE →</button>
-      </div>
-    </div>
-  </div>
 
   <!-- CITY EXPERIENCE PLAN 时间线 -->
   <div class="svc-timeline">
@@ -2234,12 +2169,6 @@ function filterSvcCards(){
   const resultsPanel=document.getElementById('svcSearchResults');
   const ssrList=document.getElementById('ssrList');
   const ssrCount=document.getElementById('ssrCount');
-  /* 过滤 LOCAL DISCOVERY 卡片 */
-  document.querySelectorAll('.svc-card').forEach(card=>{
-    const matchFilter=svcActiveFilter==='all'||card.dataset.category===svcActiveFilter;
-    const matchSearch=!q||card.textContent.toLowerCase().includes(q)||card.dataset.search.toLowerCase().includes(q)||card.dataset.city.toLowerCase().includes(q);
-    card.classList.toggle('hidden',!(matchFilter&&matchSearch));
-  });
   /* 搜索结果面板 */
   if(q){
     const matched=svcProducts.filter(p=>{
@@ -2278,7 +2207,7 @@ function setSvcFilter(el,filter){
 /* EXPLORE / GO 按钮跳转抖音 */
 document.addEventListener('click',e=>{
   if(e.target.classList.contains('sc-cta')||e.target.classList.contains('nb-cta')){
-    const card=e.target.closest('.svc-card')||e.target.closest('.nb-item');
+    const card=e.target.closest('.nb-item');
     if(card){
       const title=card.querySelector('h4,h5')?.textContent||'';
       window.open('https://www.douyin.com/search/'+encodeURIComponent(title+' 团购'),'_blank');
