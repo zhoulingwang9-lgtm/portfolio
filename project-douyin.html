@@ -474,8 +474,8 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
   .navlinks{display:none}.menu{display:block}
 }
 </style>
-<!-- 百度地图 JS API — 请将 YOUR_BAIDU_AK 替换为你在 https://lbsyun.baidu.com/ 申请的浏览器端 AK -->
-<script src="https://api.map.baidu.com/api?v=3.0&ak=kwAmc8Y6ND3ld7fNLN0b8GmbnbUk8Vle"></script>
+<!-- 百度地图 WebGL版 JS API -->
+<script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=kwAmc8Y6ND3ld7fNLN0b8GmbnbUk8Vle"></script>
 </head>
 <body>
 
@@ -1421,8 +1421,8 @@ function initBmap(city,shops){
   loading.textContent='正在加载百度地图…';
   currentShops=shops;
   /* 检查百度地图 API 是否加载 */
-  if(typeof BMap==='undefined'){
-    loading.textContent='百度地图未加载：请在代码中配置你的百度地图 AK（https://lbsyun.baidu.com/）';
+  if(typeof BMapGL==='undefined'){
+    loading.textContent='百度地图未加载：请检查网络或 AK 是否有效（https://lbsyun.baidu.com/）';
     return;
   }
   /* 销毁旧地图 */
@@ -1430,31 +1430,31 @@ function initBmap(city,shops){
   bmapMarkers=[];
   const center=cityCoords[city]||[116.404,39.915];
   try{
-    bmapInstance=new BMap.Map('amapContainer');
-    bmapInstance.centerAndZoom(new BMap.Point(center[0],center[1]),12);
+    bmapInstance=new BMapGL.Map('amapContainer');
+    bmapInstance.centerAndZoom(new BMapGL.Point(center[0],center[1]),12);
     bmapInstance.enableScrollWheelZoom(true);
-    bmapInstance.addControl(new BMap.NavigationControl());
+    bmapInstance.addControl(new BMapGL.NavigationControl());
     loading.classList.add('hidden');
     /* 为每个店铺生成标记点 */
     shops.forEach((s,i)=>{
       const offsetLng=(Math.random()-0.5)*0.06;
       const offsetLat=(Math.random()-0.5)*0.05;
-      const pt=new BMap.Point(center[0]+offsetLng,center[1]+offsetLat);
-      const marker=new BMap.Marker(pt);
+      const pt=new BMapGL.Point(center[0]+offsetLng,center[1]+offsetLat);
+      const marker=new BMapGL.Marker(pt);
       const labelContent=`<div style="background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;transform:translateY(-6px)">${i+1}. ${s.name}</div>`;
-      const label=new BMap.Label(labelContent,{offset:new BMap.Size(-20,-30)});
+      const label=new BMapGL.Label(labelContent,{offset:new BMapGL.Size(-20,-30)});
       label.setStyle({border:'none',background:'transparent',padding:'0'});
       marker.setLabel(label);
       marker.addEventListener('click',function(){
         bmapInstance.centerAndZoom(pt,15);
-        const info=new BMap.InfoWindow(`<div style="padding:6px 4px"><b>${s.name}</b><br>★ ${s.rating} · ${s.price} · ${s.dist}<br><span style="color:#999">${s.tag}</span></div>`);
+        const info=new BMapGL.InfoWindow(`<div style="padding:6px 4px"><b>${s.name}</b><br>★ ${s.rating} · ${s.price} · ${s.dist}<br><span style="color:#999">${s.tag}</span></div>`);
         bmapInstance.openInfoWindow(info,pt);
       });
       bmapInstance.addOverlay(marker);
       bmapMarkers.push(marker);
     });
   }catch(e){
-    loading.textContent='百度地图加载失败，请检查 AK 是否有效且已授权当前域名（https://lbsyun.baidu.com/）';
+    loading.textContent='百度地图加载失败：'+e.message+'（请检查 AK 及域名授权）';
   }
 }
 function panToShop(i){
