@@ -123,13 +123,18 @@ h1,h2,h3,p{margin-top:0}
 
 /* ===== 10 CITY PERSONALITY ===== */
 .personality-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px}
-.personality{min-height:320px;border-radius:var(--radius);padding:28px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s}
+.personality{min-height:480px;border-radius:var(--radius);padding:24px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s;overflow:hidden}
 .personality:hover{transform:translateY(-6px)}
-.personality .taste{font-size:64px;font-weight:950;line-height:1;letter-spacing:-.06em}
+.personality .taste{font-size:56px;font-weight:950;line-height:1;letter-spacing:-.06em}
 .personality .city{font-size:20px;font-weight:900;margin:10px 0}
 .personality .tags{display:flex;flex-wrap:wrap;gap:6px}
 .personality .tags span{font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.4);border-radius:999px}
 .personality .en{font-size:11px;letter-spacing:.2em;opacity:.7}
+.personality-img{height:220px;border-radius:16px;margin-bottom:10px;background-size:400% 100%;background-repeat:no-repeat;background-image:url('https://aka.doubaocdn.com/s/0nCJViiWfw');box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.pi-bitter{background-position:0% 62%}
+.pi-sweet{background-position:33.33% 62%}
+.pi-spicy{background-position:66.67% 62%}
+.pi-sour{background-position:100% 62%}
 .p-bitter{background:linear-gradient(145deg,#3e9b55,#86cf88)}
 .p-sweet{background:linear-gradient(145deg,#e8753c,#f6b17d)}
 .p-spicy{background:linear-gradient(145deg,#bf241e,#f26b3d)}
@@ -561,10 +566,10 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
   <div class="eyebrow">10 / CITY PERSONALITY</div>
   <h2 class="title-xl" style="margin-top:20px">四城 = 四个人格</h2>
   <div class="personality-grid">
-    <div class="personality p-bitter"><div><div class="en">CALM</div><div class="taste">苦</div></div><div><div class="city">广州</div><div class="tags"><span>松弛</span><span>清爽</span><span>温润</span></div></div></div>
-    <div class="personality p-sweet"><div><div class="en">DREAMY</div><div class="taste">甜</div></div><div><div class="city">上海</div><div class="tags"><span>精致</span><span>摩登</span><span>浪漫</span></div></div></div>
-    <div class="personality p-spicy"><div><div class="en">ENERGETIC</div><div class="taste">辣</div></div><div><div class="city">重庆</div><div class="tags"><span>热烈</span><span>直接</span><span>年轻</span></div></div></div>
-    <div class="personality p-sour"><div><div class="en">TIMELESS</div><div class="taste">酸</div></div><div><div class="city">山西</div><div class="tags"><span>厚重</span><span>质朴</span><span>传统</span></div></div></div>
+    <div class="personality p-bitter"><div class="personality-img pi-bitter"></div><div><div class="en">CALM</div><div class="taste">苦</div></div><div><div class="city">广州</div><div class="tags"><span>松弛</span><span>清爽</span><span>温润</span></div></div></div>
+    <div class="personality p-sweet"><div class="personality-img pi-sweet"></div><div><div class="en">DREAMY</div><div class="taste">甜</div></div><div><div class="city">上海</div><div class="tags"><span>精致</span><span>摩登</span><span>浪漫</span></div></div></div>
+    <div class="personality p-spicy"><div class="personality-img pi-spicy"></div><div><div class="en">ENERGETIC</div><div class="taste">辣</div></div><div><div class="city">重庆</div><div class="tags"><span>热烈</span><span>直接</span><span>年轻</span></div></div></div>
+    <div class="personality p-sour"><div class="personality-img pi-sour"></div><div><div class="en">TIMELESS</div><div class="taste">酸</div></div><div><div class="city">山西</div><div class="tags"><span>厚重</span><span>质朴</span><span>传统</span></div></div></div>
   </div>
 </section>
 
