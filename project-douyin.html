@@ -297,14 +297,118 @@ h1,h2,h3,p{margin-top:0}
 .service-step .ss-en{display:block;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-top:4px}
 
 /* ===== 33 UGC ===== */
-.ugc{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
-.form{background:#fff;border:1px solid var(--line);padding:28px;border-radius:28px}
-input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:13px;margin:7px 0 15px;background:#fafaf7;outline:none}
-.share-card{
-  min-height:420px;border-radius:30px;padding:35px;position:relative;overflow:hidden;color:#fff;
-  background:linear-gradient(135deg,var(--red),#173d27);display:flex;flex-direction:column;justify-content:space-between;
+.ugc-hero{margin-bottom:50px}
+.ugc-title{font-size:clamp(60px,9vw,120px);font-weight:950;letter-spacing:-.08em;line-height:.82;margin:0;color:#171717}
+.ugc-sub{font-size:22px;font-weight:800;margin:14px 0 8px;color:#171717}
+.ugc-desc{font-size:16px;line-height:1.8;color:#555;max-width:480px;margin:0}
+.ugc-layout{display:grid;grid-template-columns:40% 60%;gap:50px;align-items:start;margin-top:30px}
+/* 左侧输入 */
+.ugc-input{display:flex;flex-direction:column;gap:28px}
+.ugc-step-label{font-size:11px;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:12px;text-transform:uppercase}
+.ugc-city-input{width:100%;height:60px;padding:0 20px;border:1px solid var(--line);border-radius:16px;font-size:17px;background:#fff;outline:none;transition:.25s;box-sizing:border-box}
+.ugc-city-input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent)18}
+.ugc-tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.ugc-tag-label{font-size:10px;color:var(--muted);letter-spacing:.1em;font-weight:800}
+.ugc-tag{padding:7px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;cursor:pointer;transition:.2s;font-weight:600}
+.ugc-tag:hover{border-color:var(--accent);color:var(--accent)}
+/* 味觉选择器 */
+.taste-selectors{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.taste-btn{position:relative;padding:22px 16px;border:2px solid var(--line);border-radius:18px;background:#fff;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:4px;overflow:hidden}
+.taste-btn .ts-cn{font-size:36px;font-weight:900;line-height:1;transition:.3s}
+.taste-btn .ts-en{font-size:10px;letter-spacing:.15em;font-weight:800;color:var(--muted);transition:.3s}
+.taste-btn .ts-check{font-size:10px;font-weight:800;opacity:0;transition:.3s;margin-top:4px}
+.taste-btn:hover{transform:translateY(-2px)}
+.taste-btn.active{transform:scale(1.04);border-width:3px}
+.taste-btn.active .ts-check{opacity:1}
+.taste-btn.active .ts-en{color:#fff}
+.ts-bitter .ts-cn{color:#58b56e}.ts-bitter.active{background:#58b56e;border-color:#58b56e;color:#fff}
+.ts-bitter.active .ts-cn{color:#fff}
+.ts-sweet .ts-cn{color:#ee8e51}.ts-sweet.active{background:#ee8e51;border-color:#ee8e51;color:#fff}
+.ts-sweet.active .ts-cn{color:#fff}
+.ts-spicy .ts-cn{color:#e43e32}.ts-spicy.active{background:#e43e32;border-color:#e43e32;color:#fff}
+.ts-spicy.active .ts-cn{color:#fff}
+.ts-sour .ts-cn{color:#d6a938}.ts-sour.active{background:#d6a938;border-color:#d6a938;color:#fff}
+.ts-sour.active .ts-cn{color:#fff}
+/* 宣言输入 */
+.ugc-statement{width:100%;height:140px;padding:18px 20px;border:1px solid var(--line);border-radius:16px;font-size:18px;line-height:1.7;background:#fff;outline:none;transition:.25s;resize:none;box-sizing:border-box;font-family:inherit}
+.ugc-statement:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent)18}
+/* 生成按钮 */
+.ugc-generate{width:100%;height:62px;border:0;border-radius:999px;background:var(--accent);color:#fff;font-size:16px;font-weight:900;letter-spacing:.05em;cursor:pointer;transition:.3s;box-shadow:0 6px 24px var(--accent)40}
+.ugc-generate:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 10px 32px var(--accent)50}
+.ugc-generate.generating{pointer-events:none;opacity:.8}
+.ugc-generate-sub{text-align:center;font-size:11px;color:var(--muted);letter-spacing:.1em;margin:10px 0 0}
+/* 右侧卡片 */
+.ugc-output{display:flex;flex-direction:column;align-items:center;gap:24px}
+.taste-card-wrap{position:relative;width:100%;max-width:480px;perspective:1200px}
+.taste-card{
+  position:relative;width:100%;aspect-ratio:4/5;border-radius:28px;overflow:hidden;
+  color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:32px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);transition:transform .4s ease,box-shadow .4s ease;
+  transform-style:preserve-3d;
 }
-.share-card h3{font-size:82px;line-height:.8;letter-spacing:-.08em;margin:0}.share-card .share-city{font-size:28px;font-weight:900}
+.taste-card:hover{transform:scale(1.03);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.tc-bg{position:absolute;inset:0;transition:background .8s ease}
+.tc-bg-bitter{background:linear-gradient(160deg,#2d7a4a 0%,#1a4d2e 50%,#0f2e1a 100%)}
+.tc-bg-sweet{background:linear-gradient(160deg,#f0a060 0%,#d4763a 50%,#8b4513 100%)}
+.tc-bg-spicy{background:linear-gradient(160deg,#e43e32 0%,#a02020 50%,#4a0e0e 100%)}
+.tc-bg-sour{background:linear-gradient(160deg,#e8c84a 0%,#c49a28 50%,#7a5c10 100%)}
+.tc-elements{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.tc-el{position:absolute;font-size:40px;opacity:.35;transition:transform .6s ease}
+.tc-el.e1{top:12%;right:10%;font-size:50px;animation:float1 4s ease-in-out infinite}
+.tc-el.e2{top:25%;left:8%;font-size:35px;animation:float2 5s ease-in-out infinite}
+.tc-el.e3{bottom:35%;right:15%;font-size:45px;animation:float3 4.5s ease-in-out infinite}
+.tc-el.e4{bottom:20%;left:12%;font-size:55px;animation:float1 5.5s ease-in-out infinite}
+.tc-el.e5{top:50%;left:50%;font-size:25px;animation:float2 3.5s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-15px) rotate(8deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(12px) rotate(-6deg)}}
+@keyframes float3{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(12deg)}}
+.tc-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start}
+.tc-brand{font-size:10px;letter-spacing:.15em;opacity:.7;font-weight:700}
+.tc-personality{font-size:11px;letter-spacing:.2em;font-weight:800;padding:5px 12px;background:rgba(255,255,255,.15);border-radius:999px;backdrop-filter:blur(4px)}
+.tc-main{position:relative;z-index:2;text-align:center}
+.tc-taste{font-size:clamp(100px,18vw,160px);font-weight:950;line-height:.8;letter-spacing:-.08em;text-shadow:0 4px 30px rgba(0,0,0,.3)}
+.tc-city{font-size:clamp(28px,4vw,40px);font-weight:900;margin-top:12px;letter-spacing:.02em}
+.tc-city-en{font-size:11px;letter-spacing:.3em;opacity:.7;margin-top:6px;font-weight:700}
+.tc-bottom{position:relative;z-index:2}
+.tc-quote{font-size:clamp(16px,2.5vw,20px);line-height:1.6;margin:0 0 16px;font-weight:600;text-align:center}
+.tc-footer{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.12em;opacity:.65;font-weight:700;padding-top:14px;border-top:1px solid rgba(255,255,255,.2)}
+.tc-grain{position:absolute;inset:0;opacity:.08;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:1}
+.tc-hover-hint{text-align:center;font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:14px;opacity:0;transition:.3s;font-weight:700}
+.taste-card-wrap:hover .tc-hover-hint{opacity:1}
+/* 生成动画 */
+.taste-card.generating .tc-taste{animation:tasteSlide .8s ease}
+.taste-card.generating .tc-city{animation:fadeIn .6s ease .3s both}
+.taste-card.generating .tc-quote{animation:fadeIn .6s ease .5s both}
+@keyframes tasteSlide{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* 操作按钮 */
+.ugc-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:480px}
+.ua-btn{padding:12px 22px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:800;cursor:pointer;transition:.25s;letter-spacing:.03em}
+.ua-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.ua-share{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ua-share:hover{filter:brightness(1.08);color:#fff}
+.ugc-actions-hint{font-size:12px;color:var(--muted);text-align:center;margin:0}
+/* 社区数据 */
+.ugc-community{margin-top:60px;display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;padding:32px 40px;background:#fff;border:1px solid var(--line);border-radius:24px}
+.uc-label{font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:800}
+.uc-count{font-size:48px;font-weight:950;letter-spacing:-.04em;line-height:1;margin:6px 0 4px}
+.uc-unit{font-size:13px;color:var(--muted)}
+.uc-right{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px}
+.uc-city{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.uc-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.uc-note{font-size:12px;color:var(--muted);font-style:italic;text-align:right;max-width:200px;line-height:1.6}
+/* 底部CTA */
+.ugc-bottom-cta{margin-top:50px;text-align:center;padding:50px 0 20px}
+.ugc-bottom-cta h3{font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-.03em;margin:0 0 24px}
+.ub-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.ub-btn{padding:16px 36px;border:2px solid #171717;border-radius:999px;background:transparent;font-size:14px;font-weight:900;cursor:pointer;transition:.3s;letter-spacing:.03em}
+.ub-btn:hover{background:#171717;color:#fff}
+@media(max-width:900px){
+  .ugc-layout{grid-template-columns:1fr}
+  .ugc-community{grid-template-columns:1fr;text-align:center}
+  .uc-note{text-align:center;max-width:none}
+  .uc-right{justify-content:center}
+}
 
 /* ===== 34 CAMPAIGN LOOP ===== */
 .loop-circle{width:min(500px,80vw);aspect-ratio:1;border-radius:50%;border:2px dashed var(--line);margin:50px auto 0;position:relative;display:grid;place-items:center}
@@ -865,28 +969,111 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
 
 <!-- ===== 33 UGC ===== -->
 <section class="section reveal" id="ugc">
-  <div class="eyebrow">33 / UGC GENERATOR</div>
-  <div class="ugc">
-    <div>
-      <h2 class="title-xl">MY CITY<br>MY TASTE.</h2>
-      <p class="lead">输入你的城市与味道，生成一张属于你的城市味觉身份卡。</p>
-      <div class="form">
-        <label>你的城市</label>
-        <input id="ugcCity" value="重庆" placeholder="例如：成都">
-        <label>你的味道</label>
-        <select id="ugcTaste">
-          <option value="苦">苦 / BITTER</option><option value="甜">甜 / SWEET</option>
-          <option value="辣" selected>辣 / SPICY</option><option value="酸">酸 / SOUR</option>
-        </select>
-        <label>一句话</label>
-        <input id="ugcQuote" value="生活就要滚烫一点。" placeholder="写一句属于你的城市宣言">
-        <button class="btn" id="generate">生成城市味觉卡</button>
+  <div class="eyebrow">33 / UGC GENERATOR · MY CITY MY TASTE</div>
+  <div class="ugc-hero">
+    <h2 class="ugc-title">MY CITY.<br>MY TASTE.</h2>
+    <p class="ugc-sub">我的城市，我的味道。</p>
+    <p class="ugc-desc">选择一座城市，给它一种味道，再留下属于你的城市宣言。<br><span style="color:var(--muted);font-size:13px">Choose a city. Give it a taste. Leave your own statement.</span></p>
+  </div>
+  <div class="ugc-layout">
+    <!-- 左侧输入 -->
+    <div class="ugc-input">
+      <div class="ugc-step">
+        <div class="ugc-step-label">01 / YOUR CITY · 你的城市</div>
+        <input class="ugc-city-input" id="ugcCity" value="重庆" placeholder="输入你的城市" oninput="updateUgcPreview()">
+        <div class="ugc-tags">
+          <span class="ugc-tag-label">POPULAR</span>
+          <button class="ugc-tag" onclick="setUgcCity('广州')">广州</button>
+          <button class="ugc-tag" onclick="setUgcCity('上海')">上海</button>
+          <button class="ugc-tag" onclick="setUgcCity('重庆')">重庆</button>
+          <button class="ugc-tag" onclick="setUgcCity('山西')">山西</button>
+        </div>
       </div>
+      <div class="ugc-step">
+        <div class="ugc-step-label">02 / YOUR TASTE · 选择你的城市味道</div>
+        <div class="taste-selectors">
+          <button class="taste-btn ts-bitter" data-taste="苦" onclick="selectUgcTaste(this,'苦')">
+            <span class="ts-cn">苦</span><span class="ts-en">BITTER</span><span class="ts-check">✓ SELECTED</span>
+          </button>
+          <button class="taste-btn ts-sweet" data-taste="甜" onclick="selectUgcTaste(this,'甜')">
+            <span class="ts-cn">甜</span><span class="ts-en">SWEET</span><span class="ts-check">✓ SELECTED</span>
+          </button>
+          <button class="taste-btn ts-spicy active" data-taste="辣" onclick="selectUgcTaste(this,'辣')">
+            <span class="ts-cn">辣</span><span class="ts-en">SPICY</span><span class="ts-check">✓ SELECTED</span>
+          </button>
+          <button class="taste-btn ts-sour" data-taste="酸" onclick="selectUgcTaste(this,'酸')">
+            <span class="ts-cn">酸</span><span class="ts-en">SOUR</span><span class="ts-check">✓ SELECTED</span>
+          </button>
+        </div>
+      </div>
+      <div class="ugc-step">
+        <div class="ugc-step-label">03 / YOUR STATEMENT · 写一句你和这座城市有关的话</div>
+        <textarea class="ugc-statement" id="ugcQuote" placeholder="例如：下班以后，去江边吹吹风。" oninput="updateUgcPreview()">生活就要滚烫一点。</textarea>
+      </div>
+      <button class="ugc-generate" id="ugcGenerate" onclick="generateUgcCard()">GENERATE MY CITY</button>
+      <p class="ugc-generate-sub">Your taste. Your city. Your story.</p>
     </div>
-    <div class="share-card" id="shareCard">
-      <div><div class="eyebrow" style="color:rgba(255,255,255,.65)">MY CITY TASTE / 2026</div></div>
-      <div><div class="share-city" id="shareCity">重庆</div><h3 id="shareTaste">辣</h3></div>
-      <div><p id="shareQuote" style="font-size:18px">"生活就要滚烫一点。"</p><small>LET'S CITY · 抖音生活服务</small></div>
+    <!-- 右侧卡片 -->
+    <div class="ugc-output">
+      <div class="taste-card-wrap" id="tasteCardWrap">
+        <div class="taste-card" id="tasteCard">
+          <div class="tc-bg tc-bg-spicy" id="tcBg"></div>
+          <div class="tc-elements" id="tcElements">
+            <span class="tc-el e1">🌶️</span>
+            <span class="tc-el e2">🔥</span>
+            <span class="tc-el e3">🏔️</span>
+            <span class="tc-el e4">🍲</span>
+            <span class="tc-el e5">✨</span>
+          </div>
+          <div class="tc-top">
+            <span class="tc-brand">MY CITY TASTE / 2026</span>
+            <span class="tc-personality" id="tcPersonality">ENERGETIC</span>
+          </div>
+          <div class="tc-main">
+            <div class="tc-taste" id="tcTaste">辣</div>
+            <div class="tc-city" id="tcCity">重庆</div>
+            <div class="tc-city-en" id="tcCityEn">CHONGQING</div>
+          </div>
+          <div class="tc-bottom">
+            <p class="tc-quote" id="tcQuote">"生活就要滚烫一点。"</p>
+            <div class="tc-footer">
+              <span class="tc-lets">LET'S CITY</span>
+              <span class="tc-douyin">DOUYIN LIFE SERVICE</span>
+            </div>
+          </div>
+          <div class="tc-grain"></div>
+        </div>
+        <div class="tc-hover-hint">DRAG TO EXPLORE</div>
+      </div>
+      <!-- 生成后操作 -->
+      <div class="ugc-actions" id="ugcActions" style="display:none">
+        <button class="ua-btn" onclick="saveUgcCard()">SAVE 保存</button>
+        <button class="ua-btn" onclick="copyUgcText()">COPY 复制文案</button>
+        <button class="ua-btn ua-share" onclick="shareUgc()">SHARE TO DOUYIN →</button>
+      </div>
+      <p class="ugc-actions-hint" id="ugcActionsHint" style="display:none">让你的城市味道被更多人看见。</p>
+    </div>
+  </div>
+  <!-- 社区数据 -->
+  <div class="ugc-community">
+    <div class="uc-left">
+      <div class="uc-label">COMMUNITY TASTE</div>
+      <div class="uc-count">2,846</div>
+      <div class="uc-unit">张城市味觉卡已生成</div>
+    </div>
+    <div class="uc-right">
+      <div class="uc-city"><span class="uc-dot" style="background:#58b56e"></span>广州 / 苦</div>
+      <div class="uc-city"><span class="uc-dot" style="background:#ee8e51"></span>上海 / 甜</div>
+      <div class="uc-city"><span class="uc-dot" style="background:#e43e32"></span>重庆 / 辣</div>
+      <div class="uc-city"><span class="uc-dot" style="background:#d6a938"></span>山西 / 酸</div>
+    </div>
+    <div class="uc-note">Your card becomes part of the city.</div>
+  </div>
+  <!-- 底部二次行动 -->
+  <div class="ugc-bottom-cta">
+    <h3>WHAT DOES YOUR CITY TASTE LIKE?</h3>
+    <div class="ub-btns">
+      <button class="ub-btn" onclick="resetUgc()">CREATE ANOTHER CARD →</button>
     </div>
   </div>
 </section>
@@ -1097,19 +1284,104 @@ const showResult=()=>{
 };
 renderQuestion();
 
-/* UGC */
-document.getElementById('generate').onclick=()=>{
-  const city=document.getElementById('ugcCity').value||'我的城市';
-  const taste=document.getElementById('ugcTaste').value;
-  const quote=document.getElementById('ugcQuote').value||'城市有自己的味道。';
-  document.getElementById('shareCity').textContent=city;
-  document.getElementById('shareTaste').textContent=taste;
-  document.getElementById('shareQuote').textContent='"'+quote+'"';
-  root.style.setProperty('--accent',theme[taste].color);
-  document.getElementById('shareCard').style.background=`linear-gradient(135deg,${theme[taste].color},#171717)`;
-  toast('城市味觉卡已更新');
+/* UGC - MY CITY MY TASTE */
+let ugcCurrentTaste='辣';
+const ugcTasteData={
+  苦:{bg:'tc-bg-bitter',personality:'CALM',cityEn:'GUANGZHOU',elements:['🍵','🌿','🏙️','💧','🍃']},
+  甜:{bg:'tc-bg-sweet',personality:'DREAMY',cityEn:'SHANGHAI',elements:['🍰','🍬','🌆','✨','🥟']},
+  辣:{bg:'tc-bg-spicy',personality:'ENERGETIC',cityEn:'CHONGQING',elements:['🌶️','🔥','🏔️','🍲','✨']},
+  酸:{bg:'tc-bg-sour',personality:'TIMELESS',cityEn:'SHANXI',elements:['🏺','🍜','🏮','🏯','🌾']}
 };
-document.getElementById('shareResult').onclick=()=>toast('可接入 Canvas / html2canvas 导出图片');
+function setUgcCity(city){
+  document.getElementById('ugcCity').value=city;
+  updateUgcPreview();
+}
+function selectUgcTaste(el,taste){
+  document.querySelectorAll('.taste-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  ugcCurrentTaste=taste;
+  root.style.setProperty('--accent',theme[taste].color);
+  updateUgcPreview();
+}
+function updateUgcPreview(){
+  const city=document.getElementById('ugcCity').value.trim()||'我的城市';
+  const quote=document.getElementById('ugcQuote').value.trim()||'城市有自己的味道。';
+  const data=ugcTasteData[ugcCurrentTaste];
+  document.getElementById('tcTaste').textContent=ugcCurrentTaste;
+  document.getElementById('tcCity').textContent=city;
+  document.getElementById('tcCityEn').textContent=data.cityEn;
+  document.getElementById('tcPersonality').textContent=data.personality;
+  document.getElementById('tcQuote').textContent='"'+quote+'"';
+  document.getElementById('tcBg').className='tc-bg '+data.bg;
+  /* 更新装饰元素 */
+  const els=document.querySelectorAll('#tcElements .tc-el');
+  data.elements.forEach((emoji,i)=>{if(els[i])els[i].textContent=emoji;});
+}
+function generateUgcCard(){
+  const btn=document.getElementById('ugcGenerate');
+  const card=document.getElementById('tasteCard');
+  btn.classList.add('generating');
+  btn.textContent='GENERATING...';
+  card.classList.add('generating');
+  updateUgcPreview();
+  setTimeout(()=>{
+    btn.classList.remove('generating');
+    btn.textContent='GENERATE MY CITY';
+    card.classList.remove('generating');
+    document.getElementById('ugcActions').style.display='flex';
+    document.getElementById('ugcActionsHint').style.display='block';
+    toast('YOUR CITY TASTE IS READY');
+  },1000);
+}
+function saveUgcCard(){toast('可接入 html2canvas 导出图片保存');}
+function copyUgcText(){
+  const city=document.getElementById('ugcCity').value.trim()||'我的城市';
+  const quote=document.getElementById('ugcQuote').value.trim()||'城市有自己的味道。';
+  const text=`我的城市是${city}，\n我的味道是${ugcCurrentTaste}。\n${quote}\n#城市有自己的味道 #TASTE THE CITY #抖音生活服务`;
+  navigator.clipboard.writeText(text).then(()=>toast('文案已复制到剪贴板')).catch(()=>toast('复制失败，请手动复制'));
+}
+function shareUgc(){
+  const city=document.getElementById('ugcCity').value.trim()||'我的城市';
+  toast('CITY TASTE CARD READY · 已生成你的城市味觉卡');
+  copyUgcText();
+}
+function resetUgc(){
+  document.getElementById('ugcCity').value='重庆';
+  document.getElementById('ugcQuote').value='生活就要滚烫一点。';
+  document.querySelectorAll('.taste-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.ts-spicy').classList.add('active');
+  ugcCurrentTaste='辣';
+  root.style.setProperty('--accent',theme['辣'].color);
+  document.getElementById('ugcActions').style.display='none';
+  document.getElementById('ugcActionsHint').style.display='none';
+  updateUgcPreview();
+  document.getElementById('ugc').scrollIntoView({behavior:'smooth'});
+}
+/* 卡片视差 */
+(function(){
+  const wrap=document.getElementById('tasteCardWrap');
+  const card=document.getElementById('tasteCard');
+  if(!wrap||!card)return;
+  wrap.addEventListener('mousemove',e=>{
+    const r=wrap.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(1000px) rotateY(${x*6}deg) rotateX(${-y*6}deg) scale(1.03)`;
+    const els=card.querySelectorAll('.tc-el');
+    els.forEach((el,i)=>{
+      const speed=(i+1)*3;
+      el.style.transform=`translate(${x*speed}px,${y*speed}px)`;
+    });
+  });
+  wrap.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+    card.querySelectorAll('.tc-el').forEach(el=>el.style.transform='');
+  });
+})();
+document.getElementById('shareResult').onclick=()=>{
+  document.getElementById('ugc').scrollIntoView({behavior:'smooth'});
+  setTimeout(generateUgcCard,600);
+};
 
 /* Case index dots */
 const dots=$$('.case-index a');
