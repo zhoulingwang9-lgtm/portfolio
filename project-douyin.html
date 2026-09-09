@@ -1436,15 +1436,12 @@ function initBmap(city,shops){
     bmapInstance.addControl(new BMap.NavigationControl());
     loading.classList.add('hidden');
     /* 为每个店铺生成标记点 */
-    const points=[];
     shops.forEach((s,i)=>{
       const offsetLng=(Math.random()-0.5)*0.06;
       const offsetLat=(Math.random()-0.5)*0.05;
       const pt=new BMap.Point(center[0]+offsetLng,center[1]+offsetLat);
-      points.push(pt);
-      /* 自定义标注 */
-      const labelContent=`<div style="background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;transform:translateY(-6px)">${i+1}. ${s.name}</div>`;
       const marker=new BMap.Marker(pt);
+      const labelContent=`<div style="background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;transform:translateY(-6px)">${i+1}. ${s.name}</div>`;
       const label=new BMap.Label(labelContent,{offset:new BMap.Size(-20,-30)});
       label.setStyle({border:'none',background:'transparent',padding:'0'});
       marker.setLabel(label);
@@ -1456,12 +1453,8 @@ function initBmap(city,shops){
       bmapInstance.addOverlay(marker);
       bmapMarkers.push(marker);
     });
-    /* 自适应视野 */
-    if(points.length>0){
-      bmapInstance.setViewport(points);
-    }
   }catch(e){
-    loading.textContent='地图加载失败：'+e.message;
+    loading.textContent='百度地图加载失败，请检查 AK 是否有效且已授权当前域名（https://lbsyun.baidu.com/）';
   }
 }
 function panToShop(i){
