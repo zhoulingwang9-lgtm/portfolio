@@ -33,8 +33,10 @@ h1,h2,h3,p{margin-top:0}
   min-height:100vh;display:grid;grid-template-columns:1fr 1.15fr;gap:30px;
   align-items:center;padding-top:110px;
 }
-.hero-copy h1{font-size:clamp(70px,10vw,150px);line-height:.82;letter-spacing:-.08em;margin:20px 0 28px}
-.hero-copy h1 .taste{display:block;color:var(--accent);transition:color .35s}
+.hero-copy h1{font-size:clamp(70px,10vw,150px);line-height:.9;letter-spacing:-.06em;margin:20px 0 28px;display:flex;flex-wrap:wrap;gap:0 .12em}
+.hero-copy h1 .tc{transition:transform .3s,opacity .3s;display:inline-block}
+.hero-copy h1 .tc.dim{opacity:.25;transform:scale(.92)}
+.hero-copy h1 .tc.active{transform:scale(1.12)}
 .hero-copy p{max-width:520px;font-size:17px;line-height:1.8;color:#565650}
 .hero-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:28px}
 .pill{padding:9px 13px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff}
@@ -182,7 +184,7 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
 <section class="section hero" id="home">
   <div class="hero-copy reveal">
     <div class="eyebrow">DOUTUYIN LIFE SERVICE / INTERACTIVE CAMPAIGN</div>
-    <h1>酸甜<br><span class="taste" id="heroTaste">苦辣</span></h1>
+    <h1 class="hero-title"><span class="tc" style="color:#d6a938">酸</span><span class="tc" style="color:#ee8e51">甜</span><span class="tc" style="color:#58b56e">苦</span><span class="tc" style="color:#e43e32">辣</span></h1>
     <p>城市有自己的味道。以“酸、甜、苦、辣”为城市入口，把地方美食、城市文化、动态视觉与本地生活服务连接起来。</p>
     <div class="hero-meta">
       <span class="pill">VISUAL CAMPAIGN</span><span class="pill">MOTION</span><span class="pill">UI / UX</span><span class="pill">INTERACTION</span>
@@ -426,9 +428,15 @@ const theme={
 document.querySelectorAll('.taste-node').forEach(btn=>{
   btn.addEventListener('mouseenter',()=>{
     const t=btn.dataset.taste; root.style.setProperty('--accent',theme[t].color);
-    document.getElementById('heroTaste').textContent=t;
+    document.querySelectorAll('.hero-title .tc').forEach(c=>{
+      c.classList.toggle('active',c.textContent===t);
+      c.classList.toggle('dim',c.textContent!==t);
+    });
     document.getElementById('orbitTaste').textContent=t;
     document.getElementById('orbitCity').textContent=btn.dataset.city;
+  });
+  btn.addEventListener('mouseleave',()=>{
+    document.querySelectorAll('.hero-title .tc').forEach(c=>{c.classList.remove('active','dim');});
   });
   btn.addEventListener('click',()=>{
     document.getElementById('cities').scrollIntoView({behavior:'smooth'});
