@@ -289,12 +289,102 @@ h1,h2,h3,p{margin-top:0}
 .plan-item{display:grid;grid-template-columns:70px 1fr;gap:15px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
 .plan-item .pi-time{color:var(--accent);font-weight:800;font-size:13px}
 
-/* ===== 32 SERVICE ===== */
-.service-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:45px}
-.service-step{padding:22px 12px;text-align:center;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:12px;font-weight:800;position:relative}
-.service-step:not(:last-child):after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:900;z-index:1}
-.service-step .ss-icon{font-size:24px;margin-bottom:8px}
-.service-step .ss-en{display:block;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-top:4px}
+/* ===== 32 DOUYIN LIFE SERVICE ===== */
+.svc-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:40px 0 50px}
+.svc-flow-step{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 14px;background:#fff;border:1px solid var(--line);border-radius:16px;min-width:80px;transition:.25s}
+.svc-flow-step:hover{border-color:var(--accent);transform:translateY(-2px)}
+.sfs-num{font-size:9px;color:var(--muted);font-weight:800;letter-spacing:.1em}
+.sfs-icon{font-size:22px}
+.sfs-label{font-size:13px;font-weight:900;letter-spacing:.05em}
+.sfs-cn{font-size:10px;color:var(--muted)}
+.sfs-arrow{color:var(--accent);font-weight:900;font-size:16px}
+.svc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-bottom:50px}
+.svc-panel-title{font-size:11px;letter-spacing:.15em;color:var(--muted);font-weight:800;margin-bottom:16px;text-transform:uppercase}
+.svc-map-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
+.svc-map{position:relative;height:340px;border-radius:18px;background:linear-gradient(135deg,#f5f4ec,#ebe9df);overflow:hidden;border:1px solid var(--line)}
+.svc-map-svg{width:100%;height:100%;position:absolute;inset:0}
+.svc-node{position:absolute;cursor:pointer;transition:.3s;z-index:2}
+.node-dot{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:.3s}
+.svc-node.active .node-dot{transform:scale(1.4);box-shadow:0 0 0 6px rgba(0,0,0,.08)}
+.node-label{position:absolute;left:24px;top:-4px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:6px 12px;border-radius:10px;font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.1);display:flex;flex-direction:column;gap:2px;opacity:0;transform:translateX(-8px);transition:.3s}
+.svc-node:hover .node-label,.svc-node.active .node-label{opacity:1;transform:translateX(0)}
+.node-taste{font-size:9px;color:var(--muted);letter-spacing:.08em;font-weight:700}
+.node-gz{left:68%;top:72%}.node-gz .node-dot{background:#58b56e}
+.node-sh{left:80%;top:50%}.node-sh .node-dot{background:#ee8e51}
+.node-cq{left:56%;top:62%}.node-cq .node-dot{background:#e43e32}
+.node-sx{left:60%;top:38%}.node-sx .node-dot{background:#d6a938}
+.svc-city-info{margin-top:18px;padding:18px;background:var(--bg);border-radius:16px;border:1px solid var(--line)}
+.sci-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sci-city{font-size:22px;font-weight:900}
+.sci-personality{font-size:10px;letter-spacing:.2em;font-weight:800;padding:4px 10px;background:#fff;border-radius:999px;border:1px solid var(--line)}
+.sci-elements{display:flex;flex-wrap:wrap;gap:8px}
+.sci-el{font-size:12px;padding:6px 12px;background:#fff;border-radius:999px;border:1px solid var(--line);font-weight:600}
+.svc-search-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:20px}
+.svc-search-box{display:flex;align-items:center;gap:12px;padding:0 20px;height:60px;border:1px solid var(--line);border-radius:16px;background:#fafaf7;transition:.25s}
+.svc-search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent)18;background:#fff}
+.ss-icon{font-size:20px}
+.ss-input{flex:1;border:0;background:transparent;outline:none;font-size:16px;font-family:inherit}
+.svc-suggestions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ss-label{font-size:10px;color:var(--muted);letter-spacing:.1em;font-weight:800}
+.ss-chip{padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:12px;cursor:pointer;transition:.2s;font-weight:600}
+.ss-chip:hover{border-color:var(--accent);color:var(--accent)}
+.svc-filters{display:flex;flex-wrap:wrap;gap:8px}
+.sf-chip{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;cursor:pointer;transition:.2s;font-weight:700;letter-spacing:.03em}
+.sf-chip:hover{border-color:var(--accent)}
+.sf-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.svc-discovery{margin-bottom:50px}
+.svc-section-title{font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:20px;text-transform:uppercase}
+.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1);border-color:var(--accent)}
+.svc-card.hidden{display:none}
+.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.sc-city{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.08em}
+.sc-cat{font-size:9px;letter-spacing:.15em;font-weight:800;padding:3px 8px;background:var(--bg);border-radius:6px;color:var(--muted)}
+.sc-title{font-size:18px;font-weight:900;margin:0 0 8px}
+.sc-desc{font-size:13px;color:#666;line-height:1.6;margin:0 0 14px}
+.sc-meta{display:flex;gap:12px;font-size:11px;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
+.sc-discount{color:var(--accent);font-weight:700}
+.sc-cta{padding:10px 20px;border:0;border-radius:999px;background:#171717;color:#fff;font-size:12px;font-weight:800;cursor:pointer;transition:.25s;letter-spacing:.03em}
+.sc-cta:hover{background:var(--accent)}
+.svc-timeline{margin-bottom:50px}
+.timeline-track{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;padding:20px 0}
+.timeline-track:before{content:'';position:absolute;top:44px;left:5%;right:5%;height:2px;background:var(--line)}
+.tl-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative}
+.tl-time{font-size:13px;font-weight:900;color:var(--accent);margin-bottom:10px}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent);z-index:1;margin-bottom:14px}
+.tl-content{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;width:100%;box-sizing:border-box;transition:.25s}
+.tl-content:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tl-content h5{font-size:14px;font-weight:800;margin:0 0 4px}
+.tl-content p{font-size:11px;color:var(--muted);margin:0 0 8px}
+.tl-tag{font-size:9px;letter-spacing:.12em;font-weight:800;padding:3px 8px;background:var(--bg);border-radius:6px;color:var(--muted)}
+.svc-nearby{margin-bottom:20px}
+.nearby-list{display:flex;flex-direction:column;gap:10px}
+.nb-item{display:flex;align-items:center;gap:16px;padding:18px 24px;background:#fff;border:1px solid var(--line);border-radius:16px;transition:.25s}
+.nb-item:hover{border-color:var(--accent);transform:translateX(4px)}
+.nb-icon{font-size:28px;width:48px;height:48px;display:grid;place-items:center;background:var(--bg);border-radius:12px;flex-shrink:0}
+.nb-info{flex:1}
+.nb-info h5{font-size:15px;font-weight:800;margin:0 0 3px}
+.nb-info p{font-size:12px;color:var(--muted);margin:0}
+.nb-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-right:12px}
+.nb-dist{font-size:12px;font-weight:700;color:var(--muted)}
+.nb-discount{font-size:11px;font-weight:800;color:var(--accent);padding:3px 10px;background:var(--accent)15;border-radius:999px}
+.nb-cta{padding:10px 20px;border:0;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;cursor:pointer;transition:.25s;flex-shrink:0}
+.nb-cta:hover{filter:brightness(1.1)}
+@media(max-width:900px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc-cards{grid-template-columns:1fr 1fr}
+  .timeline-track{grid-template-columns:1fr 1fr}
+  .timeline-track:before{display:none}
+  .svc-flow{justify-content:center}
+  .sfs-arrow{display:none}
+}
+@media(max-width:560px){
+  .svc-cards{grid-template-columns:1fr}
+  .timeline-track{grid-template-columns:1fr}
+  .nb-item{flex-wrap:wrap}
+  .nb-meta{flex-direction:row;align-items:center;gap:10px}
+}
 
 /* ===== 33 UGC ===== */
 .ugc-hero{margin-bottom:50px}
@@ -954,16 +1044,256 @@ h1,h2,h3,p{margin-top:0}
 
 <!-- ===== 32 DOUYIN LIFE SERVICE ===== -->
 <section class="section reveal" id="service">
-  <div class="eyebrow">32 / DOUYIN LIFE SERVICE</div>
+  <div class="eyebrow">32 / DOUYIN LIFE SERVICE · FROM TASTE TO SERVICE</div>
   <h2 class="title-xl" style="margin-top:20px">FROM TASTE<br>TO SERVICE</h2>
-  <p class="lead" style="margin-top:20px">让 Campaign 不止停留在"好看"，而是把内容兴趣转化为真实城市消费。</p>
-  <div class="service-flow">
-    <div class="service-step"><div class="ss-icon">👁</div>SEE<span class="ss-en">看到内容</span></div>
-    <div class="service-step"><div class="ss-icon">🔍</div>SEARCH<span class="ss-en">搜索需求</span></div>
-    <div class="service-step"><div class="ss-icon">📍</div>DISCOVER<span class="ss-en">发现商家</span></div>
-    <div class="service-step"><div class="ss-icon">🛒</div>BUY<span class="ss-en">购买团购</span></div>
-    <div class="service-step"><div class="ss-icon">🚶</div>GO<span class="ss-en">到店体验</span></div>
-    <div class="service-step"><div class="ss-icon">📤</div>SHARE<span class="ss-en">分享内容</span></div>
+  <p class="lead" style="margin-top:20px;max-width:560px">让 Campaign 不止停留在"好看"，而是把内容兴趣转化为真实城市消费。<br><span style="color:var(--muted);font-size:13px">From city content to local lifestyle service and real-world experience.</span></p>
+
+  <!-- 用户路径 -->
+  <div class="svc-flow">
+    <div class="svc-flow-step"><span class="sfs-num">01</span><span class="sfs-icon">👁</span><span class="sfs-label">SEE</span><span class="sfs-cn">看到内容</span></div>
+    <div class="sfs-arrow">→</div>
+    <div class="svc-flow-step"><span class="sfs-num">02</span><span class="sfs-icon">🔍</span><span class="sfs-label">SEARCH</span><span class="sfs-cn">搜索需求</span></div>
+    <div class="sfs-arrow">→</div>
+    <div class="svc-flow-step"><span class="sfs-num">03</span><span class="sfs-icon">📍</span><span class="sfs-label">DISCOVER</span><span class="sfs-cn">发现商家</span></div>
+    <div class="sfs-arrow">→</div>
+    <div class="svc-flow-step"><span class="sfs-num">04</span><span class="sfs-icon">🛒</span><span class="sfs-label">BUY</span><span class="sfs-cn">购买团购</span></div>
+    <div class="sfs-arrow">→</div>
+    <div class="svc-flow-step"><span class="sfs-num">05</span><span class="sfs-icon">🚶</span><span class="sfs-label">GO</span><span class="sfs-cn">到店体验</span></div>
+    <div class="sfs-arrow">→</div>
+    <div class="svc-flow-step"><span class="sfs-num">06</span><span class="sfs-icon">📤</span><span class="sfs-label">SHARE</span><span class="sfs-cn">分享内容</span></div>
+  </div>
+
+  <!-- 城市服务地图 + 搜索 -->
+  <div class="svc-grid">
+    <!-- 左侧：城市服务地图 -->
+    <div class="svc-map-panel">
+      <div class="svc-panel-title">CITY SERVICE MAP / 城市服务地图</div>
+      <div class="svc-map" id="svcMap">
+        <!-- 简化中国地图 -->
+        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" class="svc-map-svg">
+          <path d="M100,60 L160,40 L230,30 L300,25 L370,30 L420,50 L450,80 L465,120 L470,160 L465,200 L455,240 L440,275 L420,305 L395,330 L365,345 L335,355 L305,365 L275,370 L245,365 L215,355 L185,340 L160,320 L140,295 L125,265 L115,230 L110,195 L112,160 L118,125 L130,95 L145,70 Z" fill="#e8e6dc" stroke="#cfcdc2" stroke-width="1"/>
+          <ellipse cx="340" cy="385" rx="18" ry="10" fill="#e8e6dc" stroke="#cfcdc2" stroke-width="1"/>
+        </svg>
+        <!-- 四城节点 -->
+        <div class="svc-node node-gz active" data-city="广州" data-taste="苦" data-color="#58b56e" data-personality="CALM" onclick="selectSvcCity(this)">
+          <div class="node-dot"></div>
+          <div class="node-label">广州<span class="node-taste">苦 · BITTER</span></div>
+        </div>
+        <div class="svc-node node-sh" data-city="上海" data-taste="甜" data-color="#ee8e51" data-personality="DREAMY" onclick="selectSvcCity(this)">
+          <div class="node-dot"></div>
+          <div class="node-label">上海<span class="node-taste">甜 · SWEET</span></div>
+        </div>
+        <div class="svc-node node-cq" data-city="重庆" data-taste="辣" data-color="#e43e32" data-personality="ENERGETIC" onclick="selectSvcCity(this)">
+          <div class="node-dot"></div>
+          <div class="node-label">重庆<span class="node-taste">辣 · SPICY</span></div>
+        </div>
+        <div class="svc-node node-sx" data-city="山西" data-taste="酸" data-color="#d6a938" data-personality="TIMELESS" onclick="selectSvcCity(this)">
+          <div class="node-dot"></div>
+          <div class="node-label">山西<span class="node-taste">酸 · SOUR</span></div>
+        </div>
+      </div>
+      <!-- 城市信息 -->
+      <div class="svc-city-info" id="svcCityInfo">
+        <div class="sci-top">
+          <span class="sci-city" id="sciCity">重庆</span>
+          <span class="sci-personality" id="sciPersonality">ENERGETIC</span>
+        </div>
+        <div class="sci-elements" id="sciElements">
+          <span class="sci-el">🍲 火锅</span>
+          <span class="sci-el">🌶️ 辣椒</span>
+          <span class="sci-el">🏙️ 洪崖洞</span>
+          <span class="sci-el">🌃 夜生活</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧：搜索 + 筛选 -->
+    <div class="svc-search-panel">
+      <div class="svc-panel-title">SEARCH / 搜索体验</div>
+      <div class="svc-search-box">
+        <span class="ss-icon">🔍</span>
+        <input class="ss-input" id="svcSearchInput" placeholder="What do you want to experience?" oninput="filterSvcCards()">
+      </div>
+      <div class="svc-suggestions">
+        <span class="ss-label">SUGGESTED</span>
+        <button class="ss-chip" onclick="setSvcSearch('重庆火锅')">重庆火锅</button>
+        <button class="ss-chip" onclick="setSvcSearch('广州凉茶')">广州凉茶</button>
+        <button class="ss-chip" onclick="setSvcSearch('上海本帮菜')">上海本帮菜</button>
+        <button class="ss-chip" onclick="setSvcSearch('山西老陈醋')">山西老陈醋</button>
+      </div>
+      <div class="svc-filters">
+        <button class="sf-chip active" data-filter="all" onclick="setSvcFilter(this,'all')">ALL</button>
+        <button class="sf-chip" data-filter="food" onclick="setSvcFilter(this,'food')">FOOD 美食</button>
+        <button class="sf-chip" data-filter="play" onclick="setSvcFilter(this,'play')">PLAY 玩乐</button>
+        <button class="sf-chip" data-filter="night" onclick="setSvcFilter(this,'night')">NIGHT 夜游</button>
+        <button class="sf-chip" data-filter="culture" onclick="setSvcFilter(this,'culture')">CULTURE 文化</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCAL DISCOVERY 生活方式卡片 -->
+  <div class="svc-discovery">
+    <div class="svc-section-title">LOCAL DISCOVERY / 本地发现</div>
+    <div class="svc-cards" id="svcCards">
+      <div class="svc-card" data-category="food" data-city="重庆" data-search="火锅">
+        <div class="sc-top"><span class="sc-city">重庆</span><span class="sc-cat">FOOD</span></div>
+        <h4 class="sc-title">山城老火锅</h4>
+        <p class="sc-desc">九宫格牛油锅底，毛肚鸭肠现涮，重庆人的夜生活从这里开始。</p>
+        <div class="sc-meta"><span>📍 0.8km</span><span>💰 ¥98/人</span><span class="sc-discount">🔥 团购8.5折</span></div>
+        <button class="sc-cta">EXPLORE →</button>
+      </div>
+      <div class="svc-card" data-category="night" data-city="重庆" data-search="洪崖洞">
+        <div class="sc-top"><span class="sc-city">重庆</span><span class="sc-cat">NIGHT</span></div>
+        <h4 class="sc-title">洪崖洞夜景</h4>
+        <p class="sc-desc">千厮门大桥视角，吊脚楼群灯光璀璨，现实版千与千寻。</p>
+        <div class="sc-meta"><span>📍 1.2km</span><span>💰 免费</span><span class="sc-discount">⭐ 必打卡</span></div>
+        <button class="sc-cta">EXPLORE →</button>
+      </div>
+      <div class="svc-card" data-category="food" data-city="广州" data-search="凉茶">
+        <div class="sc-top"><span class="sc-city">广州</span><span class="sc-cat">FOOD</span></div>
+        <h4 class="sc-title">老字号凉茶铺</h4>
+        <p class="sc-desc">二十四味凉茶，苦尽甘来，岭南人消暑祛湿的日常智慧。</p>
+        <div class="sc-meta"><span>📍 0.5km</span><span>💰 ¥12/杯</span><span class="sc-discount">🌿 手工现熬</span></div>
+        <button class="sc-cta">EXPLORE →</button>
+      </div>
+      <div class="svc-card" data-category="culture" data-city="广州" data-search="早茶">
+        <div class="sc-top"><span class="sc-city">广州</span><span class="sc-cat">CULTURE</span></div>
+        <h4 class="sc-title">百年茶楼早茶</h4>
+        <p class="sc-desc">一盅两件，虾饺烧卖肠粉，广州人的早晨从茶楼开始。</p>
+        <div class="sc-meta"><span>📍 1.0km</span><span>💰 ¥75/人</span><span class="sc-discount">🍵 全天茶市</span></div>
+        <button class="sc-cta">EXPLORE →</button>
+      </div>
+      <div class="svc-card" data-category="food" data-city="上海" data-search="生煎">
+        <div class="sc-top"><span class="sc-city">上海</span><span class="sc-cat">FOOD</span></div>
+        <h4 class="sc-title">本帮生煎包</h4>
+        <p class="sc-desc">底脆汁多，皮薄馅大，上海弄堂里的甜咸滋味。</p>
+        <div class="sc-meta"><span>📍 0.6km</span><span>💰 ¥20/份</span><span class="sc-discount">🥟 现包现煎</span></div>
+        <button class="sc-cta">EXPLORE →</button>
+      </div>
+      <div class="svc-card" data-category="culture" data-city="山西" data-search="陈醋">
+        <div class="sc-top"><span class="sc-city">山西</span><span class="sc-cat">CULTURE</span></div>
+        <h4 class="sc-title">东湖醋园体验</h4>
+        <p class="sc-desc">参观千年酿醋工艺，品尝老陈醋，了解山西醋文化。</p>
+        <div class="sc-meta"><span>📍 2.5km</span><span>💰 免费参观</span><span class="sc-discount">🏺 非遗传承</span></div>
+        <button class="sc-cta">EXPLORE →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CITY EXPERIENCE PLAN 时间线 -->
+  <div class="svc-timeline">
+    <div class="svc-section-title">CITY EXPERIENCE PLAN / 48H 城市计划 · <span id="timelineCity">重庆</span></div>
+    <div class="timeline-track" id="timelineTrack">
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h5>火锅晚餐</h5>
+          <p>珮姐老火锅 · 解放碑店</p>
+          <span class="tl-tag">FOOD</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h5>山城步道漫游</h5>
+          <p>第三步道 · 老重庆记忆</p>
+          <span class="tl-tag">PLAY</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">22:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h5>洪崖洞夜景</h5>
+          <p>千厮门大桥 · 最佳观景位</p>
+          <span class="tl-tag">NIGHT</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">23:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h5>南滨路江景</h5>
+          <p>江边散步 · 夜啤酒</p>
+          <span class="tl-tag">NIGHT</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">次日10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h5>重庆小面</h5>
+          <p>花市豌杂面 · 必吃榜</p>
+          <span class="tl-tag">FOOD</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">次日14:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h5>磁器口古镇</h5>
+          <p>老街漫游 · 陈麻花</p>
+          <span class="tl-tag">CULTURE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEARBY NOW 附近推荐 -->
+  <div class="svc-nearby">
+    <div class="svc-section-title">NEARBY NOW / 附近推荐 · <span id="nearbyCity">重庆</span></div>
+    <div class="nearby-list" id="nearbyList">
+      <div class="nb-item">
+        <div class="nb-icon">🍲</div>
+        <div class="nb-info">
+          <h5>周师兄大刀腰片火锅</h5>
+          <p>火锅 · 招牌腰片 · 人均¥110</p>
+        </div>
+        <div class="nb-meta">
+          <span class="nb-dist">1.2km</span>
+          <span class="nb-discount">团购7.8折</span>
+        </div>
+        <button class="nb-cta">GO →</button>
+      </div>
+      <div class="nb-item">
+        <div class="nb-icon">🌶️</div>
+        <div class="nb-info">
+          <h5>石灰市李串串</h5>
+          <p>串串香 · 网红店 · 人均¥65</p>
+        </div>
+        <div class="nb-meta">
+          <span class="nb-dist">0.7km</span>
+          <span class="nb-discount">买一送一</span>
+        </div>
+        <button class="nb-cta">GO →</button>
+      </div>
+      <div class="nb-item">
+        <div class="nb-icon">🌃</div>
+        <div class="nb-info">
+          <h5>洪崖洞民俗风貌区</h5>
+          <p>景点 · 吊脚楼 · 免费开放</p>
+        </div>
+        <div class="nb-meta">
+          <span class="nb-dist">1.8km</span>
+          <span class="nb-discount">⭐ 4.8分</span>
+        </div>
+        <button class="nb-cta">GO →</button>
+      </div>
+      <div class="nb-item">
+        <div class="nb-icon">🍜</div>
+        <div class="nb-info">
+          <h5>花市豌杂面</h5>
+          <p>小面 · 必吃榜 · 人均¥15</p>
+        </div>
+        <div class="nb-meta">
+          <span class="nb-dist">0.3km</span>
+          <span class="nb-discount">🔥 热门</span>
+        </div>
+        <button class="nb-cta">GO →</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1382,6 +1712,139 @@ document.getElementById('shareResult').onclick=()=>{
   document.getElementById('ugc').scrollIntoView({behavior:'smooth'});
   setTimeout(generateUgcCard,600);
 };
+
+/* DOUYIN LIFE SERVICE - interactive */
+const svcCityData={
+  广州:{color:'#58b56e',personality:'CALM',elements:['🍵 凉茶','🌿 植物','🏙️ 广州塔','💧 珠江','🍤 早茶','🏛️ 岭南建筑'],
+    timeline:[
+      {time:'08:00',title:'茶楼早茶',desc:'陶陶居 · 第十甫店',tag:'FOOD'},
+      {time:'11:00',title:'沙面漫步',desc:'欧陆风情 · 拍照打卡',tag:'PLAY'},
+      {time:'14:00',title:'凉茶铺体验',desc:'黄振龙凉茶 · 二十四味',tag:'CULTURE'},
+      {time:'17:00',title:'珠江夜游',desc:'天字码头 · 游船',tag:'NIGHT'},
+      {time:'19:00',title:'广州塔夜景',desc:'小蛮腰 · 灯光秀',tag:'NIGHT'},
+      {time:'次日10:00',title:'永庆坊',desc:'西关大屋 · 粤剧博物馆',tag:'CULTURE'}
+    ],
+    nearby:[
+      {icon:'🍵',title:'黄振龙凉茶(上下九店)',desc:'凉茶 · 老字号 · 人均¥12',dist:'0.3km',discount:'团购9折'},
+      {icon:'🍤',title:'点都德(上下九店)',desc:'早茶 · 全天茶市 · 人均¥75',dist:'0.9km',discount:'⭐ 4.7分'},
+      {icon:'🏙️',title:'广州塔',desc:'景点 · 观光 · 门票¥150',dist:'2.5km',discount:'🎫 线上优惠'},
+      {icon:'🏛️',title:'陈家祠',desc:'文化 · 岭南建筑 · 门票¥10',dist:'1.8km',discount:'🏛️ 学生半价'}
+    ]},
+  上海:{color:'#ee8e51',personality:'DREAMY',elements:['🍰 甜点','🍬 糖果','🌆 夜景','✨ 灯光','🥟 点心','🏙️ 东方明珠'],
+    timeline:[
+      {time:'09:00',title:'生煎早餐',desc:'大壶春 · 四川中路店',tag:'FOOD'},
+      {time:'11:00',title:'豫园漫游',desc:'南翔馒头店 · 九曲桥',tag:'CULTURE'},
+      {time:'14:00',title:'外滩漫步',desc:'万国建筑 · 江景',tag:'PLAY'},
+      {time:'17:00',title:'本帮菜晚餐',desc:'老正兴 · 福州路店',tag:'FOOD'},
+      {time:'19:30',title:'外滩夜景',desc:'灯光秀 · 浦江游览',tag:'NIGHT'},
+      {time:'21:00',title:'新天地',desc:'酒吧街 · 夜生活',tag:'NIGHT'}
+    ],
+    nearby:[
+      {icon:'🥟',title:'南翔馒头店(豫园店)',desc:'小笼包 · 百年老店 · 人均¥60',dist:'0.8km',discount:'🔥 排队王'},
+      {icon:'🍰',title:'沈大成(南京东路店)',desc:'点心 · 条头糕 · 人均¥30',dist:'0.4km',discount:'🍵 老字号'},
+      {icon:'🌆',title:'外滩',desc:'景点 · 免费 · 万国建筑',dist:'1.2km',discount:'⭐ 必打卡'},
+      {icon:'🏙️',title:'东方明珠',desc:'景点 · 观光 · 门票¥160',dist:'2.0km',discount:'🎫 团购优惠'}
+    ]},
+  重庆:{color:'#e43e32',personality:'ENERGETIC',elements:['🌶️ 辣椒','🔥 火焰','🏔️ 山城','🍲 火锅','✨ 星光','🌃 夜景'],
+    timeline:[
+      {time:'18:00',title:'火锅晚餐',desc:'珮姐老火锅 · 解放碑店',tag:'FOOD'},
+      {time:'20:00',title:'山城步道',desc:'第三步道 · 老重庆记忆',tag:'PLAY'},
+      {time:'22:00',title:'洪崖洞夜景',desc:'千厮门大桥 · 最佳观景位',tag:'NIGHT'},
+      {time:'23:30',title:'南滨路江景',desc:'江边散步 · 夜啤酒',tag:'NIGHT'},
+      {time:'次日10:00',title:'重庆小面',desc:'花市豌杂面 · 必吃榜',tag:'FOOD'},
+      {time:'次日14:00',title:'磁器口古镇',desc:'老街漫游 · 陈麻花',tag:'CULTURE'}
+    ],
+    nearby:[
+      {icon:'🍲',title:'周师兄大刀腰片火锅',desc:'火锅 · 招牌腰片 · 人均¥110',dist:'1.2km',discount:'团购7.8折'},
+      {icon:'🌶️',title:'石灰市李串串',desc:'串串香 · 网红店 · 人均¥65',dist:'0.7km',discount:'买一送一'},
+      {icon:'🌃',title:'洪崖洞民俗风貌区',desc:'景点 · 吊脚楼 · 免费',dist:'1.8km',discount:'⭐ 4.8分'},
+      {icon:'🍜',title:'花市豌杂面',desc:'小面 · 必吃榜 · 人均¥15',dist:'0.3km',discount:'🔥 热门'}
+    ]},
+  山西:{color:'#d6a938',personality:'TIMELESS',elements:['🏺 醋坛','🍜 面食','🏮 红灯笼','🏯 古城墙','🌾 麦田','🏛️ 古建筑'],
+    timeline:[
+      {time:'08:00',title:'刀削面早餐',desc:'大同刀削面 · 解放路店',tag:'FOOD'},
+      {time:'10:00',title:'东湖醋园',desc:'酿醋工艺 · 醋文化博物馆',tag:'CULTURE'},
+      {time:'13:00',title:'平遥牛肉',desc:'冠云平遥牛肉 · 专卖店',tag:'FOOD'},
+      {time:'15:00',title:'古城墙漫步',desc:'太原古城 · 骑行',tag:'PLAY'},
+      {time:'17:00',title:'晋祠游览',desc:'古建筑 · 周柏唐槐',tag:'CULTURE'},
+      {time:'19:00',title:'柳巷夜市',desc:'小吃街 · 本地风味',tag:'NIGHT'}
+    ],
+    nearby:[
+      {icon:'🍜',title:'山西老面馆(柳巷店)',desc:'面食 · 地道山西味 · 人均¥25',dist:'0.3km',discount:'🔥 本地人推荐'},
+      {icon:'🏺',title:'东湖醋园(马道坡店)',desc:'醋文化 · 免费参观 · 品鉴',dist:'3.0km',discount:'🏺 非遗传承'},
+      {icon:'🏯',title:'太原古城',desc:'景点 · 古城墙 · 免费',dist:'2.2km',discount:'⭐ 4.6分'},
+      {icon:'🥩',title:'冠云平遥牛肉',desc:'特产 · 中华老字号 · ¥58/斤',dist:'1.5km',discount:'🎁 礼盒装'}
+    ]}
+};
+let svcActiveFilter='all';
+function selectSvcCity(el){
+  document.querySelectorAll('.svc-node').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+  const city=el.dataset.city;
+  const data=svcCityData[city];
+  root.style.setProperty('--accent',data.color);
+  document.getElementById('sciCity').textContent=city;
+  document.getElementById('sciPersonality').textContent=data.personality;
+  document.getElementById('sciElements').innerHTML=data.elements.map(e=>`<span class="sci-el">${e}</span>`).join('');
+  document.getElementById('timelineCity').textContent=city;
+  document.getElementById('nearbyCity').textContent=city;
+  /* 更新时间线 */
+  document.getElementById('timelineTrack').innerHTML=data.timeline.map(t=>`
+    <div class="tl-item">
+      <div class="tl-time">${t.time}</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h5>${t.title}</h5>
+        <p>${t.desc}</p>
+        <span class="tl-tag">${t.tag}</span>
+      </div>
+    </div>
+  `).join('');
+  /* 更新附近推荐 */
+  document.getElementById('nearbyList').innerHTML=data.nearby.map(n=>`
+    <div class="nb-item">
+      <div class="nb-icon">${n.icon}</div>
+      <div class="nb-info">
+        <h5>${n.title}</h5>
+        <p>${n.desc}</p>
+      </div>
+      <div class="nb-meta">
+        <span class="nb-dist">${n.dist}</span>
+        <span class="nb-discount">${n.discount}</span>
+      </div>
+      <button class="nb-cta">GO →</button>
+    </div>
+  `).join('');
+  toast('已切换至 '+city+' · '+data.personality);
+}
+function setSvcSearch(text){
+  document.getElementById('svcSearchInput').value=text;
+  filterSvcCards();
+}
+function filterSvcCards(){
+  const q=document.getElementById('svcSearchInput').value.trim().toLowerCase();
+  document.querySelectorAll('.svc-card').forEach(card=>{
+    const matchFilter=svcActiveFilter==='all'||card.dataset.category===svcActiveFilter;
+    const matchSearch=!q||card.textContent.toLowerCase().includes(q)||card.dataset.search.toLowerCase().includes(q)||card.dataset.city.toLowerCase().includes(q);
+    card.classList.toggle('hidden',!(matchFilter&&matchSearch));
+  });
+}
+function setSvcFilter(el,filter){
+  document.querySelectorAll('.sf-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  svcActiveFilter=filter;
+  filterSvcCards();
+}
+/* EXPLORE / GO 按钮跳转抖音 */
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('sc-cta')||e.target.classList.contains('nb-cta')){
+    const card=e.target.closest('.svc-card')||e.target.closest('.nb-item');
+    if(card){
+      const title=card.querySelector('h4,h5')?.textContent||'';
+      window.open('https://www.douyin.com/search/'+encodeURIComponent(title+' 团购'),'_blank');
+    }
+  }
+});
 
 /* Case index dots */
 const dots=$$('.case-index a');
