@@ -1405,8 +1405,8 @@ function showCityMap(city,food){
     </div>
   `).join('');
   overlay.classList.add('show');
-  /* 初始化百度地图 */
-  initBmap(city,shops);
+  /* 初始化百度地图（延迟确保容器已渲染） */
+  setTimeout(function(){initBmap(city,shops);},150);
   toast('已跳转 '+city+' 当地地图，找到 '+shops.length+' 家'+food+'店铺');
 }
 /* 城市经纬度 */
