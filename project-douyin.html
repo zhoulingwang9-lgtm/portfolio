@@ -332,6 +332,24 @@ h1,h2,h3,p{margin-top:0}
 .sf-chip{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;cursor:pointer;transition:.2s;font-weight:700;letter-spacing:.03em}
 .sf-chip:hover{border-color:var(--accent)}
 .sf-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* 搜索结果 */
+.svc-search-results{border-top:1px solid var(--line);padding-top:16px;margin-top:4px}
+.ssr-header{display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.ssr-count{font-size:20px;font-weight:900;color:var(--accent)}
+.ssr-label{font-size:12px;color:var(--muted);font-weight:600}
+.ssr-clear{margin-left:auto;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:11px;cursor:pointer;font-weight:700;transition:.2s}
+.ssr-clear:hover{border-color:var(--accent);color:var(--accent)}
+.ssr-list{display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto}
+.ssr-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:14px;border:1px solid transparent;cursor:pointer;transition:.2s}
+.ssr-item:hover{background:#fff;border-color:var(--accent);transform:translateX(3px)}
+.ssr-item-icon{font-size:24px;width:40px;height:40px;display:grid;place-items:center;background:#fff;border-radius:10px;flex-shrink:0}
+.ssr-item-info{flex:1;min-width:0}
+.ssr-item-info h5{font-size:13px;font-weight:800;margin:0 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ssr-item-info p{font-size:11px;color:var(--muted);margin:0}
+.ssr-item-meta{text-align:right;flex-shrink:0}
+.ssr-item-price{font-size:13px;font-weight:900;color:var(--accent)}
+.ssr-item-dist{font-size:10px;color:var(--muted)}
+.ssr-empty{padding:24px;text-align:center;color:var(--muted);font-size:13px}
 .svc-discovery{margin-bottom:50px}
 .svc-section-title{font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:20px;text-transform:uppercase}
 .svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -1128,6 +1146,15 @@ h1,h2,h3,p{margin-top:0}
         <button class="sf-chip" data-filter="night" onclick="setSvcFilter(this,'night')">NIGHT 夜游</button>
         <button class="sf-chip" data-filter="culture" onclick="setSvcFilter(this,'culture')">CULTURE 文化</button>
       </div>
+      <!-- 搜索结果 -->
+      <div class="svc-search-results" id="svcSearchResults" style="display:none">
+        <div class="ssr-header">
+          <span class="ssr-count" id="ssrCount">0</span>
+          <span class="ssr-label">个结果</span>
+          <button class="ssr-clear" onclick="clearSvcSearch()">✕ 清除</button>
+        </div>
+        <div class="ssr-list" id="ssrList"></div>
+      </div>
     </div>
   </div>
 
@@ -1821,13 +1848,79 @@ function setSvcSearch(text){
   document.getElementById('svcSearchInput').value=text;
   filterSvcCards();
 }
+function clearSvcSearch(){
+  document.getElementById('svcSearchInput').value='';
+  filterSvcCards();
+}
+/* 产品数据库 */
+const svcProducts=[
+  {icon:'🍲',name:'珮姐老火锅(解放碑店)',desc:'重庆火锅 · 招牌毛肚 · 必吃榜',city:'重庆',cat:'food',price:'¥118/人',dist:'0.6km',rating:'4.8',tags:['火锅','重庆','麻辣','毛肚']},
+  {icon:'🍲',name:'周师兄大刀腰片火锅',desc:'火锅 · 招牌腰片 · 网红店',city:'重庆',cat:'food',price:'¥110/人',dist:'1.2km',rating:'4.7',tags:['火锅','重庆','腰片']},
+  {icon:'🍜',name:'花市豌杂面',desc:'小面 · 必吃榜 · 本地人推荐',city:'重庆',cat:'food',price:'¥15/碗',dist:'0.3km',rating:'4.9',tags:['小面','重庆','豌杂']},
+  {icon:'🌶️',name:'石灰市李串串',desc:'串串香 · 网红店 · 深夜食堂',city:'重庆',cat:'food',price:'¥65/人',dist:'0.7km',rating:'4.6',tags:['串串','重庆','辣']},
+  {icon:'🌃',name:'洪崖洞民俗风貌区',desc:'景点 · 吊脚楼 · 免费开放',city:'重庆',cat:'night',price:'免费',dist:'1.8km',rating:'4.8',tags:['洪崖洞','重庆','夜景','吊脚楼']},
+  {icon:'🏔️',name:'磁器口古镇',desc:'古镇 · 陈麻花 · 免费',city:'重庆',cat:'culture',price:'免费',dist:'5.2km',rating:'4.5',tags:['磁器口','重庆','古镇','文化']},
+  {icon:'🚶',name:'山城第三步道',desc:'步道 · 老重庆记忆 · 免费',city:'重庆',cat:'play',price:'免费',dist:'1.0km',rating:'4.6',tags:['步道','重庆','山城']},
+  {icon:'🍵',name:'黄振龙凉茶(上下九店)',desc:'凉茶 · 老字号 · 二十四味',city:'广州',cat:'food',price:'¥12/杯',dist:'0.3km',rating:'4.5',tags:['凉茶','广州','苦','二十四味']},
+  {icon:'🥟',name:'点都德(上下九店)',desc:'早茶 · 全天茶市 · 虾饺烧卖',city:'广州',cat:'food',price:'¥75/人',dist:'0.9km',rating:'4.7',tags:['早茶','广州','点心','虾饺']},
+  {icon:'🥟',name:'陶陶居(第十甫店)',desc:'茶楼 · 百年老字号 · 粤菜',city:'广州',cat:'food',price:'¥88/人',dist:'0.5km',rating:'4.6',tags:['茶楼','广州','早茶','粤菜']},
+  {icon:'🏙️',name:'广州塔',desc:'景点 · 小蛮腰 · 观光',city:'广州',cat:'night',price:'¥150',dist:'2.5km',rating:'4.8',tags:['广州塔','广州','夜景','地标']},
+  {icon:'🏛️',name:'陈家祠',desc:'文化 · 岭南建筑 · 砖雕木雕',city:'广州',cat:'culture',price:'¥10',dist:'1.8km',rating:'4.7',tags:['陈家祠','广州','岭南','文化']},
+  {icon:'🌊',name:'珠江夜游(天字码头)',desc:'游船 · 江景 · 夜景',city:'广州',cat:'play',price:'¥88',dist:'1.5km',rating:'4.5',tags:['珠江','广州','游船','夜游']},
+  {icon:'🥟',name:'南翔馒头店(豫园店)',desc:'小笼包 · 百年老店 · 蟹粉',city:'上海',cat:'food',price:'¥60/人',dist:'0.8km',rating:'4.6',tags:['小笼包','上海','豫园','点心']},
+  {icon:'🥟',name:'大壶春(四川中路店)',desc:'生煎 · 老字号 · 鲜肉生煎',city:'上海',cat:'food',price:'¥20/份',dist:'0.3km',rating:'4.7',tags:['生煎','上海','本帮菜']},
+  {icon:'🍰',name:'沈大成(南京东路店)',desc:'点心 · 条头糕 · 老字号',city:'上海',cat:'food',price:'¥30/人',dist:'0.4km',rating:'4.5',tags:['点心','上海','条头糕','甜']},
+  {icon:'🍖',name:'老正兴(福州路店)',desc:'本帮菜 · 红烧肉 · 老字号',city:'上海',cat:'food',price:'¥120/人',dist:'1.0km',rating:'4.6',tags:['本帮菜','上海','红烧肉','甜']},
+  {icon:'🌆',name:'外滩',desc:'景点 · 万国建筑 · 免费',city:'上海',cat:'night',price:'免费',dist:'1.2km',rating:'4.9',tags:['外滩','上海','夜景','万国建筑']},
+  {icon:'🏙️',name:'东方明珠',desc:'景点 · 观光 · 地标',city:'上海',cat:'play',price:'¥160',dist:'2.0km',rating:'4.7',tags:['东方明珠','上海','地标']},
+  {icon:'🏛️',name:'豫园',desc:'园林 · 古典建筑 · 南翔小笼',city:'上海',cat:'culture',price:'¥40',dist:'0.8km',rating:'4.6',tags:['豫园','上海','园林','文化']},
+  {icon:'🍜',name:'大同刀削面(解放路店)',desc:'面食 · 刀削面 · 地道山西味',city:'山西',cat:'food',price:'¥18/碗',dist:'0.3km',rating:'4.6',tags:['刀削面','山西','面食']},
+  {icon:'🍜',name:'山西老面馆(柳巷店)',desc:'面食 · 打卤面 · 本地人食堂',city:'山西',cat:'food',price:'¥25/人',dist:'0.5km',rating:'4.5',tags:['面食','山西','打卤面']},
+  {icon:'🏺',name:'东湖醋园(马道坡店)',desc:'醋文化 · 非遗 · 免费参观品鉴',city:'山西',cat:'culture',price:'免费',dist:'3.0km',rating:'4.7',tags:['醋','山西','老陈醋','非遗','文化']},
+  {icon:'🥩',name:'冠云平遥牛肉(专卖店)',desc:'特产 · 中华老字号 · 礼盒装',city:'山西',cat:'food',price:'¥58/斤',dist:'1.5km',rating:'4.6',tags:['牛肉','山西','平遥','特产']},
+  {icon:'🏯',name:'太原古城墙',desc:'景点 · 明代建筑 · 骑行',city:'山西',cat:'play',price:'免费',dist:'2.2km',rating:'4.5',tags:['古城','山西','城墙','文化']},
+  {icon:'🏛️',name:'晋祠博物馆',desc:'古建筑 · 周柏唐槐 · 千年文化',city:'山西',cat:'culture',price:'¥80',dist:'15km',rating:'4.8',tags:['晋祠','山西','古建筑','文化']},
+  {icon:'🍢',name:'柳巷夜市',desc:'夜市 · 小吃街 · 本地风味',city:'山西',cat:'night',price:'¥30/人',dist:'0.6km',rating:'4.4',tags:['夜市','山西','柳巷','小吃']}
+];
 function filterSvcCards(){
   const q=document.getElementById('svcSearchInput').value.trim().toLowerCase();
+  const resultsPanel=document.getElementById('svcSearchResults');
+  const ssrList=document.getElementById('ssrList');
+  const ssrCount=document.getElementById('ssrCount');
+  /* 过滤 LOCAL DISCOVERY 卡片 */
   document.querySelectorAll('.svc-card').forEach(card=>{
     const matchFilter=svcActiveFilter==='all'||card.dataset.category===svcActiveFilter;
     const matchSearch=!q||card.textContent.toLowerCase().includes(q)||card.dataset.search.toLowerCase().includes(q)||card.dataset.city.toLowerCase().includes(q);
     card.classList.toggle('hidden',!(matchFilter&&matchSearch));
   });
+  /* 搜索结果面板 */
+  if(q){
+    const matched=svcProducts.filter(p=>{
+      const matchFilter=svcActiveFilter==='all'||p.cat===svcActiveFilter;
+      const searchText=(p.name+p.desc+p.city+p.tags.join('')).toLowerCase();
+      return matchFilter&&searchText.includes(q);
+    });
+    ssrCount.textContent=matched.length;
+    if(matched.length>0){
+      ssrList.innerHTML=matched.map(p=>`
+        <div class="ssr-item" onclick="window.open('https://www.douyin.com/search/${encodeURIComponent(p.name+' 团购')}','_blank')">
+          <div class="ssr-item-icon">${p.icon}</div>
+          <div class="ssr-item-info">
+            <h5>${p.name}</h5>
+            <p>${p.desc} · ⭐${p.rating}</p>
+          </div>
+          <div class="ssr-item-meta">
+            <div class="ssr-item-price">${p.price}</div>
+            <div class="ssr-item-dist">📍 ${p.dist}</div>
+          </div>
+        </div>`).join('');
+    }else{
+      ssrList.innerHTML=`<div class="ssr-empty">未找到"${q}"相关结果<br><span style="font-size:11px">试试搜索：火锅 / 凉茶 / 生煎 / 陈醋</span></div>`;
+    }
+    resultsPanel.style.display='block';
+  }else{
+    resultsPanel.style.display='none';
+  }
 }
 function setSvcFilter(el,filter){
   document.querySelectorAll('.sf-chip').forEach(c=>c.classList.remove('active'));
