@@ -334,8 +334,11 @@ h1,h2,h3,p{margin-top:0}
 .shop-item .si-rating{color:#e8a317;font-weight:800}
 .shop-item .si-price{color:var(--accent);font-weight:700}
 .shop-item .si-tag{display:inline-block;margin-top:5px;font-size:10px;padding:2px 8px;background:var(--bg);border-radius:999px;color:var(--muted)}
-.city-map-footer{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-radius:14px;padding:12px 18px;font-size:12px}
+.city-map-footer{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-radius:14px;padding:12px 18px;font-size:12px;z-index:5}
 .city-map-footer b{color:var(--accent)}
+#amapContainer{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.amap-loading{position:absolute;inset:0;display:grid;place-items:center;background:#f0efe6;color:var(--muted);font-size:14px;z-index:2;letter-spacing:.05em}
+.amap-loading.hidden{display:none}
 
 /* ===== 30 QUIZ ===== */
 .quiz-wrap{background:#171717;color:#fff;border-radius:36px;padding:55px;display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
@@ -471,6 +474,8 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
   .navlinks{display:none}.menu{display:block}
 }
 </style>
+<!-- 高德地图 JS API — 请将 YOUR_AMAP_KEY 替换为你在 https://console.amap.com/ 申请的 Web端(JS API) Key -->
+<script src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
 </head>
 <body>
 
@@ -940,10 +945,8 @@ input,select{width:100%;padding:14px 15px;border:1px solid var(--line);border-ra
           <button class="back-btn" onclick="backToChina()">← 返回全国</button>
         </div>
         <div class="city-map-body">
-          <div class="city-streets"></div>
-          <div class="city-river"></div>
-          <div class="city-park"></div>
-          <div id="shopPins"></div>
+          <div id="amapContainer"></div>
+          <div class="amap-loading" id="amapLoading">正在加载高德地图…</div>
           <div class="shop-list" id="shopList">
             <h4>NEARBY SHOPS / 附近店铺</h4>
             <div id="shopItems"></div>
@@ -1372,12 +1375,10 @@ function showCityMap(city,food){
   if(shopDB[city]&&shopDB[city][food]){
     shops=shopDB[city][food];
   } else if(shopDB[city]){
-    /* 取该城市第一个类别的店铺 */
     const firstKey=Object.keys(shopDB[city])[0];
     shops=shopDB[city][firstKey]||[];
   }
   if(shops.length===0){
-    /* 通用模拟店铺 */
     shops=[
       {name:city+food+'推荐店A',rating:4.6,price:'¥50/人',dist:'0.8km',tag:'热门推荐'},
       {name:city+food+'推荐店B',rating:4.5,price:'¥45/人',dist:'1.5km',tag:'本地人常去'},
@@ -1386,23 +1387,14 @@ function showCityMap(city,food){
     ];
   }
   document.getElementById('cmCount').textContent=shops.length+' 家店铺';
-  /* 生成地图标记 */
-  const pinsEl=document.getElementById('shopPins');
-  const positions=[
-    {left:'20%',top:'35%'},{left:'45%',top:'25%'},{left:'65%',top:'40%'},{left:'35%',top:'55%'},
-    {left:'55%',top:'65%'},{left:'75%',top:'55%'},{left:'25%',top:'70%'},{left:'50%',top:'45%'}
-  ];
-  pinsEl.innerHTML=shops.map((s,i)=>{
-    const pos=positions[i%positions.length];
-    return `<div class="shop-pin" style="left:${pos.left};top:${pos.top}" onclick="focusShop(${i})">
-      <div class="pin-label">${s.name}</div>
-      <div class="pin-dot"><span>🍜</span></div>
-    </div>`;
-  }).join('');
   /* 生成店铺列表 */
   const listEl=document.getElementById('shopItems');
-  listEl.innerHTML=shops.map((s,i)=>`
-    <div class="shop-item" onclick="focusShop(${i})">
+  if(!listEl){
+    const sl=document.getElementById('shopList');
+    sl.innerHTML='<h4>NEARBY SHOPS / 附近店铺</h4><div id="shopItems"></div>';
+  }
+  document.getElementById('shopItems').innerHTML=shops.map((s,i)=>`
+    <div class="shop-item" onclick="panToShop(${i})">
       <div class="si-name">${s.name}</div>
       <div class="si-meta">
         <span class="si-rating">★ ${s.rating}</span>
@@ -1413,13 +1405,68 @@ function showCityMap(city,food){
     </div>
   `).join('');
   overlay.classList.add('show');
+  /* 初始化高德地图 */
+  initAmap(city,shops);
   toast('已跳转 '+city+' 当地地图，找到 '+shops.length+' 家'+food+'店铺');
 }
-function focusShop(i){
-  toast('店铺详情：跳转抖音团购查看菜单和优惠');
+/* 城市经纬度 */
+const cityCoords={
+  广州:[113.2644,23.1291],上海:[121.4737,31.2304],重庆:[106.5516,29.5630],
+  山西:[112.5489,37.8706],成都:[104.0668,30.5728],长沙:[112.9388,28.2282],西安:[108.9398,34.3416]
+};
+let amapInstance=null,amapMarkers=[],currentShops=[];
+function initAmap(city,shops){
+  const loading=document.getElementById('amapLoading');
+  loading.classList.remove('hidden');
+  currentShops=shops;
+  /* 检查高德 API 是否加载 */
+  if(typeof AMap==='undefined'){
+    loading.textContent='高德地图未加载：请在代码中配置你的高德 API Key（https://console.amap.com/）';
+    return;
+  }
+  /* 销毁旧地图 */
+  if(amapInstance){amapInstance.destroy();amapInstance=null;}
+  amapMarkers=[];
+  const center=cityCoords[city]||[116.3974,39.9093];
+  try{
+    amapInstance=new AMap.Map('amapContainer',{
+      zoom:12,center:center,mapStyle:'amap://styles/whitesmoke',viewMode:'2D'
+    });
+    loading.classList.add('hidden');
+    /* 为每个店铺生成标记点（在城市中心周围随机分布） */
+    shops.forEach((s,i)=>{
+      const offsetLng=(Math.random()-0.5)*0.06;
+      const offsetLat=(Math.random()-0.5)*0.05;
+      const pos=[center[0]+offsetLng,center[1]+offsetLat];
+      const marker=new AMap.Marker({
+        position:pos,
+        title:s.name,
+        content:`<div style="background:var(--accent);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2);border:2px solid #fff;transform:translateY(-4px)">${i+1}. ${s.name}</div>`,
+        offset:new AMap.Pixel(-20,-30)
+      });
+      marker.on('click',()=>{
+        amapInstance.setZoomAndCenter(15,pos);
+        toast(s.name+' · ★'+s.rating+' · '+s.price);
+      });
+      amapMarkers.push(marker);
+    });
+    amapInstance.add(amapMarkers);
+    amapInstance.setFitView(amapMarkers,false,[60,60,300,60]);
+  }catch(e){
+    loading.textContent='地图加载失败：'+e.message;
+  }
+}
+function panToShop(i){
+  if(amapInstance&&amapMarkers[i]){
+    const pos=amapMarkers[i].getPosition();
+    amapInstance.setZoomAndCenter(16,[pos.lng,pos.lat]);
+    toast(currentShops[i].name);
+  }
 }
 function backToChina(){
   document.getElementById('cityMapOverlay').classList.remove('show');
+  if(amapInstance){amapInstance.destroy();amapInstance=null;}
+  document.getElementById('amapLoading').classList.remove('hidden');
 }
 
 /* Quiz */
