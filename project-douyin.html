@@ -160,11 +160,27 @@ h1,h2,h3,p{margin-top:0}
 .dna-swatch-sub{font-size:9px;color:var(--muted);line-height:1.3}
 
 /* ===== 12 VISUAL LANGUAGE ===== */
-.vis-lang{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:45px}
-.vis-layer{background:#171717;color:#fff;border-radius:24px;padding:35px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end}
-.vis-layer .icon{font-size:40px;margin-bottom:15px}
-.vis-layer h3{font-size:24px;margin:0 0 8px}
-.vis-layer p{font-size:12px;color:#aaa;line-height:1.7;margin:0}
+.vl-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.vl-title{font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin:20px 0 0;color:var(--ink)}
+.vl-title-en{font-size:clamp(28px,4vw,52px);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--ink)}
+.vl-sub{font-size:16px;color:var(--ink);margin-top:20px;line-height:1.7;max-width:380px}
+.vl-sub-en{font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:8px;text-transform:uppercase}
+.vl-grid{display:grid;grid-template-columns:5fr 7fr;gap:40px;margin-top:40px;align-items:start}
+.vl-left{display:flex;flex-direction:column;gap:28px}
+.vl-item{position:relative;padding-left:36px}
+.vl-item:before{content:'';position:absolute;left:0;top:6px;width:20px;height:1px;background:var(--ink)}
+.vl-num{font-size:11px;font-weight:800;letter-spacing:.15em;color:var(--muted);margin-bottom:4px}
+.vl-item h3{font-size:18px;font-weight:800;margin:0 0 2px;letter-spacing:.05em}
+.vl-item-cn{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:8px}
+.vl-item p{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 12px;max-width:320px}
+.vl-thumb{width:140px;height:90px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.vl-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vl-thumb-label{font-size:10px;color:var(--muted);margin-top:6px;letter-spacing:.05em}
+.vl-right{position:relative}
+.vl-hero{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.vl-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.vl-handwrite{position:absolute;bottom:24px;left:24px;font-family:"Ma Shan Zheng",cursive;font-size:22px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5);line-height:1.4;transform:rotate(-3deg)}
+.vl-cities{margin-top:14px;text-align:right;font-size:10px;letter-spacing:.2em;color:var(--muted);line-height:2;text-transform:uppercase}
 
 /* ===== 13 POSTER BUILDING ===== */
 .build-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:45px}
@@ -608,7 +624,7 @@ h1,h2,h3,p{margin-top:0}
   .case-index{display:none}
   .hero,.grid-2,.quiz-wrap,.ugc,.poster-detail,.system-compare,.oo-grid{grid-template-columns:1fr}
   .tastes,.personality-grid,.dna-grid,.motion-lang,.video-grid,.food-wall,.role-grid,.touch-grid{grid-template-columns:1fr 1fr}
-  .research-grid,.why-taste .flow,.insight-cards,.vis-lang{grid-template-columns:1fr}
+  .research-grid,.why-taste .flow,.insight-cards,.vl-grid{grid-template-columns:1fr}
   .formula{grid-template-columns:1fr}.formula-op{transform:rotate(90deg)}
   .brand-loop,.service-flow,.build-steps,.motion-layers,.strategy-grid{grid-template-columns:1fr 1fr}
   .posters{grid-template-columns:1fr}
@@ -869,13 +885,49 @@ h1,h2,h3,p{margin-top:0}
 
 <!-- ===== 12 VISUAL LANGUAGE ===== -->
 <section class="section reveal">
-  <div class="eyebrow">12 / VISUAL LANGUAGE</div>
-  <h2 class="title-xl" style="margin-top:20px">A CITY MADE<br>OF FLAVORS</h2>
-  <p class="lead" style="margin-top:20px">把城市做成一座可以"吃进去"的视觉世界。</p>
-  <div class="vis-lang">
-    <div class="vis-layer"><div class="icon">🏛</div><h3>LANDMARK</h3><p>城市地标作为空间骨架，洪崖洞、广州塔、东方明珠、古城墙。</p></div>
-    <div class="vis-layer"><div class="icon">🍜</div><h3>FOOD</h3><p>地方美食作为视觉主体，火锅、凉茶、点心、醋坛面食。</p></div>
-    <div class="vis-layer"><div class="icon">🌿</div><h3>LIFE</h3><p>生活场景填充细节，火锅店、早茶摊、夜景街、古城巷。</p></div>
+  <div class="vl-head">
+    <div>
+      <div class="eyebrow">12 / VISUAL LANGUAGE</div>
+      <h2 class="vl-title">城市微缩世界<br><span class="vl-title-en">A CITY MADE<br>OF FLAVORS</span></h2>
+      <p class="vl-sub">把城市做成一座可以"吃进去"的视觉世界。</p>
+      <p class="vl-sub-en">A CITY YOU CAN TASTE.</p>
+    </div>
+    <div class="dna-brand">TASTE THE CITY<br>DOUYIN LIFE SERVICE</div>
+  </div>
+  <div class="vl-grid">
+    <div class="vl-left">
+      <div class="vl-item">
+        <div class="vl-num">01</div>
+        <h3>LANDMARK</h3>
+        <div class="vl-item-cn">城市地标</div>
+        <p>将城市的地标建筑与自然景观融入画面，构建城市的空间感与独特性。</p>
+        <div class="vl-thumb"><img src="https://aka.doubaocdn.com/s/QZqGXy2pou" alt="广州塔"></div>
+        <div class="vl-thumb-label">广州 · 广州塔</div>
+      </div>
+      <div class="vl-item">
+        <div class="vl-num">02</div>
+        <h3>FOOD</h3>
+        <div class="vl-item-cn">地方美食</div>
+        <p>用最具代表性的地方美食作为视觉核心，唤醒味觉记忆与城市特色。</p>
+        <div class="vl-thumb"><img src="https://aka.doubaocdn.com/s/fnvIuVO1Ar" alt="重庆火锅"></div>
+        <div class="vl-thumb-label">重庆 · 火锅</div>
+      </div>
+      <div class="vl-item">
+        <div class="vl-num">03</div>
+        <h3>LIFE</h3>
+        <div class="vl-item-cn">生活场景</div>
+        <p>融入当地人的日常生活场景，展现城市的烟火气与生活方式。</p>
+        <div class="vl-thumb"><img src="https://aka.doubaocdn.com/s/wAyKJZPOVE" alt="上海夜景"></div>
+        <div class="vl-thumb-label">山城 · 夜生活</div>
+      </div>
+    </div>
+    <div class="vl-right">
+      <div class="vl-hero">
+        <img src="https://aka.doubaocdn.com/s/fnvIuVO1Ar" alt="城市微缩世界">
+        <div class="vl-handwrite">把城市的味道<br>装进每一帧画面。</div>
+      </div>
+      <div class="vl-cities">GUANGZHOU<br>SHANGHAI<br>CHONGQING<br>SHANXI</div>
+    </div>
   </div>
 </section>
 
