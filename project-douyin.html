@@ -138,13 +138,26 @@ h1,h2,h3,p{margin-top:0}
 .p-sour{background:linear-gradient(145deg,#c29327,#f0ce6e)}
 
 /* ===== 11 VISUAL DNA ===== */
-.dna-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px}
-.dna-col{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
-.dna-col h3{font-size:14px;letter-spacing:.15em;color:var(--accent);margin:0 0 15px}
-.dna-col .dna-item{padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
-.dna-col .dna-item:last-child{border-bottom:0}
-.dna-col .dna-item b{display:block;font-size:15px;margin-bottom:3px}
-.dna-col .dna-item span{color:var(--muted);font-size:11px}
+.dna-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.dna-brand{text-align:right;font-size:10px;letter-spacing:.18em;color:var(--muted);line-height:1.8;text-transform:uppercase}
+.dna-brand:before{content:'';display:block;width:60px;height:1px;background:var(--ink);margin-left:auto;margin-bottom:8px}
+.dna-grid2{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.dna-col2{display:flex;flex-direction:column}
+.dna-col-label{font-size:15px;font-weight:800;letter-spacing:.08em;margin-bottom:6px}
+.dna-col-desc{font-size:12px;color:var(--muted);margin-bottom:16px}
+.dna-poster{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;padding:24px;color:#fff}
+.dna-poster-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(1.1)}
+.dna-poster-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.4) 100%)}
+.dna-poster-top{position:relative;z-index:2;font-size:11px;letter-spacing:.15em;font-weight:700;line-height:1.6}
+.dna-poster-char{position:relative;z-index:2;font-size:clamp(60px,8vw,110px);font-weight:900;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.dna-poster-bottom{position:relative;z-index:2}
+.dna-poster-city{font-size:20px;font-weight:800;margin-bottom:2px}
+.dna-poster-city-en{font-size:10px;letter-spacing:.2em;opacity:.85}
+.dna-swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.dna-swatch{text-align:center}
+.dna-swatch-dot{width:36px;height:36px;border-radius:50%;margin:0 auto 6px;border:2px solid rgba(0,0,0,.06)}
+.dna-swatch-name{font-size:11px;font-weight:700;color:var(--ink);line-height:1.3}
+.dna-swatch-sub{font-size:9px;color:var(--muted);line-height:1.3}
 
 /* ===== 12 VISUAL LANGUAGE ===== */
 .vis-lang{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:45px}
@@ -770,14 +783,87 @@ h1,h2,h3,p{margin-top:0}
 
 <!-- ===== 11 VISUAL DNA ===== -->
 <section class="section reveal">
-  <div class="eyebrow">11 / VISUAL DNA</div>
-  <h2 class="title-xl" style="margin-top:20px">把味道<br>视觉化</h2>
-  <p class="lead" style="margin-top:20px">四种味道不是四个颜色，而是四套视觉人格。</p>
-  <div class="dna-grid">
-    <div class="dna-col"><h3>COLOR / 色彩</h3><div class="dna-item"><b>红色</b><span>辣 · 重庆 · 火锅</span></div><div class="dna-item"><b>绿色</b><span>苦 · 广州 · 凉茶</span></div><div class="dna-item"><b>橙色</b><span>甜 · 上海 · 点心</span></div><div class="dna-item"><b>黄色</b><span>酸 · 山西 · 陈醋</span></div></div>
-    <div class="dna-col"><h3>SHAPE / 形态</h3><div class="dna-item"><b>爆裂</b><span>辣 · 辣椒飞溅</span></div><div class="dna-item"><b>圆形</b><span>苦 · 茶雾弥漫</span></div><div class="dna-item"><b>流动</b><span>甜 · 糖浆拉丝</span></div><div class="dna-item"><b>沉淀</b><span>酸 · 醋液厚重</span></div></div>
-    <div class="dna-col"><h3>TEXTURE / 质感</h3><div class="dna-item"><b>火焰</b><span>辣 · 灼热跳动</span></div><div class="dna-item"><b>茶雾</b><span>苦 · 轻盈朦胧</span></div><div class="dna-item"><b>糖果</b><span>甜 · 晶莹透亮</span></div><div class="dna-item"><b>醋液</b><span>酸 · 浓稠缓慢</span></div></div>
-    <div class="dna-col"><h3>MOTION / 动效</h3><div class="dna-item"><b>快</b><span>辣 · BURST 爆发</span></div><div class="dna-item"><b>慢</b><span>苦 · FLOW 流动</span></div><div class="dna-item"><b>柔</b><span>甜 · GLOW 发光</span></div><div class="dna-item"><b>稳</b><span>酸 · DRIFT 漂移</span></div></div>
+  <div class="dna-head">
+    <div>
+      <div class="eyebrow">11 / VISUAL DNA</div>
+      <h2 class="title-xl" style="margin-top:20px">把味道<br>视觉化</h2>
+      <p class="lead" style="margin-top:20px">四种味道不是四个颜色，而是四套视觉人格。</p>
+    </div>
+    <div class="dna-brand">TASTE THE CITY<br>DOUYIN LIFE SERVICE</div>
+  </div>
+  <div class="dna-grid2">
+    <!-- COLOR 色彩 -->
+    <div class="dna-col2">
+      <div class="dna-col-label" style="color:#58b56e">COLOR / 色彩</div>
+      <div class="dna-col-desc">四种味道，四种主色。</div>
+      <div class="dna-poster">
+        <div class="dna-poster-bg" style="background-image:url('https://aka.doubaocdn.com/s/QZqGXy2pou')"></div>
+        <div class="dna-poster-overlay"></div>
+        <div class="dna-poster-top">GREEN<br>CALM</div>
+        <div class="dna-poster-char">苦</div>
+        <div class="dna-poster-bottom"><div class="dna-poster-city">广州</div><div class="dna-poster-city-en">GUANGZHOU</div></div>
+      </div>
+      <div class="dna-swatches">
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#2d7a3e"></div><div class="dna-swatch-name">绿色</div><div class="dna-swatch-sub">广州</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#7ab88a"></div><div class="dna-swatch-name">茶绿</div><div class="dna-swatch-sub">凉茶</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#1e4d2a"></div><div class="dna-swatch-name">墨绿</div><div class="dna-swatch-sub">岭南</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#b8d9c0"></div><div class="dna-swatch-name">浅绿</div><div class="dna-swatch-sub">松弛</div></div>
+      </div>
+    </div>
+    <!-- SHAPE 形态 -->
+    <div class="dna-col2">
+      <div class="dna-col-label" style="color:#ee8e51">SHAPE / 形态</div>
+      <div class="dna-col-desc">四种味道，四种形态。</div>
+      <div class="dna-poster">
+        <div class="dna-poster-bg" style="background-image:url('https://aka.doubaocdn.com/s/wAyKJZPOVE')"></div>
+        <div class="dna-poster-overlay"></div>
+        <div class="dna-poster-top">FLOW<br>DREAMY</div>
+        <div class="dna-poster-char">甜</div>
+        <div class="dna-poster-bottom"><div class="dna-poster-city">上海</div><div class="dna-poster-city-en">SHANGHAI</div></div>
+      </div>
+      <div class="dna-swatches">
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#ee8e51"></div><div class="dna-swatch-name">圆形</div><div class="dna-swatch-sub">上海</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#f5b896"></div><div class="dna-swatch-name">流动</div><div class="dna-swatch-sub">点心</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#fae0cf"></div><div class="dna-swatch-name">柔和</div><div class="dna-swatch-sub">海派</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#fdf0e6"></div><div class="dna-swatch-name">轻盈</div><div class="dna-swatch-sub">浪漫</div></div>
+      </div>
+    </div>
+    <!-- TEXTURE 质感 -->
+    <div class="dna-col2">
+      <div class="dna-col-label" style="color:#e43e32">TEXTURE / 质感</div>
+      <div class="dna-col-desc">四种味道，四种质感。</div>
+      <div class="dna-poster">
+        <div class="dna-poster-bg" style="background-image:url('https://aka.doubaocdn.com/s/fnvIuVO1Ar')"></div>
+        <div class="dna-poster-overlay"></div>
+        <div class="dna-poster-top">BURST<br>ENERGETIC</div>
+        <div class="dna-poster-char">辣</div>
+        <div class="dna-poster-bottom"><div class="dna-poster-city">重庆</div><div class="dna-poster-city-en">CHONGQING</div></div>
+      </div>
+      <div class="dna-swatches">
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#e43e32"></div><div class="dna-swatch-name">火焰</div><div class="dna-swatch-sub">辣椒</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#c42828"></div><div class="dna-swatch-name">热感</div><div class="dna-swatch-sub">山城</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#8b1a1a"></div><div class="dna-swatch-name">颗粒</div><div class="dna-swatch-sub">火锅</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#f06848"></div><div class="dna-swatch-name">流动</div><div class="dna-swatch-sub">夜生活</div></div>
+      </div>
+    </div>
+    <!-- MOTION 动效 -->
+    <div class="dna-col2">
+      <div class="dna-col-label" style="color:#d6a938">MOTION / 动效</div>
+      <div class="dna-col-desc">四种味道，四种动效。</div>
+      <div class="dna-poster">
+        <div class="dna-poster-bg" style="background-image:url('https://aka.doubaocdn.com/s/aIUjr0Nur8')"></div>
+        <div class="dna-poster-overlay"></div>
+        <div class="dna-poster-top">DRIFT<br>TIMELESS</div>
+        <div class="dna-poster-char">酸</div>
+        <div class="dna-poster-bottom"><div class="dna-poster-city">山西</div><div class="dna-poster-city-en">SHANXI</div></div>
+      </div>
+      <div class="dna-swatches">
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#d6a938"></div><div class="dna-swatch-name">慢</div><div class="dna-swatch-sub">陈醋</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#e0be6e"></div><div class="dna-swatch-name">柔</div><div class="dna-swatch-sub">面食</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#b8922e"></div><div class="dna-swatch-name">稳</div><div class="dna-swatch-sub">古城</div></div>
+        <div class="dna-swatch"><div class="dna-swatch-dot" style="background:#f0e0b0"></div><div class="dna-swatch-name">沉淀</div><div class="dna-swatch-sub">传统</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
