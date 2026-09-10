@@ -270,12 +270,13 @@ h1,h2,h3,p{margin-top:0}
 .selector-center{text-align:center;z-index:2}
 .selector-center h3{font-size:clamp(24px,4vw,42px);letter-spacing:-.04em;margin:0 0 10px}
 .selector-center p{color:var(--muted);font-size:14px}
-.selector-node{position:absolute;width:100px;height:100px;border-radius:50%;border:0;color:#fff;font-weight:900;cursor:pointer;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.15);font-size:20px}
-.selector-node:hover{transform:scale(1.15)}
-.sn-bitter{left:10%;top:30%;background:var(--green)}
-.sn-sweet{right:10%;top:25%;background:var(--orange)}
-.sn-spicy{right:15%;bottom:20%;background:var(--red)}
-.sn-sour{left:15%;bottom:15%;background:var(--yellow)}
+.selector-node{position:absolute;width:100px;height:100px;border-radius:50%;border:0;color:#fff;font-weight:900;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 10px 30px rgba(0,0,0,.15);font-size:20px;animation:selectorFloat 5s ease-in-out infinite}
+.selector-node:hover{transform:scale(1.15);animation-play-state:paused;box-shadow:0 16px 40px rgba(0,0,0,.22)}
+.sn-bitter{left:10%;top:30%;background:var(--green);animation-delay:0s}
+.sn-sweet{right:10%;top:25%;background:var(--orange);animation-delay:1.2s}
+.sn-spicy{right:15%;bottom:20%;background:var(--red);animation-delay:2.4s}
+.sn-sour{left:15%;bottom:15%;background:var(--yellow);animation-delay:3.6s}
+@keyframes selectorFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
 /* ===== 27 CITY EXPLORATION ===== */
 .explore-timeline{position:relative;margin-top:45px;padding-left:40px}
