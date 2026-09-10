@@ -165,22 +165,15 @@ h1,h2,h3,p{margin-top:0}
 .vl-title-en{font-size:clamp(28px,4vw,52px);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--ink)}
 .vl-sub{font-size:16px;color:var(--ink);margin-top:20px;line-height:1.7;max-width:380px}
 .vl-sub-en{font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:8px;text-transform:uppercase}
-.vl-grid{display:grid;grid-template-columns:5fr 7fr;gap:40px;margin-top:40px;align-items:start}
-.vl-left{display:flex;flex-direction:column;gap:28px}
-.vl-item{position:relative;padding-left:36px}
-.vl-item:before{content:'';position:absolute;left:0;top:6px;width:20px;height:1px;background:var(--ink)}
-.vl-num{font-size:11px;font-weight:800;letter-spacing:.15em;color:var(--muted);margin-bottom:4px}
-.vl-item h3{font-size:18px;font-weight:800;margin:0 0 2px;letter-spacing:.05em}
-.vl-item-cn{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:8px}
-.vl-item p{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 12px;max-width:320px}
-.vl-thumb{width:140px;height:90px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-.vl-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.vl-thumb-label{font-size:10px;color:var(--muted);margin-top:6px;letter-spacing:.05em}
-.vl-right{position:relative}
-.vl-hero{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
-.vl-hero img{width:100%;height:100%;object-fit:cover;display:block}
-.vl-handwrite{position:absolute;bottom:24px;left:24px;font-family:"Ma Shan Zheng",cursive;font-size:22px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5);line-height:1.4;transform:rotate(-3deg)}
-.vl-cities{margin-top:14px;text-align:right;font-size:10px;letter-spacing:.2em;color:var(--muted);line-height:2;text-transform:uppercase}
+.vl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.vl-item{display:flex;flex-direction:column}
+.vl-badge{display:inline-flex;align-items:center;justify-content:center;width:36px;height:24px;border-radius:12px;background:#e8e6dd;font-size:12px;font-weight:800;color:var(--ink);margin-bottom:12px;letter-spacing:.05em}
+.vl-item h3{font-size:24px;font-weight:900;margin:0 0 4px;letter-spacing:.02em}
+.vl-item-cn{font-size:16px;color:var(--ink);font-weight:700;margin-bottom:12px}
+.vl-item p{font-size:13px;color:var(--muted);line-height:1.9;margin:0 0 20px}
+.vl-photo{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden}
+.vl-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.vl-photo-label{font-size:12px;color:var(--muted);margin-top:10px;letter-spacing:.03em;font-weight:500}
 
 /* ===== 13 POSTER BUILDING ===== */
 .build-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:45px}
@@ -895,38 +888,29 @@ h1,h2,h3,p{margin-top:0}
     <div class="dna-brand">TASTE THE CITY<br>DOUYIN LIFE SERVICE</div>
   </div>
   <div class="vl-grid">
-    <div class="vl-left">
-      <div class="vl-item">
-        <div class="vl-num">01</div>
-        <h3>LANDMARK</h3>
-        <div class="vl-item-cn">城市地标</div>
-        <p>将城市的地标建筑与自然景观融入画面，构建城市的空间感与独特性。</p>
-        <div class="vl-thumb"><img src="https://aka.doubaocdn.com/s/QZqGXy2pou" alt="广州塔"></div>
-        <div class="vl-thumb-label">广州 · 广州塔</div>
-      </div>
-      <div class="vl-item">
-        <div class="vl-num">02</div>
-        <h3>FOOD</h3>
-        <div class="vl-item-cn">地方美食</div>
-        <p>用最具代表性的地方美食作为视觉核心，唤醒味觉记忆与城市特色。</p>
-        <div class="vl-thumb"><img src="https://aka.doubaocdn.com/s/fnvIuVO1Ar" alt="重庆火锅"></div>
-        <div class="vl-thumb-label">重庆 · 火锅</div>
-      </div>
-      <div class="vl-item">
-        <div class="vl-num">03</div>
-        <h3>LIFE</h3>
-        <div class="vl-item-cn">生活场景</div>
-        <p>融入当地人的日常生活场景，展现城市的烟火气与生活方式。</p>
-        <div class="vl-thumb"><img src="https://aka.doubaocdn.com/s/wAyKJZPOVE" alt="上海夜景"></div>
-        <div class="vl-thumb-label">山城 · 夜生活</div>
-      </div>
+    <div class="vl-item">
+      <div class="vl-badge">01</div>
+      <h3>LANDMARK</h3>
+      <div class="vl-item-cn">城市地标</div>
+      <p>将城市的地标建筑与自然景观融入画面，构建城市的空间感与独特性。</p>
+      <div class="vl-photo"><img src="https://aka.doubaocdn.com/s/MT8T2nhaYp" alt="广州塔"></div>
+      <div class="vl-photo-label">广州 · 广州塔</div>
     </div>
-    <div class="vl-right">
-      <div class="vl-hero">
-        <img src="https://aka.doubaocdn.com/s/fnvIuVO1Ar" alt="城市微缩世界">
-        <div class="vl-handwrite">把城市的味道<br>装进每一帧画面。</div>
-      </div>
-      <div class="vl-cities">GUANGZHOU<br>SHANGHAI<br>CHONGQING<br>SHANXI</div>
+    <div class="vl-item">
+      <div class="vl-badge">02</div>
+      <h3>FOOD</h3>
+      <div class="vl-item-cn">地方美食</div>
+      <p>用最具代表性的地方美食作为视觉核心，唤醒味觉记忆与城市特色。</p>
+      <div class="vl-photo"><img src="https://aka.doubaocdn.com/s/JsaqoaF9He" alt="重庆火锅"></div>
+      <div class="vl-photo-label">重庆 · 火锅</div>
+    </div>
+    <div class="vl-item">
+      <div class="vl-badge">03</div>
+      <h3>LIFE</h3>
+      <div class="vl-item-cn">生活场景</div>
+      <p>融入当地人的日常生活场景，展现城市的烟火气与生活方式。</p>
+      <div class="vl-photo"><img src="https://aka.doubaocdn.com/s/4UjJrJ1Vdg" alt="山城夜生活"></div>
+      <div class="vl-photo-label">山城 · 夜生活</div>
     </div>
   </div>
 </section>
