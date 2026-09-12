@@ -567,11 +567,29 @@ h1,h2,h3,p{margin-top:0}
 .oo-arrow{display:grid;place-items:center;font-size:30px;color:var(--accent);font-weight:900}
 
 /* ===== 36 TOUCHPOINTS ===== */
-.touch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:45px}
-.touch-card{background:#171717;color:#fff;border-radius:20px;padding:25px;min-height:180px}
-.touch-card .tc-icon{font-size:28px;margin-bottom:12px}
-.touch-card h4{font-size:14px;margin:0 0 10px;letter-spacing:.05em}
-.touch-card p{font-size:11px;color:#aaa;line-height:1.7;margin:0}
+.tp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+.tp-head-right{text-align:right}
+.tp-head-right .tp-note{font-family:"Ma Shan Zheng",cursive;font-size:16px;color:var(--ink);line-height:1.6;margin-top:8px;transform:rotate(3deg);display:inline-block}
+.tp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+.tp-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column}
+.tp-num{width:36px;height:36px;border-radius:50%;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.tp-card h4{font-size:16px;margin:0 0 2px;letter-spacing:.02em}
+.tp-card .tp-cn{font-size:12px;color:var(--muted);margin-bottom:12px}
+.tp-items{font-size:11px;color:var(--ink);line-height:1.8;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.tp-mockup{flex:1;display:flex;flex-direction:column;gap:8px}
+.tp-phone{border-radius:12px;overflow:hidden;position:relative;flex:1;min-height:140px}
+.tp-poster-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1}
+.tp-poster-row img{width:100%;height:100%;object-fit:cover;border-radius:8px;min-height:60px}
+.tp-browser{border-radius:10px;background:#f5f5f5;border:1px solid #e0e0e0;flex:1;padding:8px;min-height:80px}
+.tp-browser-bar{height:6px;background:#ddd;border-radius:3px;margin-bottom:6px}
+.tp-quiz-circle{width:50px;height:50px;border-radius:50%;background:conic-gradient(#58b56e 0 25%,#ee8e51 25% 50%,#e43e32 50% 75%,#d6a938 75% 100%);margin:8px auto}
+.tp-ugc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1}
+.tp-ugc-cell{border-radius:8px;min-height:55px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.tp-line{display:flex;justify-content:space-between;margin-top:30px;padding:0 20px}
+.tp-line-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.tp-line-dot{width:10px;height:10px;border-radius:50%}
+.tp-line-label{font-size:10px;color:var(--muted);text-align:center;line-height:1.4}
+.tp-footer{text-align:center;margin-top:30px;font-size:12px;color:var(--muted);letter-spacing:.1em}
 
 /* ===== 37 FINAL CAMPAIGN ===== */
 .final-wall{margin-top:45px}
@@ -1511,15 +1529,113 @@ h1,h2,h3,p{margin-top:0}
 
 <!-- ===== 36 TOUCHPOINTS ===== -->
 <section class="section reveal">
-  <div class="eyebrow">36 / CAMPAIGN TOUCHPOINTS</div>
-  <h2 class="title-xl" style="margin-top:20px">用户接触点</h2>
-  <div class="touch-grid">
-    <div class="touch-card"><div class="tc-icon">📱</div><h4>SOCIAL</h4><p>短视频、话题、挑战、达人内容</p></div>
-    <div class="touch-card"><div class="tc-icon">🎨</div><h4>VISUAL</h4><p>海报、封面、贴纸、视觉系统</p></div>
-    <div class="touch-card"><div class="tc-icon">🖱</div><h4>INTERACTION</h4><p>官网、味觉测试、城市地图</p></div>
-    <div class="touch-card"><div class="tc-icon">🛍</div><h4>SERVICE</h4><p>团购、搜索、推荐、到店</p></div>
-    <div class="touch-card"><div class="tc-icon">💬</div><h4>UGC</h4><p>城市味觉卡、用户分享</p></div>
+  <div class="tp-head">
+    <div>
+      <div class="eyebrow">36 / CAMPAIGN TOUCHPOINTS</div>
+      <h2 class="title-xl" style="margin-top:20px">用户接触点</h2>
+      <p style="margin-top:16px;font-size:16px;color:var(--ink)">把味道，变成一场可参与的城市生活。</p>
+      <p style="font-size:11px;color:var(--muted);letter-spacing:.12em;margin-top:6px">ALL TOUCHPOINTS. ONE CITY TASTE.</p>
+    </div>
+    <div class="tp-head-right">
+      <div style="font-size:11px;letter-spacing:.15em;color:var(--muted)">TASTE THE CITY<br>DOUYIN LIFE SERVICE</div>
+      <div class="tp-note">从线上内容到线下生活<br>构建完整的品牌生态。</div>
+    </div>
   </div>
+  <div class="tp-grid">
+    <!-- 01 SOCIAL -->
+    <div class="tp-card">
+      <div class="tp-num" style="background:#58b56e">01</div>
+      <h4>SOCIAL</h4>
+      <div class="tp-cn">社交传播</div>
+      <div class="tp-items">短视频 · 话题 · 挑战</div>
+      <div class="tp-mockup">
+        <div class="tp-phone" style="background:linear-gradient(160deg,#2a2a3e,#1a1a2e)">
+          <div style="position:absolute;top:10px;left:8px;right:8px;color:#fff;font-size:10px">#酸甜苦辣</div>
+          <div style="position:absolute;bottom:10px;left:8px;color:#fff;font-size:9px">318.6w 参与</div>
+          <div style="position:absolute;bottom:30px;left:8px;background:rgba(255,255,255,.15);border-radius:6px;padding:4px 8px;color:#fff;font-size:9px">城市味觉挑战</div>
+        </div>
+        <div style="background:#f5f0e8;border-radius:8px;padding:8px;font-size:9px;color:#666">重庆·火锅<br>12.6w 赞</div>
+      </div>
+    </div>
+    <!-- 02 VISUAL -->
+    <div class="tp-card">
+      <div class="tp-num" style="background:#ee8e51">02</div>
+      <h4>VISUAL</h4>
+      <div class="tp-cn">视觉设计</div>
+      <div class="tp-items">海报 · 封面 · 贴纸</div>
+      <div class="tp-mockup">
+        <div class="tp-poster-row">
+          <img src="https://aka.doubaocdn.com/s/QZqGXy2pou" alt="广州">
+          <img src="https://aka.doubaocdn.com/s/wAyKJZPOVE" alt="上海">
+          <img src="https://aka.doubaocdn.com/s/fnvIuVO1Ar" alt="重庆">
+          <img src="https://aka.doubaocdn.com/s/aIUjr0Nur8" alt="山西">
+        </div>
+      </div>
+    </div>
+    <!-- 03 INTERACTION -->
+    <div class="tp-card">
+      <div class="tp-num" style="background:#4a90d9">03</div>
+      <h4>INTERACTION</h4>
+      <div class="tp-cn">互动体验</div>
+      <div class="tp-items">官网 · 味觉测试 · 城市地图</div>
+      <div class="tp-mockup">
+        <div class="tp-browser">
+          <div class="tp-browser-bar"></div>
+          <div style="font-size:9px;color:#333;font-weight:700">TASTE THE CITY</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tp-quiz-circle"></div>
+          <div style="font-size:9px;color:#666">你的味觉是？<br><span style="color:var(--accent)">开始测试 →</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- 04 SERVICE -->
+    <div class="tp-card">
+      <div class="tp-num" style="background:#9b59b6">04</div>
+      <h4>SERVICE</h4>
+      <div class="tp-cn">本地生活服务</div>
+      <div class="tp-items">团购 · 搜索 · 推荐</div>
+      <div class="tp-mockup">
+        <div class="tp-phone" style="background:#fff;border:1px solid #eee">
+          <div style="padding:8px;font-size:9px;font-weight:700">抖音生活服务</div>
+          <div style="margin:0 8px;background:#f5f5f5;border-radius:6px;padding:4px 8px;font-size:8px;color:#999">🔍 重庆火锅</div>
+          <div style="display:flex;gap:6px;padding:8px">
+            <div style="flex:1;text-align:center;font-size:8px">🍲<br>美食</div>
+            <div style="flex:1;text-align:center;font-size:8px">🎮<br>玩乐</div>
+            <div style="flex:1;text-align:center;font-size:8px">🌙<br>夜生活</div>
+          </div>
+          <div style="margin:0 8px;background:#fff5f5;border-radius:6px;padding:6px">
+            <div style="font-size:8px;font-weight:700">山城火锅体验</div>
+            <div style="font-size:7px;color:#999">1.2km · ¥¥ · 4.8</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 05 UGC -->
+    <div class="tp-card">
+      <div class="tp-num" style="background:#e43e32">05</div>
+      <h4>UGC</h4>
+      <div class="tp-cn">用户共创</div>
+      <div class="tp-items">城市味觉卡 · 用户分享</div>
+      <div class="tp-mockup">
+        <div class="tp-ugc-grid">
+          <div class="tp-ugc-cell" style="background:linear-gradient(135deg,#58b56e,#3a9a52);color:#fff;font-size:11px;font-weight:700">广州<br>凉茶</div>
+          <div class="tp-ugc-cell" style="background:linear-gradient(135deg,#ee8e51,#d47638);color:#fff;font-size:11px;font-weight:700">上海<br>点心</div>
+          <div class="tp-ugc-cell" style="background:linear-gradient(135deg,#e43e32,#c42e22);color:#fff;font-size:11px;font-weight:700">重庆<br>火锅</div>
+          <div class="tp-ugc-cell" style="background:linear-gradient(135deg,#d6a938,#b88f20);color:#fff;font-size:11px;font-weight:700">山西<br>陈醋</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 底部连接线 -->
+  <div class="tp-line">
+    <div class="tp-line-item"><div class="tp-line-dot" style="background:#58b56e"></div><div class="tp-line-label">SOCIAL<br>社交传播</div></div>
+    <div class="tp-line-item"><div class="tp-line-dot" style="background:#ee8e51"></div><div class="tp-line-label">VISUAL<br>视觉设计</div></div>
+    <div class="tp-line-item"><div class="tp-line-dot" style="background:#4a90d9"></div><div class="tp-line-label">INTERACTION<br>互动体验</div></div>
+    <div class="tp-line-item"><div class="tp-line-dot" style="background:#9b59b6"></div><div class="tp-line-label">SERVICE<br>本地生活服务</div></div>
+    <div class="tp-line-item"><div class="tp-line-dot" style="background:#e43e32"></div><div class="tp-line-label">UGC<br>用户共创</div></div>
+  </div>
+  <div class="tp-footer">SOUR / SWEET / BITTER / SPICY &nbsp;·&nbsp; TASTE THE CITY</div>
 </section>
 
 <!-- ===== 37 FINAL CAMPAIGN ===== -->
@@ -2354,11 +2470,50 @@ const svcProducts=[
   {icon:'🛍️',name:'万象城',desc:'购物 · 商场',city:'山西',cat:'food',price:'免费',dist:'4.2km',rating:'4.5',tags:['山西','酸'],mx:59.1,my:33.1},
   {icon:'🛍️',name:'茂业天地',desc:'购物 · 商场',city:'山西',cat:'food',price:'免费',dist:'5.9km',rating:'4.4',tags:['山西','酸'],mx:63.1,my:35.5}
 ];
+function updateTimelineAndNearby(city){
+  const data=svcCityData[city];
+  if(!data) return;
+  root.style.setProperty('--accent',data.color);
+  document.getElementById('timelineCity').textContent=city;
+  document.getElementById('nearbyCity').textContent=city;
+  document.getElementById('timelineTrack').innerHTML=data.timeline.map(t=>`
+    <div class="tl-item">
+      <div class="tl-time">${t.time}</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h5>${t.title}</h5>
+        <p>${t.desc}</p>
+        <span class="tl-tag">${t.tag}</span>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('nearbyList').innerHTML=data.nearby.map(n=>`
+    <div class="nb-item">
+      <div class="nb-icon">${n.icon}</div>
+      <div class="nb-info">
+        <h5>${n.title}</h5>
+        <p>${n.desc}</p>
+      </div>
+      <div class="nb-meta">
+        <span class="nb-dist">${n.dist}</span>
+        <span class="nb-discount">${n.discount}</span>
+      </div>
+      <button class="nb-cta">GO →</button>
+    </div>
+  `).join('');
+}
 function filterSvcCards(){
   const q=document.getElementById('svcSearchInput').value.trim().toLowerCase();
   const resultsPanel=document.getElementById('svcSearchResults');
   const ssrList=document.getElementById('ssrList');
   const ssrCount=document.getElementById('ssrCount');
+  /* 搜索到城市时同步切换时间线和附近推荐 */
+  const cityNames=['广州','上海','重庆','山西'];
+  let matchedCity=null;
+  for(const c of cityNames){
+    if(q.includes(c.toLowerCase())||q.includes(c)){matchedCity=c;break;}
+  }
+  if(matchedCity) updateTimelineAndNearby(matchedCity);
   /* 搜索结果面板 */
   if(q){
     const matched=svcProducts.filter(p=>{
