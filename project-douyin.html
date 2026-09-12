@@ -1181,8 +1181,9 @@ h1,h2,h3,p{margin-top:0}
   <div class="eyebrow">31 / PERSONALIZED CITY PLAN</div>
   <h2 class="title-xl" style="margin-top:20px">为你生成<br>一份城市计划</h2>
   <p class="lead" style="margin-top:20px">味觉测试不再只是娱乐，而是测试 → 推荐 → 服务的完整链路。</p>
-  <div class="city-plan">
-    <h3>YOUR 48H CITY PLAN · 重庆 / 辣</h3>
+  <div class="city-plan" id="cityPlan">
+    <h3 id="planTitle">YOUR 48H CITY PLAN · 重庆 / 辣</h3>
+    <div id="planBody">
     <div class="plan-day">
       <h4>DAY 01</h4>
       <div class="plan-item"><div class="pi-time">18:00</div><div>火锅 · 推荐附近评分4.8+店铺</div></div>
@@ -1194,6 +1195,7 @@ h1,h2,h3,p{margin-top:0}
       <div class="plan-item"><div class="pi-time">10:00</div><div>本地早餐 · 小面 + 豆花</div></div>
       <div class="plan-item"><div class="pi-time">14:00</div><div>城市探索 · 鹅岭二厂文创园</div></div>
       <div class="plan-item"><div class="pi-time">18:00</div><div>夜景 · 南山一棵树观景台</div></div>
+    </div>
     </div>
   </div>
 </section>
@@ -1591,6 +1593,7 @@ const toast=(msg)=>{
   const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');
   setTimeout(()=>el.classList.remove('show'),1800);
 };
+function shadeColor(hex,percent){var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);r=Math.max(0,Math.min(255,r+percent));g=Math.max(0,Math.min(255,g+percent));b=Math.max(0,Math.min(255,b+percent));return ((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
 
 const theme={
   苦:{color:'#58b56e',city:'广州'},甜:{color:'#ee8e51',city:'上海'},
@@ -1644,9 +1647,30 @@ $$('[data-open]').forEach(card=>{
 document.getElementById('close').onclick=()=>document.getElementById('modal').classList.remove('show');
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('show')});
 
+const cityPlans={
+  '苦':{city:'广州',taste:'苦',days:[
+    {day:'DAY 01',items:[['18:00','早茶 · 推荐附近老字号茶楼'],['20:00','珠江夜游 · 广州塔灯光秀'],['22:00','凉茶铺 · 慢饮一杯广式凉茶']]},
+    {day:'DAY 02',items:[['10:00','本地早餐 · 虾饺 + 烧卖'],['14:00','城市探索 · 永庆坊岭南文化区'],['18:00','沙面岛 · 江边漫步看日落']]}
+  ]},
+  '甜':{city:'上海',taste:'甜',days:[
+    {day:'DAY 01',items:[['18:00','本帮菜 · 浓油赤酱老字号'],['20:00','外滩夜景 · 万国建筑群灯光'],['22:00','甜品 · 老上海蝴蝶酥 + 咖啡']]},
+    {day:'DAY 02',items:[['10:00','本地早餐 · 生煎 + 咸豆浆'],['14:00','城市探索 · 武康路法租界漫步'],['18:00','陆家嘴 · 东方明珠看浦江']]}
+  ]},
+  '辣':{city:'重庆',taste:'辣',days:[
+    {day:'DAY 01',items:[['18:00','火锅 · 推荐附近评分4.8+店铺'],['20:00','山城夜游 · 洪崖洞夜景'],['22:00','江边散步 · 南滨路']]},
+    {day:'DAY 02',items:[['10:00','本地早餐 · 小面 + 豆花'],['14:00','城市探索 · 鹅岭二厂文创园'],['18:00','夜景 · 南山一棵树观景台']]}
+  ]},
+  '酸':{city:'山西',taste:'酸',days:[
+    {day:'DAY 01',items:[['18:00','陈醋火锅 · 老陈醋酿造体验'],['20:00','古城夜游 · 平遥城墙灯光'],['22:00','面食小馆 · 刀削面 + 老醋花生']]},
+    {day:'DAY 02',items:[['10:00','本地早餐 · 头脑 + 烧麦'],['14:00','城市探索 · 晋祠古建园林'],['18:00','醋坊体验 · 手工酿醋 + 醋吧']]}
+  ]}
+};
 const showResult=()=>{
   const taste=Object.entries(score).sort((a,b)=>b[1]-a[1])[0][0];
-  root.style.setProperty('--accent',theme[taste].color);
+  const tc=theme[taste].color;
+  root.style.setProperty('--accent',tc);
+  /* 测试卡片背景色跟随城市 */
+  document.querySelector('.quiz-wrap').style.background='linear-gradient(135deg,'+tc+',#'+shadeColor(tc,-40)+')';
   document.getElementById('resultTaste').textContent=taste;
   document.getElementById('resultCity').textContent=theme[taste].city+' / '+({广州:'GUANGZHOU',上海:'SHANGHAI',重庆:'CHONGQING',山西:'SHANXI'})[theme[taste].city];
   document.getElementById('resultDesc').textContent={
@@ -1657,6 +1681,17 @@ const showResult=()=>{
   }[taste];
   document.getElementById('result').classList.add('show');
   document.getElementById('options').innerHTML='<button class="btn" onclick="location.reload()">再测一次</button>';
+  /* 更新城市计划 */
+  const plan=cityPlans[taste];
+  document.getElementById('planTitle').textContent='YOUR 48H CITY PLAN · '+plan.city+' / '+plan.taste;
+  document.getElementById('planTitle').style.color=tc;
+  document.getElementById('planBody').innerHTML=plan.days.map(d=>
+    '<div class="plan-day"><h4>'+d.day+'</h4>'+
+    d.items.map(it=>'<div class="plan-item"><div class="pi-time">'+it[0]+'</div><div>'+it[1]+'</div></div>').join('')+
+    '</div>'
+  ).join('');
+  /* 滚动到城市计划 */
+  setTimeout(()=>document.getElementById('cityPlan').scrollIntoView({behavior:'smooth',block:'center'}),800);
 };
 /* TASTE QUIZ */
 const questions=[
