@@ -366,7 +366,10 @@ section{position:relative;}
 .w6{grid-column:span 6;}
 .w1 .work-media{aspect-ratio:8/5;background:#F5F2EC;}
 .w1 .work-media img{object-fit:contain;}
-.w2 .work-media{aspect-ratio:4/5;}
+.w2{display:flex;flex-direction:row;align-items:stretch;}
+.w2 .work-media{width:45%;aspect-ratio:auto;flex-shrink:0;}
+.w2 .work-media img{object-fit:cover;}
+.w2 .work-info{flex:1;display:flex;flex-direction:column;justify-content:center;}
 .w3 .work-media{aspect-ratio:5/6;}
 .w4 .work-media{aspect-ratio:7/6;}
 .w5 .work-media{aspect-ratio:6/5;}
