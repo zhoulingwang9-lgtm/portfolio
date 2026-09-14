@@ -84,6 +84,8 @@ button{font:inherit}
   border-radius:999px;
   box-shadow:0 10px 34px rgba(48,41,71,.12);
 }
+.nav-back{font-size:12px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav-back:hover{color:var(--ink)}
 .nav-brand{font-family:var(--dream-font);font-size:20px;white-space:nowrap}
 .nav-links{display:flex;gap:4px;overflow:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
@@ -405,6 +407,7 @@ button{font:inherit}
 
 <body>
 <nav class="nav">
+  <a href="index.html" class="nav-back">← 返回作品</a>
   <a href="#top" class="nav-brand">梦境便利店</a>
   <div class="nav-links">
     <a href="#background">背景</a>
