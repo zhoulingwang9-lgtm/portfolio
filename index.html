@@ -90,8 +90,41 @@ function Logo() {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const projects = [
+    {
+      title: '抖音生活服务 × 酸甜苦辣',
+      subtitle: '城市味觉计划',
+      desc: '短视频 / 海报 / 互动测试 / 团购体验',
+      href: 'project-douyin.html',
+      color: '#161823'
+    },
+    {
+      title: '48H 森林度假计划',
+      subtitle: '治愈系品牌视觉',
+      desc: '主视觉 / 社交媒体 / 运营物料',
+      href: 'project-forest.html',
+      color: '#2D4A3E'
+    },
+    {
+      title: '梦境便利店',
+      subtitle: 'AIGC 视觉设计项目',
+      desc: '梦境商品 / AIGC实验 / 海报系统',
+      href: 'project-dream.html',
+      color: '#5E0ED7'
+    },
+    {
+      title: 'Design Process',
+      subtitle: '设计流程',
+      desc: '从概念到落地的完整设计方法论',
+      href: 'design-process.html',
+      color: '#222222'
+    }
+  ];
+
   return (
-    <div className="relative min-h-screen flex flex-col overflow-hidden bg-white" style={{ fontFamily: "'Inter', sans-serif", color: '#000' }}>
+    <div className="relative bg-white" style={{ fontFamily: "'Inter', sans-serif", color: '#000' }}>
+      {/* HERO SECTION */}
+      <div className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay loop muted playsInline
@@ -181,6 +214,46 @@ function App() {
           </div>
         </div>
       </div>
+      </div>
+
+      {/* PROJECTS SECTION */}
+      <section className="relative z-10 bg-white px-5 sm:px-8 md:px-12 py-20 md:py-28">
+        <div className="flex items-end justify-between mb-12 md:mb-16">
+          <div>
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>SELECTED WORK</p>
+            <h2 className="font-semibold uppercase mt-3" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1 }}>
+              Projects
+            </h2>
+          </div>
+          <p className="hidden md:block text-xs font-semibold tracking-widest uppercase" style={{ color: '#666' }}>04 CASE STUDIES</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {projects.map((p, i) => (
+            <a key={p.title} href={p.href}
+              className="group block border-2 border-black overflow-hidden transition-transform hover:-translate-y-1"
+              style={{ background: p.color }}>
+              <div className="p-8 md:p-12 flex flex-col justify-between" style={{ minHeight: '320px', color: '#fff' }}>
+                <div className="flex items-start justify-between">
+                  <span className="text-xs font-semibold tracking-widest uppercase opacity-60">
+                    0{i + 1} / PROJECT
+                  </span>
+                  <span className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
+                    <ArrowUpRight size={18} />
+                  </span>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold tracking-widest uppercase opacity-60 mb-2">{p.subtitle}</p>
+                  <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)', lineHeight: 1.1 }}>
+                    {p.title}
+                  </h3>
+                  <p className="text-sm mt-3 opacity-80">{p.desc}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
 
       {/* MOBILE MENU OVERLAY */}
       {menuOpen && (
