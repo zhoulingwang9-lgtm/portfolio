@@ -74,6 +74,7 @@ const stats = [
 ];
 
 const headingWords = ['Fearless', 'Vision', 'Delivered'];
+const headingCN = ['无畏', '远见', '交付'];
 
 function ArrowUpRight({ size = 18 }) {
   return (
@@ -175,44 +176,22 @@ function App() {
 
       {/* STATS ROW REMOVED */}
 
-      {/* BOTTOM SECTION */}
-      <div className="relative z-10 px-5 sm:px-8 md:px-12 pb-8 md:pb-12 flex flex-col gap-6 md:gap-12">
-        {/* Row A */}
-        <div className="flex items-center justify-between gap-4">
-          <p className="anim-fade-up font-semibold tracking-widest uppercase"
-            style={{ fontSize: '10px', maxWidth: '130px', lineHeight: 1.6, animationDelay: '0.6s' }}>
-            Shaping Bold<br />Visions Into Power<br />For Your Tribe
-          </p>
-          <a href="#" className="anim-fade-up flex items-center gap-1 font-semibold whitespace-nowrap"
-            style={{ color: ACCENT, fontSize: '16px', animationDelay: '0.72s' }}>
-            Work With Us
-            <ArrowUpRight size={18} />
-          </a>
-        </div>
-
-        {/* Row B */}
-        <div className="flex items-end justify-between gap-3 sm:gap-4">
-          <div className="anim-fade-up shrink-0" style={{ width: '120px', animationDelay: '0.84s' }}>
-            <p className="font-semibold tracking-widest uppercase text-left md:text-right"
-              style={{ fontSize: '9px', lineHeight: 1.6 }}>
-              Creative Studios Built Around Elevating Your Vision Into Striking Reality
-            </p>
-          </div>
-          <div className="text-right">
-            {headingWords.map((word, i) => (
-              <div key={word} className="overflow-hidden">
-                <div className="anim-slide-up font-semibold uppercase text-black"
-                  style={{
-                    fontSize: 'clamp(2rem, 9vw, 9rem)',
-                    lineHeight: 0.88,
-                    animationDelay: `${0.4 + i * 0.14}s`,
-                    transform: 'translateY(110%)'
-                  }}>
-                  {word}
-                </div>
+      {/* BOTTOM SECTION - bilingual title centered */}
+      <div className="relative z-10 px-5 sm:px-8 md:px-12 pb-8 md:pb-12 flex flex-col items-center justify-center flex-1">
+        <div className="text-center">
+          {headingWords.map((word, i) => (
+            <div key={word} className="overflow-hidden">
+              <div className="anim-slide-up font-semibold uppercase text-black"
+                style={{
+                  fontSize: 'clamp(2rem, 7vw, 7rem)',
+                  lineHeight: 1,
+                  animationDelay: `${0.4 + i * 0.14}s`,
+                  transform: 'translateY(110%)'
+                }}>
+                {word} <span style={{ fontSize: '0.35em', verticalAlign: 'middle', marginLeft: '0.3em', color: '#333', fontFamily: "'Noto Sans SC', sans-serif" }}>{headingCN[i]}</span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
       </div>
@@ -232,27 +211,22 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {projects.map((p, i) => (
             <a key={p.title} href={p.href}
-              className="group block border-2 border-black overflow-hidden transition-transform hover:-translate-y-1 reveal-card"
+              className="group block overflow-hidden transition-transform hover:-translate-y-1 reveal-card relative"
               style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="relative h-64 md:h-80 overflow-hidden">
+              <div className="relative h-64 md:h-96 overflow-hidden">
                 <img src={p.cover} alt={p.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${p.color}e6 0%, ${p.color}33 60%, transparent 100%)` }}></div>
-                <div className="absolute top-4 left-5">
-                  <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#fff', opacity: 0.8 }}>
-                    0{i + 1} / PROJECT
+                {/* Overlay: info appears on hover */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: `linear-gradient(to top, ${p.color}e6 0%, ${p.color}66 60%, transparent 100%)`, color: '#fff' }}>
+                  <span className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ opacity: 0.8 }}>
+                    0{i + 1} / PROJECT · {p.subtitle}
                   </span>
+                  <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.3rem, 2vw, 1.8rem)', lineHeight: 1.2 }}>
+                    {p.title}
+                  </h3>
+                  <p className="text-sm mt-2 opacity-80">{p.desc}</p>
                 </div>
-                <div className="absolute top-4 right-5 w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:bg-white/40 transition-colors" style={{ color: '#fff' }}>
-                  <ArrowUpRight size={18} />
-                </div>
-              </div>
-              <div className="p-6 md:p-8" style={{ background: p.color, color: '#fff' }}>
-                <p className="text-xs font-semibold tracking-widest uppercase opacity-60 mb-2">{p.subtitle}</p>
-                <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', lineHeight: 1.2 }}>
-                  {p.title}
-                </h3>
-                <p className="text-sm mt-2 opacity-80">{p.desc}</p>
               </div>
             </a>
           ))}
