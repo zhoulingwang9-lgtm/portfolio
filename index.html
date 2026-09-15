@@ -45,15 +45,18 @@
     transition: opacity 0.3s ease;
   }
 
-  /* Scroll reveal */
+  /* Scroll reveal with frosted glass */
   .reveal-block, .reveal-card {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    filter: blur(12px);
+    backdrop-filter: blur(0px);
+    transition: opacity 1.1s cubic-bezier(0.22,1,0.36,1), transform 1.1s cubic-bezier(0.22,1,0.36,1), filter 1.1s cubic-bezier(0.22,1,0.36,1);
   }
   .reveal-block.visible, .reveal-card.visible {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
   }
 </style>
 </head>
@@ -108,7 +111,7 @@ function App() {
       desc: '短视频 / 海报 / 互动测试 / 团购体验',
       href: 'project-douyin.html',
       color: '#161823',
-      cover: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80'
+      cover: 'https://aka.doubaocdn.com/s/2sg1SZ9DMN'
     },
     {
       title: '48H 森林度假计划',
@@ -116,7 +119,7 @@ function App() {
       desc: '主视觉 / 社交媒体 / 运营物料',
       href: 'project-forest.html',
       color: '#2D4A3E',
-      cover: 'https://images.unsplash.com/photo-1448375240586-882707db88b8?w=800&q=80'
+      cover: 'https://aka.doubaocdn.com/s/7DkjPjC1Pa'
     },
     {
       title: '梦境便利店',
@@ -170,24 +173,7 @@ function App() {
         </button>
       </nav>
 
-      {/* STATS ROW */}
-      <div className="relative z-10 flex-1 flex items-center justify-end px-5 sm:px-8 md:px-12 py-8 md:py-0">
-        <div className="flex items-start gap-5 sm:gap-8 md:gap-10">
-          {stats.map((stat, i) => (
-            <div key={stat.num} className="anim-fade-up text-right"
-              style={{ animationDelay: `${(i + 2) * 0.12}s` }}>
-              <div className="font-semibold leading-none" style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)' }}>
-                <span style={{ color: ACCENT, fontSize: '0.5em', marginRight: '2px' }}>+</span>
-                <span className="text-black">{stat.num}</span>
-              </div>
-              <div className="font-semibold tracking-widest uppercase whitespace-pre-line leading-tight mt-2"
-                style={{ fontSize: '10px', lineHeight: 1.2 }}>
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* STATS ROW REMOVED */}
 
       {/* BOTTOM SECTION */}
       <div className="relative z-10 px-5 sm:px-8 md:px-12 pb-8 md:pb-12 flex flex-col gap-6 md:gap-12">
@@ -278,7 +264,7 @@ function App() {
         <div className="reveal-block">
           <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>ABOUT ME</p>
           <h2 className="font-semibold mt-4 leading-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
-            我是一名视觉设计师，<br />
+            我是一名大四视觉设计学生，<br />
             用设计把抽象的想法变成<span style={{ color: ACCENT }}>看得见的体验</span>。
           </h2>
         </div>
