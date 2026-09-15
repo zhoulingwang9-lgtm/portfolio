@@ -44,6 +44,17 @@
   .overlay-menu {
     transition: opacity 0.3s ease;
   }
+
+  /* Scroll reveal */
+  .reveal-block, .reveal-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-block.visible, .reveal-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -96,28 +107,32 @@ function App() {
       subtitle: '城市味觉计划',
       desc: '短视频 / 海报 / 互动测试 / 团购体验',
       href: 'project-douyin.html',
-      color: '#161823'
+      color: '#161823',
+      cover: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80'
     },
     {
       title: '48H 森林度假计划',
       subtitle: '治愈系品牌视觉',
       desc: '主视觉 / 社交媒体 / 运营物料',
       href: 'project-forest.html',
-      color: '#2D4A3E'
+      color: '#2D4A3E',
+      cover: 'https://images.unsplash.com/photo-1448375240586-882707db88b8?w=800&q=80'
     },
     {
       title: '梦境便利店',
       subtitle: 'AIGC 视觉设计项目',
       desc: '梦境商品 / AIGC实验 / 海报系统',
       href: 'project-dream.html',
-      color: '#5E0ED7'
+      color: '#5E0ED7',
+      cover: 'https://aka.doubaocdn.com/s/L4wVgXoyHG'
     },
     {
       title: 'Design Process',
       subtitle: '设计流程',
       desc: '从概念到落地的完整设计方法论',
       href: 'design-process.html',
-      color: '#222222'
+      color: '#222222',
+      cover: 'https://images.unsplash.com/photo-1561070791-2526d30994b6?w=800&q=80'
     }
   ];
 
@@ -231,29 +246,86 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {projects.map((p, i) => (
             <a key={p.title} href={p.href}
-              className="group block border-2 border-black overflow-hidden transition-transform hover:-translate-y-1"
-              style={{ background: p.color }}>
-              <div className="p-8 md:p-12 flex flex-col justify-between" style={{ minHeight: '320px', color: '#fff' }}>
-                <div className="flex items-start justify-between">
-                  <span className="text-xs font-semibold tracking-widest uppercase opacity-60">
+              className="group block border-2 border-black overflow-hidden transition-transform hover:-translate-y-1 reveal-card"
+              style={{ transitionDelay: `${i * 0.1}s` }}>
+              <div className="relative h-64 md:h-80 overflow-hidden">
+                <img src={p.cover} alt={p.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${p.color}e6 0%, ${p.color}33 60%, transparent 100%)` }}></div>
+                <div className="absolute top-4 left-5">
+                  <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#fff', opacity: 0.8 }}>
                     0{i + 1} / PROJECT
                   </span>
-                  <span className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
-                    <ArrowUpRight size={18} />
-                  </span>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold tracking-widest uppercase opacity-60 mb-2">{p.subtitle}</p>
-                  <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)', lineHeight: 1.1 }}>
-                    {p.title}
-                  </h3>
-                  <p className="text-sm mt-3 opacity-80">{p.desc}</p>
+                <div className="absolute top-4 right-5 w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:bg-white/40 transition-colors" style={{ color: '#fff' }}>
+                  <ArrowUpRight size={18} />
                 </div>
+              </div>
+              <div className="p-6 md:p-8" style={{ background: p.color, color: '#fff' }}>
+                <p className="text-xs font-semibold tracking-widest uppercase opacity-60 mb-2">{p.subtitle}</p>
+                <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', lineHeight: 1.2 }}>
+                  {p.title}
+                </h3>
+                <p className="text-sm mt-2 opacity-80">{p.desc}</p>
               </div>
             </a>
           ))}
         </div>
       </section>
+
+      {/* ABOUT / SELF INTRO */}
+      <section className="relative z-10 bg-white px-5 sm:px-8 md:px-12 py-20 md:py-32 border-t border-black/10">
+        <div className="reveal-block">
+          <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>ABOUT ME</p>
+          <h2 className="font-semibold mt-4 leading-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
+            我是一名视觉设计师，<br />
+            用设计把抽象的想法变成<span style={{ color: ACCENT }}>看得见的体验</span>。
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-10 md:mt-16">
+          <div className="reveal-block">
+            <p className="text-base md:text-lg leading-relaxed" style={{ color: '#333' }}>
+              专注于品牌视觉、AIGC创意与交互设计。从概念到落地，我相信好的设计不只是好看，而是能讲清楚一个故事、解决一个问题。
+            </p>
+            <p className="text-base md:text-lg leading-relaxed mt-5" style={{ color: '#333' }}>
+              擅长把复杂的信息拆解成清晰的视觉系统，用海报、视频、网页和互动体验传递品牌温度。
+            </p>
+          </div>
+          <div className="reveal-block">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Brand Identity</span>
+                <span className="text-sm font-semibold">品牌视觉</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>AIGC Design</span>
+                <span className="text-sm font-semibold">AI视觉实验</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Motion / Video</span>
+                <span className="text-sm font-semibold">动态视觉</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Web Design</span>
+                <span className="text-sm font-semibold">网页设计</span>
+              </div>
+            </div>
+            <a href="#" className="inline-flex items-center gap-2 mt-8 font-semibold" style={{ color: ACCENT }}>
+              Get in Touch <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="relative z-10 px-5 sm:px-8 md:px-12 py-10 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#999' }}>
+          © 2026 Zhou Lingwang · All Rights Reserved
+        </p>
+        <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#999' }}>
+          Designed & Built with Care
+        </p>
+      </footer>
 
       {/* MOBILE MENU OVERLAY */}
       {menuOpen && (
@@ -285,6 +357,19 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+// Scroll reveal
+setTimeout(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal-block, .reveal-card').forEach(el => observer.observe(el));
+}, 500);
 </script>
 </body>
 </html>
