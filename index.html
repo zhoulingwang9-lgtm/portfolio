@@ -176,22 +176,15 @@ function App() {
 
       {/* STATS ROW REMOVED */}
 
-      {/* BOTTOM SECTION - bilingual title centered */}
-      <div className="relative z-10 px-5 sm:px-8 md:px-12 pb-8 md:pb-12 flex flex-col items-center justify-center flex-1">
-        <div className="text-center">
-          {headingWords.map((word, i) => (
-            <div key={word} className="overflow-hidden">
-              <div className="anim-slide-up font-semibold uppercase text-black"
-                style={{
-                  fontSize: 'clamp(2rem, 7vw, 7rem)',
-                  lineHeight: 1,
-                  animationDelay: `${0.4 + i * 0.14}s`,
-                  transform: 'translateY(110%)'
-                }}>
-                {word} <span style={{ fontSize: '0.35em', verticalAlign: 'middle', marginLeft: '0.3em', color: '#333', fontFamily: "'Noto Sans SC', sans-serif" }}>{headingCN[i]}</span>
-              </div>
-            </div>
-          ))}
+      {/* BOTTOM RIGHT: personal portfolio label */}
+      <div className="relative z-10 px-5 sm:px-8 md:px-12 pb-8 md:pb-12 flex justify-end">
+        <div className="anim-fade-up text-right" style={{ animationDelay: '0.6s' }}>
+          <p className="font-semibold tracking-widest uppercase text-black" style={{ fontSize: 'clamp(1.2rem, 2.5vw, 2rem)', lineHeight: 1.2 }}>
+            个人作品集
+          </p>
+          <p className="font-semibold tracking-widest uppercase mt-1" style={{ fontSize: 'clamp(0.7rem, 1.2vw, 1rem)', color: ACCENT }}>
+            Personal Portfolio
+          </p>
         </div>
       </div>
       </div>
