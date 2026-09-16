@@ -211,7 +211,12 @@ function App() {
       />
       <div className="absolute inset-0 bg-white/10"></div>
 
-      {/* NAV REMOVED */}
+      {/* NAV */}
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center">
+        <div className="bg-white rounded-full p-1 shadow-sm">
+          <GooeyNav items={[{label:'首页',href:'#'},{label:'自我介绍',href:'#about'},{label:'作品',href:'#works'},{label:'联系',href:'#contact'}]} />
+        </div>
+      </div>
 
       {/* STATS ROW REMOVED */}
 
