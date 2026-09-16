@@ -153,7 +153,10 @@ function App() {
       <div className="absolute inset-0 bg-white/10"></div>
 
       {/* NAV */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-8 px-6 py-3 bg-white/30 backdrop-blur-xl rounded-full border border-white/30 shadow-lg">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-8 md:px-12 pt-5 md:pt-6 bg-white/70 backdrop-blur-md">
+        <div className="anim-fade-down" style={{ animationDelay: '0s' }}>
+          <Logo />
+        </div>
         <div className="hidden md:flex items-center gap-8">
           {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l, i) => (
             <a key={l.n} href={l.h} className="anim-fade-down text-sm font-semibold tracking-widest uppercase text-black"
@@ -162,13 +165,13 @@ function App() {
             </a>
           ))}
         </div>
-        <div className="flex md:hidden items-center gap-5">
-          {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l) => (
-            <a key={l.n} href={l.h} className="text-xs font-semibold tracking-widest uppercase text-black">
-              {l.n}
-            </a>
-          ))}
-        </div>
+        <button onClick={() => setMenuOpen(true)}
+          className="anim-fade-down w-9 h-9 rounded-full bg-black flex flex-col items-center justify-center gap-1"
+          style={{ animationDelay: '0.5s' }}>
+          <span className="w-4 h-0.5 bg-white"></span>
+          <span className="w-4 h-0.5 bg-white"></span>
+          <span className="w-4 h-0.5 bg-white"></span>
+        </button>
       </nav>
 
       {/* STATS ROW REMOVED */}
@@ -187,39 +190,70 @@ function App() {
       </div>
 
       {/* PROJECTS SECTION */}
-      <section id="works" className="relative z-10 bg-white px-5 sm:px-8 md:px-12 py-20 md:py-28">
-        <div className="flex items-end justify-between mb-12 md:mb-16">
-          <div>
-            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>SELECTED WORK</p>
-            <h2 className="font-semibold uppercase mt-3" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1 }}>
-              Projects
-            </h2>
+      <section id="works" className="relative z-10" style={{ background:'#0C0C0C', borderRadius:'40px 40px 0 0' }}>
+        <style>{`
+          .pf-wrap{width:100%;max-width:1200px;margin:0 auto;padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem) 2rem;color:#F2F7FA;font-family:'Manrope','Inter',sans-serif;}
+          .pf-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(215,226,234,.6);margin-bottom:1rem;}
+          .pf-title{font-size:clamp(3rem,9vw,7.5rem);font-weight:600;letter-spacing:-.02em;line-height:1.02;background:linear-gradient(100deg,#FFB3EF 0%,#E052CF 32%,#8A3FD8 62%,#E08A3C 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+          .pf-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vw,5rem);}
+          .pf-note{max-width:30ch;color:rgba(215,226,234,.6);font-size:.9375rem;line-height:1.65;}
+          .pf-stack{position:relative;height:calc(85vh * 4);}
+          .pf-sticky{position:sticky;top:calc(6rem + var(--i,0)*28px);z-index:calc(20 + var(--i,0));}
+          @media(min-width:768px){.pf-sticky{top:calc(8rem + var(--i,0)*28px);}}
+          .pf-card{background:#0C0C0C;border:2px solid #D7E2EA;border-radius:40px;padding:1rem;transform-origin:top center;display:block;text-decoration:none;color:inherit;}
+          @media(min-width:640px){.pf-card{border-radius:50px;padding:1.5rem;}}
+          @media(min-width:768px){.pf-card{border-radius:60px;padding:2rem;}}
+          .pf-top{display:flex;align-items:flex-start;gap:1rem 1.25rem;flex-wrap:wrap;}
+          .pf-num{font-weight:500;letter-spacing:-.03em;font-size:clamp(2.75rem,6vw,5.5rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(215,226,234,.4);}
+          .pf-meta{display:flex;flex-direction:column;gap:.35rem;padding-top:.4rem;min-width:0;}
+          .pf-cat{font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(215,226,234,.55);}
+          .pf-name{font-weight:600;letter-spacing:-.01em;font-size:clamp(1.375rem,2.4vw,2.25rem);line-height:1.05;color:#F2F7FA;}
+          .pf-live{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;font-weight:500;text-transform:uppercase;letter-spacing:.2em;border-radius:9999px;border:2px solid #D7E2EA;color:#D7E2EA;background:transparent;padding:.75rem 2rem;font-size:.875rem;text-decoration:none;}
+          @media(min-width:640px){.pf-live{padding:.875rem 2.5rem;font-size:1rem;}}
+          .pf-live:hover{background:rgba(215,226,234,.1);}
+          .pf-grid{display:grid;grid-template-columns:40% 1fr;gap:clamp(.75rem,1.6vw,1.25rem);margin-top:clamp(1rem,2.4vw,1.75rem);}
+          .pf-left{display:grid;gap:clamp(.75rem,1.6vw,1.25rem);}
+          .pf-left .pf-t{height:clamp(130px,16vw,230px);}
+          .pf-left .pf-b{height:clamp(160px,22vw,340px);}
+          .pf-right{display:grid;}
+          .pf-right img{height:100%;min-height:0;}
+          .pf-card img{width:100%;object-fit:cover;border-radius:40px;}
+          @media(min-width:640px){.pf-card img{border-radius:50px;}}
+          @media(min-width:768px){.pf-card img{border-radius:60px;}}
+        `}</style>
+        <div className="pf-wrap">
+          <div className="pf-head">
+            <div>
+              <p className="pf-eyebrow">Selected Work</p>
+              <h2 className="pf-title">Project</h2>
+            </div>
+            <p className="pf-note">A selection of client and personal work — brand systems, campaigns and digital products crafted with intent.</p>
           </div>
-          <p className="hidden md:block text-xs font-semibold tracking-widest uppercase" style={{ color: '#666' }}>04 CASE STUDIES</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((p, i) => (
-            <a key={p.title} href={p.href}
-              className="group block overflow-hidden transition-transform hover:-translate-y-1 reveal-card relative"
-              style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="relative h-64 md:h-96 overflow-hidden">
-                <img src={p.cover} alt={p.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                {/* Overlay: info appears on hover */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(to top, ${p.color}e6 0%, ${p.color}66 60%, transparent 100%)`, color: '#fff' }}>
-                  <span className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ opacity: 0.8 }}>
-                    0{i + 1} / PROJECT · {p.subtitle}
-                  </span>
-                  <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.3rem, 2vw, 1.8rem)', lineHeight: 1.2 }}>
-                    {p.title}
-                  </h3>
-                  <p className="text-sm mt-2 opacity-80">{p.desc}</p>
-                </div>
+          <div className="pf-stack">
+            {projects.map((p,i)=>(
+              <div className="pf-sticky" style={{'--i':i}} key={p.title}>
+                <a className="pf-card" href={p.href}>
+                  <div className="pf-top">
+                    <span className="pf-num">0{i+1}</span>
+                    <div className="pf-meta">
+                      <span className="pf-cat">{p.subtitle}</span>
+                      <h3 className="pf-name">{p.title}</h3>
+                    </div>
+                    <span className="pf-live">Live Project</span>
+                  </div>
+                  <div className="pf-grid">
+                    <div className="pf-left">
+                      <img className="pf-t" src={p.cover} alt="" loading="lazy" />
+                      <img className="pf-b" src={p.cover} alt="" loading="lazy" />
+                    </div>
+                    <div className="pf-right">
+                      <img src={p.cover} alt="" loading="lazy" />
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -320,6 +354,40 @@ setTimeout(() => {
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal-block, .reveal-card').forEach(el => observer.observe(el));
 }, 500);
+
+// Projects sticky stack scaling
+setTimeout(() => {
+  const stack = document.querySelector('.pf-stack');
+  const wraps = document.querySelectorAll('.pf-sticky');
+  const cards = [...wraps].map(w => w.querySelector('.pf-card'));
+  const total = cards.length;
+  function size() {
+    if (!stack || !total) return;
+    let tallest = 0;
+    cards.forEach(c => { if (c.offsetHeight > tallest) tallest = c.offsetHeight; });
+    const band = Math.max(window.innerHeight * 0.85, tallest + 200);
+    stack.style.height = Math.round(band * total) + 'px';
+  }
+  function update() {
+    if (!stack || !total) return;
+    const sr = stack.getBoundingClientRect();
+    const band = (sr.height / total) || 1;
+    for (let i = 0; i < total; i++) {
+      const p = Math.max(0, Math.min(1, (-sr.top - i * band) / band));
+      const target = 1 - (total - 1 - i) * 0.03;
+      const s = 1 - p * (1 - target);
+      cards[i].style.transform = 'scale(' + s.toFixed(4) + ')';
+    }
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => { update(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', () => { size(); update(); });
+  window.addEventListener('load', () => { size(); update(); });
+  setTimeout(() => { size(); update(); }, 800);
+}, 1000);
 </script>
 </body>
 </html>
