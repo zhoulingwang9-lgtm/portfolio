@@ -143,7 +143,7 @@ function GooeyNav({ items, animationTime=600, particleCount=15, particleDistance
       <nav><ul ref={navRef}>
         {items.map((it,i)=>(
           <li key={i} className={activeIndex===i?'active':''}>
-            <a href={it.href} onClick={e=>handleClick(e,i)} onMouseEnter={e=>handleClick(e,i)}>{it.label}</a>
+            <a href={it.href} onClick={e=>handleClick(e,i)}>{it.label}</a>
           </li>
         ))}
       </ul></nav>
