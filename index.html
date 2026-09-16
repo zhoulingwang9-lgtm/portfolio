@@ -3,548 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Selected Work</title>
-<meta name="description" content="Selected client and personal projects — brand identities, digital products and campaigns.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23B600A8'/%3E%3Cstop offset='1' stop-color='%23BE4C00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230C0C0C'/%3E%3Ccircle cx='32' cy='32' r='22' fill='url(%23g)'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<title>Creative Studio — Fearless Vision Delivered</title>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   Design tokens
-   ============================================================ */
-:root{
-  --bg:            #0C0C0C;
-  --line:          #D7E2EA;
-  --text:          #F2F7FA;
-  --muted:         rgba(215,226,234,0.6);
-  --font-display:  "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-body:     "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --ease:          cubic-bezier(0.25, 0.1, 0.25, 1);
-  --grad-brand:    linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
-  --grad-heading:  linear-gradient(100deg, #FFB3EF 0%, #E052CF 32%, #8A3FD8 62%, #E08A3C 100%);
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: #fff; }
+  body { font-family: 'Inter', sans-serif; }
+  #root { min-height: 100vh; }
 
-*{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-body);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;          /* 旧浏览器回退 */
-  overflow-x:clip;            /* 不产生滚动容器，避免破坏 sticky */
-}
-::selection{ background:rgba(182,0,168,0.45); color:#fff; }
-:focus-visible{ outline:2px solid #B600A8; outline-offset:3px; }
-img{ display:block; max-width:100%; }
+  /* Animation keyframes */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    from { transform: translateY(110%); }
+    to { transform: translateY(0); }
+  }
+  .anim-fade-down {
+    opacity: 0;
+    animation: fadeDown 0.5s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .anim-fade-up {
+    opacity: 0;
+    animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .anim-slide-up {
+    animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .overlay-menu {
+    transition: opacity 0.3s ease;
+  }
 
-/* ============================================================
-   Reusable components — buttons
-   ============================================================ */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  font-family:var(--font-display); font-weight:500;
-  text-transform:uppercase; letter-spacing:0.2em;
-  border-radius:9999px; cursor:pointer; text-decoration:none;
-  border:none; line-height:1; white-space:nowrap;
-  min-height:44px; /* 移动端触控命中区 */
-}
-
-/* ContactButton —— 渐变胶囊 + 内阴影 + 白色 -3px 偏移描边 */
-.btn-contact{
-  background:var(--grad-brand);
-  box-shadow:0px 4px 4px rgba(181,1,167,0.25), inset 4px 4px 12px #7721B1;
-  outline:2px solid #FFFFFF; outline-offset:-3px;
-  color:#FFFFFF;
-  padding:0.75rem 2rem; font-size:0.75rem;
-}
-@media (min-width:640px){ .btn-contact{ padding:0.875rem 2.5rem; font-size:0.875rem; } }
-@media (min-width:768px){ .btn-contact{ padding:1rem 3rem; font-size:1rem; } }
-
-/* LiveProjectButton —— 幽灵描边胶囊 */
-.btn-live{
-  background:transparent; border:2px solid var(--line); color:var(--line);
-  padding:0.75rem 2rem; font-size:0.875rem;
-}
-@media (min-width:640px){ .btn-live{ padding:0.875rem 2.5rem; font-size:1rem; } }
-.btn-live:hover{ background:rgba(215,226,234,0.10); }
-
-/* Magnet —— 鼠标跟随磁性吸附 */
-.magnet{ transition:transform 0.6s ease-in-out; will-change:transform; }
-.magnet.magnet-hover{ transition:transform 0.3s ease-out; }
-
-/* ============================================================
-   Reusable components — FadeIn (whileInView)
-   ============================================================ */
-html.js [data-fade]{
-  opacity:0;
-  transform:translate(var(--fx,0px), var(--fy,30px));
-  transition:
-    opacity var(--fdur,0.7s) var(--ease) var(--fd,0s),
-    transform var(--fdur,0.7s) var(--ease) var(--fd,0s);
-  will-change:opacity, transform;
-}
-html.js [data-fade].in{ opacity:1; transform:translate(0,0); }
-
-/* ============================================================
-   Reusable components — AnimatedText（逐字滚动揭示）
-   ============================================================ */
-.animated-text .word{ display:inline-block; white-space:nowrap; }
-.animated-text .char{ position:relative; display:inline-block; }
-.animated-text .ghost{ visibility:hidden; }
-.animated-text .anim{ position:absolute; inset:0; opacity:0.2; will-change:opacity; }
-
-/* ============================================================
-   Typography
-   ============================================================ */
-.hero-heading{
-  font-family:var(--font-display); font-weight:600;
-  letter-spacing:-0.02em; line-height:1.02; text-wrap:balance;
-  color:transparent;
-  background:var(--grad-heading);
-  -webkit-background-clip:text; background-clip:text;
-}
-.eyebrow{
-  font-family:var(--font-display); font-size:0.75rem; font-weight:500;
-  letter-spacing:0.32em; text-transform:uppercase; color:var(--muted);
-}
-
-/* ============================================================
-   Header
-   ============================================================ */
-.site-header{
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1.25rem clamp(1.25rem, 4vw, 3rem);
-}
-.wordmark{
-  font-family:var(--font-display); font-weight:600; font-size:0.875rem;
-  letter-spacing:0.28em; text-transform:uppercase;
-  color:var(--text); text-decoration:none;
-}
-.wordmark .reg{ color:#B600A8; font-size:0.62em; vertical-align:super; letter-spacing:0; }
-
-/* ============================================================
-   Projects section
-   ============================================================ */
-.projects{
-  position:relative; z-index:10; background:var(--bg);
-  border-radius:40px 40px 0 0;
-  padding:clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem) 2rem;
-}
-@media (min-width:640px){ .projects{ border-radius:50px 50px 0 0; } }
-@media (min-width:768px){ .projects{ border-radius:60px 60px 0 0; } }
-.projects-inner{ width:100%; max-width:1200px; margin:0 auto; }
-
-.projects-head{
-  display:flex; align-items:flex-end; justify-content:space-between;
-  gap:2rem; flex-wrap:wrap; margin-bottom:clamp(3rem, 6vw, 5rem);
-}
-.projects-title{ font-size:clamp(3rem, 9vw, 7.5rem); margin-top:1rem; }
-.projects-note{ max-width:30ch; color:var(--muted); font-size:0.9375rem; line-height:1.65; }
-
-/* 粘性堆叠卡片 —— 共享容器内多卡片 sticky 堆叠
-   每个 sticky-wrap 在 .stack 内 sticky（top = 96/128px + i*28px），
-   容器高度按卡片数分配（默认 85vh/张），卡片滚动经过时逐张缩放 */
-.stack{ position:relative; height:calc(85vh * var(--total, 3)); }
-.sticky-wrap{ position:sticky; top:calc(6rem + var(--i,0) * 28px); z-index:calc(20 + var(--i,0)); }
-@media (min-width:768px){ .sticky-wrap{ top:calc(8rem + var(--i,0) * 28px); } }
-
-.project-card{
-  background:var(--bg);
-  border:2px solid var(--line);
-  border-radius:40px; padding:1rem;
-  transform-origin:top center;
-}
-@media (min-width:640px){ .project-card{ border-radius:50px; padding:1.5rem; } }
-@media (min-width:768px){ .project-card{ border-radius:60px; padding:2rem; } }
-
-.card-top{ display:flex; align-items:flex-start; gap:1rem 1.25rem; flex-wrap:wrap; }
-.card-number{
-  font-family:var(--font-display); font-weight:500; letter-spacing:-0.03em;
-  font-size:clamp(2.75rem, 6vw, 5.5rem); line-height:0.85;
-  color:transparent; -webkit-text-stroke:1.5px rgba(215,226,234,0.4);
-}
-.card-meta{ display:flex; flex-direction:column; gap:0.35rem; padding-top:0.4rem; min-width:0; }
-.card-category{
-  font-size:0.75rem; font-weight:500; letter-spacing:0.3em;
-  text-transform:uppercase; color:rgba(215,226,234,0.55);
-}
-.card-name{
-  font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em;
-  font-size:clamp(1.375rem, 2.4vw, 2.25rem); line-height:1.05; color:var(--text);
-}
-.card-top .btn{ margin-left:auto; }
-
-.card-grid{
-  display:grid; grid-template-columns:40% 1fr;
-  gap:clamp(0.75rem, 1.6vw, 1.25rem);
-  margin-top:clamp(1rem, 2.4vw, 1.75rem);
-}
-.col-left{ display:grid; gap:clamp(0.75rem, 1.6vw, 1.25rem); }
-.col-left .img-top{ height:clamp(130px, 16vw, 230px); }
-.col-left .img-bot{ height:clamp(160px, 22vw, 340px); }
-.col-right{ display:grid; }
-.col-right img{ height:100%; min-height:0; }
-.project-card img{
-  width:100%; object-fit:cover; border-radius:40px;
-}
-@media (min-width:640px){ .project-card img{ border-radius:50px; } }
-@media (min-width:768px){ .project-card img{ border-radius:60px; } }
-
-/* ============================================================
-   Footer
-   ============================================================ */
-.footer{
-  position:relative; z-index:5; text-align:center;
-  padding:clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem) 3rem;
-  background:var(--bg);
-}
-.footer-title{ font-size:clamp(2.5rem, 7vw, 6rem); margin:1.25rem auto 1.5rem; max-width:18ch; }
-.footer-sub{
-  max-width:46ch; margin:0 auto 2.5rem;
-  color:rgba(215,226,234,0.78); font-size:clamp(1rem, 1.3vw, 1.1875rem); line-height:1.7;
-}
-.footer-note{ margin-top:3.5rem; font-size:0.8125rem; letter-spacing:0.12em; color:rgba(215,226,234,0.4); }
-
-/* ============================================================
-   Toast
-   ============================================================ */
-.toast{
-  position:fixed; left:50%; bottom:2rem; z-index:100;
-  display:flex; align-items:center; gap:0.6rem;
-  transform:translate(-50%, 150%); opacity:0;
-  background:#161616; border:1px solid rgba(215,226,234,0.25);
-  color:var(--text); padding:0.75rem 1.25rem; border-radius:9999px;
-  font-size:0.8125rem; letter-spacing:0.02em;
-  transition:transform 0.4s var(--ease), opacity 0.4s var(--ease);
-  pointer-events:none;
-}
-.toast.show{ transform:translate(-50%, 0); opacity:1; }
-.toast-dot{
-  width:8px; height:8px; border-radius:50%; flex-shrink:0;
-  background:linear-gradient(123deg, #B600A8, #7621B0, #BE4C00);
-}
-
-/* ============================================================
-   细噪点材质层
-   ============================================================ */
-.grain{
-  position:fixed; inset:0; z-index:60; pointer-events:none; opacity:0.05;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
-}
-
-/* ============================================================
-   Reduced motion
-   ============================================================ */
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  html.js [data-fade]{ opacity:1 !important; transform:none !important; transition:none !important; }
-  .magnet{ transition:none !important; }
-  .animated-text .anim{ opacity:1 !important; }
-  .toast{ transition:none; }
-}
+  /* Scroll reveal with frosted glass */
+  .reveal-block, .reveal-card {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(12px);
+    backdrop-filter: blur(0px);
+    transition: opacity 1.1s cubic-bezier(0.22,1,0.36,1), transform 1.1s cubic-bezier(0.22,1,0.36,1), filter 1.1s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-block.visible, .reveal-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
 </style>
 </head>
 <body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
 
-<div class="grain" aria-hidden="true"></div>
+const ACCENT = '#5E0ED7';
 
-<!-- ===== Header ===== -->
-<header class="site-header">
-  <a class="wordmark" href="#work">Portfolio<span class="reg">®</span></a>
-  <a href="#contact" class="btn btn-contact magnet">Contact Me</a>
-</header>
+const stats = [
+  { num: '300', label: 'CRAFTED\nBRANDS' },
+  { num: '200', label: 'DIGITAL\nPRODUCTS' },
+  { num: '100', label: 'VENTURES\nFUNDED' }
+];
 
-<!-- ===== Projects ===== -->
-<section class="projects" id="work">
-  <div class="projects-inner">
+const headingWords = ['Fearless', 'Vision', 'Delivered'];
+const headingCN = ['无畏', '远见', '交付'];
 
-    <div class="projects-head">
-      <div>
-        <p class="eyebrow fade" data-fade>Selected Work</p>
-        <h2 class="hero-heading projects-title fade" data-fade data-delay="0.05">Project</h2>
-      </div>
-      <p class="projects-note fade" data-fade data-delay="0.1">A selection of client and personal work — brand systems, campaigns and digital products crafted with intent.</p>
+function ArrowUpRight({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="7" y1="17" x2="17" y2="7"></line>
+      <polyline points="7 7 17 7 17 17"></polyline>
+    </svg>
+  );
+}
+
+function XIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  );
+}
+
+function Logo() {
+  return (
+    <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ border: `2px solid ${ACCENT}` }}>
+      <div className="w-2.5 h-2.5 rounded-full" style={{ background: ACCENT }}></div>
     </div>
+  );
+}
 
-    <div class="stack" style="--total:3">
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-      <!-- Card 01 -->
-      <div class="sticky-wrap" style="--i:0">
-          <article class="project-card">
-            <div class="card-top">
-              <span class="card-number" aria-hidden="true">01</span>
-              <div class="card-meta">
-                <span class="card-category">Client</span>
-                <h3 class="card-name">Nextlevel Studio</h3>
-              </div>
-              <button type="button" class="btn btn-live magnet" data-toast="Nextlevel Studio — live case study coming soon">Live Project</button>
-            </div>
-            <div class="card-grid">
-              <div class="col-left">
-                <img class="img-top" src="assets/project-01-a.webp" alt="Nextlevel Studio — floral brand campaign visual" loading="lazy">
-                <img class="img-bot" src="assets/project-01-b.webp" alt="Nextlevel Studio — campaign composition detail" loading="lazy">
-              </div>
-              <div class="col-right">
-                <img src="assets/project-01-c.webp" alt="Nextlevel Studio — signature campaign visual" loading="lazy">
-              </div>
-            </div>
-          </article>
+  const projects = [
+    {
+      title: '抖音生活服务 × 酸甜苦辣',
+      subtitle: '城市味觉计划',
+      desc: '短视频 / 海报 / 互动测试 / 团购体验',
+      href: 'project-douyin.html',
+      color: '#161823',
+      cover: 'https://aka.doubaocdn.com/s/2sg1SZ9DMN'
+    },
+    {
+      title: '48H 森林度假计划',
+      subtitle: '治愈系品牌视觉',
+      desc: '主视觉 / 社交媒体 / 运营物料',
+      href: 'project-forest.html',
+      color: '#2D4A3E',
+      cover: 'https://aka.doubaocdn.com/s/7DkjPjC1Pa'
+    },
+    {
+      title: '梦境便利店',
+      subtitle: 'AIGC 视觉设计项目',
+      desc: '梦境商品 / AIGC实验 / 海报系统',
+      href: 'project-dream.html',
+      color: '#5E0ED7',
+      cover: 'https://aka.doubaocdn.com/s/L4wVgXoyHG'
+    },
+    {
+      title: 'Design Process',
+      subtitle: '设计流程',
+      desc: '从概念到落地的完整设计方法论',
+      href: 'design-process.html',
+      color: '#222222',
+      cover: 'https://images.unsplash.com/photo-1561070791-2526d30994b6?w=800&q=80'
+    }
+  ];
+
+  return (
+    <div className="relative bg-white" style={{ fontFamily: "'Inter', sans-serif", color: '#000' }}>
+      {/* HERO SECTION */}
+      <div className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay loop muted playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260517_222138_3e3205be-3364-417b-a64a-bfe087acbec4.mp4"
+      />
+      <div className="absolute inset-0 bg-white/10"></div>
+
+      {/* NAV */}
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-8 px-6 py-3 bg-white/30 backdrop-blur-xl rounded-full border border-white/30 shadow-lg">
+        <div className="hidden md:flex items-center gap-8">
+          {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l, i) => (
+            <a key={l.n} href={l.h} className="anim-fade-down text-sm font-semibold tracking-widest uppercase text-black"
+              style={{ animationDelay: `${(i + 1) * 0.1}s` }}>
+              {l.n}
+            </a>
+          ))}
+        </div>
+        <div className="flex md:hidden items-center gap-5">
+          {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l) => (
+            <a key={l.n} href={l.h} className="text-xs font-semibold tracking-widest uppercase text-black">
+              {l.n}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {/* STATS ROW REMOVED */}
+
+      {/* RIGHT MIDDLE: personal portfolio label */}
+      <div className="relative z-10 flex justify-end items-start px-5 sm:px-8 md:px-12" style={{ minHeight: '30vh', paddingTop: '33vh' }}>
+        <div className="anim-fade-up text-left" style={{ animationDelay: '0.6s' }}>
+          <p className="font-semibold tracking-widest uppercase text-black" style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', lineHeight: 1 }}>
+            个人作品集
+          </p>
+          <p className="font-semibold tracking-widest uppercase mt-4" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.6rem)', color: ACCENT }}>
+            Personal Portfolio
+          </p>
+        </div>
+      </div>
       </div>
 
-      <!-- Card 02 -->
-      <div class="sticky-wrap" style="--i:1">
-          <article class="project-card">
-            <div class="card-top">
-              <span class="card-number" aria-hidden="true">02</span>
-              <div class="card-meta">
-                <span class="card-category">Personal</span>
-                <h3 class="card-name">Aura Brand Identity</h3>
-              </div>
-              <button type="button" class="btn btn-live magnet" data-toast="Aura Brand Identity — live case study coming soon">Live Project</button>
-            </div>
-            <div class="card-grid">
-              <div class="col-left">
-                <img class="img-top" src="assets/project-02-a.webp" alt="Aura Brand Identity — lavender field brand visual" loading="lazy">
-                <img class="img-bot" src="assets/project-02-b.webp" alt="Aura Brand Identity — identity mood visual" loading="lazy">
-              </div>
-              <div class="col-right">
-                <img src="assets/project-02-c.webp" alt="Aura Brand Identity — signature brand visual" loading="lazy">
-              </div>
-            </div>
-          </article>
-      </div>
+      {/* PROJECTS SECTION */}
+      <section id="works" className="relative z-10 bg-white px-5 sm:px-8 md:px-12 py-20 md:py-28">
+        <div className="flex items-end justify-between mb-12 md:mb-16">
+          <div>
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>SELECTED WORK</p>
+            <h2 className="font-semibold uppercase mt-3" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1 }}>
+              Projects
+            </h2>
+          </div>
+          <p className="hidden md:block text-xs font-semibold tracking-widest uppercase" style={{ color: '#666' }}>04 CASE STUDIES</p>
+        </div>
 
-      <!-- Card 03 -->
-      <div class="sticky-wrap" style="--i:2">
-          <article class="project-card">
-            <div class="card-top">
-              <span class="card-number" aria-hidden="true">03</span>
-              <div class="card-meta">
-                <span class="card-category">Client</span>
-                <h3 class="card-name">Solaris Digital</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {projects.map((p, i) => (
+            <a key={p.title} href={p.href}
+              className="group block overflow-hidden transition-transform hover:-translate-y-1 reveal-card relative"
+              style={{ transitionDelay: `${i * 0.1}s` }}>
+              <div className="relative h-64 md:h-96 overflow-hidden">
+                <img src={p.cover} alt={p.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                {/* Overlay: info appears on hover */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: `linear-gradient(to top, ${p.color}e6 0%, ${p.color}66 60%, transparent 100%)`, color: '#fff' }}>
+                  <span className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ opacity: 0.8 }}>
+                    0{i + 1} / PROJECT · {p.subtitle}
+                  </span>
+                  <h3 className="font-semibold uppercase" style={{ fontSize: 'clamp(1.3rem, 2vw, 1.8rem)', lineHeight: 1.2 }}>
+                    {p.title}
+                  </h3>
+                  <p className="text-sm mt-2 opacity-80">{p.desc}</p>
+                </div>
               </div>
-              <button type="button" class="btn btn-live magnet" data-toast="Solaris Digital — live case study coming soon">Live Project</button>
-            </div>
-            <div class="card-grid">
-              <div class="col-left">
-                <img class="img-top" src="assets/project-03-a.webp" alt="Solaris Digital — sunflower field campaign visual" loading="lazy">
-                <img class="img-bot" src="assets/project-03-b.webp" alt="Solaris Digital — campaign landscape detail" loading="lazy">
-              </div>
-              <div class="col-right">
-                <img src="assets/project-03-c.webp" alt="Solaris Digital — signature campaign visual" loading="lazy">
-              </div>
-            </div>
-          </article>
-      </div>
+            </a>
+          ))}
+        </div>
+      </section>
 
+      {/* ABOUT / SELF INTRO */}
+      <section id="about" className="relative z-10 bg-white px-5 sm:px-8 md:px-12 py-20 md:py-32 border-t border-black/10">
+        <div className="reveal-block">
+          <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>ABOUT ME</p>
+          <h2 className="font-semibold mt-4 leading-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
+            我是一名大四视觉设计学生，<br />
+            用设计把抽象的想法变成<span style={{ color: ACCENT }}>看得见的体验</span>。
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-10 md:mt-16">
+          <div className="reveal-block">
+            <p className="text-base md:text-lg leading-relaxed" style={{ color: '#333' }}>
+              专注于品牌视觉、AIGC创意与交互设计。从概念到落地，我相信好的设计不只是好看，而是能讲清楚一个故事、解决一个问题。
+            </p>
+            <p className="text-base md:text-lg leading-relaxed mt-5" style={{ color: '#333' }}>
+              擅长把复杂的信息拆解成清晰的视觉系统，用海报、视频、网页和互动体验传递品牌温度。
+            </p>
+          </div>
+          <div className="reveal-block">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Brand Identity</span>
+                <span className="text-sm font-semibold">品牌视觉</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>AIGC Design</span>
+                <span className="text-sm font-semibold">AI视觉实验</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Motion / Video</span>
+                <span className="text-sm font-semibold">动态视觉</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Web Design</span>
+                <span className="text-sm font-semibold">网页设计</span>
+              </div>
+            </div>
+            <a href="#" className="inline-flex items-center gap-2 mt-8 font-semibold" style={{ color: ACCENT }}>
+              Get in Touch <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer id="contact" className="relative z-10 px-5 sm:px-8 md:px-12 py-10 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#999' }}>
+          © 2026 Zhou Lingwang · All Rights Reserved
+        </p>
+        <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#999' }}>
+          Designed & Built with Care
+        </p>
+      </footer>
+
+      {/* MOBILE MENU OVERLAY */}
+      {menuOpen && (
+        <div className="overlay-menu fixed inset-0 z-50 bg-white flex flex-col px-5 sm:px-8 md:px-12 pt-5 md:pt-6">
+          <div className="flex items-center justify-between">
+            <Logo />
+            <button onClick={() => setMenuOpen(false)}
+              className="w-9 h-9 rounded-full bg-black flex items-center justify-center">
+              <span style={{ color: 'white' }}><XIcon size={18} /></span>
+            </button>
+          </div>
+          <div className="flex flex-col gap-8 mt-16">
+            {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map(l => (
+              <a key={l.n} href={l.h} onClick={() => setMenuOpen(false)} className="text-3xl font-semibold tracking-widest uppercase text-black">
+                {l.n}
+              </a>
+            ))}
+          </div>
+          <div className="mt-auto pb-12">
+            <a href="#" className="flex items-center gap-1 text-xl font-semibold" style={{ color: ACCENT }}>
+              联系我
+              <ArrowUpRight size={22} />
+            </a>
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-</section>
+  );
+}
 
-<!-- ===== Footer / Contact ===== -->
-<footer class="footer" id="contact">
-  <p class="eyebrow fade" data-fade>Get in touch</p>
-  <h2 class="hero-heading footer-title fade" data-fade data-delay="0.05">Let’s build something great.</h2>
-  <p class="animated-text footer-sub">Have a project in mind? Let’s talk about what we can create together.</p>
-  <button type="button" class="btn btn-contact magnet" data-toast="Contact form coming soon — reach out anytime">Contact Me</button>
-  <p class="footer-note">© 2026 — All rights reserved</p>
-</footer>
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
-<div class="toast" id="toast" role="status" aria-live="polite">
-  <span class="toast-dot" aria-hidden="true"></span>
-  <span class="toast-text"></span>
-</div>
-
-<script>
-(function(){
-  'use strict';
-
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.documentElement.classList.add('js');
-
-  /* ============================================================
-     FadeIn —— 对应 Framer Motion whileInView
-     viewport: { once:true, margin:'50px', amount:0 }
-     duration 默认 0.7s，easing [0.25, 0.1, 0.25, 1]
-     ============================================================ */
-  var fadeEls = document.querySelectorAll('[data-fade]');
-  var fadeIO = ('IntersectionObserver' in window)
-    ? new IntersectionObserver(function(entries){
-        entries.forEach(function(en){
-          if(!en.isIntersecting) return;
-          en.target.classList.add('in');
-          fadeIO.unobserve(en.target);
-        });
-      }, { rootMargin:'50px', threshold:0 })
-    : null;
-  fadeEls.forEach(function(el){
-    el.style.setProperty('--fd',   (parseFloat(el.getAttribute('data-delay')   || '0')  ) + 's');
-    el.style.setProperty('--fdur', (parseFloat(el.getAttribute('data-duration')|| '0.7')) + 's');
-    el.style.setProperty('--fx',   (parseFloat(el.getAttribute('data-x')       || '0')  ) + 'px');
-    el.style.setProperty('--fy',   (parseFloat(el.getAttribute('data-y')       || '30') ) + 'px');
-    if(prefersReduced || !fadeIO){ el.classList.add('in'); return; }
-    fadeIO.observe(el);
-  });
-
-  /* ============================================================
-     Magnet —— 鼠标磁性吸附
-     光标进入元素边缘 padding 距离内激活，translate3d / strength
-     进入 0.3s ease-out，离开 0.6s ease-in-out
-     ============================================================ */
-  document.querySelectorAll('.magnet').forEach(function(el){
-    var strength = parseFloat(el.getAttribute('data-strength') || '10');
-    var padding  = parseFloat(el.getAttribute('data-padding')  || '30');
-    el.addEventListener('mousemove', function(e){
-      var r = el.getBoundingClientRect();
-      var distX = Math.max(r.left - e.clientX, e.clientX - r.right, 0);
-      var distY = Math.max(r.top  - e.clientY, e.clientY - r.bottom, 0);
-      var dist = Math.sqrt(distX * distX + distY * distY);
-      if(dist > padding){ el.classList.remove('magnet-hover'); return; }
-      el.classList.add('magnet-hover');
-      var dx = (e.clientX - (r.left + r.width  / 2)) / strength;
-      var dy = (e.clientY - (r.top  + r.height / 2)) / strength;
-      el.style.transform = 'translate3d(' + dx + 'px, ' + dy + 'px, 0)';
-    });
-    el.addEventListener('mouseleave', function(){
-      el.classList.remove('magnet-hover');
-      el.style.transform = 'translate3d(0, 0, 0)';
-    });
-  });
-
-  /* ============================================================
-     AnimatedText —— 逐字滚动揭示
-     useScroll(offset ['start 0.8', 'end 0.2'])，字符 opacity 0.2 → 1
-     不可见占位 + 绝对定位动画层
-     ============================================================ */
-  var textRefs = [];
-  document.querySelectorAll('.animated-text').forEach(function(para){
-    var text = para.textContent.replace(/\s+/g, ' ').trim();
-    para.setAttribute('aria-label', text);
-    para.textContent = '';
-    var frag = document.createDocumentFragment();
-    text.split(/(\s+)/).forEach(function(word){
-      if(/^\s+$/.test(word)){ frag.appendChild(document.createTextNode(word)); return; }
-      var w = document.createElement('span');
-      w.className = 'word';
-      for(var i = 0; i < word.length; i++){
-        var box = document.createElement('span');
-        box.className = 'char';
-        var ghost = document.createElement('span');
-        ghost.className = 'ghost'; ghost.textContent = word[i];
-        var anim = document.createElement('span');
-        anim.className = 'anim';   anim.textContent = word[i];
-        box.appendChild(ghost); box.appendChild(anim);
-        w.appendChild(box);
+// Scroll reveal
+setTimeout(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-      frag.appendChild(w);
     });
-    para.appendChild(frag);
-    var chars = para.querySelectorAll('.char');
-    textRefs.push({ el: para, chars: chars, n: chars.length });
-  });
-
-  function updateAnimated(){
-    var vh = window.innerHeight;
-    for(var t = 0; t < textRefs.length; t++){
-      var ref = textRefs[t];
-      var r = ref.el.getBoundingClientRect();
-      var denom = r.height + vh * 0.6;
-      if(denom <= 0) continue;
-      var p = Math.max(0, Math.min(1, (vh * 0.8 - r.top) / denom));
-      var m = p * (ref.n + 2);
-      for(var i = 0; i < ref.n; i++){
-        var raw = m - i;
-        var op = raw >= 1 ? 1 : (raw <= 0 ? 0.2 : 0.2 + 0.8 * raw);
-        ref.chars[i].querySelector('.anim').style.opacity = op;
-      }
-    }
-  }
-
-  /* ============================================================
-     Sticky stack —— 粘性堆叠卡片缩放
-     targetScale = 1 - (totalCards - 1 - index) * 0.03
-     每张卡片在共享容器内 sticky（top 96/128px + i*28px），
-     进度按 85vh 一档推进：下一张卡片登场时上一张缩到目标值
-     ============================================================ */
-  var stackEl = document.querySelector('.stack');
-  var stickyWraps = document.querySelectorAll('.sticky-wrap');
-  var totalCards = stickyWraps.length;
-  var cards = [];
-  stickyWraps.forEach(function(w){ cards.push(w.querySelector('.project-card')); });
-
-  function sizeStack(){
-    var tallest = 0;
-    cards.forEach(function(c){
-      if(c.offsetHeight > tallest) tallest = c.offsetHeight;
-    });
-    var band = Math.max(window.innerHeight * 0.85, tallest + 200);
-    stackEl.style.height = Math.round(band * totalCards) + 'px';
-  }
-
-  function updateStack(){
-    var sr = stackEl.getBoundingClientRect();
-    var band = (sr.height / totalCards) || 1;
-    for(var i = 0; i < totalCards; i++){
-      var p = Math.max(0, Math.min(1, (-sr.top - i * band) / band));
-      var target = 1 - (totalCards - 1 - i) * 0.03;
-      var s = 1 - p * (1 - target);
-      cards[i].style.transform = 'scale(' + s.toFixed(4) + ')';
-    }
-  }
-
-  var ticking = false;
-  function onScroll(){
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      updateStack();
-      updateAnimated();
-      ticking = false;
-    });
-  }
-  function relayout(){
-    sizeStack();
-    updateStack();
-    updateAnimated();
-  }
-  window.addEventListener('scroll', onScroll, { passive:true });
-  window.addEventListener('resize', relayout);
-  window.addEventListener('load', relayout);
-  document.querySelectorAll('.project-card img').forEach(function(img){
-    img.addEventListener('load', relayout);
-  });
-  if(document.fonts && document.fonts.ready){
-    document.fonts.ready.then(relayout);
-  }
-  if(prefersReduced){
-    cards.forEach(function(c){ c.style.transform = 'scale(1)'; });
-    textRefs.forEach(function(ref){
-      ref.chars.forEach(function(ch){ ch.querySelector('.anim').style.opacity = '1'; });
-    });
-  } else {
-    relayout();
-  }
-
-  /* ============================================================
-     Toast —— 按钮占位反馈（禁止僵尸按钮）
-     ============================================================ */
-  var toast = document.getElementById('toast');
-  var toastTimer = null;
-  function showToast(msg){
-    if(!toast) return;
-    toast.querySelector('.toast-text').textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2400);
-  }
-  document.querySelectorAll('[data-toast]').forEach(function(el){
-    el.addEventListener('click', function(){
-      showToast(el.getAttribute('data-toast'));
-    });
-  });
-
-})();
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal-block, .reveal-card').forEach(el => observer.observe(el));
+}, 500);
 </script>
 </body>
 </html>
