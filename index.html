@@ -58,12 +58,43 @@
     transform: translateY(0);
     filter: blur(0px);
   }
+  :root { --color-1:#EE8EAE; --color-2:#6676E8; --color-3:#F4D56B; --color-4:#A7D4BB; }
+  .gooey-nav-container { position: relative; }
+  .gooey-nav-container nav { display: flex; position: relative; transform: translate3d(0,0,0.01px); }
+  .gooey-nav-container nav ul { display: flex; gap: 0; list-style: none; padding: 0; margin: 0; position: relative; z-index: 3; color: black; }
+  .gooey-nav-container nav ul li { border-radius: 100vw; position: relative; cursor: pointer; transition: background-color .3s, color .3s; color: black; }
+  .gooey-nav-container nav ul li a { display: inline-block; padding: .6em 1em; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+  .gooey-nav-container nav ul li::after { content:''; position:absolute; inset:0; border-radius:10px; background:black; opacity:0; transform:scale(0); transition:all .3s ease; z-index:-1; }
+  .gooey-nav-container nav ul li.active { color: white; text-shadow:none; }
+  .gooey-nav-container nav ul li.active::after { opacity:1; transform:scale(1); }
+  .gooey-nav-container .effect { position:absolute; left:0; top:0; width:0; height:0; opacity:1; pointer-events:none; display:grid; place-items:center; z-index:1; }
+  .gooey-nav-container .effect.text { color:black; transition:color .3s; font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+  .gooey-nav-container .effect.text.active { color:white; }
+  .gooey-nav-container .effect.filter { filter: blur(7px) contrast(100) blur(0); mix-blend-mode:multiply; }
+  .gooey-nav-container .effect.filter::before { content:''; position:absolute; inset:-75px; z-index:-2; background:white; }
+  .gooey-nav-container .effect.filter::after { content:''; position:absolute; inset:0; background:black; transform:scale(0); opacity:0; z-index:-1; border-radius:100vw; }
+  .gooey-nav-container .effect.active::after { animation: pill .3s ease both; }
+  @keyframes pill { to { transform:scale(1); opacity:1; } }
+  .particle, .point { display:block; opacity:0; width:20px; height:20px; border-radius:100%; transform-origin:center; }
+  .particle { --time:5s; position:absolute; top:calc(50% - 8px); left:calc(50% - 8px); animation: particle calc(var(--time)) ease 1 -350ms; }
+  .point { background:var(--color); opacity:1; animation: point calc(var(--time)) ease 1 -350ms; }
+  @keyframes particle { 0% { transform:rotate(0deg) translate(calc(var(--start-x)),calc(var(--start-y))); opacity:1; } 70% { transform:rotate(calc(var(--rotate)*.5)) translate(calc(var(--end-x)*1.2),calc(var(--end-y)*1.2)); opacity:1; } 85% { transform:rotate(calc(var(--rotate)*.66)) translate(calc(var(--end-x)),calc(var(--end-y))); opacity:1; } 100% { transform:rotate(calc(var(--rotate)*1.2)) translate(calc(var(--end-x)*.5),calc(var(--end-y)*.5)); opacity:1; } }
+  @keyframes point { 0% { transform:scale(0); opacity:0; } 25% { transform:scale(calc(var(--scale)*.25)); } 38% { opacity:1; } 65% { transform:scale(var(--scale)); opacity:1; } 85% { transform:scale(var(--scale)); opacity:1; } 100% { transform:scale(0); opacity:0; } }
 </style>
 </head>
 <body>
+<svg style="position:absolute;width:0;height:0">
+  <defs>
+    <filter id="gooey">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="goo"/>
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+  </defs>
+</svg>
 <div id="root"></div>
 <script type="text/babel">
-const { useState } = React;
+const { useState, useRef, useEffect } = React;
 
 const ACCENT = '#5E0ED7';
 
@@ -91,6 +122,34 @@ function XIcon({ size = 18 }) {
       <line x1="18" y1="6" x2="6" y2="18"></line>
       <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
+  );
+}
+
+function GooeyNav({ items, animationTime=600, particleCount=15, particleDistances=[90,10], particleR=300, timeVariance=600, colors=[1,2,3,1,2,3,1,4], initialActiveIndex=0 }) {
+  const containerRef = useRef(null);
+  const navRef = useRef(null);
+  const filterRef = useRef(null);
+  const textRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const noise = (n=1)=> n/2 - Math.random()*n;
+  const getXY = (d, i, total) => { const angle = ((360 + noise(8))/total)*i*Math.PI/180; return [d*Math.cos(angle), d*Math.sin(angle)]; };
+  const createParticle = (i,t,d,r) => { let rot=noise(r/10); return { start:getXY(d[0],particleCount-i,particleCount), end:getXY(d[1]+noise(7),particleCount-i,particleCount), time:t, scale:1+noise(.2), color:colors[Math.floor(Math.random()*colors.length)], rotate: rot>0?(rot+r/20)*10:(rot-r/20)*10 }; };
+  const makeParticles = el => { const d=particleDistances; const r=particleR; const bt=animationTime*2+timeVariance; el.style.setProperty('--time', bt+'ms'); for(let i=0;i<particleCount;i++){ const t=animationTime*2+noise(timeVariance*2); const p=createParticle(i,t,d,r); el.classList.remove('active'); setTimeout(()=>{ const sp=document.createElement('span'); const pt=document.createElement('span'); sp.classList.add('particle'); sp.style.setProperty('--start-x',p.start[0]+'px'); sp.style.setProperty('--start-y',p.start[1]+'px'); sp.style.setProperty('--end-x',p.end[0]+'px'); sp.style.setProperty('--end-y',p.end[1]+'px'); sp.style.setProperty('--time',p.time+'ms'); sp.style.setProperty('--scale',p.scale); sp.style.setProperty('--color','var(--color-'+p.color+',white)'); sp.style.setProperty('--rotate',p.rotate+'deg'); pt.classList.add('point'); sp.appendChild(pt); el.appendChild(sp); requestAnimationFrame(()=>el.classList.add('active')); setTimeout(()=>{try{el.removeChild(sp)}catch{}}, t); },30);} };
+  const updateEffect = el => { if(!containerRef.current||!filterRef.current||!textRef.current) return; const cr=containerRef.current.getBoundingClientRect(); const pos=el.getBoundingClientRect(); const st={ left:(pos.x-cr.x)+'px', top:(pos.y-cr.y)+'px', width:pos.width+'px', height:pos.height+'px' }; Object.assign(filterRef.current.style,st); Object.assign(textRef.current.style,st); textRef.current.innerText=el.innerText; };
+  const handleClick = (e,index) => { const li=e.currentTarget; if(activeIndex===index) return; setActiveIndex(index); updateEffect(li); if(filterRef.current){ filterRef.current.querySelectorAll('.particle').forEach(p=>filterRef.current.removeChild(p)); } if(textRef.current){ textRef.current.classList.remove('active'); void textRef.current.offsetWidth; textRef.current.classList.add('active'); } if(filterRef.current){ makeParticles(filterRef.current); } };
+  useEffect(()=>{ if(!navRef.current||!containerRef.current) return; const li=navRef.current.querySelectorAll('li')[activeIndex]; if(li){ updateEffect(li); textRef.current&&textRef.current.classList.add('active'); } },[activeIndex]);
+  return (
+    <div className="gooey-nav-container" ref={containerRef}>
+      <nav><ul ref={navRef}>
+        {items.map((it,i)=>(
+          <li key={i} className={activeIndex===i?'active':''}>
+            <a href={it.href} onClick={e=>handleClick(e,i)} onMouseEnter={e=>handleClick(e,i)}>{it.label}</a>
+          </li>
+        ))}
+      </ul></nav>
+      <span className="effect filter" ref={filterRef} />
+      <span className="effect text" ref={textRef} />
+    </div>
   );
 }
 
@@ -152,24 +211,7 @@ function App() {
       />
       <div className="absolute inset-0 bg-white/10"></div>
 
-      {/* NAV */}
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2">
-        <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-black">
-          <span className="w-3 h-3 rounded-full bg-white"></span>
-        </a>
-        <div className="hidden md:flex items-center bg-white/60 backdrop-blur-md rounded-full p-1 gap-1 shadow-sm">
-          {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l) => (
-            <a key={l.n} href={l.h} className="px-4 py-2 text-xs font-semibold tracking-widest uppercase text-black rounded-full hover:bg-black hover:text-white transition-colors">
-              {l.n}
-            </a>
-          ))}
-        </div>
-        <button onClick={() => setMenuOpen(true)}
-          className="md:hidden w-10 h-10 rounded-full bg-black flex flex-col items-center justify-center gap-1">
-          <span className="w-4 h-0.5 bg-white"></span>
-          <span className="w-4 h-0.5 bg-white"></span>
-        </button>
-      </div>
+      {/* NAV REMOVED */}
 
       {/* STATS ROW REMOVED */}
 
@@ -231,7 +273,7 @@ function App() {
                       <span className="pf-cat">{p.subtitle}</span>
                       <h3 className="pf-name">{p.title}</h3>
                     </div>
-                    <span className="pf-live">Live Project</span>
+                    <span className="pf-live">进入作品</span>
                   </div>
                   <div className="pf-main">
                     <img src={p.cover} alt={p.title} loading="lazy" />
