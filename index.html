@@ -153,10 +153,7 @@ function App() {
       <div className="absolute inset-0 bg-white/10"></div>
 
       {/* NAV */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between gap-8 px-6 py-3 bg-white/60 backdrop-blur-xl rounded-full border border-white/40 shadow-lg">
-        <div className="anim-fade-down" style={{ animationDelay: '0s' }}>
-          <Logo />
-        </div>
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-8 px-6 py-3 bg-white/30 backdrop-blur-xl rounded-full border border-white/30 shadow-lg">
         <div className="hidden md:flex items-center gap-8">
           {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l, i) => (
             <a key={l.n} href={l.h} className="anim-fade-down text-sm font-semibold tracking-widest uppercase text-black"
@@ -165,13 +162,13 @@ function App() {
             </a>
           ))}
         </div>
-        <button onClick={() => setMenuOpen(true)}
-          className="anim-fade-down w-9 h-9 rounded-full bg-black flex flex-col items-center justify-center gap-1"
-          style={{ animationDelay: '0.5s' }}>
-          <span className="w-4 h-0.5 bg-white"></span>
-          <span className="w-4 h-0.5 bg-white"></span>
-          <span className="w-4 h-0.5 bg-white"></span>
-        </button>
+        <div className="flex md:hidden items-center gap-5">
+          {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l) => (
+            <a key={l.n} href={l.h} className="text-xs font-semibold tracking-widest uppercase text-black">
+              {l.n}
+            </a>
+          ))}
+        </div>
       </nav>
 
       {/* STATS ROW REMOVED */}
