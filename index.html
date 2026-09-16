@@ -153,10 +153,7 @@ function App() {
       <div className="absolute inset-0 bg-white/10"></div>
 
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-8 md:px-12 pt-5 md:pt-6 bg-white/70 backdrop-blur-md">
-        <div className="anim-fade-down" style={{ animationDelay: '0s' }}>
-          <Logo />
-        </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-5 sm:px-8 md:px-12 pt-5 md:pt-6 bg-white/90 backdrop-blur-md">
         <div className="hidden md:flex items-center gap-8">
           {[{n:'首页',h:'#'},{n:'自我介绍',h:'#about'},{n:'作品',h:'#works'},{n:'联系',h:'#contact'}].map((l, i) => (
             <a key={l.n} href={l.h} className="anim-fade-down text-sm font-semibold tracking-widest uppercase text-black"
@@ -165,13 +162,6 @@ function App() {
             </a>
           ))}
         </div>
-        <button onClick={() => setMenuOpen(true)}
-          className="anim-fade-down w-9 h-9 rounded-full bg-black flex flex-col items-center justify-center gap-1"
-          style={{ animationDelay: '0.5s' }}>
-          <span className="w-4 h-0.5 bg-white"></span>
-          <span className="w-4 h-0.5 bg-white"></span>
-          <span className="w-4 h-0.5 bg-white"></span>
-        </button>
       </nav>
 
       {/* STATS ROW REMOVED */}
@@ -190,7 +180,7 @@ function App() {
       </div>
 
       {/* PROJECTS SECTION */}
-      <section id="works" className="relative z-10" style={{ background:'#F5F5F5', borderRadius:'40px 40px 0 0' }}>
+      <section id="works" className="relative z-10" style={{ background:'#F5F5F5', borderRadius:'0' }}>
         <style>{`
           .pf-wrap{width:100%;max-width:1200px;margin:0 auto;padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem) 2rem;color:#111;font-family:'Manrope','Inter',sans-serif;}
           .pf-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:#888;margin-bottom:1rem;}
