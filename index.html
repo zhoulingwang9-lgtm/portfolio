@@ -112,7 +112,7 @@ function App() {
       desc: '短视频 / 海报 / 互动测试 / 团购体验',
       href: 'project-douyin.html',
       color: '#161823',
-      cover: 'https://aka.doubaocdn.com/s/2sg1SZ9DMN'
+      cover: 'https://aka.doubaocdn.com/s/EAAD5KlpLo'
     },
     {
       title: '48H 森林度假计划',
@@ -120,7 +120,7 @@ function App() {
       desc: '主视觉 / 社交媒体 / 运营物料',
       href: 'project-forest.html',
       color: '#2D4A3E',
-      cover: 'https://aka.doubaocdn.com/s/7DkjPjC1Pa'
+      cover: 'https://aka.doubaocdn.com/s/A5WK25XByA'
     },
     {
       title: '梦境便利店',
@@ -128,7 +128,7 @@ function App() {
       desc: '梦境商品 / AIGC实验 / 海报系统',
       href: 'project-dream.html',
       color: '#5E0ED7',
-      cover: 'https://aka.doubaocdn.com/s/L4wVgXoyHG'
+      cover: 'https://aka.doubaocdn.com/s/vnq47UzS04'
     },
     {
       title: 'Design Process',
@@ -190,36 +190,31 @@ function App() {
       </div>
 
       {/* PROJECTS SECTION */}
-      <section id="works" className="relative z-10" style={{ background:'#0C0C0C', borderRadius:'40px 40px 0 0' }}>
+      <section id="works" className="relative z-10" style={{ background:'#F5F5F5', borderRadius:'40px 40px 0 0' }}>
         <style>{`
-          .pf-wrap{width:100%;max-width:1200px;margin:0 auto;padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem) 2rem;color:#F2F7FA;font-family:'Manrope','Inter',sans-serif;}
-          .pf-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(215,226,234,.6);margin-bottom:1rem;}
+          .pf-wrap{width:100%;max-width:1200px;margin:0 auto;padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem) 2rem;color:#111;font-family:'Manrope','Inter',sans-serif;}
+          .pf-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:#888;margin-bottom:1rem;}
           .pf-title{font-size:clamp(3rem,9vw,7.5rem);font-weight:600;letter-spacing:-.02em;line-height:1.02;background:linear-gradient(100deg,#FFB3EF 0%,#E052CF 32%,#8A3FD8 62%,#E08A3C 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
           .pf-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vw,5rem);}
-          .pf-note{max-width:30ch;color:rgba(215,226,234,.6);font-size:.9375rem;line-height:1.65;}
+          .pf-note{max-width:30ch;color:#777;font-size:.9375rem;line-height:1.65;}
           .pf-stack{position:relative;height:calc(85vh * 4);}
           .pf-sticky{position:sticky;top:calc(6rem + var(--i,0)*28px);z-index:calc(20 + var(--i,0));}
           @media(min-width:768px){.pf-sticky{top:calc(8rem + var(--i,0)*28px);}}
-          .pf-card{background:#0C0C0C;border:2px solid #D7E2EA;border-radius:40px;padding:1rem;transform-origin:top center;display:block;text-decoration:none;color:inherit;}
+          .pf-card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:40px;padding:1rem;transform-origin:top center;display:block;text-decoration:none;color:inherit;box-shadow:0 20px 60px rgba(0,0,0,.06);}
           @media(min-width:640px){.pf-card{border-radius:50px;padding:1.5rem;}}
           @media(min-width:768px){.pf-card{border-radius:60px;padding:2rem;}}
           .pf-top{display:flex;align-items:flex-start;gap:1rem 1.25rem;flex-wrap:wrap;}
-          .pf-num{font-weight:500;letter-spacing:-.03em;font-size:clamp(2.75rem,6vw,5.5rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(215,226,234,.4);}
+          .pf-num{font-weight:500;letter-spacing:-.03em;font-size:clamp(2.75rem,6vw,5.5rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(0,0,0,.3);}
           .pf-meta{display:flex;flex-direction:column;gap:.35rem;padding-top:.4rem;min-width:0;}
-          .pf-cat{font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(215,226,234,.55);}
-          .pf-name{font-weight:600;letter-spacing:-.01em;font-size:clamp(1.375rem,2.4vw,2.25rem);line-height:1.05;color:#F2F7FA;}
-          .pf-live{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;font-weight:500;text-transform:uppercase;letter-spacing:.2em;border-radius:9999px;border:2px solid #D7E2EA;color:#D7E2EA;background:transparent;padding:.75rem 2rem;font-size:.875rem;text-decoration:none;}
+          .pf-cat{font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#999;}
+          .pf-name{font-weight:600;letter-spacing:-.01em;font-size:clamp(1.375rem,2.4vw,2.25rem);line-height:1.05;color:#111;}
+          .pf-live{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;font-weight:500;text-transform:uppercase;letter-spacing:.2em;border-radius:9999px;border:2px solid #333;color:#333;background:transparent;padding:.75rem 2rem;font-size:.875rem;text-decoration:none;}
           @media(min-width:640px){.pf-live{padding:.875rem 2.5rem;font-size:1rem;}}
-          .pf-live:hover{background:rgba(215,226,234,.1);}
-          .pf-grid{display:grid;grid-template-columns:40% 1fr;gap:clamp(.75rem,1.6vw,1.25rem);margin-top:clamp(1rem,2.4vw,1.75rem);}
-          .pf-left{display:grid;gap:clamp(.75rem,1.6vw,1.25rem);}
-          .pf-left .pf-t{height:clamp(130px,16vw,230px);}
-          .pf-left .pf-b{height:clamp(160px,22vw,340px);}
-          .pf-right{display:grid;}
-          .pf-right img{height:100%;min-height:0;}
-          .pf-card img{width:100%;object-fit:cover;border-radius:40px;}
-          @media(min-width:640px){.pf-card img{border-radius:50px;}}
-          @media(min-width:768px){.pf-card img{border-radius:60px;}}
+          .pf-live:hover{background:rgba(0,0,0,.05);}
+          .pf-main{margin-top:clamp(1rem,2.4vw,1.75rem);}
+          .pf-main img{width:100%;height:clamp(360px,60vw,680px);object-fit:cover;border-radius:40px;}
+          @media(min-width:640px){.pf-main img{border-radius:50px;}}
+          @media(min-width:768px){.pf-main img{border-radius:60px;}}
         `}</style>
         <div className="pf-wrap">
           <div className="pf-head">
@@ -241,14 +236,8 @@ function App() {
                     </div>
                     <span className="pf-live">Live Project</span>
                   </div>
-                  <div className="pf-grid">
-                    <div className="pf-left">
-                      <img className="pf-t" src={p.cover} alt="" loading="lazy" />
-                      <img className="pf-b" src={p.cover} alt="" loading="lazy" />
-                    </div>
-                    <div className="pf-right">
-                      <img src={p.cover} alt="" loading="lazy" />
-                    </div>
+                  <div className="pf-main">
+                    <img src={p.cover} alt={p.title} loading="lazy" />
                   </div>
                 </a>
               </div>
