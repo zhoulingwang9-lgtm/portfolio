@@ -727,12 +727,12 @@ button{font:inherit}
       </div>
 
       <div class="touchpoints reveal">
-        <article class="touchpoint"><div class="image"><img src="https://aka.doubaocdn.com/s/y3cqvIh7Qj" alt="海报触点"></div><div class="meta"><div class="label">VISUAL</div><h3>海报</h3><p>系列主视觉、商品广告、夜间橱窗海报。</p></div></article>
-        <article class="touchpoint"><div class="image"><img src="https://aka.doubaocdn.com/s/2v4JtOkUGx" alt="社交媒体触点"></div><div class="meta"><div class="label">SOCIAL</div><h3>社交媒体</h3><p>话题贴文、商品卡片、梦境商品分享与互动内容。</p></div></article>
-        <article class="touchpoint"><div class="image"><img src="https://aka.doubaocdn.com/s/40fL86RVsP" alt="店铺橱窗触点"></div><div class="meta"><div class="label">SPACE</div><h3>店铺橱窗</h3><p>把“OPEN AFTER MIDNIGHT”变成真正的空间识别。</p></div></article>
-        <article class="touchpoint"><div class="image"><img src="https://aka.doubaocdn.com/s/cwDJOQA9Kx" alt="购物袋触点"></div><div class="meta"><div class="label">PACKAGING</div><h3>购物袋</h3><p>购物袋、商品标签、贴纸与包装纸形成统一系统。</p></div></article>
-        <article class="touchpoint"><div class="image"><img src="https://aka.doubaocdn.com/s/38T8BUrht5" alt="收据触点"></div><div class="meta"><div class="label">DETAIL</div><h3>梦境收据</h3><p>把“购买情绪”进一步转化为真实的交易凭证。</p></div></article>
-        <article class="touchpoint"><div class="image"><img src="https://aka.doubaocdn.com/s/1I7y6lVea1" alt="手机界面触点"></div><div class="meta"><div class="label">DIGITAL</div><h3>数字界面</h3><p>梦境商品浏览、愿望清单与午夜开店提醒。</p></div></article>
+        <article class="touchpoint"><div class="image lp"><img src="https://aka.doubaocdn.com/s/y3cqvIh7Qj" alt="海报触点"></div><div class="meta"><div class="label">VISUAL</div><h3>海报</h3><p>系列主视觉、商品广告、夜间橱窗海报。</p></div></article>
+        <article class="touchpoint"><div class="image lp"><img src="https://aka.doubaocdn.com/s/2v4JtOkUGx" alt="社交媒体触点"></div><div class="meta"><div class="label">SOCIAL</div><h3>社交媒体</h3><p>话题贴文、商品卡片、梦境商品分享与互动内容。</p></div></article>
+        <article class="touchpoint"><div class="image lp"><img src="https://aka.doubaocdn.com/s/40fL86RVsP" alt="店铺橱窗触点"></div><div class="meta"><div class="label">SPACE</div><h3>店铺橱窗</h3><p>把“OPEN AFTER MIDNIGHT”变成真正的空间识别。</p></div></article>
+        <article class="touchpoint"><div class="image lp"><img src="https://aka.doubaocdn.com/s/cwDJOQA9Kx" alt="购物袋触点"></div><div class="meta"><div class="label">PACKAGING</div><h3>购物袋</h3><p>购物袋、商品标签、贴纸与包装纸形成统一系统。</p></div></article>
+        <article class="touchpoint"><div class="image lp"><img src="https://aka.doubaocdn.com/s/38T8BUrht5" alt="收据触点"></div><div class="meta"><div class="label">DETAIL</div><h3>梦境收据</h3><p>把“购买情绪”进一步转化为真实的交易凭证。</p></div></article>
+        <article class="touchpoint"><div class="image lp"><img src="https://aka.doubaocdn.com/s/1I7y6lVea1" alt="手机界面触点"></div><div class="meta"><div class="label">DIGITAL</div><h3>数字界面</h3><p>梦境商品浏览、愿望清单与午夜开店提醒。</p></div></article>
       </div>
     </div>
   </section>
@@ -796,5 +796,21 @@ window.addEventListener('mouseleave',()=>{
   if(parallax) parallax.style.transform='rotate(2.1deg)';
 });
 </script>
+
+    <div id="lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(20,16,32,.92);align-items:center;justify-content:center;cursor:zoom-out;padding:40px;">
+      <img id="lightbox-img" src="" style="max-width:92vw;max-height:92vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+    </div>
+    <script>
+      document.addEventListener('click', function(e){
+        var t = e.target.closest('.lp img, .lp');
+        if(!t) return;
+        var img = t.tagName === 'IMG' ? t : t.querySelector('img');
+        if(!img) return;
+        var lb = document.getElementById('lightbox');
+        document.getElementById('lightbox-img').src = img.src;
+        lb.style.display = 'flex';
+      });
+      document.getElementById('lightbox').addEventListener('click', function(){ this.style.display='none'; });
+    </script>
 </body>
 </html>
