@@ -382,16 +382,17 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
-// Scroll reveal
+// Scroll reveal — re-trigger every time it enters viewport
 setTimeout(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.2 });
   document.querySelectorAll('.reveal-block, .reveal-card').forEach(el => observer.observe(el));
 }, 500);
 
