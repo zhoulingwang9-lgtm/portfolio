@@ -58,6 +58,10 @@
     transform: translateY(0);
     filter: blur(0px);
   }
+  .reveal-left { transform: translateX(-60px); }
+  .reveal-left.visible { transform: translateX(0); }
+  .reveal-right { transform: translateX(60px); }
+  .reveal-right.visible { transform: translateX(0); }
   :root { --color-1:#EE8EAE; --color-2:#6676E8; --color-3:#F4D56B; --color-4:#A7D4BB; }
   .gooey-nav-container { position: relative; }
   .gooey-nav-container nav { display: flex; position: relative; transform: translate3d(0,0,0.01px); }
@@ -243,7 +247,7 @@ function App() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-10 md:mt-16">
-          <div className="reveal-block">
+          <div className="reveal-block reveal-left">
             <p className="text-base md:text-lg leading-relaxed" style={{ color: '#333' }}>
               专注于品牌视觉、AIGC创意与交互设计。从概念到落地，我相信好的设计不只是好看，而是能讲清楚一个故事、解决一个问题。
             </p>
@@ -272,7 +276,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="reveal-block flex items-start justify-center md:justify-end">
+          <div className="reveal-block reveal-right flex items-start justify-center md:justify-end">
             <div style={{ width: '100%', maxWidth: '420px', aspectRatio: '3/4', background: 'rgba(0,0,0,0.06)', borderRadius: '16px', display:'flex', alignItems:'center', justifyContent:'center', color:'#999', fontSize:'14px', letterSpacing:'0.1em' }}>
               PHOTO
             </div>
