@@ -429,6 +429,17 @@ setTimeout(() => {
   window.addEventListener('load', () => { size(); update(); });
   setTimeout(() => { size(); update(); }, 800);
 }, 1000);
+
+// Scroll to anchor on load
+window.addEventListener('load', () => {
+  const h = location.hash;
+  if (h) {
+    setTimeout(() => {
+      const el = document.querySelector(h);
+      if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }, 600);
+  }
+});
 </script>
 </body>
 </html>
