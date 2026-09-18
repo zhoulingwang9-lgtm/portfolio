@@ -67,37 +67,36 @@ button{font:inherit}
 
 .nav{
   position:fixed;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(calc(100% - 36px),1280px);
+  top:0;left:0;right:0;
   z-index:1000;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
-  padding:10px 12px 10px 18px;
-  border:1px solid rgba(255,255,255,.72);
-  background:rgba(255,253,249,.76);
+  padding:18px 32px;
+  background:rgba(255,253,249,.72);
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
-  border-radius:999px;
-  box-shadow:0 10px 34px rgba(48,41,71,.12);
+  border-bottom:1px solid rgba(33,29,41,.06);
 }
-.nav-back{font-size:12px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s;margin-left:5cm;}
-.nav-back:hover{color:var(--ink)}
-.nav-brand{font-family:var(--dream-font);font-size:20px;white-space:nowrap}
-.nav-links{display:flex;gap:4px;overflow:auto;scrollbar-width:none}
+.nav-left{display:flex;align-items:baseline;gap:14px}
+.nav-brand{font-family:var(--dream-font);font-size:20px;white-space:nowrap;font-weight:600;color:var(--ink)}
+.nav-brand em{font-style:normal;color:#5E0ED7}
+.nav-right{display:flex;align-items:center;gap:22px;overflow:auto;scrollbar-width:none}
+.nav-right::-webkit-scrollbar{display:none}
+.nav-back{font-size:13px;color:var(--ink);text-decoration:none;white-space:nowrap;transition:opacity .2s;font-weight:500}
+.nav-back:hover{opacity:.6}
+.nav-links{display:flex;gap:22px;overflow:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
 .nav-links a{
   flex:none;
-  font-size:12px;
+  font-size:13px;
+  font-weight:500;
   color:var(--muted);
-  padding:8px 10px;
-  border-radius:999px;
-  transition:.25s ease;
+  text-decoration:none;
+  padding:0;
+  transition:color .2s;
 }
-.nav-links a:hover,.nav-links a.active{background:var(--ink);color:#fff}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
 
 .container{width:min(calc(100% - 56px),var(--max));margin:0 auto}
 .section{padding:130px 0 70px;position:relative}
@@ -407,17 +406,21 @@ button{font:inherit}
 
 <body>
 <nav class="nav">
-  <a href="#top" class="nav-brand">梦境便利店</a>
-  <a href="index.html" class="nav-back">← 返回作品</a>
-  <div class="nav-links">
-    <a href="#background">背景</a>
-    <a href="#concept">概念</a>
-    <a href="#products">商品</a>
-    <a href="#aigc">AIGC</a>
-    <a href="#posters">海报</a>
-    <a href="#system">系统</a>
-    <a href="#touchpoints">触点</a>
-    <a href="#summary">总结</a>
+  <div class="nav-left">
+    <a href="#top" class="nav-brand">梦境<em>便利店</em></a>
+  </div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← 返回作品</a>
+    <div class="nav-links">
+      <a href="#background">背景</a>
+      <a href="#concept">概念</a>
+      <a href="#products">商品</a>
+      <a href="#aigc">AIGC</a>
+      <a href="#posters">海报</a>
+      <a href="#system">系统</a>
+      <a href="#touchpoints">触点</a>
+      <a href="#summary">总结</a>
+    </div>
   </div>
 </nav>
 
