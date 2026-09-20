@@ -3202,8 +3202,7 @@ $$(".step-card").forEach(card=>{
     s.setAttribute("aria-label", d.cn);
     s.innerHTML = `
       <div class="art" style="--tint:${d.tint}">
-        ${d.url?'<img class="art-bg-img" src="'+d.url+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;">':''}
-        <div class="art-bg"></div>
+        ${d.url?'<img class="art-bg-img" src="'+d.url+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;z-index:0;">':'<div class="art-bg"></div>'}
         <div class="art-motif"></div>
         <div class="art-tag">DREAM ${d.idx}</div>
         <div class="art-frame"></div>
