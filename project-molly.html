@@ -2897,7 +2897,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
 const DREAMS = [
   {key:"moonlight",no:"07",idx:"01",cn:"月光梦境",en:"MOONLIGHT",short:"月光",quote:"DREAM UNDER THE MOON.",
    body:"夜晚成为一个可以停留的地方。MOLLY 坐在巨大的月亮上，月亮比 MOLLY 大很多。下方是柔软云层。星星、透明球体、月尘与微光，把夜晚变成可以收藏的风景。",
-   kw:["安静","夜晚","银蓝","柔光","幻想"],tint:"var(--d-moon-soft)",motif:"moon",img:"DREAM-MOONLIGHT",
+   kw:["安静","夜晚","银蓝","柔光","幻想"],tint:"var(--d-moon-soft)",motif:"moon",img:"DREAM-MOONLIGHT",url:"https://aka.doubaocdn.com/s/e1tZm8nW9z",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, sitting on a giant crescent moon, soft moonlight, silver-blue night, floating clouds, stars, dreamy atmosphere, wide shot, negative space, 3D render"},
   {key:"candy",no:"08",idx:"02",cn:"糖果梦境",en:"CANDY",short:"糖果",quote:"SWEET DREAMS, MOLLY.",
    body:"把童年里最甜的东西，全部放大。MOLLY 站在巨大的糖果世界。棒棒糖、果冻、糖球、棉花糖与透明泡泡，铺成一条糖果道路。",
@@ -3202,6 +3202,7 @@ $$(".step-card").forEach(card=>{
     s.setAttribute("aria-label", d.cn);
     s.innerHTML = `
       <div class="art" style="--tint:${d.tint}">
+        ${d.url?'<img class="art-bg-img" src="'+d.url+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;">':''}
         <div class="art-bg"></div>
         <div class="art-motif"></div>
         <div class="art-tag">DREAM ${d.idx}</div>
