@@ -2839,7 +2839,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
     <div class="do-art">
       <div class="art" id="doArt" style="--tint:var(--d-moon-soft)">
         <div class="art-bg"></div>
-        <div class="art-motif" data-motif="moon"></div>
+        <img class="art-bg-img" id="doImg" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;z-index:0;">`n        <div class="art-motif" data-motif="moon"></div>
         <div class="art-tag" id="doTag">DREAM 01</div>
         <div class="art-id" id="doImgId">AIGC · DREAM-MOONLIGHT</div>
         <div class="art-frame"></div>
@@ -2872,7 +2872,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
   <div class="lb-stage">
     <div class="art" id="lbArt" style="--tint:var(--d-moon-soft)">
       <div class="art-bg"></div>
-      <div class="art-motif" data-motif="moon-big"></div>
+      <img class="art-bg-img" id="lbImg" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;z-index:0;">`n      <div class="art-motif" data-motif="moon-big"></div>
       <div class="poster-type">
         <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span id="lbNo">01 / 06</span></span>
         <span class="pt-name" id="lbName">月光<small>MOONLIGHT</small></span>
@@ -2901,7 +2901,7 @@ const DREAMS = [
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, sitting on a giant crescent moon, soft moonlight, silver-blue night, floating clouds, stars, dreamy atmosphere, wide shot, negative space, 3D render"},
   {key:"candy",no:"08",idx:"02",cn:"糖果梦境",en:"CANDY",short:"糖果",quote:"SWEET DREAMS, MOLLY.",
    body:"把童年里最甜的东西，全部放大。MOLLY 站在巨大的糖果世界。棒棒糖、果冻、糖球、棉花糖与透明泡泡，铺成一条糖果道路。",
-   kw:["甜蜜","童年","俏皮","缤纷","甜美"],tint:"var(--d-candy-soft)",motif:"candy",img:"DREAM-CANDY",
+   kw:["甜蜜","童年","俏皮","缤纷","甜美"],tint:"var(--d-candy-soft)",motif:"candy",img:"DREAM-CANDY",url:"img/candy-dream.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, standing in a giant candy wonderland, lollipops, jelly, cotton candy, pastel pink and mint, playful, 3D render"},
   {key:"forest",no:"09",idx:"03",cn:"森林梦境",en:"FOREST",short:"森林",quote:"LOST IN THE FOREST.",
    body:"慢下来，让世界在你身边生长。巨型蘑菇、巨大花朵、树木、溪流、苔藓与萤火虫。在这个森林里，MOLLY 非常小。",
@@ -2909,18 +2909,18 @@ const DREAMS = [
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, tiny in an enchanted forest, giant mushrooms, moss, fireflies, mist, sage green, healing atmosphere, 3D render"},
   {key:"ocean",no:"10",idx:"04",cn:"海洋梦境",en:"OCEAN",short:"海洋",quote:"FLOAT INTO A DREAM.",
    body:"让时间慢一点，让身体漂浮起来。MOLLY 漂浮在透明水球里。鲸鱼、贝壳、水母、珊瑚与气泡，在珍珠光泽中缓缓上升。",
-   kw:["透明","水","漂浮","蓝色","珍珠光泽"],tint:"var(--d-ocean-soft)",motif:"ocean",img:"DREAM-OCEAN",
+   kw:["透明","水","漂浮","蓝色","珍珠光泽"],tint:"var(--d-ocean-soft)",motif:"ocean",img:"DREAM-OCEAN",url:"img/ocean-dream.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, floating in a transparent water bubble, whale, jellyfish, coral, bubbles, mist teal, pearl luster, 3D render"},
   {key:"space",no:"11",idx:"05",cn:"宇宙梦境",en:"SPACE",short:"宇宙",quote:"MOLLY GOES BEYOND.",
    body:"当世界足够大，每一个方向都可能通往未知。MOLLY 站在小行星上，背景是巨大行星。轨道、星星、星尘与银河延伸至远方。",
-   kw:["未知","辽阔","星尘","静谧","遥远"],tint:"var(--d-space-soft)",motif:"space",img:"DREAM-SPACE",
+   kw:["未知","辽阔","星尘","静谧","遥远"],tint:"var(--d-space-soft)",motif:"space",img:"DREAM-SPACE",url:"img/space-dream.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, standing on a small asteroid, giant planet behind, orbit rings, stardust, galaxy, soft violet, 3D render"},
   {key:"city",no:"12",idx:"06",cn:"未来城市",en:"FUTURISTIC CITY",short:"城市",quote:"A CITY MADE OF DREAMS.",
    body:"一座不会醒来的城市，也可以成为一场梦。MOLLY 站在未来城市顶部。摩天大楼、霓虹、数字广告屏与月光，照亮透明玻璃。",
-   kw:["霓虹","城市感","明亮","速度","夜色"],tint:"var(--d-city-soft)",motif:"city",img:"DREAM-CITY",
+   kw:["霓虹","城市感","明亮","速度","夜色"],tint:"var(--d-city-soft)",motif:"city",img:"DREAM-CITY",url:"img/city-dream.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, standing on a futuristic city rooftop, neon signs, digital billboards, skyscrapers, magenta glow, night, 3D render"}
 ];
-const POSTERS = DREAMS.map((d,i)=>({cn:d.cn,en:d.en,short:d.short,motif:d.motif==="moon"?"moon-big":d.motif,tint:d.tint,img:"poster-0"+(i+1)}));
+const POSTERS = DREAMS.map((d,i)=>({cn:d.cn,en:d.en,short:d.short,motif:d.motif==="moon"?"moon-big":d.motif,tint:d.tint,img:"poster-0"+(i+1),url:d.url}));
 const SLOGANS = {moonlight:"A LITTLE QUIET. A LITTLE MAGICAL.",candy:"SWEET DREAMS, MOLLY.",forest:"LOST IN THE FOREST.",ocean:"FLOAT INTO A DREAM.",space:"MOLLY GOES BEYOND.",city:"A CITY MADE OF DREAMS."};
 
 /* ============================================================
@@ -3069,7 +3069,7 @@ function openDream(keyOrIdx){
   const d = DREAMS[dreamIdx];
   const art = $("#doArt"), motif = $(".art-motif", art);
   art.style.setProperty("--tint", d.tint);
-  motif.dataset.motif = d.motif; motif.innerHTML = MOTIFS[d.motif];
+  const doImg = $("#doImg"); if(d.url){ doImg.src=d.url; doImg.style.display="block"; motif.style.display="none"; } else { doImg.style.display="none"; motif.style.display=""; motif.dataset.motif = d.motif; motif.innerHTML = MOTIFS[d.motif]; }
   $("#doTag").textContent = "DREAM "+d.idx;
   $("#doImgId").textContent = "AIGC · "+d.img;
   $("#doEyebrow").innerHTML = `<b>${d.no}</b> 梦境 ${d.idx} <i>DREAM ${d.idx}</i>`;
@@ -3101,7 +3101,7 @@ function openLightbox(i){
   const p = POSTERS[lbIdx];
   const art = $("#lbArt"), motif = $(".art-motif", art);
   art.style.setProperty("--tint", p.tint);
-  motif.dataset.motif = p.motif; motif.innerHTML = MOTIFS[p.motif];
+  const lbImg = $("#lbImg"); if(p.url){ lbImg.src=p.url; lbImg.style.display="block"; motif.style.display="none"; } else { lbImg.style.display="none"; motif.style.display=""; motif.dataset.motif = p.motif; motif.innerHTML = MOTIFS[p.motif]; }
   const no = `${String(lbIdx+1).padStart(2,"0")} / 06`;
   $("#lbNo").textContent = no; $("#lbNo2").textContent = no;
   $("#lbName").innerHTML = `${p.short}<small>${p.en}</small>`;
