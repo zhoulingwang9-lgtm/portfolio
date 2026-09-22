@@ -2040,16 +2040,284 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
 </section>
 
 <!-- ============================================================
-   13 / 角色一致性
+   13 / 角色一致性 — editorial board rebuilt in HTML/CSS
    ============================================================ -->
+<style>
+/* ---- Character Consistency board ---- */
+.cc-board{--cc-line:rgba(17,17,17,.14);--cc-gray:#8A8174;--cc-ink:#111;}
+.cc-top{display:flex;align-items:stretch;border-top:1px solid var(--cc-line);}
+.cc-top > div{padding:22px 22px 20px;}
+.cc-top > div+div{border-left:1px solid var(--cc-line);}
+.cc-maintitle{flex:0 0 27%;}
+.cc-maintitle .cc-big{font-family:var(--display);font-weight:900;font-size:clamp(26px,3.1vw,46px);line-height:.92;letter-spacing:-.01em;text-transform:uppercase;color:var(--cc-ink);}
+.cc-maintitle .cc-cn{font-family:var(--serif);font-weight:700;font-size:clamp(15px,1.5vw,22px);margin-top:8px;}
+.cc-state{flex:1;}
+.cc-state .cc-en{font-family:var(--display);font-weight:800;font-size:clamp(14px,1.35vw,21px);line-height:1.25;text-transform:uppercase;}
+.cc-state .cc-zh{font-size:clamp(11px,1vw,15px);color:#333;margin-top:8px;line-height:1.6;}
+.cc-keywords{flex:0 0 13%;display:flex;flex-direction:column;justify-content:center;}
+.cc-keywords span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cc-gray);line-height:1.9;}
+.cc-tags{flex:0 0 11%;display:flex;flex-direction:column;justify-content:center;text-align:right;}
+.cc-tags span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cc-gray);line-height:1.85;}
+.cc-pageno{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cc-gray);padding:10px 2px 0;}
+
+/* ---- main grid ---- */
+.cc-main{display:grid;grid-template-columns:21% 13% 1fr;gap:0;margin-top:6px;border-top:1px solid var(--cc-line);}
+.cc-main > div{padding:16px 18px;}
+.cc-main > div+div{border-left:1px solid var(--cc-line);}
+.cc-h{font-family:var(--display);font-weight:800;font-size:clamp(12px,1.05vw,15px);text-transform:uppercase;letter-spacing:.02em;}
+.cc-h .zh{display:block;font-family:var(--sans);font-weight:700;font-size:11px;color:#444;margin-top:2px;letter-spacing:.05em;text-transform:none;}
+
+/* master */
+.cc-master-col{display:flex;flex-direction:column;}
+.cc-master-fig{position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:6px 4px;min-height:340px;}
+.cc-master-fig img{max-height:480px;width:100%;max-width:100%;object-fit:contain;}
+.cc-anno{position:absolute;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--cc-gray);line-height:1.5;text-align:right;}
+.cc-anno b{display:block;color:var(--cc-ink);font-weight:700;font-size:9.5px;}
+.cc-anno .zh{display:block;text-transform:none;letter-spacing:0;color:var(--cc-gray);font-size:9px;}
+.cc-anno-l1{left:0;top:12%;}.cc-anno-l2{left:0;top:30%;}
+.cc-anno-l3{left:0;top:46%;}.cc-anno-l4{left:0;top:66%;}.cc-anno-l5{left:0;top:86%;}
+.cc-anno-r{right:0;top:52%;text-align:left;}
+
+/* breakdown */
+.cc-breakdown{display:flex;flex-direction:column;}
+.cc-bd-list{display:flex;flex-direction:column;gap:7px;margin-top:12px;flex:1;}
+.cc-bd-item{display:grid;grid-template-columns:1fr 42px;gap:7px;align-items:center;}
+.cc-bd-item .imgwrap{width:100%;aspect-ratio:122/78;overflow:hidden;background:var(--paper-3);}
+.cc-bd-item .imgwrap img{width:100%;height:100%;object-fit:cover;}
+.cc-bd-item .meta{min-width:0;}
+.cc-bd-item .meta b{display:block;font-family:var(--display);font-size:9px;font-weight:700;color:var(--cc-gray);}
+.cc-bd-item .meta .en{display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.2;}
+.cc-bd-item .meta .zh{display:block;font-size:9px;color:var(--cc-gray);}
+
+/* right column: worlds + scale */
+.cc-rightcol{display:flex;flex-direction:column;gap:14px;}
+.cc-worlds-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px;}
+.cc-world{position:relative;overflow:hidden;background:var(--paper-3);aspect-ratio:1/1.45;}
+.cc-world img{width:100%;height:100%;object-fit:cover;}
+.cc-world .num{position:absolute;top:5px;left:7px;font-family:var(--display);font-weight:800;font-size:13px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5);z-index:2;}
+.cc-world .nm{position:absolute;bottom:5px;left:7px;z-index:2;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6);}
+.cc-world .nm b{display:block;font-family:var(--display);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.cc-world .nm span{font-size:9px;}
+.cc-world::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 45%);z-index:1;}
+
+.cc-scale-head{display:flex;align-items:baseline;gap:10px;}
+.cc-scale-head .plus{color:var(--cc-gray);font-size:12px;letter-spacing:.2em;}
+.cc-scale-row{display:grid;grid-template-columns:repeat(6,1fr) 130px;gap:8px;margin-top:8px;align-items:stretch;}
+.cc-scale-item{overflow:hidden;background:var(--paper-3);}
+.cc-scale-item .sw{aspect-ratio:178/100;overflow:hidden;}
+.cc-scale-item .sw img{width:100%;height:100%;object-fit:cover;}
+.cc-scale-item .cap{font-size:8px;letter-spacing:.04em;text-transform:uppercase;color:var(--cc-gray);padding:4px 2px 0;line-height:1.4;}
+.cc-scale-item .cap b{color:var(--cc-ink);font-weight:700;}
+.cc-scale-note{display:flex;flex-direction:column;justify-content:center;padding-left:6px;border-left:1px solid var(--cc-line);}
+.cc-scale-note b{font-family:var(--display);font-size:9.5px;font-weight:700;text-transform:uppercase;line-height:1.5;}
+.cc-scale-note span{font-size:9.5px;color:#333;line-height:1.6;margin-top:4px;}
+
+/* ---- secondary row ---- */
+.cc-sec{display:grid;grid-template-columns:30% 38% 1fr;border-top:1px solid var(--cc-line);margin-top:6px;}
+.cc-sec > div{padding:14px 18px;}
+.cc-sec > div+div{border-left:1px solid var(--cc-line);}
+.cc-measure-img{margin-top:8px;width:100%;}
+.cc-measure-img img{width:100%;height:auto;display:block;}
+.cc-mat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:8px;}
+.cc-mat-item{overflow:hidden;background:var(--paper-3);}
+.cc-mat-item .hw{aspect-ratio:1/1;overflow:hidden;}
+.cc-mat-item .hw img{width:100%;height:100%;object-fit:cover;}
+.cc-mat-item .cap{font-size:7.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--cc-gray);padding:3px 1px 0;line-height:1.3;}
+.cc-mat-item .cap b{color:var(--cc-ink);display:block;font-size:8px;}
+.cc-pose-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:center;}
+.cc-pose-text .en{font-family:var(--display);font-weight:800;font-size:clamp(11px,1vw,15px);text-transform:uppercase;line-height:1.3;}
+.cc-pose-text .zh{font-size:10px;color:#333;margin-top:6px;line-height:1.5;}
+.cc-pose-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.cc-pose-item{text-align:center;}
+.cc-pose-item .pw{aspect-ratio:1/1.1;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:transparent;}
+.cc-pose-item .pw img{max-height:100%;max-width:100%;object-fit:contain;}
+.cc-pose-item .cap{font-size:7.5px;text-transform:uppercase;color:var(--cc-gray);margin-top:3px;line-height:1.3;}
+.cc-pose-item .cap b{display:block;color:var(--cc-ink);font-size:8px;}
+
+/* ---- DNA + slogan row ---- */
+.cc-bottom{display:grid;grid-template-columns:1fr 34%;border-top:1px solid var(--cc-line);margin-top:6px;}
+.cc-bottom > div{padding:14px 18px;}
+.cc-bottom > div+div{border-left:1px solid var(--cc-line);}
+.cc-dna-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:8px;}
+.cc-dna-item{position:relative;}
+.cc-dna-item .dl{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--cc-gray);margin-bottom:3px;}
+.cc-dna-item .dl b{color:var(--cc-ink);font-family:var(--display);font-weight:700;margin-right:3px;}
+.cc-dna-item .dw{aspect-ratio:135/88;overflow:hidden;background:var(--paper-3);}
+.cc-dna-item .dw img{width:100%;height:100%;object-fit:cover;}
+.cc-slogan{display:flex;align-items:center;gap:18px;}
+.cc-slogan .big{font-family:var(--display);font-weight:900;font-size:clamp(20px,2.3vw,36px);line-height:1;text-transform:uppercase;letter-spacing:-.01em;}
+.cc-slogan .zh{font-family:var(--serif);font-weight:700;font-size:clamp(13px,1.3vw,19px);line-height:1.4;white-space:nowrap;}
+.cc-slogan .sub{grid-column:1/-1;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--cc-gray);margin-top:10px;word-spacing:1.5em;}
+.cc-slogan-inner{display:flex;flex-direction:column;gap:10px;width:100%;}
+.cc-slogan-top{display:flex;align-items:center;gap:18px;}
+
+@media(max-width:1100px){
+  .cc-main{grid-template-columns:1fr;}
+  .cc-main>div+div{border-left:none;border-top:1px solid var(--cc-line);}
+  .cc-sec{grid-template-columns:1fr;}
+  .cc-sec>div+div{border-left:none;border-top:1px solid var(--cc-line);}
+  .cc-bottom{grid-template-columns:1fr;}
+  .cc-bottom>div+div{border-left:none;border-top:1px solid var(--cc-line);}
+  .cc-top{flex-wrap:wrap;}
+  .cc-scale-row{grid-template-columns:repeat(3,1fr);}
+  .cc-scale-note{grid-column:1/-1;border-left:none;border-top:1px solid var(--cc-line);padding:8px 0;}
+  .cc-worlds-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+
 <section class="sec sec-alt" id="character">
   <div class="wrap">
-    <div class="eyebrow reveal"><b>13</b> 角色一致性 <i>CHARACTER CONSISTENCY</i></div>
-    <div class="char-full reveal d1">
-      <img src="img/character-consistency.jpg" alt="MOLLY 角色一致性 Character Consistency" style="width:100%;height:auto;display:block;border-radius:8px;">
+    <div class="cc-board reveal">
+
+      <!-- page number strip -->
+      <div class="cc-pageno"><span>14 / CHARACTER CONSISTENCY</span><span>ONE CHARACTER · SIX DREAM WORLDS　|　A VISUAL RESEARCH PROJECT</span></div>
+
+      <!-- header row -->
+      <div class="cc-top">
+        <div class="cc-maintitle">
+          <div class="cc-big">Character<br>Consistency</div>
+          <div class="cc-cn">角色保持一致性</div>
+        </div>
+        <div class="cc-state">
+          <div class="cc-en">One Molly.<br>Six Dream Worlds.</div>
+          <div class="cc-zh">同一个 MOLLY，<br>进入六个完全不同的梦境。</div>
+        </div>
+        <div class="cc-state">
+          <div class="cc-en">The World Changes.<br>The Character Stays.</div>
+          <div class="cc-zh">世界可以改变，<br>角色不能改变。</div>
+        </div>
+        <div class="cc-keywords">
+          <span>Same Character</span>
+          <span>Different Worlds</span>
+          <span>Always Molly</span>
+        </div>
+        <div class="cc-tags">
+          <span>Art Toy</span>
+          <span>AIGC Visual</span>
+          <span>Character Design</span>
+          <span>World Building</span>
+          <span>Consistency</span>
+        </div>
+      </div>
+
+      <!-- main row -->
+      <div class="cc-main">
+        <!-- master character -->
+        <div class="cc-master-col">
+          <div class="cc-h">Master Character<span class="zh">主角色参考</span></div>
+          <div class="cc-master-fig"></span></span></span></span></span></span>
+            <img src="img/cc-master.jpg" alt="MOLLY 主角色参考">
+          </div>
+        </div>
+
+        <!-- breakdown -->
+        <div class="cc-breakdown">
+          <div class="cc-h">Character Breakdown<span class="zh">角色细节拆解</span></div>
+          <div class="cc-bd-list">
+            <div class="cc-bd-item"><div class="imgwrap"><img src="img/cc-bd-face.jpg" alt="面部"></div><div class="meta"><b>01</b><span class="en">Face</span><span class="zh">面部</span></div></div>
+            <div class="cc-bd-item"><div class="imgwrap"><img src="img/cc-bd-eyes.jpg" alt="眼睛"></div><div class="meta"><b>02</b><span class="en">Eyes</span><span class="zh">眼睛</span></div></div>
+            <div class="cc-bd-item"><div class="imgwrap"><img src="img/cc-bd-hair.jpg" alt="头发"></div><div class="meta"><b>03</b><span class="en">Hair</span><span class="zh">头发</span></div></div>
+            <div class="cc-bd-item"><div class="imgwrap"><img src="img/cc-bd-silhouette.jpg" alt="轮廓"></div><div class="meta"><b>04</b><span class="en">Silhouette</span><span class="zh">轮廓</span></div></div>
+            <div class="cc-bd-item"><div class="imgwrap"><img src="img/cc-bd-body.jpg" alt="身体"></div><div class="meta"><b>05</b><span class="en">Body</span><span class="zh">身体</span></div></div>
+            <div class="cc-bd-item"><div class="imgwrap"><img src="img/cc-bd-material.jpg" alt="材质"></div><div class="meta"><b>06</b><span class="en">Material</span><span class="zh">材质</span></div></div>
+          </div>
+        </div>
+
+        <!-- worlds + scale -->
+        <div class="cc-rightcol">
+          <div>
+            <div class="cc-h">Six Dream Worlds <span class="zh" style="display:inline;font-weight:700;font-size:11px;color:#444;letter-spacing:.05em;text-transform:none;margin-left:8px;">六个梦境世界</span> <span class="plus" style="color:var(--cc-gray);letter-spacing:.2em;margin-left:8px;">+ + +</span></div>
+            <div class="cc-worlds-grid">
+              <div class="cc-world"><span class="num">01</span><img src="img/twYVPT8YVs.jpg" alt="月光梦境"><div class="nm"><b>Moonlight</b><span>月光</span></div></div>
+              <div class="cc-world"><span class="num">02</span><img src="img/candy-dream.jpg" alt="糖果梦境"><div class="nm"><b>Candy</b><span>糖果</span></div></div>
+              <div class="cc-world"><span class="num">03</span><img src="img/forest-dream.jpg" alt="森林梦境"><div class="nm"><b>Forest</b><span>森林</span></div></div>
+              <div class="cc-world"><span class="num">04</span><img src="img/ocean-dream.jpg" alt="海洋梦境"><div class="nm"><b>Ocean</b><span>海洋</span></div></div>
+              <div class="cc-world"><span class="num">05</span><img src="img/space-dream.jpg" alt="宇宙梦境"><div class="nm"><b>Space</b><span>宇宙</span></div></div>
+              <div class="cc-world"><span class="num">06</span><img src="img/city-dream.jpg" alt="未来城市"><div class="nm"><b>Future City</b><span>未来都市</span></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="cc-scale-head"><div class="cc-h">Scale Test <span class="zh" style="display:inline;font-weight:700;font-size:11px;color:#444;letter-spacing:.05em;text-transform:none;margin-left:8px;">场景比例测试</span></div><span class="plus">+ +</span></div>
+            <div class="cc-scale-row">
+              <div class="cc-scale-item"><div class="sw"><img src="img/cc-scale-moon.jpg" alt=""></div><div class="cap"><b>Molly / Giant Moon</b><br>MOLLY / 巨大的月亮</div></div>
+              <div class="cc-scale-item"><div class="sw"><img src="img/cc-scale-candy.jpg" alt=""></div><div class="cap"><b>Molly / Giant Candy World</b><br>MOLLY / 巨大的糖果世界</div></div>
+              <div class="cc-scale-item"><div class="sw"><img src="img/cc-scale-forest.jpg" alt=""></div><div class="cap"><b>Molly / Giant Forest</b><br>MOLLY / 巨大的森林</div></div>
+              <div class="cc-scale-item"><div class="sw"><img src="img/cc-scale-ocean.jpg" alt=""></div><div class="cap"><b>Molly / Giant Water Sphere</b><br>MOLLY / 巨大的水球</div></div>
+              <div class="cc-scale-item"><div class="sw"><img src="img/cc-scale-space.jpg" alt=""></div><div class="cap"><b>Molly / Infinite Universe</b><br>MOLLY / 无限的宇宙</div></div>
+              <div class="cc-scale-item"><div class="sw"><img src="img/cc-scale-city.jpg" alt=""></div><div class="cap"><b>Molly / Giant Future City</b><br>MOLLY / 巨大的未来都市</div></div>
+              <div class="cc-scale-note">
+                <b>Character Ratio = Stable<br>World Scale = Variable</b>
+                <span>角色比例 = 稳定<br>世界尺度 = 可变化</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- secondary row: measurement / material / poses -->
+      <div class="cc-sec">
+        <div>
+          <div class="cc-h">Design Measurement System<span class="zh">设计尺寸系统</span></div>
+          <div class="cc-measure-img"><img src="img/cc-measurement.jpg" alt="设计尺寸系统"></div>
+        </div>
+        <div>
+          <div class="cc-h">Molly Material<span class="zh">材质光影研究</span></div>
+          <div class="cc-mat-grid">
+            <div class="cc-mat-item"><div class="hw"><img src="img/cc-mat-moon.jpg" alt=""></div><div class="cap"><b>01 Soft Moonlight</b>柔和月光</div></div>
+            <div class="cc-mat-item"><div class="hw"><img src="img/cc-mat-candy.jpg" alt=""></div><div class="cap"><b>02 Candy Reflection</b>糖果反射</div></div>
+            <div class="cc-mat-item"><div class="hw"><img src="img/cc-mat-forest.jpg" alt=""></div><div class="cap"><b>03 Forest Ambient</b>森林环境光</div></div>
+            <div class="cc-mat-item"><div class="hw"><img src="img/cc-mat-ocean.jpg" alt=""></div><div class="cap"><b>04 Underwater</b>水下光影</div></div>
+            <div class="cc-mat-item"><div class="hw"><img src="img/cc-mat-space.jpg" alt=""></div><div class="cap"><b>05 Cosmic Light</b>宇宙光</div></div>
+            <div class="cc-mat-item"><div class="hw"><img src="img/cc-mat-city.jpg" alt=""></div><div class="cap"><b>06 City Neon</b>城市霓虹</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="cc-pose-wrap">
+            <div class="cc-pose-text">
+              <div class="en">Same Character.<br>Different Light.</div>
+              <div class="zh">同一个角色，<br>不同环境光。</div>
+            </div>
+            <div>
+              <div class="cc-h" style="margin-bottom:6px;">Pose Consistency<span class="zh">姿势保持一致</span></div>
+              <div class="cc-pose-grid">
+                <div class="cc-pose-item"><div class="pw"><img src="img/cc-pose-standing.jpg" alt=""></div><div class="cap"><b>Standing</b>站立</div></div>
+                <div class="cc-pose-item"><div class="pw"><img src="img/cc-pose-sitting.jpg" alt=""></div><div class="cap"><b>Sitting</b>坐姿</div></div>
+                <div class="cc-pose-item"><div class="pw"><img src="img/cc-pose-floating.jpg" alt=""></div><div class="cap"><b>Floating</b>漂浮</div></div>
+                <div class="cc-pose-item"><div class="pw"><img src="img/cc-pose-looking.jpg" alt=""></div><div class="cap"><b>Looking</b>凝视</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DNA + slogan row -->
+      <div class="cc-bottom">
+        <div>
+          <div class="cc-h">Character DNA <span class="zh" style="display:inline;font-weight:700;font-size:11px;color:#444;letter-spacing:.05em;text-transform:none;margin-left:6px;">角色视觉基因</span></div>
+          <div class="cc-dna-grid">
+            <div class="cc-dna-item"><div class="dl"><b>01</b>Face 面部</div><div class="dw"><img src="img/cc-dna-face.jpg" alt=""></div></div>
+            <div class="cc-dna-item"><div class="dl"><b>02</b>Eyes 眼睛</div><div class="dw"><img src="img/cc-dna-eyes.jpg" alt=""></div></div>
+            <div class="cc-dna-item"><div class="dl"><b>03</b>Hair 头发</div><div class="dw"><img src="img/cc-dna-hair.jpg" alt=""></div></div>
+            <div class="cc-dna-item"><div class="dl"><b>04</b>Proportion 比例</div><div class="dw"><img src="img/cc-dna-proportion.jpg" alt=""></div></div>
+            <div class="cc-dna-item"><div class="dl"><b>05</b>Silhouette 轮廓</div><div class="dw"><img src="img/cc-dna-silhouette.jpg" alt=""></div></div>
+            <div class="cc-dna-item"><div class="dl"><b>06</b>Material 材质 <span style="letter-spacing:.2em;color:var(--cc-gray);">+</span></div><div class="dw"><img src="img/cc-dna-material.jpg" alt=""></div></div>
+          </div>
+        </div>
+        <div class="cc-slogan">
+          <div class="cc-slogan-inner">
+            <div class="cc-slogan-top">
+              <div class="big">Different Worlds.<br>Same Molly.</div>
+              <div class="zh">不同梦境，<br>同一个 MOLLY。</div>
+            </div>
+            <div class="sub">Consistency　Creates　A　Stronger　Imagination</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 
 <!-- ============================================================
    14 / 色彩系统
