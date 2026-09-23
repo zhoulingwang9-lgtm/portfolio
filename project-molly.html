@@ -873,6 +873,15 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
 }
 .poster-meta .cn{font-size:13.5px;font-weight:500;letter-spacing:.1em;}
 .poster-meta .view{font-size:11px;letter-spacing:.2em;color:var(--gray-2);display:flex;align-items:center;gap:6px;}
+.poster-card .poster-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+.poster-card .art-motif{display:none;}
+.poster-card .art-bg{opacity:0;}
+.poster-card .art-frame{z-index:4;}
+.poster-card .poster-type{z-index:3;}
+.poster-card .poster-type::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,25,.35) 0%,rgba(10,12,25,0) 38%,rgba(10,12,25,0) 58%,rgba(10,12,25,.55) 100%);z-index:-1;}
+.poster-card .poster-type .pt-top{color:rgba(255,255,255,.85);}
+.poster-card .poster-type .pt-name{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35);}
+.poster-card .poster-type .pt-name small{color:rgba(255,255,255,.75);}
 
 /* Lightbox */
 .lightbox{
@@ -2785,7 +2794,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         <button class="poster-card reveal" data-poster="0" data-cursor>
           <div class="art" data-image="poster-01" style="--tint:var(--d-moon-soft)">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="moon-big"></div>
+            <img class="poster-photo" src="img/twYVPT8YVs.jpg" alt="moon-big poster"><div class="art-motif" data-motif="moon-big"></div>
             <div class="poster-type">
               <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span>01 / 06</span></span>
               <span class="pt-name">月光<small>MOONLIGHT</small></span>
@@ -2797,7 +2806,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         <button class="poster-card reveal d1" data-poster="1" data-cursor>
           <div class="art" data-image="poster-02" style="--tint:var(--d-candy-soft)">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="candy"></div>
+            <img class="poster-photo" src="img/candy-dream.jpg" alt="candy poster"><div class="art-motif" data-motif="candy"></div>
             <div class="poster-type">
               <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span>02 / 06</span></span>
               <span class="pt-name">糖果<small>CANDY</small></span>
@@ -2809,7 +2818,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         <button class="poster-card reveal d2" data-poster="2" data-cursor>
           <div class="art" data-image="poster-03" style="--tint:var(--d-forest-soft)">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="forest"></div>
+            <img class="poster-photo" src="img/forest-dream.jpg" alt="forest poster"><div class="art-motif" data-motif="forest"></div>
             <div class="poster-type">
               <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span>03 / 06</span></span>
               <span class="pt-name">森林<small>FOREST</small></span>
@@ -2821,7 +2830,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         <button class="poster-card reveal" data-poster="3" data-cursor>
           <div class="art" data-image="poster-04" style="--tint:var(--d-ocean-soft)">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="ocean"></div>
+            <img class="poster-photo" src="img/ocean-dream.jpg" alt="ocean poster"><div class="art-motif" data-motif="ocean"></div>
             <div class="poster-type">
               <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span>04 / 06</span></span>
               <span class="pt-name">海洋<small>OCEAN</small></span>
@@ -2833,7 +2842,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         <button class="poster-card reveal d1" data-poster="4" data-cursor>
           <div class="art" data-image="poster-05" style="--tint:var(--d-space-soft)">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="space"></div>
+            <img class="poster-photo" src="img/space-dream.jpg" alt="space poster"><div class="art-motif" data-motif="space"></div>
             <div class="poster-type">
               <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span>05 / 06</span></span>
               <span class="pt-name">宇宙<small>SPACE</small></span>
@@ -2845,7 +2854,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         <button class="poster-card reveal d2" data-poster="5" data-cursor>
           <div class="art" data-image="poster-06" style="--tint:var(--d-city-soft)">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="city"></div>
+            <img class="poster-photo" src="img/city-dream.jpg" alt="city poster"><div class="art-motif" data-motif="city"></div>
             <div class="poster-type">
               <span class="pt-top"><span>MOLLY DREAM COLLECTION</span><span>06 / 06</span></span>
               <span class="pt-name">城市<small>CITY</small></span>
