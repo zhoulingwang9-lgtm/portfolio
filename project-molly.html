@@ -984,17 +984,28 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
 /* ============================================================
    22 品牌触点
    ============================================================ */
-.touchpoints-inner .h2{margin:26px 0 56px;}
-.tp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.tp-card{
-  border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--paper-2);
-  transition:transform .45s var(--ease);
-}
-.tp-card:hover{transform:translateY(-5px);}
-.tp-card .art{aspect-ratio:1/1;border:none;border-radius:0;}
-.tp-card .tp-body{display:flex;justify-content:space-between;align-items:baseline;padding:14px 18px;border-top:1px solid var(--line);background:var(--paper);}
-.tp-card .cn{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.05em;}
-.tp-card .en{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-2);}
+.tp-head{display:grid;grid-template-columns:1.1fr 1fr auto;gap:40px;align-items:start;margin-bottom:40px;}
+.tp-head .tp-title{font-family:var(--display);font-weight:800;line-height:.92;letter-spacing:-.02em;font-size:clamp(46px,6vw,92px);text-transform:uppercase;}
+.tp-head .tp-title small{display:block;font-family:var(--serif);font-weight:600;font-size:.28em;letter-spacing:.15em;color:var(--ink);margin-top:14px;}
+.tp-head .tp-lead h3{font-family:var(--display);font-weight:800;font-size:clamp(20px,2vw,30px);line-height:1.15;text-transform:uppercase;letter-spacing:-.01em;}
+.tp-head .tp-lead .cn{font-family:var(--serif);font-weight:600;font-size:clamp(17px,1.5vw,22px);margin-top:8px;display:block;}
+.tp-head .tp-lead p{font-size:13px;color:var(--gray);line-height:1.7;margin-top:18px;max-width:340px;}
+.tp-cats{display:flex;gap:26px;}
+.tp-cat{text-align:right;}
+.tp-cat b{display:block;font-family:var(--serif);font-weight:600;font-size:14px;}
+.tp-cat span{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-2);}
+.tp-rule{height:1px;background:var(--line);margin:6px 0 22px;}
+.tp-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:14px;}
+.tp-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-2);}
+.tp-label b{color:var(--ink);font-weight:600;}
+.tp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+.tp-card{position:relative;border-radius:14px;overflow:hidden;cursor:pointer;border:none;padding:0;background:#EFE9DD;}
+.tp-card img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:3/4;transition:transform .6s var(--ease);}
+.tp-card:hover img{transform:scale(1.04);}
+.tp-foot{display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);}
+.tp-foot .l{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:15px;line-height:1.4;}
+.tp-foot .r{font-family:var(--serif);font-size:14px;color:var(--gray);}
+@media(max-width:900px){.tp-head{grid-template-columns:1fr;gap:22px;}.tp-cats{flex-wrap:wrap;}.tp-cat{text-align:left;}.tp-labels{display:none;}.tp-grid{grid-template-columns:repeat(2,1fr);}.tp-card img{aspect-ratio:3/4;}}
 
 /* ============================================================
    23 梦境盲盒
@@ -2936,67 +2947,41 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
    ============================================================ -->
 <section class="sec" id="touchpoints">
   <div class="wrap">
-    <div class="touchpoints-inner">
-      <div class="eyebrow reveal"><b>22</b> 品牌触点 <i>TOUCHPOINTS</i></div>
-      <h2 class="h2 reveal d1">梦境，不会停留在海报里。<span class="en">DREAMS LEAVE THE POSTER.</span></h2>
-      <div class="tp-grid">
-        <div class="tp-card reveal">
-          <div class="art" data-image="tp-poster" style="--tint:var(--d-moon-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="moon"></div>
-            <div class="art-tag">01</div><div class="art-id">TP · POSTER</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">系列海报</span><span class="en">POSTER</span></div>
-        </div>
-        <div class="tp-card reveal d1">
-          <div class="art" data-image="tp-blindbox" style="--tint:var(--d-candy-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="candy"></div>
-            <div class="art-tag">02</div><div class="art-id">TP · BLIND BOX</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">梦境盲盒</span><span class="en">BLIND BOX</span></div>
-        </div>
-        <div class="tp-card reveal d2">
-          <div class="art" data-image="tp-postcard" style="--tint:var(--d-forest-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="forest"></div>
-            <div class="art-tag">03</div><div class="art-id">TP · POSTCARD</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">明信片</span><span class="en">POSTCARD</span></div>
-        </div>
-        <div class="tp-card reveal d3">
-          <div class="art" data-image="tp-sticker" style="--tint:var(--d-ocean-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="ocean"></div>
-            <div class="art-tag">04</div><div class="art-id">TP · STICKER</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">贴纸</span><span class="en">STICKER</span></div>
-        </div>
-        <div class="tp-card reveal">
-          <div class="art" data-image="tp-tote" style="--tint:var(--d-space-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="space"></div>
-            <div class="art-tag">05</div><div class="art-id">TP · TOTE BAG</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">购物袋</span><span class="en">TOTE BAG</span></div>
-        </div>
-        <div class="tp-card reveal d1">
-          <div class="art" data-image="tp-receipt" style="--tint:var(--d-city-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="city"></div>
-            <div class="art-tag">06</div><div class="art-id">TP · RECEIPT</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">收据</span><span class="en">RECEIPT</span></div>
-        </div>
-        <div class="tp-card reveal d2">
-          <div class="art" data-image="tp-wallpaper" style="--tint:var(--d-moon-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="star"></div>
-            <div class="art-tag">07</div><div class="art-id">TP · WALLPAPER</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">手机壁纸</span><span class="en">WALLPAPER</span></div>
-        </div>
-        <div class="tp-card reveal d3">
-          <div class="art" data-image="tp-social" style="--tint:var(--d-candy-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="candy"></div>
-            <div class="art-tag">08</div><div class="art-id">TP · SOCIAL</div><div class="art-frame"></div>
-          </div>
-          <div class="tp-body"><span class="cn">社交媒体</span><span class="en">SOCIAL MEDIA</span></div>
-        </div>
+    <div class="eyebrow reveal"><b>22</b> 品牌触点 <i>BRAND TOUCHPOINTS</i></div>
+    <div class="tp-head reveal d1">
+      <div class="tp-title">BRAND TOUCHPOINTS<small>品牌触点</small></div>
+      <div class="tp-lead">
+        <h3>BRING THE DREAM INTO EVERYDAY LIFE.</h3>
+        <span class="cn">让梦境，进入真实的生活。</span>
+        <p>From posters to packaging, from digital screens to physical spaces, the MOLLY Dream Collection becomes a complete visual experience.</p>
       </div>
+      <div class="tp-cats">
+        <div class="tp-cat"><b>海报</b><span>Poster</span></div>
+        <div class="tp-cat"><b>包装</b><span>Packaging</span></div>
+        <div class="tp-cat"><b>数字</b><span>Digital</span></div>
+        <div class="tp-cat"><b>空间</b><span>Space</span></div>
+      </div>
+    </div>
+    <div class="tp-rule"></div>
+    <div class="tp-labels">
+      <div class="tp-label"><b>01</b> / PACKAGING</div>
+      <div class="tp-label"><b>02</b> / SHOPPING BAG</div>
+      <div class="tp-label"><b>03</b> / RECEIPT</div>
+      <div class="tp-label"><b>04</b> / DIGITAL</div>
+      <div class="tp-label"><b>05</b> / STORE</div>
+      <div class="tp-label"><b>06</b> / SOCIAL</div>
+    </div>
+    <div class="tp-grid">
+      <button class="tp-card reveal" data-full="img/tp-package.jpg" type="button"><img src="img/tp-package.jpg" alt="包装"></button>
+      <button class="tp-card reveal d1" data-full="img/tp-bag.jpg" type="button"><img src="img/tp-bag.jpg" alt="购物袋"></button>
+      <button class="tp-card reveal d2" data-full="img/tp-receipt.jpg" type="button"><img src="img/tp-receipt.jpg" alt="小票"></button>
+      <button class="tp-card reveal d3" data-full="img/tp-digital.jpg" type="button"><img src="img/tp-digital.jpg" alt="数字"></button>
+      <button class="tp-card reveal" data-full="img/tp-store.jpg" type="button"><img src="img/tp-store.jpg" alt="门店"></button>
+      <button class="tp-card reveal d1" data-full="img/tp-social.jpg" type="button"><img src="img/tp-social.jpg" alt="社交"></button>
+    </div>
+    <div class="tp-foot reveal d2">
+      <div class="l">ONE VISUAL LANGUAGE.<br>MANY TOUCHPOINTS.</div>
+      <div class="r">一套视觉语言，延伸到不同触点。</div>
     </div>
   </div>
 </section>
@@ -3300,7 +3285,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
   var lb=document.getElementById('aiLb');
   var img=document.getElementById('aiLbImg');
   var close=document.getElementById('aiLbClose');
-  document.querySelectorAll('.ai-shot').forEach(function(btn){
+  document.querySelectorAll('.ai-shot, .tp-card').forEach(function(btn){
     btn.addEventListener('click',function(){
       img.src=btn.getAttribute('data-full');
       lb.classList.add('open');
