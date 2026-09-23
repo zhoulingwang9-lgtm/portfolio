@@ -2540,71 +2540,147 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
    17 / 生成过程
    ============================================================ -->
 <section class="sec" id="process">
+<style>
+.proc{font-family:var(--sans);}
+.proc-eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin-bottom:18px;}
+.proc-eyebrow b{color:var(--ink);}
+.proc-head{display:grid;grid-template-columns:1.4fr .9fr .5fr;gap:32px;align-items:start;}
+.proc-title h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,64px);line-height:.95;letter-spacing:-.01em;color:var(--ink);margin:0;}
+.proc-title-cn{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);color:var(--ink);margin-top:10px;}
+.proc-head-mid{border-left:1px solid var(--line);padding-left:24px;}
+.proc-kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;}
+.proc-kicker span{color:var(--gray);}
+.proc-lead{font-size:14px;line-height:1.7;color:var(--ink);}
+.proc-lead em{font-style:normal;color:var(--gray);}
+.proc-meta{border-left:1px solid var(--line);padding-left:20px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2);line-height:1.9;display:flex;flex-direction:column;gap:14px;}
+.proc-meta .div{border-top:1px solid var(--line);width:26px;margin-top:2px;}
+.proc-rule{border:none;border-top:1px solid var(--line);margin:28px 0;}
+.proc-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:8px;}
+.proc-col{padding:0 18px;border-left:1px solid var(--line);}
+.proc-col:first-child{border-left:none;padding-left:0;}
+.proc-col:last-child{padding-right:0;}
+.proc-col h3{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);margin:0;letter-spacing:-.01em;}
+.proc-cn{font-family:var(--serif);font-size:14px;color:var(--gray);margin:4px 0 16px;}
+.pc-img{width:100%;display:block;object-fit:cover;background:var(--paper-2);}
+.pc-square{aspect-ratio:1/1;}
+.pc-wide{aspect-ratio:282/205;}
+.pc-add{text-align:center;font-size:12px;line-height:2;color:var(--ink);margin:16px 0;}
+.pc-q{font-size:12px;color:var(--ink);line-height:1.7;}
+.pc-mono{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-top:10px;}
+.pc-spec{width:100%;border-collapse:collapse;margin:14px 0;font-size:11px;}
+.pc-spec th{text-align:left;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding:7px 0;vertical-align:top;width:42%;}
+.pc-spec td{padding:7px 0;color:var(--ink);line-height:1.5;}
+.pc-spec small{color:var(--gray);}
+.pc-promptbox{background:#E7E5FB;border-radius:10px;padding:16px 18px;font-size:13px;font-weight:700;color:var(--ink);line-height:1.5;margin-top:8px;}
+.pc-promptbox small{display:block;font-weight:400;color:var(--gray);margin-top:6px;}
+.pc-gen{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pc-gen figure{margin:0;}
+.pc-gen img{width:100%;display:block;aspect-ratio:225/192;object-fit:cover;border-radius:6px;}
+.pc-gen figcaption{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:5px;}
+.pc-gen figure.sel img{outline:2px solid #6B7CFF;outline-offset:1px;border-radius:6px;}
+.pc-gen figure.sel figcaption{color:#5A6BE0;font-weight:700;}
+.pc-note{font-size:11.5px;color:var(--ink);line-height:1.7;margin-top:14px;}
+.pc-note em{font-style:normal;color:var(--gray);}
+.pc-ref{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pc-ref figure{margin:0;}
+.pc-ref img{width:100%;display:block;aspect-ratio:243/367;object-fit:cover;border-radius:6px;}
+.pc-ref figcaption{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:5px;}
+.pc-arrow{width:100%;border-collapse:collapse;margin-top:14px;font-size:10.5px;}
+.pc-arrow th{text-align:left;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);padding:6px 0;width:34%;vertical-align:top;}
+.pc-arrow th small{display:block;font-weight:400;color:var(--gray);letter-spacing:.05em;}
+.pc-arrow td{padding:6px 0;color:var(--ink);line-height:1.5;vertical-align:top;}
+.pc-arrow .arr{color:var(--gray);padding:0 4px;}
+.pc-final img{width:100%;display:block;aspect-ratio:332/730;object-fit:cover;border-radius:8px;}
+.proc-foot{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:end;border-top:1px solid var(--line);margin-top:34px;padding-top:18px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2);}
+.proc-foot-c{text-align:center;color:var(--ink);font-weight:700;letter-spacing:.1em;}
+.proc-foot-c em{display:block;font-style:normal;font-weight:400;color:var(--gray);margin-top:4px;}
+.proc-foot-r{text-align:right;border-left:1px solid var(--line);padding-left:18px;}
+@media(max-width:1200px){
+  .proc-cols{grid-template-columns:1fr 1fr;}
+  .proc-col{border-left:none;border-top:1px solid var(--line);padding:24px 18px 0;}
+  .proc-col:first-child{padding-top:0;border-top:none;}
+  .proc-col:nth-child(odd){padding-left:0;}
+  .proc-head{grid-template-columns:1fr;gap:18px;}
+  .proc-head-mid,.proc-meta{border-left:none;padding-left:0;}
+}
+@media(max-width:760px){
+  .proc-cols{grid-template-columns:1fr;}
+  .proc-col{padding-left:0;padding-right:0;}
+}
+</style>
   <div class="wrap">
-    <div class="process-inner">
-      <div class="eyebrow reveal"><b>17</b> 生成过程 <i>GENERATION PROCESS</i></div>
-      <h2 class="h2 reveal d1">从一个提示词，到一张最终海报。<span class="en">FROM PROMPT TO IMAGE.</span></h2>
-      <div class="process-track">
-        <div class="step-card reveal">
-          <div class="step-no">01</div>
-          <div class="art" data-image="process-reference" style="--tint:var(--d-moon-soft)" data-cursor>
-            <div class="art-bg"></div><div class="art-motif" data-motif="star"></div>
-            <div class="art-tag">REF</div><div class="art-id">IMG · REF</div><div class="art-frame"></div>
-          </div>
-          <h4>参考</h4><span class="en">REFERENCE</span>
-          <p>收集角色设定与风格方向，建立视觉基准。</p>
-          <div class="step-hover"><span>查看</span></div>
+    <div class="proc">
+      <div class="proc-eyebrow"><b>17</b> / AIGC GENERATION PROCESS</div>
+      <div class="proc-head">
+        <div class="proc-title">
+          <h2>AIGC GENERATION PROCESS</h2>
+          <div class="proc-title-cn">生成过程</div>
         </div>
-        <div class="step-card reveal d1">
-          <div class="step-no">02</div>
-          <div class="art" data-image="process-prompt" style="--tint:var(--d-moon-soft)" data-cursor>
-            <div class="art-bg"></div><div class="art-motif" data-motif="moon"></div>
-            <div class="art-tag">PROMPT</div><div class="art-id">IMG · PROMPT</div><div class="art-frame"></div>
-          </div>
-          <h4>提示词</h4><span class="en">PROMPT</span>
-          <p>撰写并测试提示词，锁定角色与梦境设定。</p>
-          <div class="step-hover"><span>查看</span></div>
+        <div class="proc-head-mid">
+          <div class="proc-kicker">MOONLIGHT <span>月光梦境</span></div>
+          <p class="proc-lead">FROM ONE MOONLIT IDEA<br>TO A COMPLETE DREAM WORLD.<br><em>从一个月光意象，到完整的梦境世界。</em></p>
         </div>
-        <div class="step-card reveal d2">
-          <div class="step-no">03</div>
-          <div class="art" data-image="process-generate" style="--tint:var(--d-moon-soft)" data-cursor>
-            <div class="art-bg"></div><div class="art-motif" data-motif="candy"></div>
-            <div class="art-tag">GEN</div><div class="art-id">IMG · GEN</div><div class="art-frame"></div>
-          </div>
-          <h4>生成</h4><span class="en">GENERATE</span>
-          <p>批量生成视觉草稿，覆盖多个梦境方向。</p>
-          <div class="step-hover"><span>查看</span><span>对比</span></div>
+        <div class="proc-meta">
+          <div>ART TOY<br>AIGC<br>VISUAL DESIGN<br>DREAM WORLD</div>
+          <div class="div"></div>
+          <div>MOONLIGHT MOLLY<br>CASE STUDY</div>
         </div>
-        <div class="step-card reveal">
-          <div class="step-no">04</div>
-          <div class="art" data-image="process-select" style="--tint:var(--d-moon-soft)" data-cursor>
-            <div class="art-bg"></div><div class="art-motif" data-motif="forest"></div>
-            <div class="art-tag">SELECT</div><div class="art-id">IMG · SELECT</div><div class="art-frame"></div>
-          </div>
-          <h4>筛选</h4><span class="en">SELECT</span>
-          <p>挑选可用画面，淘汰不合格的生成结果。</p>
-          <div class="step-hover"><span>查看</span><span>对比</span></div>
+      </div>
+      <hr class="proc-rule">
+      <div class="proc-cols">
+        <div class="proc-col">
+          <h3>01 / IDEA</h3><p class="proc-cn">月光意象</p>
+          <img class="pc-img pc-square" src="img/proc-idea.jpg" alt="月光意象">
+          <div class="pc-add">MOLLY<br>+<br>巨大月亮<br>+<br>云层<br>+<br>星星</div>
+          <div class="pc-rule" style="border-top:1px solid var(--line);margin:18px 0;"></div>
+          <p class="pc-q">Night becomes a place where you can stay.</p>
+          <p class="pc-mono">—<br>DREAM UNDER THE MOON.</p>
         </div>
-        <div class="step-card reveal d1">
-          <div class="step-no">05</div>
-          <div class="art" data-image="process-refine" style="--tint:var(--d-moon-soft)" data-cursor>
-            <div class="art-bg"></div><div class="art-motif" data-motif="ocean"></div>
-            <div class="art-tag">REFINE</div><div class="art-id">IMG · REFINE</div><div class="art-frame"></div>
-          </div>
-          <h4>优化</h4><span class="en">REFINE</span>
-          <p>修图与细节调整，让画面更接近目标质感。</p>
-          <div class="step-hover"><span>查看</span><span>选择</span></div>
+        <div class="proc-col">
+          <h3>02 / PROMPT</h3><p class="proc-cn">提示词</p>
+          <img class="pc-img pc-wide" src="img/proc-prompt.jpg" alt="提示词">
+          <table class="pc-spec">
+            <tr><th>CHARACTER</th><td>MOLLY<br><small>角色: MOLLY</small></td></tr>
+            <tr><th>WORLD</th><td>GIANT MOON<br><small>世界: 巨大月亮</small></td></tr>
+            <tr><th>MATERIAL</th><td>PEARLESCENT RESIN / CRYSTAL<br><small>材质: 珍珠树脂 / 水晶</small></td></tr>
+            <tr><th>LIGHT</th><td>SOFT MOONLIGHT<br><small>光线: 柔和月光</small></td></tr>
+            <tr><th>COMPOSITION</th><td>SMALL MOLLY / HUGE MOON<br><small>构图: 小角色 / 大世界</small></td></tr>
+          </table>
+          <div class="pc-promptbox">PROMPT =<br>A VISUAL CONTROL SYSTEM.<br><small>提示词 = 一套视觉控制语言。</small></div>
         </div>
-        <div class="step-card reveal d2">
-          <div class="step-no">06</div>
-          <div class="art" data-image="process-design" style="--tint:var(--d-moon-soft)" data-cursor>
-            <div class="art-bg"></div><div class="art-motif" data-motif="city"></div>
-            <div class="art-tag">DESIGN</div><div class="art-id">IMG · DESIGN</div><div class="art-frame"></div>
+        <div class="proc-col">
+          <h3>03 / GENERATE</h3><p class="proc-cn">生成</p>
+          <div class="pc-gen">
+            <figure><img src="img/proc-gen1.jpg" alt="版本01"><figcaption>VERSION 01</figcaption></figure>
+            <figure><img src="img/proc-gen2.jpg" alt="版本02"><figcaption>VERSION 02</figcaption></figure>
+            <figure><img src="img/proc-gen3.jpg" alt="版本03"><figcaption>VERSION 03</figcaption></figure>
+            <figure class="sel"><img src="img/proc-gen4.jpg" alt="版本04"><figcaption>VERSION 04 &nbsp;| SELECTED</figcaption></figure>
           </div>
-          <h4>设计</h4><span class="en">DESIGN</span>
-          <p>排版、字体与信息层级，完成最终海报。</p>
-          <div class="step-hover"><span>查看</span><span>选择</span></div>
+          <p class="pc-note">Multiple possibilities, closer to the right direction.<br><em>多种可能性，逐步接近理想的方向。</em></p>
         </div>
+        <div class="proc-col">
+          <h3>04 / REFINE</h3><p class="proc-cn">优化</p>
+          <div class="pc-ref">
+            <figure><img src="img/proc-refined-a.jpg" alt="生成稿"><figcaption>GENERATED</figcaption></figure>
+            <figure><img src="img/proc-refined-b.jpg" alt="优化稿"><figcaption>REFINED</figcaption></figure>
+          </div>
+          <table class="pc-arrow">
+            <tr><th>CHARACTER<small>角色</small></th><td>从不稳定的比例<span class="arr">→</span>更一致的角色表现</td></tr>
+            <tr><th>SCALE<small>尺度</small></th><td>月亮不够大<span class="arr">→</span>更巨大的月亮规模</td></tr>
+            <tr><th>MATERIAL<small>材质</small></th><td>材质表现一般<span class="arr">→</span>更通透的珍珠树脂/水晶</td></tr>
+            <tr><th>LIGHT<small>光线</small></th><td>光线较杂乱<span class="arr">→</span>更柔和统一的月光</td></tr>
+            <tr><th>COMPOSITION<small>构图</small></th><td>画面元素较复杂<span class="arr">→</span>更简洁高级的构图</td></tr>
+          </table>
+        </div>
+        <div class="proc-col">
+          <h3>05 / FINAL</h3><p class="proc-cn">最终视觉</p>
+          <div class="pc-final"><img src="img/proc-final.jpg" alt="月光梦境最终视觉"></div>
+        </div>
+      </div>
+      <div class="proc-foot">
+        <div class="proc-foot-l">MOONLIGHT MOLLY<br>AIGC CASE STUDY</div>
+        <div class="proc-foot-c">AI GENERATES. DESIGNER DIRECTS.<em>AI负责生成，设计师负责控制。</em></div>
+        <div class="proc-foot-r">A SMALL TOY<br>A BIGGER TOMORROW</div>
       </div>
     </div>
   </div>
