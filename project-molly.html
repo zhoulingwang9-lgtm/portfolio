@@ -812,21 +812,41 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
    18 AI → DESIGN
    ============================================================ */
 .ai-design{background:var(--paper-2);}
-.ai-inner .h2{margin:26px 0 14px;max-width:22ch;}
-.ai-inner .en-sub{margin-bottom:60px;display:block;}
-.ai-flow{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;align-items:stretch;gap:0;margin-bottom:60px;}
-.ai-node{border:1px solid var(--line);border-radius:26px;padding:26px;background:var(--paper);}
-.ai-node .no{font-family:var(--serif);font-size:14px;color:var(--gray-2);letter-spacing:.14em;display:block;margin-bottom:16px;}
-.ai-node .art{aspect-ratio:4/3;border-radius:16px;margin-bottom:18px;}
-.ai-node h4{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.05em;margin-bottom:4px;}
-.ai-node .en{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray-2);}
-.ai-node.ai-final{border-color:var(--ink);}
-.ai-arrow{display:flex;align-items:center;justify-content:center;color:var(--gray-2);}
-.ai-arrow svg{width:34px;height:auto;}
-.ai-note{display:flex;gap:40px;flex-wrap:wrap;align-items:baseline;justify-content:space-between;}
-.ai-note .lead{max-width:40ch;}
-.ai-note .list{display:flex;flex-wrap:wrap;gap:10px;}
-.ai-note .list .chip{border-color:var(--ink);font-size:12.5px;}
+.ai-head{display:grid;grid-template-columns:1.25fr .9fr 1fr;gap:48px;align-items:end;padding-bottom:38px;border-bottom:1px solid var(--line);}
+.ai-big{font-family:var(--display);font-weight:800;font-size:clamp(38px,5.5vw,82px);line-height:.95;letter-spacing:-.02em;}
+.ai-big-cn{font-family:var(--serif);font-size:17px;color:var(--gray);margin-top:12px;letter-spacing:.08em;}
+.ai-lead-en{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.45;}
+.ai-lead-cn{font-size:13px;color:var(--gray);margin-top:10px;line-height:1.7;}
+.ai-head-note p{font-size:10.5px;letter-spacing:.14em;line-height:1.7;color:var(--ink);}
+.ai-head-note .cn{color:var(--gray);font-size:12px;letter-spacing:.03em;}
+.ai-compare{display:grid;grid-template-columns:1fr 88px 1fr;align-items:start;padding:46px 0 38px;}
+.ai-col-label{font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.06em;margin-bottom:16px;}
+.ai-col-label span{display:block;font-family:var(--serif);font-size:14px;color:var(--gray);margin-top:2px;font-weight:400;}
+.ai-shot{display:block;width:100%;border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:zoom-in;background:var(--paper);padding:0;text-align:left;}
+.ai-shot img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;transition:transform .6s var(--ease);}
+.ai-shot:hover img{transform:scale(1.03);}
+.ai-cap{margin-top:14px;font-size:10.5px;letter-spacing:.2em;color:var(--gray-2);}
+.ai-cap span{display:block;color:var(--ink);font-size:13px;letter-spacing:.04em;margin-top:4px;font-weight:500;}
+.ai-middle{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:96px;}
+.ai-arrow{font-size:24px;color:var(--gray-2);line-height:1;}
+.ai-step{font-size:10px;letter-spacing:.18em;text-align:center;color:var(--ink);line-height:1.3;}
+.ai-step span{display:block;font-family:var(--serif);font-size:12px;color:var(--gray);letter-spacing:.03em;margin-top:3px;}
+.ai-method{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:54px;}
+.ai-mcell{background:var(--paper);padding:18px 16px;}
+.ai-mcell .t{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;}
+.ai-mcell .cn{font-family:var(--serif);font-size:13px;margin:5px 0 9px;}
+.ai-mcell .d{font-size:10.5px;color:var(--gray-2);line-height:1.5;}
+.ai-foot{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:end;}
+.ai-foot h3{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,52px);line-height:1;letter-spacing:-.01em;}
+.ai-foot .cn{font-family:var(--serif);font-size:15px;color:var(--gray);margin-top:12px;}
+.ai-foot-r p{font-size:11.5px;letter-spacing:.1em;line-height:1.7;color:var(--ink);}
+.ai-foot-r .cn{color:var(--gray);letter-spacing:.03em;}
+.img-lightbox{position:fixed;inset:0;z-index:300;background:rgba(20,18,14,.95);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;padding:40px;}
+.img-lightbox.open{opacity:1;visibility:visible;}
+.img-lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.img-lb-close{position:absolute;top:26px;right:30px;color:#fff;font-size:12px;letter-spacing:.24em;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:10px 20px;background:transparent;cursor:pointer;}
+.img-lb-close:hover{background:#fff;color:#111;}
+@media(max-width:860px){.ai-head,.ai-foot{grid-template-columns:1fr;gap:24px;}.ai-compare{grid-template-columns:1fr;gap:28px;}.ai-middle{flex-direction:row;padding-top:0;justify-content:center;gap:26px;}.ai-method{grid-template-columns:repeat(2,1fr);}}
 
 /* ============================================================
    19 海报系列 + Lightbox
@@ -2691,43 +2711,63 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
    ============================================================ -->
 <section class="sec ai-design" id="ai-design">
   <div class="wrap">
-    <div class="ai-inner">
-      <div class="eyebrow reveal"><b>18</b> AI → 设计 <i>AI TO DESIGN</i></div>
-      <h2 class="h2 reveal d1">AI 只是素材，<br>设计决定最终结果。<span class="en">AI IS THE MATERIAL. DESIGN IS THE DIRECTION.</span></h2>
-      <span class="en-sub reveal d2">三个阶段 · THREE STAGES</span>
-      <div class="ai-flow">
-        <div class="ai-node reveal">
-          <span class="no">01</span>
-          <div class="art" data-image="ai-raw" style="--tint:var(--d-moon-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="moon"></div>
-            <div class="art-tag">RAW</div><div class="art-id">AI · RAW</div><div class="art-frame"></div>
-          </div>
-          <h4>AI 生成原图</h4><span class="en">AI RAW IMAGE</span>
-        </div>
-        <div class="ai-arrow"><svg viewBox="0 0 40 20" fill="none"><path d="M2 10h34M29 2l7 8-7 8" stroke="currentColor" stroke-width="1.3"/></svg></div>
-        <div class="ai-node reveal d1">
-          <span class="no">02</span>
-          <div class="art" data-image="ai-refine" style="--tint:var(--d-moon-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="candy"></div>
-            <div class="art-tag">REFINE</div><div class="art-id">AI · REFINE</div><div class="art-frame"></div>
-          </div>
-          <h4>修图与构图</h4><span class="en">REFINE &amp; COMPOSE</span>
-        </div>
-        <div class="ai-arrow"><svg viewBox="0 0 40 20" fill="none"><path d="M2 10h34M29 2l7 8-7 8" stroke="currentColor" stroke-width="1.3"/></svg></div>
-        <div class="ai-node ai-final reveal d2">
-          <span class="no">03</span>
-          <div class="art" data-image="ai-poster" style="--tint:var(--d-moon-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="moon-big"></div>
-            <div class="art-tag">POSTER</div><div class="art-id">AI · POSTER</div><div class="art-frame"></div>
-          </div>
-          <h4>最终海报</h4><span class="en">FINAL POSTER</span>
-        </div>
+    <div class="ai-head reveal">
+      <div class="ai-head-l">
+        <div class="eyebrow"><b>18</b> AI → DESIGN</div>
+        <div class="ai-big">AI → DESIGN</div>
+        <div class="ai-big-cn">AI → 设计</div>
       </div>
-      <div class="ai-note reveal">
-        <p class="lead">AI 不是最终设计。设计师需要介入完整的创作环节，才能把素材变成作品。</p>
-        <div class="list">
-          <span class="chip">筛选</span><span class="chip">裁切</span><span class="chip">调色</span><span class="chip">修图</span><span class="chip">排版</span><span class="chip">信息层级</span>
-        </div>
+      <div class="ai-head-mid">
+        <p class="ai-lead-en">FROM GENERATED IMAGE<br>TO DESIGNED VISUAL.</p>
+        <p class="ai-lead-cn">从生成图像，<br>到完整设计。</p>
+      </div>
+      <div class="ai-head-note">
+        <p>AI CREATES VISUAL POSSIBILITIES.<br>THE DESIGNER BUILDS THE FINAL SYSTEM.</p>
+        <p class="cn">AI提供视觉可能性，<br>设计师负责建立最终的视觉秩序。</p>
+      </div>
+    </div>
+
+    <div class="ai-compare">
+      <div class="ai-col">
+        <div class="ai-col-label"><b>01</b> / AI OUTPUT<span>AI 生成</span></div>
+        <button class="ai-shot reveal" data-full="img/ai-raw.jpg" type="button">
+          <img src="img/ai-raw.jpg" alt="AI 原始生成图">
+        </button>
+        <div class="ai-cap">GENERATED IMAGE<span>AI 原始生成图</span></div>
+      </div>
+
+      <div class="ai-middle">
+        <span class="ai-arrow">→</span>
+        <div class="ai-step">SELECTION<span>筛选</span></div>
+        <div class="ai-step">REFINEMENT<span>优化</span></div>
+        <div class="ai-step">ART DIRECTION<span>视觉指导</span></div>
+      </div>
+
+      <div class="ai-col">
+        <div class="ai-col-label"><b>02</b> / DESIGN<span>设计</span></div>
+        <button class="ai-shot reveal d1" data-full="img/dream-moonlight-panel.jpg" type="button">
+          <img src="img/dream-moonlight-panel.jpg" alt="设计完成稿">
+        </button>
+        <div class="ai-cap">DESIGNED VISUAL<span>设计完成稿</span></div>
+      </div>
+    </div>
+
+    <div class="ai-method reveal">
+      <div class="ai-mcell"><div class="t">SELECT</div><div class="cn">筛选</div><div class="d">Select the strongest generation.</div></div>
+      <div class="ai-mcell"><div class="t">COMPOSE</div><div class="cn">构图</div><div class="d">Rebuild the visual hierarchy.</div></div>
+      <div class="ai-mcell"><div class="t">REFINE</div><div class="cn">优化</div><div class="d">Adjust character and environment.</div></div>
+      <div class="ai-mcell"><div class="t">TYPE</div><div class="cn">字体</div><div class="d">Add typography and layout.</div></div>
+      <div class="ai-mcell"><div class="t">SYSTEM</div><div class="cn">系统</div><div class="d">Build the final visual system.</div></div>
+    </div>
+
+    <div class="ai-foot reveal d1">
+      <div class="ai-foot-l">
+        <h3>AI IMAGE ≠ FINAL DESIGN</h3>
+        <p class="cn">AI 生成图 ≠ 最终设计</p>
+      </div>
+      <div class="ai-foot-r">
+        <p>AI PROVIDES THE IMAGE.<br>DESIGN BUILDS THE VISUAL LANGUAGE.</p>
+        <p class="cn">AI 提供图像，设计建立视觉语言。</p>
       </div>
     </div>
   </div>
@@ -3239,9 +3279,30 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
   <button class="lb-arrow next" id="lbNext" aria-label="下一张" data-cursor><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.4"/></svg></button>
 </div>
 
+<div class="img-lightbox" id="aiLb" aria-hidden="true">
+  <button class="img-lb-close" id="aiLbClose" type="button">CLOSE · 关闭</button>
+  <img id="aiLbImg" src="" alt="">
+</div>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
 "use strict";
+/* AI -> DESIGN image lightbox */
+(function(){
+  var lb=document.getElementById('aiLb');
+  var img=document.getElementById('aiLbImg');
+  var close=document.getElementById('aiLbClose');
+  document.querySelectorAll('.ai-shot').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      img.src=btn.getAttribute('data-full');
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+    });
+  });
+  function hide(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');img.src='';}
+  close.addEventListener('click',hide);
+  lb.addEventListener('click',function(e){if(e.target===lb)hide();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+})();
 /* ============================================================
    数据
    ============================================================ */
