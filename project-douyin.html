@@ -656,20 +656,25 @@ h1,h2,h3,p{margin-top:0}
   .loop-node{width:65px;height:65px;font-size:9px}
   .navlinks{display:none}.menu{display:block}
 }
+
+/* ===== unified detail nav ===== */
+.u-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 40px;background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #E4DCCD;box-sizing:border-box;}
+.u-nav-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.05em;color:#111;text-decoration:none;font-weight:500;white-space:nowrap;}
+.u-nav-back svg{width:15px;height:15px;flex:none;}
+.u-nav-back:hover{opacity:.55;}
+.u-nav-links{display:flex;gap:26px;flex-wrap:nowrap;}
+.u-nav-links a{color:#111;text-decoration:none;font-size:13px;letter-spacing:.04em;white-space:nowrap;}
+.u-nav-links a:hover{color:#8A8174;}
+.u-nav-brand{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#111;white-space:nowrap;}
+@media(max-width:860px){.u-nav-links{display:none;}.u-nav{padding:13px 18px;}}
+
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
 
-<nav class="nav">
-  <a class="logo" href="#hero">LET'S <span>CITY</span></a>
-  <div class="navlinks">
-    <a href="index.html#works" class="nav-home">← 返回作品</a><a href="#concept">概念</a><a href="#cities">城市</a><a href="#posters">海报</a>
-    <a href="#motion">视频</a><a href="#interaction">交互</a><a href="#service">服务</a><a href="#ugc">分享</a>
-  </div>
-  <button class="menu" aria-label="menu">☰</button>
-</nav>
+<nav class="u-nav" id="nav">  <a class="u-nav-back" href="index.html#works"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>返回作品</a><div class="u-nav-links"><a href="#concept">概念</a><a href="#cities">城市</a><a href="#posters">海报</a><a href="#motion">视频</a><a href="#interaction">交互</a><a href="#service">服务</a></div><span class="u-nav-brand">LET'S CITY</span></nav>
 
 <div class="case-index" aria-label="页面导航">
   <a href="#statement" title="宣言"></a><a href="#bigidea" title="创意"></a><a href="#cities" title="城市"></a>
