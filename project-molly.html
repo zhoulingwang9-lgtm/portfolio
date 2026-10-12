@@ -3356,8 +3356,9 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
       <div class="digital-stage reveal d2">
         <div class="digital-card" id="digitalCard">
           <div class="art" id="digitalArt" style="--tint:var(--d-moon-soft)">
+            <img id="digitalImg" src="img/dream-moonlight-panel.jpg" alt="月光梦境 MOONLIGHT" style="width:100%;height:100%;object-fit:contain;display:block;position:absolute;inset:0;z-index:1;padding:8px;box-sizing:border-box;">
             <div class="art-bg"></div>
-            <div class="art-motif" data-motif="moon"></div>
+            <div class="art-motif" data-motif="moon" style="display:none;"></div>
             <div class="art-tag">DREAM RESULT</div>
             <div class="art-id">AIGC · YOUR MOLLY</div>
             <div class="art-frame"></div>
@@ -3579,27 +3580,27 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
 const DREAMS = [
   {key:"moonlight",no:"07",idx:"01",cn:"月光梦境",en:"MOONLIGHT",short:"月光",quote:"DREAM UNDER THE MOON.",
    body:"夜晚成为一个可以停留的地方。MOLLY 坐在巨大的月亮上，月亮比 MOLLY 大很多。下方是柔软云层。星星、透明球体、月尘与微光，把夜晚变成可以收藏的风景。",
-   kw:["安静","夜晚","银蓝","柔光","幻想"],tint:"var(--d-moon-soft)",motif:"moon",img:"DREAM-MOONLIGHT",url:"img/twYVPT8YVs.jpg",
+   kw:["安静","夜晚","银蓝","柔光","幻想"],tint:"var(--d-moon-soft)",motif:"moon",img:"DREAM-MOONLIGHT",url:"img/twYVPT8YVs.jpg",panel:"img/dream-moonlight-panel.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, sitting on a giant crescent moon, soft moonlight, silver-blue night, floating clouds, stars, dreamy atmosphere, wide shot, negative space, 3D render"},
   {key:"candy",no:"08",idx:"02",cn:"糖果梦境",en:"CANDY",short:"糖果",quote:"SWEET DREAMS, MOLLY.",
    body:"把童年里最甜的东西，全部放大。MOLLY 站在巨大的糖果世界。棒棒糖、果冻、糖球、棉花糖与透明泡泡，铺成一条糖果道路。",
-   kw:["甜蜜","童年","俏皮","缤纷","甜美"],tint:"var(--d-candy-soft)",motif:"candy",img:"DREAM-CANDY",url:"img/candy-dream.jpg",
+   kw:["甜蜜","童年","俏皮","缤纷","甜美"],tint:"var(--d-candy-soft)",motif:"candy",img:"DREAM-CANDY",url:"img/candy-dream.jpg",panel:"img/LSezvCSinq.jpg?v=2",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, standing in a giant candy wonderland, lollipops, jelly, cotton candy, pastel pink and mint, playful, 3D render"},
   {key:"forest",no:"09",idx:"03",cn:"森林梦境",en:"FOREST",short:"森林",quote:"LOST IN THE FOREST.",
    body:"慢下来，让世界在你身边生长。巨型蘑菇、巨大花朵、树木、溪流、苔藓与萤火虫。在这个森林里，MOLLY 非常小。",
-   kw:["自然","治愈","安静","苔藓","雾气"],tint:"var(--d-forest-soft)",motif:"forest",img:"DREAM-FOREST",url:"img/forest-dream.jpg",
+   kw:["自然","治愈","安静","苔藓","雾气"],tint:"var(--d-forest-soft)",motif:"forest",img:"DREAM-FOREST",url:"img/forest-dream.jpg",panel:"img/fQBwtzq6EA.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, tiny in an enchanted forest, giant mushrooms, moss, fireflies, mist, sage green, healing atmosphere, 3D render"},
   {key:"ocean",no:"10",idx:"04",cn:"海洋梦境",en:"OCEAN",short:"海洋",quote:"FLOAT INTO A DREAM.",
    body:"让时间慢一点，让身体漂浮起来。MOLLY 漂浮在透明水球里。鲸鱼、贝壳、水母、珊瑚与气泡，在珍珠光泽中缓缓上升。",
-   kw:["透明","水","漂浮","蓝色","珍珠光泽"],tint:"var(--d-ocean-soft)",motif:"ocean",img:"DREAM-OCEAN",url:"img/ocean-dream.jpg",
+   kw:["透明","水","漂浮","蓝色","珍珠光泽"],tint:"var(--d-ocean-soft)",motif:"ocean",img:"DREAM-OCEAN",url:"img/ocean-dream.jpg",panel:"img/RxKXbCGmWr.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, floating in a transparent water bubble, whale, jellyfish, coral, bubbles, mist teal, pearl luster, 3D render"},
   {key:"space",no:"11",idx:"05",cn:"宇宙梦境",en:"SPACE",short:"宇宙",quote:"MOLLY GOES BEYOND.",
    body:"当世界足够大，每一个方向都可能通往未知。MOLLY 站在小行星上，背景是巨大行星。轨道、星星、星尘与银河延伸至远方。",
-   kw:["未知","辽阔","星尘","静谧","遥远"],tint:"var(--d-space-soft)",motif:"space",img:"DREAM-SPACE",url:"img/space-dream.jpg",
+   kw:["未知","辽阔","星尘","静谧","遥远"],tint:"var(--d-space-soft)",motif:"space",img:"DREAM-SPACE",url:"img/space-dream.jpg",panel:"img/7aK5EYdGAK.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, standing on a small asteroid, giant planet behind, orbit rings, stardust, galaxy, soft violet, 3D render"},
   {key:"city",no:"12",idx:"06",cn:"未来城市",en:"FUTURISTIC CITY",short:"城市",quote:"A CITY MADE OF DREAMS.",
    body:"一座不会醒来的城市，也可以成为一场梦。MOLLY 站在未来城市顶部。摩天大楼、霓虹、数字广告屏与月光，照亮透明玻璃。",
-   kw:["霓虹","城市感","明亮","速度","夜色"],tint:"var(--d-city-soft)",motif:"city",img:"DREAM-CITY",url:"img/city-dream.jpg",
+   kw:["霓虹","城市感","明亮","速度","夜色"],tint:"var(--d-city-soft)",motif:"city",img:"DREAM-CITY",url:"img/city-dream.jpg",panel:"img/FzZmvpETSJ.jpg",
    prompt:"MOLLY, a cute collectible figure, oversized head, small body, standing on a futuristic city rooftop, neon signs, digital billboards, skyscrapers, magenta glow, night, 3D render"}
 ];
 const POSTERS = DREAMS.map((d,i)=>({cn:d.cn,en:d.en,short:d.short,motif:d.motif==="moon"?"moon-big":d.motif,tint:d.tint,img:"poster-0"+(i+1),url:d.url}));
@@ -3935,8 +3936,10 @@ function pickDream(key){
   const empty = $(".digital-empty", card); if(empty) empty.remove();
   $("#digitalBody").style.display=""; art.style.display="";
   art.style.setProperty("--tint", d.tint);
+  const dimg = $("#digitalImg");
+  if(dimg && d.panel){ dimg.src = d.panel; }
   const motif = $(".art-motif", art);
-  motif.dataset.motif = d.motif; motif.innerHTML = MOTIFS[d.motif];
+  motif.style.display = "none";
   $("#digKicker").textContent = d.en + " MOLLY";
   $("#digTitle").textContent = d.short + " MOLLY";
   $("#digSlogan").textContent = SLOGANS[key];
