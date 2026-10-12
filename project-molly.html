@@ -964,13 +964,23 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
 @keyframes vdna-spin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
 
 /* central MOLLY */
-.vdna-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(22%,150px);z-index:3;animation:vdna-float 6s ease-in-out infinite;transition:filter .4s ease;}
-.vdna-core svg{width:100%;height:auto;}
-@keyframes vdna-float{0%,100%{transform:translate(-50%,-52%);}50%{transform:translate(-50%,-48%);}}
-.vdna-stage:hover .vdna-core{filter:drop-shadow(0 8px 24px rgba(140,130,200,.18));}
+.vdna-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(30%,210px);z-index:3;animation:vdna-float 7s ease-in-out infinite;transition:filter .4s ease;}
+.vdna-core img{width:100%;height:auto;display:block;border-radius:6px;}
+@keyframes vdna-float{0%,100%{transform:translate(-50%,-51%);}50%{transform:translate(-50%,-49%);}}
+.vdna-stage:hover .vdna-core{filter:drop-shadow(0 10px 28px rgba(140,130,200,.2));}
+
+/* pearl particles on orbits */
+.vdna-pearls{position:absolute;inset:0;pointer-events:none;z-index:2;}
+.vdna-pearl{position:absolute;border-radius:50%;}
+.vp-1{left:7%;top:50%;width:14px;height:14px;background:radial-gradient(circle at 35% 35%,#D8D4F0,#9B9BC8);box-shadow:0 1px 4px rgba(140,140,200,.3);}
+.vp-2{right:7%;top:50%;width:13px;height:13px;background:radial-gradient(circle at 35% 35%,#F0D0E0,#C890B8);box-shadow:0 1px 4px rgba(200,140,180,.3);}
+.vp-3{left:64%;top:88%;width:9px;height:9px;background:radial-gradient(circle at 35% 35%,#D0DCEC,#90A8C8);box-shadow:0 1px 3px rgba(140,160,200,.3);}
+.vp-4{left:30%;top:14%;width:8px;height:8px;background:radial-gradient(circle at 35% 35%,#E8E0F0,#B8A8D0);box-shadow:0 1px 3px rgba(170,150,200,.3);}
 
 /* nodes */
-.vdna-node{position:absolute;transform:translate(-50%,-50%);z-index:4;background:none;border:none;cursor:pointer;padding:0;display:flex;flex-direction:column;align-items:center;gap:10px;outline:none;}
+.vdna-node{position:absolute;transform:translate(-50%,-50%);z-index:4;background:none;border:none;cursor:pointer;padding:0;display:flex;flex-direction:row;align-items:center;gap:16px;outline:none;}
+.vdna-node.vdna-left{flex-direction:row-reverse;}
+.vdna-node.vdna-left .vdna-labels{align-items:flex-end;text-align:right;}
 .vdna-circle{width:88px;height:88px;border-radius:50%;border:1px solid #D8D0C0;background:var(--paper);display:flex;align-items:center;justify-content:center;transition:border-color .35s ease,transform .35s ease,box-shadow .35s ease;color:#555;}
 .vdna-circle svg{width:46%;height:46%;transition:transform .35s ease;}
 .vdna-node:hover .vdna-circle,.vdna-node:focus-visible .vdna-circle{border-color:#B0AAD8;transform:scale(1.06);box-shadow:0 4px 20px rgba(160,150,210,.15);color:var(--ink);}
@@ -980,8 +990,8 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
 .vdna-cn{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--ink);letter-spacing:.08em;transition:color .3s;}
 .vdna-en{font-family:var(--display);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#9A9184;transition:color .3s;}
 .vdna-node:hover .vdna-en{color:#6A6154;}
-.vdna-n1{left:12%;top:26%;}.vdna-n2{left:88%;top:26%;}
-.vdna-n3{left:12%;top:76%;}.vdna-n4{left:88%;top:76%;}
+.vdna-n1{left:20%;top:27%;}.vdna-n2{left:80%;top:27%;}
+.vdna-n3{left:20%;top:75%;}.vdna-n4{left:80%;top:75%;}
 
 /* detail panel */
 .vdna-panel{max-width:760px;margin:36px auto 0;overflow:hidden;max-height:0;opacity:0;transition:max-height .5s ease,opacity .4s ease;}
@@ -1040,19 +1050,18 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
   .vdna-panel,.vdna-panel-inner,.vdna-circle,.vdna-circle svg{transition:none;}
 }
 @media (max-width:960px){
-  .vdna-n1{left:14%;}.vdna-n2{left:86%;}.vdna-n3{left:14%;}.vdna-n4{left:86%;}
-  .vdna-circle{width:72px;height:72px;}
+  .vdna-n1{left:22%;}.vdna-n2{left:78%;}.vdna-n3{left:22%;}.vdna-n4{left:78%;}
+  .vdna-circle{width:70px;height:70px;}
+  .vdna-node{gap:12px;}
 }
 @media (max-width:700px){
-  .vdna-stage{height:auto;min-height:0;padding-bottom:0;}
+  .vdna-stage{height:auto;min-height:0;padding-bottom:0;display:block;}
   .vdna-rings{display:none;}
-  .vdna-core{position:relative;left:auto;top:auto;transform:none;width:120px;margin:20px auto 30px;}
-  .vdna-core svg{display:block;}
-  .vdna-node{position:relative;left:auto!important;top:auto!important;transform:none;flex-direction:row;gap:14px;width:100%;justify-content:flex-start;padding:14px 0;border-bottom:1px solid #EDE6D8;}
-  .vdna-node:last-child{border-bottom:none;}
-  .vdna-labels{align-items:flex-start;}
-  .vdna-stage{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
-  .vdna-core{grid-column:1/-1;}
+  .vdna-pearls{display:none;}
+  .vdna-core{position:relative;left:auto;top:auto;transform:none;width:180px;margin:20px auto 30px;}
+  .vdna-core img{display:block;}
+  .vdna-node{position:relative;left:auto!important;top:auto!important;transform:none;flex-direction:row!important;gap:14px;width:100%;justify-content:flex-start;padding:14px 0;border-bottom:1px solid #EDE6D8;}
+  .vdna-node.vdna-left .vdna-labels,.vdna-node .vdna-labels{align-items:flex-start;text-align:left;}
   .vdna-palettes{grid-template-columns:repeat(2,1fr);}
   .vdna-foot>span{width:40px;}
 }
@@ -3168,12 +3177,19 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
           <div class="vdna-ring vdna-ring-outer"></div>
         </div>
 
+        <div class="vdna-pearls">
+          <span class="vdna-pearl vp-1"></span>
+          <span class="vdna-pearl vp-2"></span>
+          <span class="vdna-pearl vp-3"></span>
+          <span class="vdna-pearl vp-4"></span>
+        </div>
+
         <div class="vdna-core" id="vdna-core">
-          <div class="molly-inject"></div>
+          <img src="img/vdna-molly.jpg" alt="MOLLY 宇航员 月光梦境">
         </div>
 
         <!-- node 1: character (upper-left) -->
-        <button class="vdna-node vdna-n1" type="button" data-node="character" aria-label="角色 CHARACTER">
+        <button class="vdna-node vdna-left vdna-n1" type="button" data-node="character" aria-label="角色 CHARACTER">
           <span class="vdna-circle">
             <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
               <circle cx="50" cy="38" r="22" stroke="currentColor" stroke-width="2.8"/>
@@ -3198,7 +3214,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         </button>
 
         <!-- node 3: material (lower-left) -->
-        <button class="vdna-node vdna-n3" type="button" data-node="material" aria-label="材质 MATERIAL">
+        <button class="vdna-node vdna-left vdna-n3" type="button" data-node="material" aria-label="材质 MATERIAL">
           <span class="vdna-circle">
             <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
               <path d="M62 22a34 34 0 1 0 16 56 28 28 0 0 1-16-56z" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round" fill="none"/>
