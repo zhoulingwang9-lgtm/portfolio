@@ -1195,24 +1195,27 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
 .digital-empty .moonlet svg{width:100%;}
 
 /* ============================================================
-   25 社交媒体
+   25 社交媒体 (six-platform campaign board)
    ============================================================ */
 .social{background:var(--paper-2);}
-.social-inner .h2{margin:26px 0 12px;}
-.social-inner .lead{margin-bottom:56px;}
-.feed{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto;}
-.feed-item{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid var(--line);}
-.feed-item .art{position:absolute;inset:0;border:none;border-radius:0;}
-.feed-item .art-id{bottom:10px;right:12px;font-size:8.5px;letter-spacing:.16em;}
-.feed-item .art-tag{top:10px;left:12px;font-size:8.5px;letter-spacing:.16em;}
-.feed-item .art-tag::before{content:none;}
-.feed-ui{
-  background:var(--paper);display:flex;flex-direction:column;
-  justify-content:center;gap:12px;padding:20px;border:1px solid var(--line);border-radius:18px;
+.smc-head{display:grid;grid-template-columns:1.35fr 1.15fr 1fr;gap:34px;align-items:start;padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:42px;}
+.smc-h-num{font-family:var(--display);font-size:clamp(28px,3.4vw,44px);font-weight:700;line-height:1.02;letter-spacing:-.01em;color:var(--ink);}
+.smc-h-cn{font-family:var(--serif);font-size:clamp(20px,2.2vw,30px);font-weight:600;margin-top:12px;color:var(--ink);letter-spacing:.04em;}
+.smc-h-statement{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,32px);line-height:1.18;letter-spacing:-.005em;color:var(--ink);border-left:1px solid var(--line);padding-left:34px;}
+.smc-h-desc{font-family:var(--serif);font-size:14px;line-height:1.9;color:#4a463c;}
+.smc-h-desc b{font-family:var(--display);font-size:10px;letter-spacing:.13em;display:block;margin-top:14px;color:var(--gray);font-weight:500;line-height:1.7;}
+.smc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 26px;}
+.smc-card img{width:100%;display:block;border-radius:4px;transition:transform .4s ease;}
+.smc-card{cursor:default;}
+.smc-card:hover img{transform:translateY(-3px);}
+@media (max-width:900px){
+  .smc-head{grid-template-columns:1fr;gap:22px;}
+  .smc-h-statement{border-left:none;padding-left:0;}
+  .smc-grid{grid-template-columns:repeat(2,1fr);gap:22px;}
 }
-.feed-ui .ui-line{font-size:12px;letter-spacing:.14em;color:var(--ink);display:flex;align-items:center;gap:10px;}
-.feed-ui .ui-line::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);opacity:.85;}
-.feed-ui .ui-sub{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-2);padding-left:18px;}
+@media (max-width:600px){
+  .smc-grid{grid-template-columns:1fr;gap:20px;}
+}
 
 /* ============================================================
    26 生态
@@ -3380,59 +3383,24 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
    ============================================================ -->
 <section class="sec social" id="social">
   <div class="wrap">
-    <div class="social-inner">
-      <div class="eyebrow reveal" style="justify-content:center;"><b>25</b> 社交媒体 <i>SOCIAL MEDIA</i></div>
-      <h2 class="h2 reveal d1" style="text-align:center;">我的 MOLLY，我的梦。<span class="en">MY MOLLY. MY DREAM.</span></h2>
-      <p class="lead reveal d2" style="text-align:center;margin:0 auto 56px;">选择一个世界。选择一种颜色。生成你的梦。</p>
-      <div class="feed">
-        <div class="feed-item reveal">
-          <div class="art" data-image="social-moonlight" style="--tint:var(--d-moon-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="moon"></div>
-            <div class="art-tag">月光 MOLLY</div><div class="art-frame"></div>
-          </div>
+    <div class="smc">
+      <div class="smc-head reveal">
+        <div>
+          <div class="smc-h-num">26 / SOCIAL MEDIA CAMPAIGN</div>
+          <div class="smc-h-cn">社交媒体传播</div>
         </div>
-        <div class="feed-item reveal d1">
-          <div class="art" data-image="social-candy" style="--tint:var(--d-candy-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="candy"></div>
-            <div class="art-tag">糖果 MOLLY</div><div class="art-frame"></div>
-          </div>
+        <div class="smc-h-statement">ONE DREAM.<br>MULTIPLE PLATFORMS.</div>
+        <div class="smc-h-desc">围绕 MOLLY 梦境收藏所，建立统一的跨平台视觉传播系统。
+          <b>A UNIFIED VISUAL COMMUNICATION SYSTEM<br>FOR MOLLY DREAM COLLECTION.</b>
         </div>
-        <div class="feed-item reveal d2">
-          <div class="art" data-image="social-forest" style="--tint:var(--d-forest-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="forest"></div>
-            <div class="art-tag">森林 MOLLY</div><div class="art-frame"></div>
-          </div>
-        </div>
-        <div class="feed-item reveal">
-          <div class="art" data-image="social-ocean" style="--tint:var(--d-ocean-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="ocean"></div>
-            <div class="art-tag">海洋 MOLLY</div><div class="art-frame"></div>
-          </div>
-        </div>
-        <div class="feed-item reveal d1">
-          <div class="art" data-image="social-space" style="--tint:var(--d-space-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="space"></div>
-            <div class="art-tag">宇宙 MOLLY</div><div class="art-frame"></div>
-          </div>
-        </div>
-        <div class="feed-item reveal d2">
-          <div class="art" data-image="social-city" style="--tint:var(--d-city-soft)">
-            <div class="art-bg"></div><div class="art-motif" data-motif="city"></div>
-            <div class="art-tag">城市 MOLLY</div><div class="art-frame"></div>
-          </div>
-        </div>
-        <div class="feed-item feed-ui reveal">
-          <span class="ui-line">我的梦境</span><span class="ui-sub">MY DREAM</span>
-          <span class="ui-line">梦境结果</span><span class="ui-sub">RESULT</span>
-        </div>
-        <div class="feed-item feed-ui reveal d1">
-          <span class="ui-line">已收藏</span><span class="ui-sub">COLLECTED</span>
-          <span class="ui-line">六种梦境</span><span class="ui-sub">SIX DREAMS</span>
-        </div>
-        <div class="feed-item feed-ui reveal d2">
-          <span class="ui-line">分享你的梦</span><span class="ui-sub">SHARE</span>
-          <span class="ui-line">生成入口</span><span class="ui-sub">GENERATE</span>
-        </div>
+      </div>
+      <div class="smc-grid">
+        <div class="smc-card reveal"><img src="img/sm-douyin.jpg" alt="抖音短视频" loading="lazy"></div>
+        <div class="smc-card reveal d1"><img src="img/sm-rednote.jpg" alt="小红书生活方式笔记" loading="lazy"></div>
+        <div class="smc-card reveal d2"><img src="img/sm-wechat.jpg" alt="微信公众号品牌故事" loading="lazy"></div>
+        <div class="smc-card reveal"><img src="img/sm-channels.jpg" alt="微信视频号视频故事" loading="lazy"></div>
+        <div class="smc-card reveal"><img src="img/sm-weibo.jpg" alt="微博社交话题" loading="lazy"></div>
+        <div class="smc-card reveal"><img src="img/sm-bilibili.jpg" alt="B站视频系列" loading="lazy"></div>
       </div>
     </div>
   </div>
