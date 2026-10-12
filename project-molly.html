@@ -1210,7 +1210,7 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
 .smc-h-desc b{font-family:var(--display);font-size:10px;letter-spacing:.13em;display:block;margin-top:14px;color:var(--gray);font-weight:500;line-height:1.7;}
 .smc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 26px;}
 .smc-card img{width:100%;display:block;border-radius:4px;transition:transform .4s ease;}
-.smc-card{cursor:default;}
+.smc-card{cursor:pointer;border:none;padding:0;background:transparent;}
 .smc-card:hover img{transform:translateY(-3px);}
 @media (max-width:900px){
   .smc-head{grid-template-columns:1fr;gap:22px;}
@@ -3389,12 +3389,12 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
         </div>
       </div>
       <div class="smc-grid">
-        <div class="smc-card reveal"><img src="img/sm-douyin.jpg" alt="抖音短视频" loading="lazy"></div>
-        <div class="smc-card reveal d1"><img src="img/sm-rednote.jpg" alt="小红书生活方式笔记" loading="lazy"></div>
-        <div class="smc-card reveal d2"><img src="img/sm-wechat.jpg" alt="微信公众号品牌故事" loading="lazy"></div>
-        <div class="smc-card reveal"><img src="img/sm-channels.jpg" alt="微信视频号视频故事" loading="lazy"></div>
-        <div class="smc-card reveal"><img src="img/sm-weibo.jpg" alt="微博社交话题" loading="lazy"></div>
-        <div class="smc-card reveal"><img src="img/sm-bilibili.jpg" alt="B站视频系列" loading="lazy"></div>
+        <button class="smc-card reveal" data-full="img/sm-douyin.jpg" type="button"><img src="img/sm-douyin.jpg" alt="抖音短视频" loading="lazy"></button>
+        <button class="smc-card reveal d1" data-full="img/sm-rednote.jpg" type="button"><img src="img/sm-rednote.jpg" alt="小红书生活方式笔记" loading="lazy"></button>
+        <button class="smc-card reveal d2" data-full="img/sm-wechat.jpg" type="button"><img src="img/sm-wechat.jpg" alt="微信公众号品牌故事" loading="lazy"></button>
+        <button class="smc-card reveal" data-full="img/sm-channels.jpg" type="button"><img src="img/sm-channels.jpg" alt="微信视频号视频故事" loading="lazy"></button>
+        <button class="smc-card reveal" data-full="img/sm-weibo.jpg" type="button"><img src="img/sm-weibo.jpg" alt="微博社交话题" loading="lazy"></button>
+        <button class="smc-card reveal" data-full="img/sm-bilibili.jpg" type="button"><img src="img/sm-bilibili.jpg" alt="B站视频系列" loading="lazy"></button>
       </div>
     </div>
   </div>
@@ -3555,7 +3555,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
   var lb=document.getElementById('aiLb');
   var img=document.getElementById('aiLbImg');
   var close=document.getElementById('aiLbClose');
-  document.querySelectorAll('.ai-shot, .tp-card').forEach(function(btn){
+  document.querySelectorAll('.ai-shot, .tp-card, .smc-card').forEach(function(btn){
     btn.addEventListener('click',function(){
       img.src=btn.getAttribute('data-full');
       lb.classList.add('open');
