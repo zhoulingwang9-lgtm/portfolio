@@ -239,15 +239,15 @@ function App() {
 
       {/* ABOUT / SELF INTRO */}
       <section id="about" className="relative z-10 px-5 sm:px-8 md:px-12 py-20 md:py-32 border-t border-black/10" style={{ background:'#F5F5F5' }}>
-        <div className="reveal-block">
-          <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>ABOUT ME</p>
-          <h2 className="font-semibold mt-4 leading-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
-            我是一名大四视觉设计学生，<br />
-            用设计把抽象的想法变成<span style={{ color: ACCENT }}>看得见的体验</span>。
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-10 md:mt-16">
-          <div className="reveal-block reveal-left">
+        <div className="mx-auto" style={{ maxWidth: '880px', textAlign: 'center' }}>
+          <div className="reveal-block">
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: ACCENT }}>ABOUT ME</p>
+            <h2 className="font-semibold mt-4 leading-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
+              我是一名大四视觉设计学生，<br />
+              用设计把抽象的想法变成<span style={{ color: ACCENT }}>看得见的体验</span>。
+            </h2>
+          </div>
+          <div className="reveal-block mt-10 md:mt-14">
             <p className="text-base md:text-lg leading-relaxed" style={{ color: '#333' }}>
               我是一名专注于品牌视觉、AIGC 创意与交互设计的大四视觉设计学生。从概念到落地，我相信好的设计不只是好看，而是能讲清楚一个故事、解决一个问题。
             </p>
@@ -257,7 +257,7 @@ function App() {
             <a href="#" className="inline-flex items-center gap-2 mt-8 font-semibold" style={{ color: ACCENT }}>
               Get in Touch <ArrowUpRight size={18} />
             </a>
-            <div className="space-y-4 mt-12">
+            <div className="space-y-4 mt-12 mx-auto" style={{ maxWidth: '620px', textAlign: 'left' }}>
               <div className="flex items-center justify-between border-b border-black/10 pb-3">
                 <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#666' }}>Brand Identity</span>
                 <span className="text-sm font-semibold">品牌视觉</span>
