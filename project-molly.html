@@ -1291,21 +1291,8 @@ button{font-family:var(--sans);background:none;border:none;color:inherit;cursor:
   align-items:center;text-align:center;padding:120px var(--pad-side) 60px;
   border-top:1px solid var(--line);overflow:hidden;
 }
-.final-stage{position:relative;width:min(520px,86%);height:clamp(260px,38vh,360px);margin-bottom:10px;}
-.final-stage .f-molly{
-  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
-  width:min(34%,200px);animation:floaty 7s ease-in-out infinite;z-index:3;
-}
-.final-stage .f-molly svg{width:100%;}
-.final-stage .f-moon{position:absolute;top:6%;left:26%;width:min(20%,110px);opacity:.95;z-index:1;}
-.final-stage .f-moon svg{width:100%;}
-.final-stage .f-star{position:absolute;animation:twinkle 4s ease-in-out infinite;z-index:2;}
-.final-stage .f-star svg{width:100%;}
-.final-stage .fs1{width:20px;top:14%;right:30%;}
-.final-stage .fs2{width:13px;top:44%;right:24%;animation-delay:1s;}
-.final-stage .fs3{width:10px;top:24%;left:20%;animation-delay:2s;}
-.final-stage .f-cloud{position:absolute;bottom:6%;right:24%;width:min(26%,140px);opacity:.95;z-index:2;}
-.final-stage .f-cloud svg{width:100%;}
+.final-stage{position:relative;width:min(420px,80%);height:auto;margin-bottom:10px;display:flex;justify-content:center;}
+.final-molly-img{width:100%;height:auto;display:block;animation:floaty 7s ease-in-out infinite;}
 .final-title{
   font-family:var(--serif);font-weight:700;
   font-size:clamp(30px,4.4vw,58px);letter-spacing:.1em;margin-bottom:20px;
@@ -3465,12 +3452,7 @@ footer .cn{letter-spacing:.12em;font-size:11px;color:var(--gray);text-transform:
    ============================================================ -->
 <section class="final" id="final">
   <div class="final-stage">
-    <div class="f-moon"><svg viewBox="0 0 200 200" fill="none"><path d="M150 40a80 80 0 1 0 10 120 64 64 0 0 1-10-120z" fill="#8FA3C8" opacity=".9"/></svg></div>
-    <div class="f-star fs1"><svg viewBox="0 0 24 24" fill="#111"><path d="M12 0l2.8 9.2L24 12l-9.2 2.8L12 24l-2.8-9.2L0 12l9.2-2.8z"/></svg></div>
-    <div class="f-star fs2"><svg viewBox="0 0 24 24" fill="#111"><path d="M12 0l2.8 9.2L24 12l-9.2 2.8L12 24l-2.8-9.2L0 12l9.2-2.8z"/></svg></div>
-    <div class="f-star fs3"><svg viewBox="0 0 24 24" fill="#111"><path d="M12 0l2.8 9.2L24 12l-9.2 2.8L12 24l-2.8-9.2L0 12l9.2-2.8z"/></svg></div>
-    <div class="f-cloud"><svg viewBox="0 0 160 80" fill="none"><path d="M30 62a22 22 0 0 1-4-43.6A30 30 0 0 1 80 22a26 26 0 0 1 50 12 18 18 0 0 1 0 36H30z" fill="#E8E0D2" stroke="#D7CDBA" stroke-width="1"/></svg></div>
-    <div class="f-molly"><div class="molly-inject"></div></div>
+    <img class="final-molly-img" src="img/final-molly.png" alt="MOLLY 坐地收藏形象" data-cursor>
   </div>
   <h2 class="final-title">梦境，值得被收藏。<span class="en">DREAMS ARE BETTER WHEN YOU COLLECT THEM.</span></h2>
   <div class="final-brand">
