@@ -129,18 +129,20 @@ function XIcon({ size = 18 }) {
   );
 }
 
-function GooeyNav({ items, animationTime=600, particleCount=15, particleDistances=[90,10], particleR=300, timeVariance=600, colors=[1,2,3,1,2,3,1,4], initialActiveIndex=0 }) {
+function GooeyNav({ items, animationTime=600, particleCount=15, particleDistances=[90,10], particleR=300, timeVariance=600, colors=[1,2,3,1,2,3,1,4], activeIndex:controlledActive, onSelect }) {
   const containerRef = useRef(null);
   const navRef = useRef(null);
   const filterRef = useRef(null);
   const textRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const [internalIndex, setInternalIndex] = useState(controlledActive ?? 0);
+  const activeIndex = controlledActive ?? internalIndex;
+  const setActive = (i) => { if(onSelect) onSelect(i); else setInternalIndex(i); };
   const noise = (n=1)=> n/2 - Math.random()*n;
   const getXY = (d, i, total) => { const angle = ((360 + noise(8))/total)*i*Math.PI/180; return [d*Math.cos(angle), d*Math.sin(angle)]; };
   const createParticle = (i,t,d,r) => { let rot=noise(r/10); return { start:getXY(d[0],particleCount-i,particleCount), end:getXY(d[1]+noise(7),particleCount-i,particleCount), time:t, scale:1+noise(.2), color:colors[Math.floor(Math.random()*colors.length)], rotate: rot>0?(rot+r/20)*10:(rot-r/20)*10 }; };
   const makeParticles = el => { const d=particleDistances; const r=particleR; const bt=animationTime*2+timeVariance; el.style.setProperty('--time', bt+'ms'); for(let i=0;i<particleCount;i++){ const t=animationTime*2+noise(timeVariance*2); const p=createParticle(i,t,d,r); el.classList.remove('active'); setTimeout(()=>{ const sp=document.createElement('span'); const pt=document.createElement('span'); sp.classList.add('particle'); sp.style.setProperty('--start-x',p.start[0]+'px'); sp.style.setProperty('--start-y',p.start[1]+'px'); sp.style.setProperty('--end-x',p.end[0]+'px'); sp.style.setProperty('--end-y',p.end[1]+'px'); sp.style.setProperty('--time',p.time+'ms'); sp.style.setProperty('--scale',p.scale); sp.style.setProperty('--color','var(--color-'+p.color+',white)'); sp.style.setProperty('--rotate',p.rotate+'deg'); pt.classList.add('point'); sp.appendChild(pt); el.appendChild(sp); requestAnimationFrame(()=>el.classList.add('active')); setTimeout(()=>{try{el.removeChild(sp)}catch{}}, t); },30);} };
   const updateEffect = el => { if(!containerRef.current||!filterRef.current||!textRef.current) return; const cr=containerRef.current.getBoundingClientRect(); const pos=el.getBoundingClientRect(); const st={ left:(pos.x-cr.x)+'px', top:(pos.y-cr.y)+'px', width:pos.width+'px', height:pos.height+'px' }; Object.assign(filterRef.current.style,st); Object.assign(textRef.current.style,st); textRef.current.innerText=el.innerText; };
-  const handleClick = (e,index) => { const li=e.currentTarget; if(activeIndex===index) return; setActiveIndex(index); updateEffect(li); if(filterRef.current){ filterRef.current.querySelectorAll('.particle').forEach(p=>filterRef.current.removeChild(p)); } if(textRef.current){ textRef.current.classList.remove('active'); void textRef.current.offsetWidth; textRef.current.classList.add('active'); } if(filterRef.current){ makeParticles(filterRef.current); } };
+  const handleClick = (e,index) => { const li=e.currentTarget; if(activeIndex===index) return; setActive(index); updateEffect(li); if(filterRef.current){ filterRef.current.querySelectorAll('.particle').forEach(p=>filterRef.current.removeChild(p)); } if(textRef.current){ textRef.current.classList.remove('active'); void textRef.current.offsetWidth; textRef.current.classList.add('active'); } if(filterRef.current){ makeParticles(filterRef.current); } };
   useEffect(()=>{ if(!navRef.current||!containerRef.current) return; const li=navRef.current.querySelectorAll('li')[activeIndex]; if(li){ updateEffect(li); textRef.current&&textRef.current.classList.add('active'); } },[activeIndex]);
   return (
     <div className="gooey-nav-container" ref={containerRef}>
@@ -168,8 +170,22 @@ function Logo() {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navIdx, setNavIdx] = useState(0);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const sections = [
+        document.getElementById('about'),
+        document.getElementById('works'),
+        document.getElementById('contact'),
+      ];
+      const y = window.scrollY + window.innerHeight * 0.35;
+      let idx = 0;
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i] && sections[i].offsetTop <= y) idx = i + 1;
+      }
+      setNavIdx(idx);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
@@ -225,7 +241,7 @@ function App() {
       {/* NAV */}
       <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center">
         <div className={"rounded-full p-1 transition-all duration-300 " + (scrolled ? "bg-white/90 shadow-lg backdrop-blur-md" : "bg-white shadow-sm")}>
-          <GooeyNav items={[{label:'首页',href:'#'},{label:'自我介绍',href:'#about'},{label:'作品',href:'#works'},{label:'联系',href:'#contact'}]} />
+          <GooeyNav activeIndex={navIdx} onSelect={setNavIdx} items={[{label:'首页',href:'#'},{label:'自我介绍',href:'#about'},{label:'作品',href:'#works'},{label:'联系',href:'#contact'}]} />
         </div>
       </div>
 
