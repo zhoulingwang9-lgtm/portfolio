@@ -177,7 +177,6 @@ function App() {
       const sections = [
         document.getElementById('about'),
         document.getElementById('works'),
-        document.getElementById('contact'),
       ];
       const y = window.scrollY + window.innerHeight * 0.35;
       let idx = 0;
@@ -241,7 +240,7 @@ function App() {
       {/* NAV */}
       <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center">
         <div className={"rounded-full p-1 transition-all duration-300 " + (scrolled ? "bg-white/90 shadow-lg backdrop-blur-md" : "bg-white shadow-sm")}>
-          <GooeyNav activeIndex={navIdx} onSelect={setNavIdx} items={[{label:'首页',href:'#'},{label:'自我介绍',href:'#about'},{label:'作品',href:'#works'},{label:'联系',href:'#contact'}]} />
+          <GooeyNav activeIndex={navIdx} onSelect={setNavIdx} items={[{label:'首页',href:'#'},{label:'自我介绍',href:'#about'},{label:'作品',href:'#works'}]} />
         </div>
       </div>
 
